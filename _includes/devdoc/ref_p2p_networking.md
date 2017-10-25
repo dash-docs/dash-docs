@@ -1944,9 +1944,9 @@ entry and how to validate messages from it.
 | ---------- | ----------- | --------- | -------- | -------- |
 | 41 | vin | txIn | Required | The unspent output which is holding 1000 DASH
 | # | addr | CService | Required | IPv4 address of the masternode
-| 33-65 | pubKeyCollateralAddress | CPubKey | Required | CPubKey of the main 1000 DASH unspent output
-| 33-65 | pubKeyMasternode | CPubKey | Required | CPubKey of the secondary signing key (For all other messaging other than announce message)
-| 66* | sig | char[] | Required | Signature of this message verifiable via pubKeyMasternode (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
+| 33-65 | pubKeyCollateralAddress | CPubKey | Required | CPubKey of the main 1000 DASH unspent output. Length determined by if it is a compressed public key or not.
+| 33-65 | pubKeyMasternode | CPubKey | Required | CPubKey of the secondary signing key (For all messaging other than the announce message). Length determined by if it is a compressed public key or not.
+| 66 | sig | char[] | Required | Signature of this message verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))
 | 8 | sigTime | int64_t | Required | Time which the signature was created
 | 4 | nProtocolVersion | int | Required | The protocol version of the masternode
 | # | lastPing | `mnp` message | Required | The last known ping of the masternode

@@ -31,6 +31,6 @@ optional:
         - Binary bits, a unit of data with two possible values
 
     links_html_or_markdown_style_capitalize_first_letter:
-        - "[Bitcoin Units](https://en.bitcoin.it/wiki/Units) --- Bitcoin Wiki"
+        #- "[Bitcoin Units](https://en.bitcoin.it/wiki/Units) --- Bitcoin Wiki"
 
 ---

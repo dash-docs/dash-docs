@@ -598,8 +598,19 @@ Earlier versions of Bitcoin Core allowed developers and trusted community member
 Masternode payment uses a verifiable process to determine which masternode is
 paid in each block. When a new block is processed, a quorum of
 `MNPAYMENTS_SIGNATURES_TOTAL` (10) masternodes vote on the next masternode
-payee. Each member of the quorum issues a 'mnw' message that is relayed to the
-network.
+payee. The quorum is calculated deterministically based on the distance between
+masternode's hash and the block's proof of work.
+
+Each member of the quorum issues a 'mnw' message that is relayed to the
+network. The payee is selected from a subset of masternodes made up of 10%
+of eligible nodes that have been waiting the longest since their last payment.
+The winner is then determined based on a number of parameters including the
+distance between the its hash and the block's proof of work. For additional
+detail, reference this [Official Documentation Payment Logic page](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/8880184/Payment+Logic).
+
+Nodes receiving a `mnw` message verify the validity of the message before
+relaying it to their peers. If the message is invalid, the sending node may be
+treated as misbehaving and have its ban score increased.
 
 {% endautocrossref %}
 
