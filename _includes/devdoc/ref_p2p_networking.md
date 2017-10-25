@@ -2281,23 +2281,58 @@ contract, or setting. Masternodes ignore this request if they are not fully sync
 | 32 | nHashParent | uint256 | Required | Parent object (a hash of all zeros here indicates this is the root object, not a child object).
 | 4 | nRevision | int | Required | Object revision in the system
 | 8 | nTime | int64_t | Required | Time which this object was created
-| 32 | nCollateralHash | uint256 | Required | Hash of the collateral fee transaction
+| 32 | nCollateralHash | uint256 | Required* | Hash of the collateral fee transaction for proposals.<br><br>Set to all zeros for Triggers/Watchdogs.
 | 0-16384 | strData | string | Required | Data field - can be used for anything (leading varint indicates size of data)
 | 4 | nObjectType | int | Required | Type of governance object: <br>• `0` - Unknown<br>• `1` - Proposal<br>• `2` - Trigger<br>• `3` - Watchdog
-| 41 | vinMasternode | CTxIn | Required | Unspent output for the masternode which is signing this object
-| 66* | vchSig | char[] | Required | Signature of the masternode (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
+| 41 | vinMasternode | CTxIn | Required* | Unspent output for the masternode which is signing this object.<br><br>Set to all zeros for proposals since they can be created by non-masternodes.
+| 66* | vchSig | char[] | Required* | Signature of the masternode (Length (1 byte) + Signature (65 bytes))<br><br>Not required for proposals - they will have a length of 0x00 and no Signature.
 
 Governance Object Types (defined by src/governance-object.h)
 
 | Type | Name                    | Description
 |------|-------------------------|------------
-| 0 | GOVERNANCE_OBJECT_UNKNOWN  |
-| 1 | GOVERNANCE_OBJECT_PROPOSAL | Submitted proposal (requires collateral transaction - currently 5 Dash)
-| 2 | GOVERNANCE_OBJECT_TRIGGER  | Masternode generated. Removed after activation/execution. Used for superblocks.
-| 3 | GOVERNANCE_OBJECT_WATCHDOG | Masternode generated. Two hour expiration time.
+| 0 | `GOVERNANCE_OBJECT_UNKNOWN`  |
+| 1 | `GOVERNANCE_OBJECT_PROPOSAL` | Submitted proposal (requires collateral transaction - currently 5 Dash)
+| 2 | `GOVERNANCE_OBJECT_TRIGGER`  | Masternode generated. Removed after activation/execution. Used for superblocks.
+| 3 | `GOVERNANCE_OBJECT_WATCHDOG` | Masternode generated. Two hour expiration time.
 
-The following annotated hexdump shows a `govobj` message. (The
-message header has been omitted.)
+The following annotated hexdump shows a `govobj` message for a Proposal object.
+Notice the presence of a non-zero collateral hash, a vinMasternode that is an
+empty CTxIn (hash of all zeros, index/sequence of 0xffffffff, no Signature),
+and no vchSig.
+(The message header has been omitted.)
+
+{% highlight text %}
+00000000000000000000000000000000
+00000000000000000000000000000000 ..... Parent Hash (0 = root)
+01000000 ............................. Revision: 1
+c8dfd65900000000 ..................... Create timestamp: 2017-10-06 01:43:31 UTC
+633611d2f3e7481325242f200c7f3485
+e3a9b4b6301e7f7d18d87d8231f3880b ..... Collateral Hash
+
+Data
+| 3e02 ............................... Data length: 574
+| 356235623232373 ... 376435643564 ... Data (truncated)
+
+01000000 ............................. Object Type: GOVERNANCE_OBJECT_PROPOSAL (1)
+
+Transaction input
+| Previous Output
+| | 00000000000000000000000000000000
+| | 00000000000000000000000000000000 ... Outpoint TXID
+| | ffffffff ........................... Outpoint index number: 0
+| 00 ................................... Script length: 0
+| ...................................... Signature: None
+| ffffffff ............................. Sequence
+
+00 ................................... Signature length: 0
+
+| .................................... Masternode Signature (None required)
+{% endhighlight %}
+
+The following annotated hexdump shows a `govobj` message for a Trigger object.
+Notice the collateral hash of all zeros.
+(The message header has been omitted.)
 
 {% highlight text %}
 00000000000000000000000000000000
@@ -2305,7 +2340,7 @@ message header has been omitted.)
 01000000 ............................. Revision: 1
 911ea85900000000 ..................... Create timestamp: 2017-08-31 14:34:57 UTC
 00000000000000000000000000000000
-00000000000000000000000000000000 ..... Collateral Hash
+00000000000000000000000000000000 ..... Collateral Hash (None required)
 
 Data
 | ae11 ............................... Data length: 4526
