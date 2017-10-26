@@ -223,14 +223,14 @@ http://opensource.org/licenses/MIT.
 [addr message]: /en/developer-reference#addr "The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery."
 [alert message]: /en/developer-reference#alert "The P2P network message which sends alerts in case of major software problems."
 [block message]: /en/developer-reference#block "The P2P network message which sends a serialized block"
-[dsa message]: /en/developer-reference#dsa "A P2P network message used to reply to a P2P network dsq message"
+[dsa message]: /en/developer-reference#dsa "A P2P network message used to join a mixing pool"
 [dsc message]: /en/developer-reference#dsc "A P2P network message used to indicates a PrivateSend mixing session is complete"
-[dsf message]: /en/developer-reference#dsf "A P2P network message sent to indicate the queue is ready and the user is expected to send the entry inputs to start mixing"
-[dsi message]: /en/developer-reference#dsi "A P2P network message sent as the final mixing transaction in a PrivateSend mixing session"
+[dsf message]: /en/developer-reference#dsf "A P2P network message sent as the final mixing transaction in a session asking users to sign the final mixing TX messages"
+[dsi message]: /en/developer-reference#dsi "A P2P network message sending a user's inputs, collateral, and outputs for a mixing session"
 [dseg message]: /en/developer-reference#dseg "A P2P network message which requests either the entire masternode list or a specific masternode entry"
 [dss message]: /en/developer-reference#dss "A P2P network message which sends the user’s signed inputs for a group transaction in a mixing session"
 [dssu message]: /en/developer-reference#dssu "A P2P network message providing a mixing pool status update"
-[dsq message]: /en/developer-reference#dsq "A P2P network message asking users to sign a final mixing TX messages"
+[dsq message]: /en/developer-reference#dsq "A P2P network message sent to indicate the queue is ready and the user is expected to send the entry inputs to start mixing"
 [dstx message]: /en/developer-reference#dstx "A P2P network message sent by masternodes to broadcast subsidized transactions without fees (provides security in mixing)"
 [feefilter message]: /en/developer-reference#feefilter "The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate"
 [filteradd message]: /en/developer-reference#filteradd "A P2P protocol message used to add a data element to an existing bloom filter."
@@ -524,6 +524,7 @@ changes from moving the referenced object, but also update links
 periodically to point to recent code. Last update: 2017-09-05 --> {% endcomment %}
 [core bloom.cpp hash]: https://github.com/dashpay/dash/blob/333e1eaeea80344e5a28db6efbce2691c85e2b25/src/bloom.cpp#L58
 [MAX_SIZE]: https://github.com/dashpay/dash/blob/c31ba8ba4c07e72620bd71753f2103ca103bb1c2/src/serialize.h#L26
+[privatesend denominations]: https://github.com/dashpay/dash/blob/753b1e486b2757b1dba59998ee477e7ceff04f2d/src/privatesend.cpp#L149-L171
 [rpcprotocol.h]: https://github.com/dashpay/dash/blob/3e0eee4c84f40b3cf277e8d03e004249d03c081d/src/rpcprotocol.h
 [spork.h]: https://github.com/dashpay/dash/blob/e1702cd4eca5f276c75cae9de0eb274369b031f6/src/spork.h#L22
 [spork pubkey]: https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158

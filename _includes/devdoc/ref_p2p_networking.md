@@ -1578,34 +1578,10 @@ The `dsc` message indicates a PrivateSend mixing session is complete.
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nSessionID | int | Required | ID of the mixing session
-| 4 | nMessageID | int | Required | Collateral TX that will be charged if this client acts maliciously
+| 4 | nMessageID | int | Required | ID of the message describing the result of the mixing session
 
-Message IDs
-
-| Code | Description
-|------|--------------
-| 0x00 | ERR_ALREADY_HAVE
-| 0x01 | ERR_DENOM
-| 0x02 | ERR_ENTRIES_FULL
-| 0x03 | ERR_EXISTING_TX
-| 0x04 | ERR_FEES
-| 0x05 | ERR_INVALID_COLLATERAL
-| 0x06 | ERR_INVALID_INPUT
-| 0x07 | ERR_INVALID_SCRIPT
-| 0x08 | ERR_INVALID_TX
-| 0x09 | ERR_MAXIMUM
-| 0x0A | ERR_MN_LIST
-| 0x0B | ERR_MODE
-| 0x0C | ERR_NON_STANDARD_PUBKEY
-| 0x0D | ERR_NOT_A_MN (Not used)
-| 0x0E | ERR_QUEUE_FULL
-| 0x0F | ERR_RECENT
-| 0x10 | ERR_SESSION
-| 0x11 | ERR_MISSING_TX
-| 0x12 | ERR_VERSION
-| 0x13 | MSG_NOERR
-| 0x14 | MSG_SUCCESS
-| 0x15 | MSG_ENTRIES_ADDED
+Reference the Message IDs table under the `dssu` message for descriptions of the
+Message ID values.
 
 The following annotated hexdump shows a `dsc` message. (The
 message header has been omitted.)
@@ -2480,7 +2456,7 @@ Governance Object Types (defined by src/governance-object.h)
 | 0 | `GOVERNANCE_OBJECT_UNKNOWN`  |
 | 1 | `GOVERNANCE_OBJECT_PROPOSAL` | Submitted proposal (requires collateral transaction - currently 5 Dash)
 | 2 | `GOVERNANCE_OBJECT_TRIGGER`  | Masternode generated. Removed after activation/execution. Used for superblocks.
-| 3 | `GOVERNANCE_OBJECT_WATCHDOG` | Masternode generated. Two hour expiration time.
+| 3 | `GOVERNANCE_OBJECT_WATCHDOG` | Masternode generated. Two hour expiration time.<br><br>DEPRECATED since 12.2.
 
 The following annotated hexdump shows a `govobj` message for a Proposal object.
 Notice the presence of a non-zero collateral hash, a vinMasternode that is an
