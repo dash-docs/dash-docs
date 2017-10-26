@@ -1511,7 +1511,8 @@ Masternode Outpoint
 {% autocrossref %}
 
 The following network messages all help control the PrivateSend (formerly
-DarkSend) coin mixing features built in to Dash.
+DarkSend) coin mixing features built in to Dash and facilitated by the
+masternode network.
 
 {% endautocrossref %}
 
@@ -1520,15 +1521,49 @@ DarkSend) coin mixing features built in to Dash.
 
 {% autocrossref %}
 
-The `dsa` message replies to a `dsq` message and allows the user to join
-a mixing pool.
+The `dsa` message allows a node to join a mixing pool. A collateral fee is
+required and may be forfeited if the client acts maliciously.  The message
+operates in two ways:
+
+1. When sent to a masternode without a current mixing queue, it initiates the
+  start of a new mixing queue
+
+2. When sent to a masternode with a current mixing queue, it attempts to join the
+  existing queue
+
+Dash Core starts a new queue ~33% of the time and attempts to join an existing
+queue the remainder of the time.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination that will be exclusively used when submitting inputs into the pool
 | 41+ | txCollateral | txIn | Required | Collateral TX that will be charged if this client acts maliciously
 
-<!-- No examples have been observed in Wireshark -->
+The following annotated hexdump shows a `dsa` message. (The message header has
+been omitted.)
+
+{% highlight text %}
+02000000 ................................... Denomination: 1 Dash (2)
+
+Collateral Transaction
+| Previous Output
+| |
+| | 010000000183bd1980c71c38f035db9b
+| | 14d7f934f7d595181b3436e362899026 ....... Outpoint TXID
+| | 19f3f7d3 ............................... Outpoint index number: 3556242201
+|
+| 83 ....................................... Bytes in sig. script: 131
+|
+| 000000006b483045022100f4d8fa0ae4132235fe
+| cd540a62715ccfb1c9a97f8698d066656e30bb1e
+| 1e06b90220301b4cc93f38950a69396ed89dfcc0
+| 8e72ec8e6e7169463592a0bf504946d98b812102
+| fa4b9c0f9e76e06d57c75cab9c8368a62a1ce8db
+| 6eb0c25c3e0719ddd9ab549cffffffff01e09304
+| 00000000001976a914f895 ................... Secp256k1 signature: None
+|
+| 6a4eb0e5 ................................. Sequence number: 3853536874
+{% endhighlight %}
 
 {% endautocrossref %}
 
