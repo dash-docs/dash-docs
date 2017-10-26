@@ -1684,17 +1684,133 @@ Transaction Message
 
 {% autocrossref %}
 
-The `dsi` message indicates the queue is ready and the user is expected to send
-the entry inputs to start mixing.
+The `dsi` message replies to a `dsq` message that has the Ready field set to 0x01.
+The `dsi` message contains user inputs for mixing along with the outputs and a
+collateral. Once the masternode receives `dsi` messages from all members of the
+pool, it responds with a `dsf` message.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | ? | vecTxDSIn | CTxDSIn[] | Required | Vector of users inputs (CTxDSIn serialization is equal to CTxIn serialization)
-| 8 | nAmount | int64_t | Required | Deprecated since 12.1. Used for backwards compatibility only and can be removed with future protocol bump
 | ? | txCollateral | `tx` message | Required |Collateral transaction which is used to prevent misbehavior and also to charge fees randomly
 | ? | vecTxDSOut | CTxDSOut[] | Required | Vector of user outputs (CTxDSOut serialization is equal to CTxOut serialization)
 
-<!-- No examples have been observed in Wireshark -->
+The following annotated hexdump shows a `dsi` message. (The message header has
+been omitted.)
+
+{% highlight text %}
+User inputs
+| 03 ......................................... Number of inputs: 3
+|
+| Transaction input #1
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 02000000 ................................. Outpoint index number: 2
+| |
+| | 00 ....................................... Bytes in sig. script: 0
+| | .......................................... Secp256k1 signature: None
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+|
+| Transaction input #2
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 0f000000 ................................. Outpoint index number: 15
+| |
+| | 00 ....................................... Bytes in sig. script: 0
+| | .......................................... Secp256k1 signature: None
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+|
+| Transaction input #3
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 0d000000 ................................. Outpoint index number: 13
+| |
+| | 00 ....................................... Bytes in sig. script: 0
+| | .......................................... Secp256k1 signature: None
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+
+Collateral Transaction
+| 01000000 ................................... Version: 1
+|
+| 01 ......................................... Number of inputs: 1
+|
+| Previous Output
+| |
+| | 83bd1980c71c38f035db9b14d7f934f7
+| | d595181b3436e36289902619f3f7d383 ......... Outpoint TXID
+| | 00000000 ................................. Outpoint index number: 0
+| |
+| | 6b ....................................... Bytes in sig. script: 107
+| |
+| | 483045022100f4d8fa0ae4132235fecd540a
+| | 62715ccfb1c9a97f8698d066656e30bb1e1e
+| | 06b90220301b4cc93f38950a69396ed89dfc
+| | c08e72ec8e6e7169463592a0bf504946d98b
+| | 812102fa4b9c0f9e76e06d57c75cab9c8368
+| | a62a1ce8db6eb0c25c3e0719ddd9ab549c ....... Secp256k1 signature
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+|
+| 01 ......................................... Number of outputs: 1
+|
+| | e093040000000000 ......................... 300,000 Duffs (0.003 Dash)
+| |
+| | 19 ....................................... Bytes in pubkey script: 25
+| | | 76 ..................................... OP_DUP
+| | | a9 ..................................... OP_HASH160
+| | | 14 ..................................... Push 20 bytes as data
+| | | | f8956a4eb0e53b05ee6b30edfd2770b5
+| | | | 26c1f1bb ............................. PubKey hash
+| | | 88 ..................................... OP_EQUALVERIFY
+| | | ac ..................................... OP_CHECKSIG
+|
+| 00000000 ................................... locktime: 0 (a block height)
+
+User outputs
+| 03 ......................................... Number of outputs: 3
+|
+| Transaction output #1
+| | e8e4f50500000000 ......................... 100,001,000 Duffs (1.0001 Dash)
+| |
+| | 19 ....................................... Bytes in pubkey script: 25
+| | | 76 ..................................... OP_DUP
+| | | a9 ..................................... OP_HASH160
+| | | 14 ..................................... Push 20 bytes as data
+| | | | 14826d7ba05cf76588a5503c03951dc9
+| | | | 14c91b6c ............................. PubKey hash
+| | | 88 ..................................... OP_EQUALVERIFY
+| | | ac ..................................... OP_CHECKSIG
+|
+| Transaction output #2
+| | e8e4f50500000000 ......................... 100,001,000 Duffs (1.0001 Dash)
+| |
+| | 19 ....................................... Bytes in pubkey script: 25
+| | | 76 ..................................... OP_DUP
+| | | a9 ..................................... OP_HASH160
+| | | 14 ..................................... Push 20 bytes as data
+| | | | f01197177de2358928196a543b2bbd97
+| | | | 3c2ab002 ............................. PubKey hash
+| | | 88 ..................................... OP_EQUALVERIFY
+| | | ac ..................................... OP_CHECKSIG
+|
+| Transaction output #3
+| | e8e4f50500000000 ......................... 100,001,000 Duffs (1.0001 Dash)
+| |
+| | 19 ....................................... Bytes in pubkey script: 25
+| | | 76 ..................................... OP_DUP
+| | | a9 ..................................... OP_HASH160
+| | | 14 ..................................... Push 20 bytes as data
+| | | | 426614716e94812d483bca32374f6ac8
+| | | | cd121b0d ............................. PubKey hash
+| | | 88 ..................................... OP_EQUALVERIFY
+| | | ac ..................................... OP_CHECKSIG
+{% endhighlight %}
 
 {% endautocrossref %}
 
@@ -1795,19 +1911,46 @@ Pool State
 
 | State | Description
 |------|--------------
-| 0 | POOL_STATE_IDLE
-| 1 | POOL_STATE_QUEUE
-| 2 | POOL_STATE_ACCEPTING_ENTRIES
-| 3 | POOL_STATE_SIGNING
-| 4 | POOL_STATE_ERROR
-| 5 | POOL_STATE_SUCCESS
+| 0 | `POOL_STATE_IDLE`
+| 1 | `POOL_STATE_QUEUE`
+| 2 | `POOL_STATE_ACCEPTING_ENTRIES`
+| 3 | `POOL_STATE_SIGNING`
+| 4 | `POOL_STATE_ERROR`
+| 5 | `POOL_STATE_SUCCESS`
 
 Pool Status Update
 
 | Status | Description
 |------|--------------
-| 0 | STATUS_REJECTED
-| 1 | STATUS_ACCEPTED
+| 0 | `STATUS_REJECTED`
+| 1 | `STATUS_ACCEPTED`
+
+Message IDs
+
+| Code | Description
+|------|--------------
+| 0x00 | `ERR_ALREADY_HAVE`
+| 0x01 | `ERR_DENOM`
+| 0x02 | `ERR_ENTRIES_FULL`
+| 0x03 | `ERR_EXISTING_TX`
+| 0x04 | `ERR_FEES`
+| 0x05 | `ERR_INVALID_COLLATERAL`
+| 0x06 | `ERR_INVALID_INPUT`
+| 0x07 | `ERR_INVALID_SCRIPT`
+| 0x08 | `ERR_INVALID_TX`
+| 0x09 | `ERR_MAXIMUM`
+| 0x0A | `ERR_MN_LIST`
+| 0x0B | `ERR_MODE`
+| 0x0C | `ERR_NON_STANDARD_PUBKEY`
+| 0x0D | `ERR_NOT_A_MN` (Not used)
+| 0x0E | `ERR_QUEUE_FULL`
+| 0x0F | `ERR_RECENT`
+| 0x10 | `ERR_SESSION`
+| 0x11 | `ERR_MISSING_TX`
+| 0x12 | `ERR_VERSION`
+| 0x13 | `MSG_NOERR`
+| 0x14 | `MSG_SUCCESS`
+| 0x15 | `MSG_ENTRIES_ADDED`
 
 The following annotated hexdump shows a `dssu` message. (The
 message header has been omitted.)
@@ -1815,7 +1958,7 @@ message header has been omitted.)
 {% highlight text %}
 e6ce0c00 ............................. Session ID
 02000000 ............................. State: POOL_STATE_ACCEPTING_ENTRIES (2)
-01000000 ............................. Entries: 1
+03000000 ............................. Entries: 3
 01000000 ............................. Status Update: STATUS_ACCEPTED (1)
 13000000 ............................. Message ID: MSG_NOERR (0x13)
 {% endhighlight %}
