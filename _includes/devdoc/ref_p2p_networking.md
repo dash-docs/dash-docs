@@ -1704,17 +1704,26 @@ the entry inputs to start mixing.
 
 {% autocrossref %}
 
-The `dsq` message asks users to sign a final mixing TX messages.
+The `dsq` message provides nodes with mixing queue details and notifies them
+when to sign final mixing TX messages.
+
+If the message indicates the queue is not ready, the node verifies the message
+is valid. It also verifies that the masternode is not flooding the network with
+`dsq` messages in an attempt to dominate the queuing process. It then relays the
+message to its connected peers.
+
+If the message indicates the queue is ready, the node responds with a `dsi`
+message.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination allowed in this mixing session
 | 41+ | vin | txIn | Required | Unspent output from masternode which is hosting this session
-| 4 | nTime | int | Required | Time this `dsq` message was created
-| 4 | fReady | int | Required | Indicates if the mixing pool is ready to be executed
-| 66* | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
+| 8 | nTime | int64_t | Required | Time this `dsq` message was created
+| 1 | fReady | bool | Required | Indicates if the mixing pool is ready to be executed
+| 66* | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))
 
-Denominations
+Denominations (per [`src/privatesend.cpp`][privatesend denominations])
 
 | Value | Denomination
 |------|--------------
@@ -1734,11 +1743,10 @@ Masternode Outpoint
 | 1811f08afc51dd485d5322f36c1f04c5 ... Outpoint TXID
 | 01000000 ........................... Outpoint index number: 1
 
-1318a859 ............................. Create Time
+1318a85900000000 ..................... Create Time: 2017-08-31 14:07:15 UTC
 
-00000000 ............................. Ready: 0
+00 ................................... Ready: 0
 
-00 ................................... ???
 41 ................................... Signature length: 65
 
 1bd74386ea4e111197f1b4b4660c1415
