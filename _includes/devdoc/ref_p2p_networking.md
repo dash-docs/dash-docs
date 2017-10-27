@@ -1599,13 +1599,14 @@ d9070700 ............................. Session ID: 460761
 
 {% autocrossref %}
 
-The `dsf` message is sent as the final mixing transaction in a PrivateSend
-mixing session.
+The `dsf` message is sent by the masternode as the final mixing transaction in
+a PrivateSend mixing session. The masternode expects nodes in the mixing session
+to respond with a `dss` message.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nSessionID | int | Required | ID of the mixing session
-| # | txFinal | `tx` message | Required | Collateral TX that will be charged if this client acts maliciously
+| # | txFinal | `tx` message | Required |  Final mixing transaction with unsigned inputs
 
 The following annotated hexdump shows a `dsf` message. (The
 message header has been omitted.)
@@ -1856,13 +1857,77 @@ dc ................................... Masternode Signature
 
 {% autocrossref %}
 
-The `dss` message sends the user's signed inputs for a group transaction in a
-mixing session.
+The `dss` message replies to a `dsf` message sent by the masternode managing the
+mixing session.  The `dsf` message provides the unsigned transaction inputs for
+all members of the mixing pool. Each node verifies that the final transaction
+matches what is expected. They then sign any transaction inputs belonging to
+them and then relay them to the masternode via this `dss` message.
+
+Once the masternode receives and validates all `dss` messages, it issues a
+`dsc` message. If a node does not respond to a `dsf` message with signed
+transaction inputs, it may forfeit the collateral it provided. This is to
+minimize malicious behavior.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | # | inputs | txIn[] | Required | Signed inputs for mixing session
 
+The following annotated hexdump shows a `dss` message. (The message header has
+been omitted.) Note that these will be the same transaction inputs that were
+supplied (unsiged) in the `dsi` message.
+
+{% highlight text %}
+User inputs
+| 03 ......................................... Number of inputs: 3
+|
+| Transaction input #1
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 02000000 ................................. Outpoint index number: 2
+| |
+| | 6b ....................................... Bytes in sig. script: 107
+| | 483045022100b3a861dca83463aabf5e4a14a286
+| | 1b9c2e51e0dedd8a13552e118bf74eb4a68d0220
+| | 4a91c416768d27e6bdcfa45d28129841dbcc728b
+| | f0bbec9701cfc4e743d23adf812102cc4876c9da
+| | 84417dec37924e0479205ce02529bb0ba88631d3
+| | ccc9cfcdf00173 ........................... Secp256k1 signature
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+|
+| Transaction input #2
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 0f000000 ................................. Outpoint index number: 15
+| |
+| | 6a ....................................... Bytes in sig. script: 106
+| | 4730440220268f3b7799ca4ec132e511a4756019
+| | c56016f7771561dc0597d84e9b1fa9fc08022067
+| | 5199b9b3f9a7eba69b7bbb4aa2a413d955762f9d
+| | 68be5a9c02c6772c8078fd812103258925f0dbbf
+| | 9d5aa20a675459fa2e86c9f9061dee82a00dca73
+| | 9080f051d891 ............................. Secp256k1 signature
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+|
+| Transaction input #3
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 0d000000 ................................. Outpoint index number: 13
+| |
+| | 6a ....................................... Bytes in sig. script: 106
+| | 4730440220404bb067e0c94a2bd75c6798c1af8c
+| | 95e8b92f5e437cff2bcb4660f24a34d06d02203a
+| | b707bd371a84a9e7bd1fbe3b0c939fd23e0a9165
+| | de78809b9310372a4b3879812103a9a6c5204811
+| | a8cab04b595ed622a1fed6efd3b2d888fadd0c97
+| | 3737fcdf2bc7 ............................. Secp256k1 signature
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+{% endhighlight %}
 
 
 {% endautocrossref %}
