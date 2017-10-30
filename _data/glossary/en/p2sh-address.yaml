@@ -7,7 +7,7 @@ required:
     title_max_40_characters_no_formatting: P2SH Address, Pay To Script Hash
 
     summary_max_255_characters_no_formatting: >
-        A Bitcoin payment address comprising a hashed script,
+        A Dash payment address comprising a hashed script,
         allowing the spender to create a standard pubkey script that
         Pays To Script Hash (P2SH). The script can be almost any
         valid pubkey script.

@@ -7,8 +7,8 @@ required:
     title_max_40_characters_no_formatting: CompactSize Unsigned Integer
 
     summary_max_255_characters_no_formatting: >
-        A type of variable-length integer commonly used in the Bitcoin
-        P2P protocol and Bitcoin serialized data structures.
+        A type of variable-length integer commonly used in the Dash
+        P2P protocol and Dash serialized data structures.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - CompactSize
@@ -21,7 +21,7 @@ optional:
         - compactsize uints
 
     not_to_be_confused_with_capitalize_first_letter:
-        - VarInt (a data type Bitcoin Core uses for local data storage)
+        - VarInt (a data type Dash Core uses for local data storage)
         - Compact (the data type used for nBits in the block header)
 
     links_html_or_markdown_style_capitalize_first_letter:

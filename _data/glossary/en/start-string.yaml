@@ -7,7 +7,7 @@ required:
     title_max_40_characters_no_formatting: Start String, Network Magic
 
     summary_max_255_characters_no_formatting: >
-        Four defined bytes which start every message in the Bitcoin P2P
+        Four defined bytes which start every message in the Dash P2P
         protocol to allow seeking to the next message.
 
     synonyms_shown_in_glossary_capitalize_first_letter:

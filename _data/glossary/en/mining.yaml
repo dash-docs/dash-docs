@@ -7,7 +7,7 @@ required:
     title_max_40_characters_no_formatting: Mining, Miner
 
     summary_max_255_characters_no_formatting: >
-        Mining is the act of creating valid Bitcoin blocks, which
+        Mining is the act of creating valid Dash blocks, which
         requires demonstrating proof of work, and miners are devices
         that mine or people who own those devices.
 

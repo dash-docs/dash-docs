@@ -9,7 +9,7 @@ required:
     summary_max_255_characters_no_formatting: >
         Complete transactions in their binary format; often represented
         using hexadecimal.  Sometimes called raw format because of the
-        various Bitcoin Core commands with "raw" in their names.
+        various Dash Core commands with "raw" in their names.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - Serialized transaction

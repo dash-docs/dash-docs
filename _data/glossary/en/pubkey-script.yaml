@@ -8,7 +8,7 @@ required:
 
     summary_max_255_characters_no_formatting: >
         A script included in outputs which sets the conditions that must
-        be fulfilled for those satoshis to be spent.  Data for
+        be fulfilled for those duffs to be spent.  Data for
         fulfilling the conditions can be provided in a signature script.
         Pubkey Scripts are called a scriptPubKey in code.
 

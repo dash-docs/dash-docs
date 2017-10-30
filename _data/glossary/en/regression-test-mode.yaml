@@ -9,7 +9,7 @@ required:
     summary_max_255_characters_no_formatting: >
         A local testing environment in which developers can almost
         instantly generate blocks on demand for testing events, and can
-        create private satoshis with no real-world value.
+        create private duffs with no real-world value.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - Regtest

@@ -2074,7 +2074,7 @@ fees (to provide security in mixing).
 | ---------- | ----------- | --------- | -------- | -------- |
 | # | tx | `tx` message | Required | The transaction
 | 41 | vin | txIn | Required | Masternode unspent output
-| 66* | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
+| 66 | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))
 | 8 | sigTime | int64_t | Require | Time this message was signed
 
 

@@ -9,7 +9,7 @@ required:
     summary_max_255_characters_no_formatting: >
         A tree constructed by hashing paired data (the leaves), then
         pairing and hashing the results until a single hash remains, the
-        merkle root.  In Bitcoin, the leaves are almost always
+        merkle root.  In Dash, the leaves are almost always
         transactions from a single block.
 
     synonyms_shown_in_glossary_capitalize_first_letter:

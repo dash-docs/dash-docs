@@ -7,8 +7,8 @@ required:
     title_max_40_characters_no_formatting: Inventory, Block Or Transaction Inventory
 
     summary_max_255_characters_no_formatting: >
-        A data type identifier and a hash; used to identify transactions
-        and blocks available for download through the Bitcoin P2P network.
+        A data type identifier and a hash; used to identify transactions,
+        blocks, and objects available for download through the Dash P2P network.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - Inventory

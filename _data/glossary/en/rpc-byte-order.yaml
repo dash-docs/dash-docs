@@ -8,7 +8,7 @@ required:
 
     summary_max_255_characters_no_formatting: >
         A hash digest displayed with the byte order reversed; used in
-        Bitcoin Core RPCs, many block explorers, and other software.
+        Dash Core RPCs, many block explorers, and other software.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - RPC byte order

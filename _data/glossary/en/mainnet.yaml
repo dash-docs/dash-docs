@@ -4,11 +4,11 @@
 
 required:
                                            #-------------40 characters-------------#
-    title_max_40_characters_no_formatting: Mainnet, Bitcoin Main Network
+    title_max_40_characters_no_formatting: Mainnet, Dash Main Network
 
     summary_max_255_characters_no_formatting: >
-        The original and main network for Bitcoin transactions, where
-        satoshis have real economic value.
+        The original and main network for Dash transactions, where
+        duffs have real economic value.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - Mainnet

@@ -8,8 +8,8 @@ required:
 
     summary_max_255_characters_no_formatting: >
         A global testing environment in which developers can obtain and
-        spend satoshis that have no real-world value on a network that
-        is very similar to the Bitcoin mainnet.
+        spend duffs that have no real-world value on a network that
+        is very similar to the Dash mainnet.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - Testnet

@@ -9,7 +9,7 @@ required:
     summary_max_255_characters_no_formatting: >
         The amount that miners may claim as a reward for creating a
         block. Equal to the sum of the block subsidy (newly available
-        satoshis) plus the transactions fees paid by transactions
+        duffs) plus the transactions fees paid by transactions
         included in the block.
 
     synonyms_shown_in_glossary_capitalize_first_letter:

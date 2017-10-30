@@ -7,7 +7,7 @@ required:
     title_max_40_characters_no_formatting: P2PKH Address, Pay To PubKey Hash
 
     summary_max_255_characters_no_formatting: >
-        A Bitcoin payment address comprising a hashed public key,
+        A Dash payment address comprising a hashed public key,
         allowing the spender to create a standard pubkey script that
         Pays To PubKey Hash (P2PKH).
 

@@ -8,7 +8,7 @@ required:
 
     summary_max_255_characters_no_formatting: >
         A DNS server which returns IP addresses of full nodes on the
-        Bitcoin network to assist in peer discovery.
+        Dash network to assist in peer discovery.
 
     synonyms_shown_in_glossary_capitalize_first_letter:
         - DNS seed
