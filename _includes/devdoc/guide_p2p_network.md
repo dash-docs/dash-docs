@@ -15,7 +15,7 @@ The Bitcoin network protocol allows full nodes
 transaction exchange. Full nodes download and verify every block and transaction
 prior to relaying them to other nodes. Archival nodes are full nodes which
 store the entire blockchain and can serve historical blocks to other nodes.
-Pruned nodes are full nodes which do not store the entire blockchain. Many SPV 
+Pruned nodes are full nodes which do not store the entire blockchain. Many SPV
 clients also use the Bitcoin network protocol to connect to full nodes.
 
 Consensus rules do not cover networking, so Bitcoin programs may use
@@ -585,6 +585,34 @@ Take note that for both types of broadcasting, mechanisms are in place to punish
 *Removed in Bitcoin Core 0.13.0*
 
 Earlier versions of Bitcoin Core allowed developers and trusted community members to issue [Bitcoin alerts](https://bitcoin.org/en/alerts) to notify users of critical network-wide issues. This messaging system [was retired](https://bitcoin.org/en/alert/2016-11-01-alert-retirement) in Bitcoin Core v0.13.0; however, internal alerts, partition detection warnings and the `-alertnotify` option features remain.
+
+{% endautocrossref %}
+
+
+### PrivateSend
+
+{% include helpers/subhead-links.md %}
+
+{% autocrossref %}
+
+Dash Core's PrivateSend feature provides a way to improve privacy by performing
+coin-mixing without relinquishing custodial access. For additional details,
+reference this [Official Documentation PrivateSend page](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/1146924/PrivateSend).
+
+*PrivateSend Data Flow*
+
+| **PrivateSend Clients** | **Direction**  | **Masternode**   | **Description** |
+| `dsa` message                            | → |                            | Clients asks to join mixing pool (or have MN start a new one)
+|                                                | ← | `dssu` message       | Masternode provides a mixing pool status update (Typical - State: `POOL_STATE_QUEUE`, Message: `MSG_NOERR`)
+|                                                | ← | `dsq` message        | Masternode notifies clients when it is ready to mix
+| `dsi` message                                 | → |                       | Clients each provide a list of their inputs (unsigned) to be mixed, collateral, and a list of outputs where mixed funds should be sent
+|                                                | ← | `dssu` message       | Masternode provides a mixing pool status update (typical - State: `POOL_STATE_ACCEPTING_ENTRIES`, Message: `MSG_ENTRIES_ADDED`)
+|                                                | ← | `dsf` message        | Masternode sends the final transaction containing all clients inputs (unsiged) and all client outputs to each client for verification
+|                                                | ← | `dssu` message       | Masternode provides a mixing pool status update (Typical - State: `POOL_STATE_SIGNING`, Message: `MSG_NOERR`)
+| `dss` message                                 | → |                       | After verifying the final transaction, clients each sign their own inputs and send them back
+|                                                | ← | `dsc` message        | Masternode verifies the signed inputs, creates a `dstx` message to broadcast the transaction, and notifies clients that the mixing transaction is complete (Typical - Message: `MSG_SUCCESS`)
+|                                                | ← | `inv` message        | Masternode broadcasts a `dstx` inventory message
+| `getdata` message (dstx)                                 | → |            | (Optional)
 
 {% endautocrossref %}
 
