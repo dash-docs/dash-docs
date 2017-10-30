@@ -1587,8 +1587,8 @@ The following annotated hexdump shows a `dsc` message. (The
 message header has been omitted.)
 
 {% highlight text %}
-d9070700 ............................. Session ID: 460761
-14000000 ............................. Message ID: MSG_SUCCESS (0x14)
+d9070700 ............................. Session ID: 791686
+14000000 ............................. Message ID: MSG_SUCCESS (20)
 {% endhighlight %}
 
 {% endautocrossref %}
@@ -1609,46 +1609,101 @@ to respond with a `dss` message.
 | # | txFinal | `tx` message | Required |  Final mixing transaction with unsigned inputs
 
 The following annotated hexdump shows a `dsf` message. (The
-message header has been omitted.)
+message header has been omitted.) Transaction inputs/outputs are only shown for
+a single node (compare with the `dsi` message and `dss` message hexdumps).
 
 {% highlight text %}
-d9070700 ............................. Session ID: 460761
+86140c00 ............................. Session ID: 791686
 
 Transaction Message
 | 01000000 ................................. Version: 1
 |
-| 11 ......................................... Number of inputs: 17
+| 0f ......................................... Number of inputs: 15
 |
-| Transaction input #1
+| [...] ...................................... 5 transaction inputs omitted
+|
+| Transaction input #6
 | |
-| | 312b2eef73770de0c75647b1fda96d85
-| | fe83b06867abf11057a241a3cf8d2a84 ......... Outpoint TXID
-| | 00000000 ................................. Outpoint index number: 0
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 02000000 ................................. Outpoint index number: 0
 | |
 | | 00 ....................................... Bytes in sig. script: 0
 | | .......................................... Secp256k1 signature: None
 | |
 | | ffffffff ................................. Sequence number: UINT32_MAX
 |
-| [...] ...................................... 16 more transaction inputs omitted
+| Transaction input #7
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 0f000000 ................................. Outpoint index number: 15
+| |
+| | 00 ....................................... Bytes in sig. script: 0
+| | .......................................... Secp256k1 signature: None
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
+|
+| Transaction input #8
+| |
+| | 36bdc3796c5630225f2c86c946e2221a
+| | 9958378f5d08da380895c2656730b5c0 ......... Outpoint TXID
+| | 0d000000 ................................. Outpoint index number: 13
+| |
+| | 00 ....................................... Bytes in sig. script: 0
+| | .......................................... Secp256k1 signature: None
+| |
+| | ffffffff ................................. Sequence number: UINT32_MAX
 |
 |
-| 11 ......................................... Number of outputs: 17
+| [...] ...................................... 7 more transaction inputs omitted
+|
+|
+| 0f ......................................... Number of outputs: 15
 |
 | Transaction output #1
-| | 4a420f0000000000 ......................... Duffs (0.01000010 Dash)
+| | e8e4f50500000000 ......................... Duffs (1.00001 Dash)
 | |
 | | 19 ....................................... Bytes in pubkey script: 25
 | | | 76 ..................................... OP_DUP
 | | | a9 ..................................... OP_HASH160
 | | | 14 ..................................... Push 20 bytes as data
-| | | | 0041cc11dac1386e0d8676fda6c5b122
-| | | | 9d8c61e2 ............................. PubKey hash
+| | | | 14826d7ba05cf76588a5503c03951dc9
+| | | | 14c91b6c ............................. PubKey hash
 | | | 88 ..................................... OP_EQUALVERIFY
 | | | ac ..................................... OP_CHECKSIG
 |
-| [...] ...................................... 16 more transaction outputs omitted
 |
+| [...] ...................................... 3 transaction outputs omitted
+|
+|
+| Transaction output #5
+| | e8e4f50500000000 ......................... 100,001,000 Duffs (1.0001 Dash)
+| |
+| | 19 ....................................... Bytes in pubkey script: 25
+| | | 76 ..................................... OP_DUP
+| | | a9 ..................................... OP_HASH160
+| | | 14 ..................................... Push 20 bytes as data
+| | | | 426614716e94812d483bca32374f6ac8
+| | | | cd121b0d ............................. PubKey hash
+| | | 88 ..................................... OP_EQUALVERIFY
+| | | ac ..................................... OP_CHECKSIG
+|
+|
+| [...] ...................................... 9 transaction outputs omitted
+|
+|
+| Transaction output #15
+| | e8e4f50500000000 ......................... 100,001,000 Duffs (1.0001 Dash)
+| |
+| | 19 ....................................... Bytes in pubkey script: 25
+| | | 76 ..................................... OP_DUP
+| | | a9 ..................................... OP_HASH160
+| | | 14 ..................................... Push 20 bytes as data
+| | | | f01197177de2358928196a543b2bbd97
+| | | | 3c2ab002 ............................. PubKey hash
+| | | 88 ..................................... OP_EQUALVERIFY
+| | | ac ..................................... OP_CHECKSIG
 |
 | 00000000 ................................... locktime: 0 (a block height)
 {% endhighlight %}
@@ -1980,24 +2035,24 @@ Message IDs
 | 0x07 | `ERR_INVALID_SCRIPT`
 | 0x08 | `ERR_INVALID_TX`
 | 0x09 | `ERR_MAXIMUM`
-| 0x0A | `ERR_MN_LIST`
-| 0x0B | `ERR_MODE`
-| 0x0C | `ERR_NON_STANDARD_PUBKEY`
-| 0x0D | `ERR_NOT_A_MN` (Not used)
-| 0x0E | `ERR_QUEUE_FULL`
-| 0x0F | `ERR_RECENT`
-| 0x10 | `ERR_SESSION`
-| 0x11 | `ERR_MISSING_TX`
-| 0x12 | `ERR_VERSION`
-| 0x13 | `MSG_NOERR`
-| 0x14 | `MSG_SUCCESS`
-| 0x15 | `MSG_ENTRIES_ADDED`
+| 0x0A (10) | `ERR_MN_LIST`
+| 0x0B (11) | `ERR_MODE`
+| 0x0C (12) | `ERR_NON_STANDARD_PUBKEY`
+| 0x0D (13) | `ERR_NOT_A_MN` (Not used)
+| 0x0E (14) | `ERR_QUEUE_FULL`
+| 0x0F (15) | `ERR_RECENT`
+| 0x10 (16) | `ERR_SESSION`
+| 0x11 (17) | `ERR_MISSING_TX`
+| 0x12 (18) | `ERR_VERSION`
+| 0x13 (19) | `MSG_NOERR`
+| 0x14 (20) | `MSG_SUCCESS`
+| 0x15 (21) | `MSG_ENTRIES_ADDED`
 
 The following annotated hexdump shows a `dssu` message. (The
 message header has been omitted.)
 
 {% highlight text %}
-e6ce0c00 ............................. Session ID
+86140c00 ............................. Session ID: 791686
 02000000 ............................. State: POOL_STATE_ACCEPTING_ENTRIES (2)
 03000000 ............................. Entries: 3
 01000000 ............................. Status Update: STATUS_ACCEPTED (1)
