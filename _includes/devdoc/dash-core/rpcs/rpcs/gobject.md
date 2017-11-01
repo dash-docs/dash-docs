@@ -64,7 +64,156 @@ Result:
 
 ###### GObject Prepare
 
+The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction.
+
+*Parameter #1---parent hash*
+
+{% itemplate ntpd1 %}
+- n: "`parent-hash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Hash of the parent object. Usually the root node which has a hash of 0"
+
+{% enditemplate %}
+
+*Parameter #2---revision*
+
+{% itemplate ntpd1 %}
+- n: "`revision`"
+  t: "int"
+  p: "Required<br>(exactly 1)"
+  d: "Object revision number"
+
+{% enditemplate %}
+
+*Parameter #3---time*
+
+{% itemplate ntpd1 %}
+- n: "`time`"
+  t: "int64_t"
+  p: "Required<br>(exactly 1)"
+  d: "Create time"
+
+{% enditemplate %}
+
+*Parameter #4---data*
+
+{% itemplate ntpd1 %}
+- n: "`data`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Object data (JSON object with governance details)"
+
+{% enditemplate %}
+
+*Result---collateral transaction ID*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Transaction ID for the collateral transaction"
+
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+gobject prepare 0 1 1509548445 5b5b2270726f706f73616c222c7b22656e645f65706f6\
+368223a313530393638303337392c226e616d65223a22746573742d70726f706f73616c2d646\
+173682d646f6373222c227061796d656e745f61646472657373223a2279554b447a353950745\
+0577348596b56346537424337416263454c72346a52787371222c227061796d656e745f616d6\
+f756e74223a32302c2273746172745f65706f6368223a313530393637363831342c227479706\
+5223a312c2275726c223a2268747470733a2f2f646173682d646f63732e746573742f7465737\
+4227d5d5d
+{% endhighlight %}
+
+Result (Collateral Transaction ID):
+{% highlight bash %}
+061ec99eb641ffdeaa05a1a724a255103bebc445b15c6c8c028b19c08608496b
+{% endhighlight %}
+
+
 ###### GObject Submit
+
+The `gobject submit` RPC submits a governance object to network (objects must first be prepared via `gobject prepare`).
+
+*Parameter #1---parent hash*
+
+{% itemplate ntpd1 %}
+- n: "`parent-hash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Hash of the parent object. Usually the root node which has a hash of 0"
+
+{% enditemplate %}
+
+*Parameter #2---revision*
+
+{% itemplate ntpd1 %}
+- n: "`revision`"
+  t: "int"
+  p: "Required<br>(exactly 1)"
+  d: "Object revision number"
+
+{% enditemplate %}
+
+*Parameter #3---time*
+
+{% itemplate ntpd1 %}
+- n: "`time`"
+  t: "int64_t"
+  p: "Required<br>(exactly 1)"
+  d: "Create time"
+
+{% enditemplate %}
+
+*Parameter #4---data*
+
+{% itemplate ntpd1 %}
+- n: "`data`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Object data (JSON object with governance details)"
+
+{% enditemplate %}
+
+*Parameter #5---transaction ID*
+
+{% itemplate ntpd1 %}
+- n: "`data`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Collateral transaction ID"
+
+{% enditemplate %}
+
+*Result---governance object hash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Governance object hash"
+
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+gobject submit 0 1 1509548445 5b5b2270726f706f73616c222c7b22656e645f65706f6\
+368223a313530393638303337392c226e616d65223a22746573742d70726f706f73616c2d646\
+173682d646f6373222c227061796d656e745f61646472657373223a2279554b447a353950745\
+0577348596b56346537424337416263454c72346a52787371222c227061796d656e745f616d6\
+f756e74223a32302c2273746172745f65706f6368223a313530393637363831342c227479706\
+5223a312c2275726c223a2268747470733a2f2f646173682d646f63732e746573742f7465737\
+4227d5d5d 061ec99eb641ffdeaa05a1a724a255103bebc445b15c6c8c028b19c08608496b
+{% endhighlight %}
+
+Result (Governance Object Hash):
+{% highlight bash %}
+75e991c86ed5a50305e315e00c9a95fc74841bd97d58391071edc9ff206a0d3c
+{% endhighlight %}
 
 ###### GObject Deserialize
 
@@ -79,6 +228,11 @@ The `gobject deserialize` RPC deserializes a governance object from a hex string
   d: "The data (hex) of a governance object"
 
 {% enditemplate %}
+
+**Results**
+
+The result output<!--noref--> varies depending on the type of governance object being
+deserialized. Examples are shown below for both proposal and trigger object types.
 
 **Result - Proposal**
 
@@ -555,9 +709,160 @@ Result (truncated):
 
 ###### GObject Getcurrentvotes
 
+The `gobject getcurrentvotes` RPC gets only current (tallying) votes for a governance object hash (does not include old votes).
+
+*Parameter #1---object hash*
+
+{% itemplate ntpd1 %}
+- n: "`governance-hash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of a governance object"
+
+{% enditemplate %}
+
+*Result---votes for specified governance*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "The governance object votes"
+
+- n: "→<br>Vote Info"
+  t: "string"
+  p: "Required<br>(1 or more)"
+  d: "Key: vote-hash<br><br>Value: vinMasternode, time, outcome, and signal of the vote"
+
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+dash-cli -testnet gobject getcurrentvotes 78941af577f639ac94440e4855a1ed8f\
+  696f1506d1c0bed4f4b68f05be26d3ca
+{% endhighlight %}
+
+Result (truncated):
+{% highlight json %}
+{
+  "174aaba65982d25a23f437e2a66ec3836146ba7b7ce5b3fe2d5476907f7079d9": "CTxIn(COutPoint(2eab488e3a7b030303de0d18e357ce17a9fc6b8876705d61076bbe923b2e5fc8, 1), scriptSig=):1509354047:YES:DELETE",
+  "444d4d871ec35479804f060c733f516908382642ec2dfce6044a59fcadfdcd60": "CTxIn(COutPoint(18e496fe85b61ac9a5fcaec1ef683c7e3fc9bce4a83c883608427ecfb1002fca, 1), scriptSig=):1508866932:YES:FUNDING",
+  "d49a472c62e9d8105931829fc50ef6c6ce04a230507646ee0eaa615e863ef3a0": "CTxIn(COutPoint(18e496fe85b61ac9a5fcaec1ef683c7e3fc9bce4a83c883608427ecfb1002fca, 1), scriptSig=):1509117071:YES:DELETE",
+  "78442507441d4524d2493b8568d130415c1eb394adb2fe38d6ffeb199115bc5d": "CTxIn(COutPoint(3df7fb192e21c34da99bdd10c34e58ecaf3f3c37d6b2289f0ffedba5050188cc, 1), scriptSig=):1509312524:YES:DELETE",
+  "aa4dc9d3b9e74e8c1ffc725b737d07f8a32e43c64907e4bea19e64a86135f08a": "CTxIn(COutPoint(af9f5646ace92f76b3a01b0abe08716a0a7ded64074c2d2e712c93174b9013d1, 1), scriptSig=):1508866932:YES:FUNDING",
+}
+{% endhighlight %}
+
+
 ###### GObject List
 
+The `gobject list` RPC Lists governance objects (can be filtered by signal and/or object type).
+
+*Parameter #1---signal*
+
+{% itemplate ntpd1 %}
+- n: "`signal`"
+  t: "string (hex)"
+  p: "Optional<br>(exactly 1)"
+  d: "Type of governance object signal: <br>• `valid`<br>• `funding`<br>• `delete`<br>• `endorsed`<br>• `all` (_DEFAULT_)"
+
+{% enditemplate %}
+
+*Parameter #2---type*
+
+{% itemplate ntpd1 %}
+- n: "`type`"
+  t: "string (hex)"
+  p: "Optional<br>(exactly 1)"
+  d: "Type of governance object signal: <br>• `proposals`<br>• `triggers`<br>• `watchdogs`<br>• `all` (_DEFAULT_)"
+
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+dash-cli -testnet gobject list all proposals
+{% endhighlight %}
+
+Result (truncated):
+{% highlight json %}
+{
+  "b370fa1afd61aca9aa879abea3087e29656a670478f281d4196efb4e7e893ffe": {
+    "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a2231353037343430303338222c226e616d65223a227465737470726f706f73616c5f2d5f6162636465666768696a6b6c6d6e6f707172737475767778797a3031323334353637383931353037323530393636222c227061796d656e745f61646472657373223a2279544c636f506d4e315963654432534345474d6b6e34395753565a4277626f646e6e222c227061796d656e745f616d6f756e74223a2232222c2273746172745f65706f6368223a2231353037323530393636222c2274797065223a312c2275726c223a2268747470733a2f2f7777772e6461736863656e7472616c2e6f72672f702f746573745f70726f706f73616c5f31353037323530393636227d5d5d",
+    "DataString": "[[\"proposal\",{\"end_epoch\":\"1507440038\",\"name\":\"testproposal_-_abcdefghijklmnopqrstuvwxyz01234567891507250966\",\"payment_address\":\"yTLcoPmN1YceD2SCEGMkn49WSVZBwbodnn\",\"payment_amount\":\"2\",\"start_epoch\":\"1507250966\",\"type\":1,\"url\":\"https://www.dashcentral.org/p/test_proposal_1507250966\"}]]",
+    "Hash": "b370fa1afd61aca9aa879abea3087e29656a670478f281d4196efb4e7e893ffe",
+    "CollateralHash": "a51ea89c14735f8b5df37cd846b3561494cc616d4a741e4ef83b368d45c960ba",
+    "ObjectType": 1,
+    "CreationTime": 1507250966,
+    "AbsoluteYesCount": 0,
+    "YesCount": 0,
+    "NoCount": 0,
+    "AbstainCount": 0,
+    "fBlockchainValidity": true,
+    "IsValidReason": "",
+    "fCachedValid": true,
+    "fCachedFunding": false,
+    "fCachedDelete": false,
+    "fCachedEndorsed": false
+  },
+  "906ae4dbd285e1025832ac9b3160073ecbfeef094d34cf81b3d797a349c720ff": {
+    "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a2231353037343534383935222c226e616d65223a227465737470726f706f73616c5f2d5f6162636465666768696a6b6c6d6e6f707172737475767778797a3031323334353637383931353037323635383233222c227061796d656e745f61646472657373223a2279664e68484c4c695936577a5a646a51766137324a64395134313468516578514c68222c227061796d656e745f616d6f756e74223a2232222c2273746172745f65706f6368223a2231353037323635383233222c2274797065223a312c2275726c223a2268747470733a2f2f7777772e6461736863656e7472616c2e6f72672f702f746573745f70726f706f73616c5f31353037323635383233227d5d5d",
+    "DataString": "[[\"proposal\",{\"end_epoch\":\"1507454895\",\"name\":\"testproposal_-_abcdefghijklmnopqrstuvwxyz01234567891507265823\",\"payment_address\":\"yfNhHLLiY6WzZdjQva72Jd9Q414hQexQLh\",\"payment_amount\":\"2\",\"start_epoch\":\"1507265823\",\"type\":1,\"url\":\"https://www.dashcentral.org/p/test_proposal_1507265823\"}]]",
+    "Hash": "906ae4dbd285e1025832ac9b3160073ecbfeef094d34cf81b3d797a349c720ff",
+    "CollateralHash": "1707470c4372ba048b72945365b4bb71afc8a986e0755c1f1e8a37bba21fde83",
+    "ObjectType": 1,
+    "CreationTime": 1507265823,
+    "AbsoluteYesCount": 0,
+    "YesCount": 0,
+    "NoCount": 0,
+    "AbstainCount": 0,
+    "fBlockchainValidity": true,
+    "IsValidReason": "",
+    "fCachedValid": true,
+    "fCachedFunding": false,
+    "fCachedDelete": false,
+    "fCachedEndorsed": false
+  }
+}
+{% endhighlight %}
+
 ###### GObject Diff
+
+The `gobject diff` RPC Lists governance objects differences since last diff.
+
+*Parameter #1---signal*
+
+{% itemplate ntpd1 %}
+- n: "`signal`"
+  t: "string (hex)"
+  p: "Optional<br>(exactly 1)"
+  d: "Type of governance object signal: <br>• `valid`<br>• `funding`<br>• `delete`<br>• `endorsed`<br>• `all` (_DEFAULT_)"
+
+{% enditemplate %}
+
+*Parameter #2---type*
+
+{% itemplate ntpd1 %}
+- n: "`type`"
+  t: "string (hex)"
+  p: "Optional<br>(exactly 1)"
+  d: "Type of governance object signal: <br>• `proposals`<br>• `triggers`<br>• `watchdogs`<br>• `all` (_DEFAULT_)"
+
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+dash-cli -testnet gobject diff all all
+{% endhighlight %}
+
+Result (truncated):
+{% highlight json %}
+{
+}
+{% endhighlight %}
+
 
 ###### GObject Vote-alias
 
