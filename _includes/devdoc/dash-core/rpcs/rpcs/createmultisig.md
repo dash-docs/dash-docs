@@ -58,17 +58,17 @@ The `createmultisig` RPC {{summary_createMultiSig}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Creating a 2-of-3 P2SH multisig address by mixing two P2PKH addresses and
 one full public key:
 
 {% highlight bash %}
-bitcoin-cli -testnet createmultisig 2 '''
+dash-cli -testnet createmultisig 2 '''
   [
-    "mjbLRSidW1MY8oubvs4SMEnHNFXxCcoehQ",
-    "02ecd2d250a76d204011de6bc365a56033b9b3a149f679bc17205555d3c2b2854f",
-    "mt17cV37fBqZsnMmrHnGCm9pM28R1kQdMG"
+    "yNpezfFDfoikDuT1f4iK75AiLp2YLPsGAb",
+    "0311f97539724e0de38fb1ff79f5148e5202459d06ed07193ab18c730274fd0d88",
+    "yVJj7TB3ZhMcSP2wo65ZFNqy23BQH9tT87"
   ]
 '''
 {% endhighlight %}
@@ -77,8 +77,8 @@ Result:
 
 {%highlight json %}
 {
-  "address" : "2MyVxxgNBk5zHRPRY2iVjGRJHYZEp1pMCSq",
-  "redeemScript" : "522103ede722780d27b05f0b1169efc90fa15a601a32fc6c3295114500c586831b6aaf2102ecd2d250a76d204011de6bc365a56033b9b3a149f679bc17205555d3c2b2854f21022d609d2f0d359e5bc0e5d0ea20ff9f5d3396cb5b1906aa9c56a0e7b5edc0c5d553ae"
+  "address": "8uJLxDxk2gEMbidF5vT8XLS2UCgQmVcroW",
+  "redeemScript": "522102eacba539d92eb88d4e73bb32749d79f53f6e8d7947ac40a71bd4b26c13b6ec29210311f97539724e0de38fb1ff79f5148e5202459d06ed07193ab18c730274fd0d882103251f25a5c0291446d801ba6df122f67a7dd06c60a9b332b7b29cc94f3b8f57d053ae"
 }
 {% endhighlight %}
 

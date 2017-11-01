@@ -84,21 +84,21 @@ The `createrawtransaction` RPC {{summary_createRawTransaction}}
 dash-cli -testnet createrawtransaction '''
   [
     {
-      "txid": "f6c83fd96bfaa47887c4587cceadeb9af6238a2c86fe36b883c4d7a6867eab0f",
-      "vout" : 0
+      "txid": "061ec99eb641ffdeaa05a1a724a255103bebc445b15c6c8c028b19c08608496b",
+      "vout" : 1
     }
   ]''' \
-  '{"ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv": 800, "yY6AmGopsZS31wy1JLHR9P6AC6owFaXwuh":77.78}' '1024'
+  '{"ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv": 800, "yY6AmGopsZS31wy1JLHR9P6AC6owFaXwuh":74.99}' '0'
 
 {% endhighlight %}
 
 Result (wrapped):
 
 {% highlight text %}
-01000000010fab7e86a6d7c483b836fe862c8a23f69aebadce7c58c48778a4fa6bd93fc8f6\
-0000000000ffffffff0200205fa0120000001976a914485485425fa99504ec1638ac4213f3\
-cfc9f32ef388ac80dc9acf010000001976a914811eacc14db8ebb5b64486dc43400c0226b4\
-28a488ac00040000
+01000000016b490886c0198b028c6c5cb145c4eb3b1055a224a7a105aadeff41b69ec91e06\
+0100000000ffffffff0200205fa0120000001976a914485485425fa99504ec1638ac4213f3\
+cfc9f32ef388acc0a8f9be010000001976a914811eacc14db8ebb5b64486dc43400c0226b4\
+28a488ac00000000
 {% endhighlight %}
 
 *See also*

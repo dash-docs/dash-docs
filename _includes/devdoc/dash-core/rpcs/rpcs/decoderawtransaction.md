@@ -34,57 +34,69 @@ The `decoderawtransaction` RPC {{summary_decodeRawTransaction}}
 {{INCLUDE_DECODE_RAW_TRANSACTION}}
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.13.1*
+*Example from Dash Core 0.12.2*
 
-Decode a signed one-input, three-output transaction:
+Decode a signed one-input, two-output transaction:
 
 {% highlight bash %}
-bitcoin-cli decoderawtransaction 0100000001bafe2175b9d7b3041ebac\
-529056b393cf2997f7964485aa382ffa449ffdac02a000000008a47304402201\
-3d212c22f0b46bb33106d148493b9a9723adb2c3dd3a3ebe3a9c9e3b95d8cb00\
-220461661710202fbab550f973068af45c294667fc4dc526627a7463eb23ab39\
-e9b01410479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815\
-b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08\
-ffb10d4b8ffffffff01b0a86a00000000001976a91401b81d5fa1e55e069e3cc\
-2db9c19e2e80358f30688ac00000000
+dash-cli decoderawtransaction 01000000016b490886c0198b028c6c5cb145c4eb3b10\
+55a224a7a105aadeff41b69ec91e060100000069463043022033a61c56fa0867ed67b76b02\
+3204a9dc0ee6b0d63305dc5f65fe94335445ff2f021f712f55399d5238fc7146497c431fc4\
+182a1de0b96fc22716e0845f561d542e012102eacba539d92eb88d4e73bb32749d79f53f6e\
+8d7947ac40a71bd4b26c13b6ec29ffffffff0200205fa0120000001976a914485485425fa9\
+9504ec1638ac4213f3cfc9f32ef388acc0a8f9be010000001976a914811eacc14db8ebb5b6\
+4486dc43400c0226b428a488ac00000000
 {% endhighlight %}
 
 Result:
 
 {% highlight json %}
 {
-    "txid": "52309405287e737cf412fc42883d65a392ab950869fae80b2a5f1e33326aca46",
-    "hash": "52309405287e737cf412fc42883d65a392ab950869fae80b2a5f1e33326aca46",
-    "size": 223,
-    "vsize": 223,
-    "version": 1,
-    "locktime": 0,
-    "vin": [
-        {
-            "txid": "2ac0daff49a4ff82a35a4864797f99f23c396b0529c5ba1e04b3d7b97521feba",
-            "vout": 0,
-            "scriptSig": {
-                "asm": "3044022013d212c22f0b46bb33106d148493b9a9723adb2c3dd3a3ebe3a9c9e3b95d8cb00220461661710202fbab550f973068af45c294667fc4dc526627a7463eb23ab39e9b[ALL] 0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
-                "hex": "473044022013d212c22f0b46bb33106d148493b9a9723adb2c3dd3a3ebe3a9c9e3b95d8cb00220461661710202fbab550f973068af45c294667fc4dc526627a7463eb23ab39e9b01410479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8"
-            },
-            "sequence": 4294967295
-        }
-    ],
-    "vout": [
-        {
-            "value": 0.06990000,
-            "n": 0,
-            "scriptPubKey": {
-            "asm": "OP_DUP OP_HASH160 01b81d5fa1e55e069e3cc2db9c19e2e80358f306 OP_EQUALVERIFY OP_CHECKSIG",
-                "hex": "76a91401b81d5fa1e55e069e3cc2db9c19e2e80358f30688ac",
-                "reqSigs": 1,
-                "type": "pubkeyhash",
-                "addresses": [
-                    "1A6Ei5cRfDJ8jjhwxfzLJph8B9ZEthR9Z"
-                ]
-            }
-        }
-    ]
+  "txid": "2f124cb550d9967b81914b544dea3783de23e85d67a9816f9bada665ecfe1cd5",
+  "size": 224,
+  "version": 1,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "061ec99eb641ffdeaa05a1a724a255103bebc445b15c6c8c028b19c08608496b",
+      "vout": 1,
+      "scriptSig": {
+        "asm": "3043022033a61c56fa0867ed67b76b023204a9dc0ee6b0d63305dc5f65fe94335445ff2f021f712f55399d5238fc7146497c431fc4182a1de0b96fc22716e0845f561d542e[ALL] 02eacba539d92eb88d4e73bb32749d79f53f6e8d7947ac40a71bd4b26c13b6ec29",
+        "hex": "463043022033a61c56fa0867ed67b76b023204a9dc0ee6b0d63305dc5f65fe94335445ff2f021f712f55399d5238fc7146497c431fc4182a1de0b96fc22716e0845f561d542e012102eacba539d92eb88d4e73bb32749d79f53f6e8d7947ac40a71bd4b26c13b6ec29"
+      },
+      "sequence": 4294967295
+    }
+  ],
+  "vout": [
+    {
+      "value": 800.00000000,
+      "valueSat": 80000000000,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 485485425fa99504ec1638ac4213f3cfc9f32ef3 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914485485425fa99504ec1638ac4213f3cfc9f32ef388ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv"
+        ]
+      }
+    },
+    {
+      "value": 74.99000000,
+      "valueSat": 7499000000,
+      "n": 1,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 811eacc14db8ebb5b64486dc43400c0226b428a4 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914811eacc14db8ebb5b64486dc43400c0226b428a488ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "yY6AmGopsZS31wy1JLHR9P6AC6owFaXwuh"
+        ]
+      }
+    }
+  ]
 }
 {% endhighlight %}
 

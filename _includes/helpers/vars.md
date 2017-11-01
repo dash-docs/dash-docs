@@ -97,7 +97,7 @@ http://opensource.org/licenses/MIT.
   t: "string"
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.12.0*<br><br>Indicates if a transaction is replaceable under BIP 125:<br>• `yes` is replaceable<br>• `no` not replaceable<br>• `unknown` for unconfirmed transactions not in the mempool"
-  
+
 - n: "{{DEPTH}}<br>`comment`"
   t: "string"
   p: "Optional<br>(0 or 1)"
@@ -131,21 +131,27 @@ bitcoins even if this parameter is set to `1` or higher.{% endcapture %}
   p: "Required<br>(exactly 1)"
   d: "The transaction's TXID encoded as hex in RPC byte order"
 
+{% comment %}
+NOT IN DASH
 - n: "{{DEPTH}} →<br>`hash`"
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.13.0*<br><br>The transaction hash.  Differs from txid for witness transactions"
-  
+{% endcomment %}  
+
 - n: "{{DEPTH}} →<br>`size`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.12.0*<br><br>The serialized transaction size"
 
+{% comment %}
+NOT IN DASH
 - n: "{{DEPTH}} →<br>`vsize`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.13.0*<br><br>The virtual transaction size.  Differs from size for witness transactions"
-  
+{% endcomment %}  
+
 - n: "{{DEPTH}} →<br>`version`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
@@ -196,16 +202,39 @@ bitcoins even if this parameter is set to `1` or higher.{% endcapture %}
   p: "Optional<br>(0 or 1)"
   d: "The coinbase (similar to the hex field of a scriptSig) encoded as hex.  Only present if this is a coinbase transaction"
 
+- n: "{{DEPTH}} → → →<br>`value`"
+  t: "number (Dash)"
+  p: "Optional<br>(exactly 1)"
+  d: "The number of Dash paid to this output.  May be `0`.<br><br>Only present if `spentindex` enabled"
+
+- n: "{{DEPTH}} → → →<br>`valueSat`"
+  t: "number (duffs)"
+  p: "Optional<br>(exactly 1)"
+  d: "The number of duffs paid to this output.  May be `0`.<br><br>Only present if `spentindex` enabled"
+
+- n: "{{DEPTH}} → → → →<br>`addresses`"
+  t: "string : array"
+  p: "Optional<br>(0 or 1)"
+  d: "The P2PKH or P2SH addresses used in this transaction, or the computed P2PKH address of any pubkeys in this transaction.  This array will not be returned for `nulldata` or `nonstandard` script types.<br><br>Only present if `spentindex` enabled"
+
+- n: "{{DEPTH}} → → → → →<br>Address"
+  t: "string"
+  p: "Required<br>(1 or more)"
+  d: "A P2PKH or P2SH address"
+
 - n: "{{DEPTH}} → → →<br>`sequence`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "The input sequence number"
 
+{% comment %}
+NOT IN DASH
 - n: "{{DEPTH}} → → →<br>`txinwitness`"
   t: "string : array"
   p: "Optional<br>(0 or 1)"
   d: "*Added in Bitcoin Core 0.13.0*<br><br>Hex-encoded witness data. Only for segregated witness transactions"  
-  
+{% endcomment %}  
+
 - n: "{{DEPTH}} →<br>`vout`"
   t: "array"
   p: "Required<br>(exactly 1)"
@@ -217,9 +246,14 @@ bitcoins even if this parameter is set to `1` or higher.{% endcapture %}
   d: "An object describing one of this transaction's outputs"
 
 - n: "{{DEPTH}} → → →<br>`value`"
-  t: "number (bitcoins)"
+  t: "number (Dash)"
   p: "Required<br>(exactly 1)"
-  d: "The number of bitcoins paid to this output.  May be `0`"
+  d: "The number of Dash paid to this output.  May be `0`"
+
+- n: "{{DEPTH}} → → →<br>`valueSat`"
+  t: "number (duffs)"
+  p: "Required<br>(exactly 1)"
+  d: "The number of duffs paid to this output.  May be `0`"
 
 - n: "{{DEPTH}} → → →<br>`n`"
   t: "number (int)"

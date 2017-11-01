@@ -7,7 +7,7 @@ http://opensource.org/licenses/MIT.
 ##### GetRawTransaction
 {% include helpers/subhead-links.md %}
 
-{% assign summary_getRawTransaction="gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Bitcoin Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Bitcoin Core startup settings." %}
+{% assign summary_getRawTransaction="gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings." %}
 
 {% autocrossref %}
 
@@ -31,7 +31,7 @@ The `getrawtransaction` RPC {{summary_getRawTransaction}}
 - n: "Format"
   t: "bool"
   p: "Optional<br>(0 or 1)"
-  d: "*Updated in Bitcoin Core 0.14.0*<br><br>Set to `false` (the default) to return the serialized transaction as hex.  Set to `true` to return a decoded transaction.  Before 0.14.0, use `0` and `1`, respectively"
+  d: "For Dash:<br>Set to `0` (the default) to return the serialized transaction as hex.  Set to `1` to return a decoded transaction.<br><br>*Updated in Bitcoin Core 0.14.0*<br><br>Set to `false` (the default) to return the serialized transaction as hex.  Set to `true` to return a decoded transaction.  Before 0.14.0, use `0` and `1`, respectively"
 
 {% enditemplate %}
 
@@ -41,7 +41,7 @@ The `getrawtransaction` RPC {{summary_getRawTransaction}}
 - n: "`result`"
   t: "null"
   p: "Required<br>(exactly 1)"
-  d: "If the transaction wasn't found, the result will be JSON `null`.  This can occur because the transaction doesn't exist in the block chain or memory pool, or because it isn't part of the transaction index.  See the Bitcoin Core `-help` entry for `-txindex`"
+  d: "If the transaction wasn't found, the result will be JSON `null`.  This can occur because the transaction doesn't exist in the block chain or memory pool, or because it isn't part of the transaction index.  See the Dash Core `-help` entry for `-txindex`"
 
 {% enditemplate %}
 
@@ -90,76 +90,93 @@ The `getrawtransaction` RPC {{summary_getRawTransaction}}
 
 {% enditemplate %}
 
-*Examples from Bitcoin Core 0.14.1*
+*Examples from Dash Core 0.12.2*
 
 A transaction in serialized transaction format:
 
 {% highlight bash %}
-bitcoin-cli getrawtransaction \
-  52309405287e737cf412fc42883d65a392ab950869fae80b2a5f1e33326aca46
+dash-cli getrawtransaction \
+  2f124cb550d9967b81914b544dea3783de23e85d67a9816f9bada665ecfe1cd5
 {% endhighlight %}
 
 Result (wrapped):
 
 {% highlight text %}
-0100000001bafe2175b9d7b3041ebac529056b393cf2997f7964485aa382ffa4\
-49ffdac02a000000008a473044022013d212c22f0b46bb33106d148493b9a972\
-3adb2c3dd3a3ebe3a9c9e3b95d8cb00220461661710202fbab550f973068af45\
-c294667fc4dc526627a7463eb23ab39e9b01410479be667ef9dcbbac55a06295\
-ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc\
-0e1108a8fd17b448a68554199c47d08ffb10d4b8ffffffff01b0a86a00000000\
-001976a91401b81d5fa1e55e069e3cc2db9c19e2e80358f30688ac00000000
+01000000016b490886c0198b028c6c5cb145c4eb3b1055a224a7a105aadeff41\
+b69ec91e060100000069463043022033a61c56fa0867ed67b76b023204a9dc0e\
+e6b0d63305dc5f65fe94335445ff2f021f712f55399d5238fc7146497c431fc4\
+182a1de0b96fc22716e0845f561d542e012102eacba539d92eb88d4e73bb3274\
+9d79f53f6e8d7947ac40a71bd4b26c13b6ec29ffffffff0200205fa012000000\
+1976a914485485425fa99504ec1638ac4213f3cfc9f32ef388acc0a8f9be0100\
+00001976a914811eacc14db8ebb5b64486dc43400c0226b428a488ac00000000
 {% endhighlight %}
 
 Get the same transaction in JSON:
 
 {% highlight bash %}
-bitcoin-cli getrawtransaction \
-ef7c0cbf6ba5af68d2ea239bba709b26ff7b0b669839a63bb01c2cb8e8de481e \
-true
+dash-cli getrawtransaction \
+2f124cb550d9967b81914b544dea3783de23e85d67a9816f9bada665ecfe1cd5 \
+1
 {% endhighlight %}
 
 Result:
 
 {% highlight json %}
 {
-    "hex": "0100000001bafe2175b9d7b3041ebac529056b393cf2997f7964485aa382ffa449ffdac02a000000008a473044022013d212c22f0b46bb33106d148493b9a9723adb2c3dd3a3ebe3a9c9e3b95d8cb00220461661710202fbab550f973068af45c294667fc4dc526627a7463eb23ab39e9b01410479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8ffffffff01b0a86a00000000001976a91401b81d5fa1e55e069e3cc2db9c19e2e80358f30688ac00000000",
-    "txid": "52309405287e737cf412fc42883d65a392ab950869fae80b2a5f1e33326aca46",
-    "hash": "52309405287e737cf412fc42883d65a392ab950869fae80b2a5f1e33326aca46",
-    "size": 223,
-    "vsize": 223,
-    "version": 1,
-    "locktime": 0,
-    "vin": [
-        {
-            "txid": "2ac0daff49a4ff82a35a4864797f99f23c396b0529c5ba1e04b3d7b97521feba",
-            "vout": 0,
-            "scriptSig": {
-                "asm": "3044022013d212c22f0b46bb33106d148493b9a9723adb2c3dd3a3ebe3a9c9e3b95d8cb00220461661710202fbab550f973068af45c294667fc4dc526627a7463eb23ab39e9b[ALL] 0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
-                "hex": "473044022013d212c22f0b46bb33106d148493b9a9723adb2c3dd3a3ebe3a9c9e3b95d8cb00220461661710202fbab550f973068af45c294667fc4dc526627a7463eb23ab39e9b01410479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8"
-            },
-            "sequence": 4294967295
-        }
-    ],
-    "vout": [
-        {
-            "value": 0.06990000,
-            "n": 0,
-            "scriptPubKey": {
-                "asm": "OP_DUP OP_HASH160 01b81d5fa1e55e069e3cc2db9c19e2e80358f306 OP_EQUALVERIFY OP_CHECKSIG",
-                "hex": "76a91401b81d5fa1e55e069e3cc2db9c19e2e80358f30688ac",
-                "reqSigs": 1,
-                "type": "pubkeyhash",
-                "addresses": [
-                    "1A6Ei5cRfDJ8jjhwxfzLJph8B9ZEthR9Z"
-                ]
-            }
-        }
-    ],
-    "blockhash": "0000000000000000015955e197fc362502a32f76290e5b5e5be822f9f161b3f3",
-    "confirmations": 374,
-    "time": 1483591778,
-    "blocktime": 1483591778
+  "hex": "01000000016b490886c0198b028c6c5cb145c4eb3b1055a224a7a105aadeff41b69ec91e060100000069463043022033a61c56fa0867ed67b76b023204a9dc0ee6b0d63305dc5f65fe94335445ff2f021f712f55399d5238fc7146497c431fc4182a1de0b96fc22716e0845f561d542e012102eacba539d92eb88d4e73bb32749d79f53f6e8d7947ac40a71bd4b26c13b6ec29ffffffff0200205fa0120000001976a914485485425fa99504ec1638ac4213f3cfc9f32ef388acc0a8f9be010000001976a914811eacc14db8ebb5b64486dc43400c0226b428a488ac00000000",
+  "txid": "2f124cb550d9967b81914b544dea3783de23e85d67a9816f9bada665ecfe1cd5",
+  "size": 224,
+  "version": 1,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "061ec99eb641ffdeaa05a1a724a255103bebc445b15c6c8c028b19c08608496b",
+      "vout": 1,
+      "scriptSig": {
+        "asm": "3043022033a61c56fa0867ed67b76b023204a9dc0ee6b0d63305dc5f65fe94335445ff2f021f712f55399d5238fc7146497c431fc4182a1de0b96fc22716e0845f561d542e[ALL] 02eacba539d92eb88d4e73bb32749d79f53f6e8d7947ac40a71bd4b26c13b6ec29",
+        "hex": "463043022033a61c56fa0867ed67b76b023204a9dc0ee6b0d63305dc5f65fe94335445ff2f021f712f55399d5238fc7146497c431fc4182a1de0b96fc22716e0845f561d542e012102eacba539d92eb88d4e73bb32749d79f53f6e8d7947ac40a71bd4b26c13b6ec29"
+      },
+      "value": 874.99879200,
+      "valueSat": 87499879200,
+      "address": "yNpezfFDfoikDuT1f4iK75AiLp2YLPsGAb",
+      "sequence": 4294967295
+    }
+  ],
+  "vout": [
+    {
+      "value": 800.00000000,
+      "valueSat": 80000000000,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 485485425fa99504ec1638ac4213f3cfc9f32ef3 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914485485425fa99504ec1638ac4213f3cfc9f32ef388ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv"
+        ]
+      }
+    },
+    {
+      "value": 74.99000000,
+      "valueSat": 7499000000,
+      "n": 1,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 811eacc14db8ebb5b64486dc43400c0226b428a4 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914811eacc14db8ebb5b64486dc43400c0226b428a488ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "yY6AmGopsZS31wy1JLHR9P6AC6owFaXwuh"
+        ]
+      }
+    }
+  ],
+  "blockhash": "00000000e679e76eabc913b15c7f202e7ea831b8fb07beb28ca2a047b03ff3cc",
+  "height": 19560,
+  "confirmations": 6,
+  "time": 1509568811,
+  "blocktime": 1509568811
 }
 {% endhighlight %}
 

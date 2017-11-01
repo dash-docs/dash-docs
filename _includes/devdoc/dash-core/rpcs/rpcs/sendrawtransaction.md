@@ -23,13 +23,23 @@ The `sendrawtransaction` RPC {{summary_sendRawTransaction}}
 
 {% enditemplate %}
 
-*Parameter #2--whether to allow high fees**
+*Parameter #2--whether to allow high fees*
 
 {% itemplate ntpd1 %}
 - n: "Allow High Fees"
   t: "bool"
   p: "Optional<br>(0 or 1)"
   d: "Set to `true` to allow the transaction to pay a high transaction fee.  Set to `false` (the default) to prevent Bitcoin Core from broadcasting the transaction if it includes a high fee.  Transaction fees are the sum of the inputs minus the sum of the outputs, so this high fees check helps ensures user including a change address to return most of the difference back to themselves"
+
+{% enditemplate %}
+
+*Parameter #3--whether to use InstantSend*
+
+{% itemplate ntpd1 %}
+- n: "Use InstantSend"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "Set to `true` to send as an InstantSend transaction.  Set to `false` (the default) to send as a normal transaction"
 
 {% enditemplate %}
 
@@ -43,24 +53,25 @@ The `sendrawtransaction` RPC {{summary_sendRawTransaction}}
 
 {% enditemplate %}
 
-*Examples from Bitcoin Core 0.10.0*
+*Examples from Dash Core 0.12.2*
 
 Broadcast a signed transaction:
 
 {% highlight bash %}
-bitcoin-cli -testnet sendrawtransaction 01000000011da9283b4ddf8d\
-89eb996988b89ead56cecdc44041ab38bf787f1206cd90b51e000000006a4730\
-4402200ebea9f630f3ee35fa467ffc234592c79538ecd6eb1c9199eb23c4a16a\
-0485a20220172ecaf6975902584987d295b8dddf8f46ec32ca19122510e22405\
-ba52d1f13201210256d16d76a49e6c8e2edc1c265d600ec1a64a45153d45c29a\
-2fd0228c24c3a524ffffffff01405dc600000000001976a9140dfc8bafc84198\
-53b34d5e072ad37d1a5159f58488ac00000000
+dash-cli -testnet sendrawtransaction 01000000016b490886c0198b\
+028c6c5cb145c4eb3b1055a224a7a105aadeff41b69ec91e0601000000694630\
+43022033a61c56fa0867ed67b76b023204a9dc0ee6b0d63305dc5f65fe943354\
+45ff2f021f712f55399d5238fc7146497c431fc4182a1de0b96fc22716e0845f\
+561d542e012102eacba539d92eb88d4e73bb32749d79f53f6e8d7947ac40a71b\
+d4b26c13b6ec29ffffffff0200205fa0120000001976a914485485425fa99504\
+ec1638ac4213f3cfc9f32ef388acc0a8f9be010000001976a914811eacc14db8\
+ebb5b64486dc43400c0226b428a488ac00000000
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-f5a5ce5988cc72b9b90e8d1d6c910cda53c88d2175177357cc2f2cf0899fbaad
+2f124cb550d9967b81914b544dea3783de23e85d67a9816f9bada665ecfe1cd5
 {% endhighlight %}
 
 *See also*
