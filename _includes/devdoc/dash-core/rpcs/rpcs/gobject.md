@@ -857,7 +857,7 @@ The `gobject diff` RPC Lists governance objects differences since last diff.
 dash-cli -testnet gobject diff all all
 {% endhighlight %}
 
-Result (truncated):
+Result:
 {% highlight json %}
 {
 }
@@ -871,15 +871,9 @@ Result (truncated):
 ###### GObject Vote-many
 
 
-{% highlight bash %}
-dash-cli -testnet gobject
-{% endhighlight %}
-
-Result:
-{% highlight json %}
-	*INSERT RESULTS HERE*
-{% endhighlight %}
-
 *See also:*
+
+* [GetGovernanceInfo][rpc getgovernanceinfo]: {{summary_getGovernanceInfo}}
+* [GetSuperblockBudget][rpc getsuperblockbudget]: {{summary_getSuperblockBudget}}
 
 {% endautocrossref %}
