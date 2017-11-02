@@ -2672,6 +2672,13 @@ Additionally, nodes can request `govobjvote` messages for specific governance
 objects via a `govsync` message. Masternodes ignore requests for votes if they
 are not fully synced.
 
+{% highlight text %}
+Dash Core limits how frequently a masternode can vote on a governance object.
+A masternode's vote will not be processed if it has been less than 60 minutes
+since its last vote on that object. Additionally, invalid votes can result in
+the node being banned.
+{% endhighlight %}
+
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 41+ | vinMasternode | CTxIn | Required | Unspent output for the masternode which is voting

@@ -589,6 +589,24 @@ Earlier versions of Bitcoin Core allowed developers and trusted community member
 {% endautocrossref %}
 
 
+### Quorum Selection
+
+{% include helpers/subhead-links.md %}
+
+{% autocrossref %}
+
+Dash quorums are used to facilitate the operation of masternode provided
+features in a decentralized, deterministic way.
+
+| Quorum Type | Members | Consensus | Description |
+| ----------- | ------- | --------- | ----------- |
+| InstantSend | 10      | Majority  | A set of 10 masternodes are selected for _each_ input of the InstantSend transaction. A majority (6+) of them must agree to lock the input. If all inputs in the transaction can be locked, it becomes a successful InstantSend.
+| MN Payments | 10      | Majority | A set of 10 masternodes are selected for each block. A majority (6+) of them must agree on the masternode payee for the next block.
+| MN Broadcast | 10      | Majority | If a majority (6+) of nodes agree, a new `mnb` message is not required.
+
+{% endautocrossref %}
+
+
 ### PrivateSend
 
 {% include helpers/subhead-links.md %}
