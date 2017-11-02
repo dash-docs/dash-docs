@@ -16,8 +16,10 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_dumpPrivKey="returns the wallet-import-format (WIP) private key corresponding to an address. (But does not remove it from the wallet.)" %}
 {% assign summary_dumpWallet="creates or overwrites a file with all wallet keys in a human-readable format." %}
 {% assign summary_encryptWallet="encrypts the wallet with a passphrase.  This is only to enable encryption for the first time. After encryption is enabled, you will need to enter the passphrase to use private keys." %}
-{% assign summary_estimateFee="estimates the transaction fee per kilobyte that needs to be paid for a transaction to be included within a certain number of blocks." %}
-{% assign summary_estimatePriority="estimates the priority (coin age) that a transaction needs in order to be included within a certain number of blocks as a free high-priority transaction." %}
+{% assign summary_estimateFee="estimates the transaction fee per kilobyte that needs to be paid for a transaction to begin confirmation within a certain number of blocks." %}
+{% assign summary_estimatePriority="estimates the priority that a transaction needs in order to be included within a certain number of blocks as a free high-priority transaction." %}
+{% assign summary_estimateSmartFee="estimates the transaction fee per kilobyte that needs to be paid for a transaction to begin confirmation within a certain number of blocks and returns the number of blocks for which the estimate is valid." %}
+{% assign summary_estimateSmartPriority="estimates the priority that a transaction needs in order to be included within a certain number of blocks as a free high-priority transaction and returns the number of blocks for which the estimate is valid." %}
 {% assign summary_fundRawTransaction="adds inputs to a transaction until it has enough in value to meet its out value." %}
 {% assign summary_gObject="provides a set of commands for managing governance objects and displaying information about them." %}
 {% assign summary_gObjectCheck="." %}

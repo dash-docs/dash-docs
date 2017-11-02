@@ -218,8 +218,8 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [CreateMultiSig][rpc createmultisig]: {{summary_createMultiSig}}
 * [EstimateFee][rpc estimatefee]: {{summary_estimateFee}}
 * [EstimatePriority][rpc estimatepriority]: {{summary_estimatePriority}}
-    * [EstimateSmartFee][rpc estimatesmartfee]: {{summary_estimateSmartFee}} {{DEPRECATED}}
-    * [EstimateSmartPriority][rpc estimatesmartpriority]: {{summary_estimateSmartPriority}} {{DEPRECATED}}
+* [EstimateSmartFee][rpc estimatesmartfee]: {{summary_estimateSmartFee}} {{DEPRECATED}}
+* [EstimateSmartPriority][rpc estimatesmartpriority]: {{summary_estimateSmartPriority}} {{DEPRECATED}}
 * [ValidateAddress][rpc validateaddress]: {{summary_validateAddress}} {{UPDATED0_13_0}}
 * [VerifyMessage][rpc verifymessage]: {{summary_verifyMessage}}
 

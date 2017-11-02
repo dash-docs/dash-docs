@@ -104,6 +104,10 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/estimatepriority.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/estimatesmartfee.md %}
+
+{% include devdoc/dash-core/rpcs/rpcs/estimatesmartpriority.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/fundrawtransaction.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/generate.md %}

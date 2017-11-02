@@ -101,6 +101,8 @@ http://opensource.org/licenses/MIT.
 [rpc encryptwallet]: /en/developer-reference#encryptwallet
 [rpc estimatefee]: /en/developer-reference#estimatefee
 [rpc estimatepriority]: /en/developer-reference#estimatepriority
+[rpc estimatesmartfee]: /en/developer-reference#estimatesmartfee
+[rpc estimatesmartpriority]: /en/developer-reference#estimatesmartpriority
 [rpc fundrawtransaction]: /en/developer-reference#fundrawtransaction
 [rpc generate]: /en/developer-reference#generate
 [rpc generatetoaddress]: /en/developer-reference#generatetoaddress

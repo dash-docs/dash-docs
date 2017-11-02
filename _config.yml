@@ -272,6 +272,8 @@ devsearches:
     - 'EncryptWallet': "/en/developer-reference#encryptwallet"
     - 'EstimateFee': "/en/developer-reference#estimatefee"
     - 'EstimatePriority': "/en/developer-reference#estimatepriority"
+    - 'EstimateSmartFee': "/en/developer-reference#estimatesmartfee"
+    - 'EstimateSmartPriority': "/en/developer-reference#estimatesmartpriority"
     - 'FundRawTransaction': "/en/developer-reference#fundrawtransaction"
     - 'Generate': "/en/developer-reference#generate"
     - 'GenerateToAddress': "/en/developer-reference#generatetoaddress"

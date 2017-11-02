@@ -272,6 +272,10 @@ CVE-2012-2459:
 '`estimatefee` RPC': rpc estimatefee
 '`estimatepriority`': rpc estimatepriority
 '`estimatepriority` RPC': rpc estimatepriority
+'`estimatesmartfee`': rpc estimatesmartfee
+'`estimatesmartfee` RPC': rpc estimatesmartfee
+'`estimatesmartpriority`': rpc estimatesmartpriority
+'`estimatesmartpriority` RPC': rpc estimatesmartpriority
 '`fundrawtransaction`': rpc fundrawtransaction
 '`fundrawtransaction` RPC': rpc fundrawtransaction
 '`generate`': rpc generate
