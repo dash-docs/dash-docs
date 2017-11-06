@@ -669,7 +669,53 @@ treated as misbehaving and have its ban score increased.
 Dash Core performs masternode synchronization as required, but it can be started
 manually by issuing the `mnsync reset` RPC command.
 
-*Masternode Sync Data Flow*
+There are several conditions that restart the sync process:
+
+* More than 60 minutes have passed since the last activation
+* A failure occurred during the last sync attempt (after a 1 minute cooldown before sync restarts)
+
+
+#### Masternode Sync Status
+
+There are several status values used to track masternode synchronization. They
+are used in both `ssc` messages and the `mnsync` RPC.
+
+| **Value** | **Status**  | **Description** |
+| -1  | `MASTERNODE_SYNC_FAILED`      | Synchronization failed |
+| 0   | `MASTERNODE_SYNC_INITIAL`     | Synchronization just started, was reset recently, or is still in IBD |
+| 1   | `MASTERNODE_SYNC_WAITING`     | Synchronization pending - waiting after initial to check for more headers/blocks |
+| 2   | `MASTERNODE_SYNC_LIST`        | Synchronizing masternode list |
+| 3   | `MASTERNODE_SYNC_MNW`         | Synchronizing masternode payments |
+| 4   | `MASTERNODE_SYNC_GOVERNANCE`  | Synchronizing governance objects  |
+| 999 | `MASTERNODE_SYNC_FINISHED`    | Synchronization finished |
+
+
+#### Masternode Sync Schedule
+
+The following tables detail the timing of various functions used to keep the
+masternodes in sync with each other. This information is derived from
+`ThreadCheckPrivateSend` in `src/privatesend.cpp`.
+
+| **Period (seconds)** | **Action** | **Description** |
+| 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects |
+
+The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status
+
+| **Period (seconds)** | **Action** | **Description** |
+| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) |
+| 60  | Process MN Connections    | Disconnects some masternodes |
+| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones |
+| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks  |
+| 60  | InstantSend Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes |
+| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages). Note time constraints in the Developer Reference section |
+| 300 | Maintenance               | Check/remove/reprocess governance objects |
+| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. |
+
+
+#### Masternode Sync Data Flow
+
+The following tables details the exchanged of P2P messages during masternode
+synchronization.
 
 | **Syncing Node Message** | **Direction**  | **Masternode Response**   | **Description** |
 | **1. Sporks** |   |  |  |
