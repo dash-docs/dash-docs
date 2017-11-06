@@ -674,6 +674,13 @@ There are several conditions that restart the sync process:
 * More than 60 minutes have passed since the last activation
 * A failure occurred during the last sync attempt (after a 1 minute cooldown before sync restarts)
 
+Once a masternode completes an initial full sync, continuing synchronization is
+maintained by the exchange of P2P messages with other nodes. Each masternode
+issues a ping (`mnp` message) periodically to notify others that it is still
+online. Masternodes that do not issue a ping for 3 hours will be put into the
+`MASTERNODE_NEW_START_REQUIRED` state and will need to issue a masternode
+announce (`mnb` message).
+
 
 #### Masternode Sync Status
 
@@ -699,7 +706,7 @@ masternodes in sync with each other. This information is derived from
 | **Period (seconds)** | **Action** | **Description** |
 | 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects |
 
-The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status
+The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status.
 
 | **Period (seconds)** | **Action** | **Description** |
 | 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) |
@@ -707,7 +714,7 @@ The following actions only run when the masternode sync is past `MASTERNODE_SYNC
 | 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones |
 | 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks  |
 | 60  | InstantSend Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes |
-| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages). Note time constraints in the Developer Reference section |
+| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) |
 | 300 | Maintenance               | Check/remove/reprocess governance objects |
 | 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. |
 
