@@ -666,13 +666,13 @@ treated as misbehaving and have its ban score increased.
 
 {% autocrossref %}
 
-Dash Core performs masternode synchronization as required, but it can be started
-manually by issuing the `mnsync reset` RPC command.
+Dash Core performs full masternode synchronization as required. There are
+several conditions that initiate a start/restart the sync process:
 
-There are several conditions that restart the sync process:
-
+* Initial startup of Dash Core
 * More than 60 minutes have passed since the last activation
 * A failure occurred during the last sync attempt (after a 1 minute cooldown before sync restarts)
+* Issuing a `mnsync reset` RPC command
 
 Once a masternode completes an initial full sync, continuing synchronization is
 maintained by the exchange of P2P messages with other nodes. Each masternode
@@ -681,6 +681,21 @@ online. Masternodes that do not issue a ping for 3 hours will be put into the
 `MASTERNODE_NEW_START_REQUIRED` state and will need to issue a masternode
 announce (`mnb` message).
 
+
+*Masternode List*
+
+After the initial masternode list has been received, it is kept current by a
+combination of the periodic `mnp` messages received from other masternodes and
+the `mnb` messages sent by masternodes as they come online. Also, `dseg` messages
+can be sent to request masternode info when messages are received containing
+unrecognized masternode `vin` entries (most masternode/governance messages
+include a `vin` value that can be used to verify the masternode's unspent 1000
+Dash).
+
+*Masternode Payment*
+
+After the initial masternode payment synchronization, payment information is
+kept current via the `mnw` messages relayed on the network.
 
 #### Masternode Sync Status
 
@@ -722,7 +737,7 @@ The following actions only run when the masternode sync is past `MASTERNODE_SYNC
 #### Masternode Sync Data Flow
 
 This diagram shows the order in which P2P messages are sent to perform
-masternode synchronization initially after startup.<p>
+masternode synchronization initially after startup.
 
 ![Masternode Sync (Initial)](/img/dev/en-masternode-sync-initial.svg)
 
