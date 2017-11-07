@@ -721,7 +721,12 @@ The following actions only run when the masternode sync is past `MASTERNODE_SYNC
 
 #### Masternode Sync Data Flow
 
-The following tables details the exchanged of P2P messages during masternode
+This diagram shows the order in which P2P messages are sent to perform
+masternode synchronization initially after startup.<p>
+
+![Masternode Sync (Initial)](/img/dev/en-masternode-sync-initial.svg)
+
+The following table details the exchanged of P2P messages during masternode
 synchronization.
 
 | **Syncing Node Message** | **Direction**  | **Masternode Response**   | **Description** |
