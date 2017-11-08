@@ -674,75 +674,15 @@ several conditions that initiate a start/restart the sync process:
 * A failure occurred during the last sync attempt (after a 1 minute cooldown before sync restarts)
 * Issuing a `mnsync reset` RPC command
 
-Once a masternode completes an initial full sync, continuing synchronization is
-maintained by the exchange of P2P messages with other nodes. Each masternode
-issues a ping (`mnp` message) periodically to notify others that it is still
-online. Masternodes that do not issue a ping for 3 hours will be put into the
-`MASTERNODE_NEW_START_REQUIRED` state and will need to issue a masternode
-announce (`mnb` message).
-
-
-*Masternode List*
-
-After the initial masternode list has been received, it is kept current by a
-combination of the periodic `mnp` messages received from other masternodes and
-the `mnb` messages sent by masternodes as they come online. Also, `dseg` messages
-can be sent to request masternode info when messages are received containing
-unrecognized masternode `vin` entries (most masternode/governance messages
-include a `vin` value that can be used to verify the masternode's unspent 1000
-Dash).
-
-*Masternode Payment*
-
-After the initial masternode payment synchronization, payment information is
-kept current via the `mnw` messages relayed on the network.
-
-#### Masternode Sync Status
-
-There are several status values used to track masternode synchronization. They
-are used in both `ssc` messages and the `mnsync` RPC.
-
-| **Value** | **Status**  | **Description** |
-| -1  | `MASTERNODE_SYNC_FAILED`      | Synchronization failed |
-| 0   | `MASTERNODE_SYNC_INITIAL`     | Synchronization just started, was reset recently, or is still in IBD |
-| 1   | `MASTERNODE_SYNC_WAITING`     | Synchronization pending - waiting after initial to check for more headers/blocks |
-| 2   | `MASTERNODE_SYNC_LIST`        | Synchronizing masternode list |
-| 3   | `MASTERNODE_SYNC_MNW`         | Synchronizing masternode payments |
-| 4   | `MASTERNODE_SYNC_GOVERNANCE`  | Synchronizing governance objects  |
-| 999 | `MASTERNODE_SYNC_FINISHED`    | Synchronization finished |
-
-
-#### Masternode Sync Schedule
-
-The following tables detail the timing of various functions used to keep the
-masternodes in sync with each other. This information is derived from
-`ThreadCheckPrivateSend` in `src/privatesend.cpp`.
-
-| **Period (seconds)** | **Action** | **Description** |
-| 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects |
-
-The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status.
-
-| **Period (seconds)** | **Action** | **Description** |
-| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) |
-| 60  | Process MN Connections    | Disconnects some masternodes |
-| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones |
-| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks  |
-| 60  | InstantSend Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes |
-| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) |
-| 300 | Maintenance               | Check/remove/reprocess governance objects |
-| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. |
-
-
-#### Masternode Sync Data Flow
+#### Initial Masternode Sync
 
 This diagram shows the order in which P2P messages are sent to perform
 masternode synchronization initially after startup.
 
 ![Masternode Sync (Initial)](/img/dev/en-masternode-sync-initial.svg)
 
-The following table details the exchanged of P2P messages during masternode
-synchronization.
+The following table details the data flow of P2P messages exchanged during
+initial masternode synchronization.
 
 | **Syncing Node Message** | **Direction**  | **Masternode Response**   | **Description** |
 | **1. Sporks** |   |  |  |
@@ -765,8 +705,87 @@ synchronization.
 |                                                | ← | `mnw` message(s)          | (If requested) Masternode payment vote message
 | **4. Governance** |   |  | See [Governance sync](#governance) |
 
-{% endautocrossref %}
 
+*Masternode Sync Status*
+
+There are several status values used to track masternode synchronization. They
+are used in both `ssc` messages and the `mnsync` RPC.
+
+| **Value** | **Status**  | **Description** |
+| -1  | `MASTERNODE_SYNC_FAILED`      | Synchronization failed |
+| 0   | `MASTERNODE_SYNC_INITIAL`     | Synchronization just started, was reset recently, or is still in IBD |
+| 1   | `MASTERNODE_SYNC_WAITING`     | Synchronization pending - waiting after initial to check for more headers/blocks |
+| 2   | `MASTERNODE_SYNC_LIST`        | Synchronizing masternode list |
+| 3   | `MASTERNODE_SYNC_MNW`         | Synchronizing masternode payments |
+| 4   | `MASTERNODE_SYNC_GOVERNANCE`  | Synchronizing governance objects  |
+| 999 | `MASTERNODE_SYNC_FINISHED`    | Synchronization finished |
+
+
+#### Ongoing Masternode Sync
+
+Once a masternode completes an initial full sync, continuing synchronization is
+maintained by the exchange of P2P messages with other nodes. This diagram shows
+an overview of the messages exchanged to keep the masternode list, masternode
+payments, and governance objects synchronized between masternodes.
+
+![Masternode Sync (Ongoing)](/img/dev/en-masternode-sync-ongoing.svg)
+
+**Recurring Ping**
+
+Each masternode issues a ping (`mnp` message) periodically to notify the network
+that it is still online. Masternodes that do not issue a ping for 3 hours will
+be put into the `MASTERNODE_NEW_START_REQUIRED` state and will need to issue a
+masternode announce (`mnb` message).
+
+**Masternode List**
+
+After the initial masternode list has been received, it is kept current by a
+combination of the periodic `mnp` messages received from other masternodes,
+the `mnb` messages sent by masternodes as they come online, and `mnv` messages
+to verify that other masternodes are valid.
+
+Also, `dseg` messages can be sent to request masternode info when messages are
+received that have been signed by an unrecognized masternode (most masternode/governance
+messages include a `vin` value that can be used to verify the masternode's
+unspent 1000 Dash).
+
+Unsynchronized peers may send a `dseg` message to request the entire masternode list.
+
+**Masternode Payment**
+
+After the initial masternode payment synchronization, payment information is
+kept current via the `mnw` messages relayed on the network. Unsynchronized peers
+may send a `mnget` message to request masternode payment sync.
+
+**Governance**
+
+After the initial governance synchronization, governance information is kept
+current by the `govobj` messages and `govobjvote` messages relayed on the
+network. Unsynchronized peers may send `govsync` messages to request governance
+sync.
+
+#### Masternode Sync Schedule
+
+The following tables detail the timing of various functions used to keep the
+masternodes in sync with each other. This information is derived from
+`ThreadCheckPrivateSend` in `src/privatesend.cpp`.
+
+| **Period (seconds)** | **Action** | **Description** |
+| 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects |
+
+The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status.
+
+| **Period (seconds)** | **Action** | **Description** |
+| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) |
+| 60  | Process MN Connections    | Disconnects some masternodes |
+| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones |
+| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks  |
+| 60  | InstantSend Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes |
+| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) |
+| 300 | Maintenance               | Check/remove/reprocess governance objects |
+| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. |
+
+{% endautocrossref %}
 
 ### Governance
 

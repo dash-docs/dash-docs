@@ -2311,8 +2311,8 @@ Masternode Ping Message
 {% autocrossref %}
 
 The `mnget` message requests masternode payment sync. The response to an
-`mnget` message is an `mnb` message inventory and an `mnp` message inventory for
-each requested masternode. Masternodes ignore this request if they are not fully synced.
+`mnget` message is `mnw` message inventories (up to the number asked for in the
+request). Masternodes ignore this request if they are not fully synced.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
