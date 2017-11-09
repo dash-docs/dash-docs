@@ -67,7 +67,7 @@ As of Dash Core 0.12.1.5, the most recent protocol version is 70206.
 
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------
-| 70208  | Dash Core 0.12.2.x <br>(??? 2017)  |
+| 70208  | Dash Core 0.12.2.x <br>(Nov 2017)  |
 | 70206  | Dash Core 0.12.1.x <br>(Mar 2017)  |
 | 70103  | Dash Core 0.12.0.x <br>(Aug 2015)  |
 | 70076  | Dash Core 0.11.2.x <br>(Apr 2015)  |
@@ -2153,7 +2153,12 @@ ece5a95900000000 ..................... Signature Timestamp
 
 {% autocrossref %}
 
-The following network messages enable the Masternode features built in to Dash.
+The following network messages enable the masternode features built in to Dash.
+
+![Overview Of P2P Protocol Masternode Request And Reply Messages](/img/dev/en-p2p-masternode-messages.svg)
+
+For additional details, refer to the Developer Guide [Masternode Sync](developer-guide#masternode-sync)
+and [Masternode Payment](developer-guide#masternode-payment) sections.
 
 {% endautocrossref %}
 
@@ -2776,7 +2781,7 @@ message header has been omitted.)
 
 {% autocrossref %}
 
-The following network messages have been deprecated and should not longer be used.
+The following network messages have been deprecated and should no longer be used.
 
 {% endautocrossref %}
 
