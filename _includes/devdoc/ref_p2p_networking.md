@@ -1444,7 +1444,11 @@ bc8f5e5400000000 ............................ Epoch time: 1415483324
 
 The following network messages all help control the InstantSend feature of Dash.
 InstantSend uses the masternode network to lock transaction inputs and enable
-secure, instantaneous transactions.
+secure, instantaneous transactions. For additional details, refer to
+the Developer Guide [InstantSend section](developer-guide#instantsend).
+
+![Overview Of P2P Protocol InstantSend Request And Reply Messages](/img/dev/en-p2p-instantsend-messages.svg)
+
 
 {% endautocrossref %}
 
