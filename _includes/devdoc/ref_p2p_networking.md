@@ -1514,6 +1514,13 @@ The following network messages all help control the PrivateSend (formerly
 DarkSend) coin mixing features built in to Dash and facilitated by the
 masternode network.
 
+Since the messages are all related to a single process, this diagram shows them
+sequentially numbered. The `dssu` message (not shown) is sent by the
+masternode in conjunction with some responses. For additional details, refer to
+the Developer Guide [PrivateSend section](developer-guide#privatesend).
+
+![Overview Of P2P Protocol PrivateSend Request And Reply Messages](/img/dev/en-p2p-privatesend-messages.svg)
+
 {% endautocrossref %}
 
 #### dsa
