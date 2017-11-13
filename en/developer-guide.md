@@ -5,7 +5,7 @@
 layout: base
 lang: en
 id: developer-guide
-title: "Developer Guide - Bitcoin"
+title: "Developer Guide - Dash"
 breadcrumbs:
 #  - bitcoin
   - dev docs
@@ -18,9 +18,9 @@ end_of_page: |
 ---
 <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-# Bitcoin Developer Guide
+# Dash Developer Guide
 
-<p class="summary">Find detailed information about the Bitcoin protocol and related specifications.</p>
+<p class="summary">Find detailed information about the Dash protocol and related specifications.</p>
 
 <div markdown="1" id="toc" class="toc"><div markdown="1">
 
@@ -28,8 +28,8 @@ end_of_page: |
 {:toc}
 
 <ul class="goback"><li><a href="/en/developer-documentation">Return To Overview</a></li></ul>
-<ul class="reportissue"><li><a href="https://github.com/bitcoin-dot-org/bitcoin.org/issues/new" onmouseover="updateIssue(event);">Report An Issue</a></li></ul>
-<ul class="editsource"><li><a href="https://github.com/bitcoin-dot-org/bitcoin.org/tree/master/_includes" onmouseover="updateSource(event);">Edit On GitHub</a></li></ul>
+<ul class="reportissue"><li><a href="https://github.com/thephez/dash.org/issues/new" onmouseover="updateIssue(event);">Report An Issue</a></li></ul>
+<ul class="editsource"><li><a href="https://github.com/thephez/dash.org/tree/master/_includes" onmouseover="updateSource(event);">Edit On GitHub</a></li></ul>
 
 </div></div>
 

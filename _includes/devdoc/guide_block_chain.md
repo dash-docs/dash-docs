@@ -9,17 +9,17 @@ http://opensource.org/licenses/MIT.
 
 {% autocrossref %}
 
-The block chain provides Bitcoin's public ledger, an ordered and timestamped record
+The block chain provides Dash's public ledger, an ordered and timestamped record
 of transactions. This system is used to protect against double spending
 and modification of previous transaction records.
 
-Each full node in the Bitcoin network independently stores a block chain
+Each full node in the Dash network independently stores a block chain
 containing only blocks validated by that node. When several nodes all
 have the same blocks in their block chain, they are considered to be in
 [consensus][/en/glossary/consensus]{:#term-consensus}{:.term}. The validation rules these
 nodes follow to maintain consensus are called [consensus
 rules][/en/glossary/consensus-rules]{:#term-consensus-rules}{:.term}. This section describes many of
-the consensus rules used by Bitcoin Core.
+the consensus rules used by Dash Core.
 
 {% endautocrossref %}
 
@@ -42,10 +42,10 @@ stores the hash of the previous block's header, chaining the blocks
 together. This ensures a transaction cannot be modified without
 modifying the block that records it and all following blocks.
 
-Transactions are also chained together. Bitcoin wallet software gives
-the impression that satoshis are sent from and to wallets, but
-bitcoins really move from transaction to transaction. Each
-transaction spends the satoshis previously received in one or more earlier
+Transactions are also chained together. Dash wallet software gives
+the impression that duffs are sent from and to wallets, but
+Dash value really moves from transaction to transaction. Each
+transaction spends the duffs previously received in one or more earlier
 transactions, so the input of one transaction is the output of a
 previous transaction.
 
@@ -55,7 +55,7 @@ A single transaction can create multiple outputs, as would be
 the case when sending to multiple addresses, but each output of
 a particular transaction can only be used as an input once in the
 block chain. Any subsequent reference is a forbidden double
-spend---an attempt to spend the same satoshis twice.
+spend---an attempt to spend the same duffs twice.
 
 Outputs are tied to [transaction identifiers (TXIDs)][/en/glossary/txid]{:#term-txid}{:.term}, which are the hashes
 of signed transactions.
@@ -69,12 +69,12 @@ Ignoring coinbase transactions (described later), if the value of a
 transaction's outputs exceed its inputs, the transaction will be
 rejected---but if the inputs exceed the value of the outputs, any
 difference in value may be claimed as a [transaction
-fee][/en/glossary/transaction-fee]{:#term-transaction-fee}{:.term} by the Bitcoin
+fee][/en/glossary/transaction-fee]{:#term-transaction-fee}{:.term} by the Dash
 [miner][/en/glossary/mining]{:#term-miner}{:.term} who creates the block containing that
 transaction.
-For example, in the illustration above, each transaction spends 10,000 satoshis
+For example, in the illustration above, each transaction spends 10,000 duffs
 fewer than it receives from its combined inputs, effectively paying a 10,000
-satoshi transaction fee.
+duff transaction fee.
 
 {% endautocrossref %}
 
@@ -84,7 +84,7 @@ satoshi transaction fee.
 {% autocrossref %}
 
 The block chain is collaboratively maintained by anonymous peers on the network, so
-Bitcoin requires that each block prove a significant amount of work was invested in
+Dash requires that each block prove a significant amount of work was invested in
 its creation to ensure that untrustworthy peers who want to modify past blocks have
 to work harder than honest peers who only want to add new blocks to the
 block chain.
@@ -94,7 +94,7 @@ in any block without modifying all following blocks. As a
 result, the cost to modify a particular block increases with every new block
 added to the block chain, magnifying the effect of the proof of work.
 
-The [proof of work][/en/glossary/proof-of-work]{:#term-proof-of-work}{:.term} used in Bitcoin
+The [proof of work][/en/glossary/proof-of-work]{:#term-proof-of-work}{:.term} used in Dash
 takes advantage of the apparently random nature of cryptographic hashes.
 A good cryptographic hash algorithm converts arbitrary data into a
 seemingly-random number. If the data is modified in any way and
@@ -112,32 +112,30 @@ In the example given above, you will produce a successful hash on average every 
 You can even estimate the probability
 that a given hash attempt will generate a number below the [target][/en/glossary/nbits]{:#term-target}{:.term}
 threshold.
-Bitcoin assumes a linear probability that the lower it makes the target threshold, the more hash attempts (on average) will need to be tried.
+Dash assumes a linear probability that the lower it makes the target threshold, the more hash attempts (on average) will need to be tried.
 
 New blocks will only be added to the block chain if their hash is at
 least as challenging as a [difficulty][/en/glossary/difficulty]{:#term-difficulty}{:.term} value expected by the consensus protocol.
-Every 2,016 blocks, the network uses timestamps stored in each
-block header to calculate the number of seconds elapsed between generation
-of the first and last of those last 2,016 blocks. The ideal value is
-1,209,600 seconds (two weeks).
+Every block, the network uses the difficulty of the last 24 blocks and number of
+seconds elapsed between generation of the first and last of those last 24 blocks.
+The ideal value is 3600 (one hour).
 
-* If it took fewer than two weeks to generate the 2,016 blocks,
-  the expected difficulty value is increased proportionally (by as much
-  as 300%) so that the next 2,016 blocks should take exactly two weeks
-  to generate if hashes are checked at the same rate.
+* If it took less than one hour to generate the 24 blocks, the expected
+  difficulty value is increased so that the next 24 blocks should take exactly
+  one hour to generate if hashes are checked at the same rate.
 
-* If it took more than two weeks to generate the blocks, the expected
-  difficulty value is decreased proportionally (by as much as 75%) for
-  the same reason.
+* If it took more than one hour to generate the blocks, the expected
+  difficulty value is decreased for the same reason.
 
-(Note: an off-by-one error in the Bitcoin Core implementation causes the
-difficulty to be updated every 2,01*6* blocks using timestamps from only
-2,01*5* blocks, creating a slight skew.)
+This method of calculating difficulty (Dark Gravity Wave) was authored by Dash
+creator Evan Duffield to fix exploits possible with the previously used
+Kimoto Gravity Well difficulty readjustment algorithm. For additional detail,
+reference this [Official Documentation Dark Gravity Wave page](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/1146926/Dark+Gravity+Wave).
 
 Because each block header must hash to a value below the target
 threshold, and because each block is linked to the block that
 preceded it, it requires (on average) as much hashing power to
-propagate a modified block as the entire Bitcoin network expended
+propagate a modified block as the entire Dash network expended
 between the time the original block was created and the present time.
 Only if you acquired a majority of the network's hashing power
 could you reliably execute such a [51 percent attack][/en/glossary/51-percent-attack]{:#term-51-attack}{:.term} against
@@ -158,13 +156,12 @@ the merkle tree.
 
 {% autocrossref %}
 
-Any Bitcoin miner who successfully hashes a block header to a value
+Any Dash miner who successfully hashes a block header to a value
 below the target threshold can add the entire block to the block chain
 (assuming the block is otherwise valid).
 These blocks are commonly addressed
-by their [block height][/en/glossary/block-height]{:#term-block-height}{:.term}---the number of blocks between them and the first Bitcoin
-block (block 0, most commonly known as the [genesis block][/en/glossary/genesis-block]{:#term-genesis-block}{:.term}). For example,
-block 2016 is where difficulty could have first been adjusted.
+by their [block height][/en/glossary/block-height]{:#term-block-height}{:.term}---the number of blocks between them and the first Dash
+block (block 0, most commonly known as the [genesis block][/en/glossary/genesis-block]{:#term-genesis-block}{:.term}).
 
 ![Common And Uncommon Block Chain Forks](/img/dev/en-blockchain-fork.svg)
 
@@ -313,22 +310,22 @@ fork][/en/glossary/soft-fork]{:#term-soft-fork}{:.term}.
 
 Although a fork is an actual divergence in block chains, changes to the
 consensus rules are often described by their potential to create either
-a hard or soft fork. For example, "increasing the block size above 1 MB
-requires a hard fork." In this example, an actual block chain fork is
-not required---but it is a possible outcome.
+a hard or soft fork. For example, "increasing the block size requires a hard
+fork." In this example, an actual block chain fork is not required---but it is
+a possible outcome.
 
-Consensus rule changes may be activated in various ways. During Bitcoin's 
-first two years, Satoshi Nakamoto performed several soft forks by just 
-releasing the backwards-compatible change in a client that began immediately 
+Consensus rule changes may be activated in various ways. During Bitcoin's
+first two years, Satoshi Nakamoto performed several soft forks by just
+releasing the backwards-compatible change in a client that began immediately
 enforcing the new rule. Multiple soft forks such as BIP30 have
-been activated via a flag day where the new rule began to be enforced at a 
+been activated via a flag day where the new rule began to be enforced at a
 preset time or block height. Such forks activated via a flag day are known as
 [User Activated Soft Forks][/en/glossary/uasf]{:#term-uasf}{:.term} (UASF) as
 they are dependent on having sufficient users (nodes) to enforce the new rules
 after the flag day.
 
-Later soft forks waited for a majority of hash rate (typically 75% or 95%) 
-to signal their readiness for enforcing the new consensus rules. Once the signalling
+Later soft forks waited for a majority of hash rate (typically 75% or 95%)
+to signal their readiness for enforcing the new consensus rules. Once the signaling
 threshold has been passed, all nodes will begin enforcing the new rules. Such
 forks are known as [Miner Activated Soft Forks][/en/glossary/masf]{:#term-masf}{:.term} (MASF)
 as they are dependent on miners for activation.
@@ -357,9 +354,9 @@ Non-upgraded nodes may also refuse to relay blocks or transactions which
 have already been added to the best block chain, or soon will be, and so
 provide incomplete information.
 
-<!-- paragraph below based on src/main.cpp CheckForkWarningConditions() -->
+<!-- paragraph below based on src/validation.cpp CheckForkWarningConditions() -->
 
-Bitcoin Core includes code that detects a hard fork by looking at block
+Dash Core includes code that detects a hard fork by looking at block
 chain proof of work. If a non-upgraded node receives block chain headers
 demonstrating at least six blocks more proof of work than the best chain
 it considers valid, the node reports a warning in the `getnetworkinfo` RPC
@@ -370,11 +367,11 @@ best block chain.
 Full nodes can also check block and transaction version numbers. If the
 block or transaction version numbers seen in several recent blocks are
 higher than the version numbers the node uses, it can assume it doesn't
-use the current consensus rules. Bitcoin Core reports this situation 
+use the current consensus rules. Dash Core reports this situation
 through the `getnetworkinfo` RPC and `-alertnotify` command if set.
 
-In either case, block and transaction data should not be relied upon 
-if it comes from a node that apparently isn't using the current 
+In either case, block and transaction data should not be relied upon
+if it comes from a node that apparently isn't using the current
 consensus rules.
 
 SPV clients which connect to full nodes can detect a likely hard fork by

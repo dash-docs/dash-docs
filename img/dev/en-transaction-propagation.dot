@@ -72,7 +72,7 @@ utxo0 [ style = "invis", label = "", width = 0, height = 0 ];
 //tx6_input0 -> utxo0 [style = invis];
 utxo1 [ style = "invis", label = "", width = 0, height = 0 ];
 
-txold -> tx0_input0 [ label = "100,000\n(100k)\nsatoshis", style = dotted ]
+txold -> tx0_input0 [ label = "100,000\n(100k)\nduffs", style = dotted ]
 tx0_output0 -> tx1_input0 [ label = "40k" ]
 tx0_output1 -> tx2_input0 [ label = "50k" ]
 tx1_output0 -> tx3_input0 [ label = "30k" ]
