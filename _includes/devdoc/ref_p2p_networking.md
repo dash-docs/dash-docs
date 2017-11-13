@@ -2413,22 +2413,23 @@ masternode 1 being validated as of the provided block height.
 | 66 | vchSig1 | char[] | Required*<br><br>Added in Step 2 | Signature of this message by masternode 1 - verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))<br><br>
 | 66 | vchSig2 | char[] | Required*<br><br>Added in Step 3 | Signature of this message by masternode 2 - verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))<br><br>
 
-Initially, both `vchSig1` and `vchSig2` are empty. They are updated as the
-exchange of messages between the masternodes occurs as detailed in the table
-below.
+Initially, `vin1`, `vin2`, `vchSig1` and `vchSig2` are empty. They are
+updated as the exchange of messages between the masternodes occurs as detailed
+in the table below.
 
 *Masternode Verify Data Flow*
 
 | Step  | **MN 2 (Verifier)** | **Direction**  | **MN 1 (Being verified)**   | **Description** |
 |   | **Verification request** | |                   | **`mnv` message with no signatures** |
-| 1 | `mnv` message    | → |                   | Contains `addr`, `nonce`, and `nBlockHeight`
-| 2 |                  | ← | `mnv` message     | Add `vchSig1` (signature of the IP address + nonce + hash of the requested block)
-| 3 | `mnv` message    | → |                   | Verify `vchSig1` <br><br>Add `vchSig2` (signature of the IP address + nonce + hash of the requested block + `vin1` prevout + `vin2` prevout) and relay message to peers if valid
+| 1 | `mnv` message    | → |                   | Contains `addr`, `nonce`, and `nBlockHeight`.<br>Sent by _SendVerifyRequest()_.
+| 2 |                  | ← | `mnv` message     | Add `vchSig1` (signature of the IP address + nonce + hash of the requested block).<br>Sent by _SendVerifyReply()_.
+| 3 | `mnv` message    | → |                   | Verify `vchSig1` <br><br>Add `vin1`, `vin2`, and `vchSig2` (signature of the IP address + nonce + hash of the requested block + `vin1` prevout + `vin2` prevout) and relay message to peers if valid.<br>Sent by _ProcessVerifyReply()_.
 
-Nodes receiving a relayed `mnv` message (one in which both `vchSig1` and
-`vchSig2` are already present) use it to update the PoSe ban score. If the ban
-score reaches `MASTERNODE_POSE_BAN_MAX_SCORE` (5), the masternode will be
-considered malicious and banned.
+Nodes receiving a relayed `mnv` message (one in which `vin1`, `vin2`, `vchSig1`
+and `vchSig2` are already present) use it to update the PoSe ban score. If the
+ban score reaches `MASTERNODE_POSE_BAN_MAX_SCORE` (5), the masternode will be
+considered malicious and banned. If the received message is valid, nodes
+receiving it will relay it on to their connected peers.
 
 {% highlight text %}
 Important Notes:
@@ -2441,7 +2442,88 @@ Important Notes:
 {% endhighlight %}
 
 <!-- Need example from Wireshark -->
+The following annotated hexdump shows a `mnv` message. This is an example of the
+initial request (Step 1) so it does not contain any signatures. (The message
+header has been omitted.)
 
+{% highlight text %}
+Masternode 1 Unspent Output (empty)
+| 00000000000000000000000000000000
+| 00000000000000000000000000000000 ......... Outpoint TXID
+| ffffffff ................................. Outpoint index number: 0
+|
+| 00 ....................................... Bytes in sig. script: 0
+| .......................................... Secp256k1 signature: None
+|
+| ffffffff ................................. Sequence number: UINT32_MAX
+
+Masternode 2 Unspent Output (empty)
+| 00000000000000000000000000000000
+| 00000000000000000000000000000000 ......... Outpoint TXID
+| ffffffff ................................. Outpoint index number: 0
+|
+| 00 ....................................... Bytes in sig. script: 0
+| .......................................... Secp256k1 signature: None
+|
+| ffffffff ................................. Sequence number: UINT32_MAX
+
+00000000000000000000ffff2d20ed4c ........... IP Address: ::ffff:45.32.237.76
+4e1f ....................................... Port: 19999
+9d090000 ................................... Nonce: 2641
+ed5c0000 ................................... Block height: 23789
+
+Masternode 1 Signature
+| 00 ....................................... Bytes in signature: 0
+| .......................................... Signature: Empty
+
+Masternode 2 Signature
+| 00 ....................................... Bytes in signature: 0
+| .......................................... Signature: Empty
+{% endhighlight %}
+
+
+The following annotated hexdump shows a `mnv` message. This is an example of the
+initial response (Step 2) so it only contains the signature of masternode 1 (the
+masternode being verified). (The message header has been omitted.)
+
+{% highlight text %}
+Masternode 1 Unspent Output (empty)
+| 00000000000000000000000000000000
+| 00000000000000000000000000000000 ......... Outpoint TXID
+| ffffffff ................................. Outpoint index number: 0
+|
+| 00 ....................................... Bytes in sig. script: 0
+| .......................................... Secp256k1 signature: None
+|
+| ffffffff ................................. Sequence number: UINT32_MAX
+
+Masternode 2 Unspent Output (empty)
+| 00000000000000000000000000000000
+| 00000000000000000000000000000000 ......... Outpoint TXID
+| ffffffff ................................. Outpoint index number: 0
+|
+| 00 ....................................... Bytes in sig. script: 0
+| .......................................... Secp256k1 signature: None
+|
+| ffffffff ................................. Sequence number: UINT32_MAX
+
+00000000000000000000ffff2d20ed4c ........... IP Address: ::ffff:45.32.237.76
+4e1f ....................................... Port: 19999
+9d090000 ................................... Nonce: 2641
+ed5c0000 ................................... Block height: 23789
+
+Masternode 1 Signature
+| 41 ....................................... Bytes in signature: 65
+| 1bf5bd6e6eda0cd32aafb826c4066fa5
+| 4a53baa6f4211528e51716054b4df981
+| d97a77e633947bbbfafd6882324b76a0
+| 90c6e65c16ca1222db48f8558537c062
+| f6 ....................................... Signature
+
+Masternode 2 Signature
+| 00 ....................................... Bytes in signature: 0
+| .......................................... Signature: Empty
+{% endhighlight %}
 {% endautocrossref %}
 
 #### mnw
