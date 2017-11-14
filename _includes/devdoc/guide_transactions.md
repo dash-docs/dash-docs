@@ -532,7 +532,7 @@ currently available:
   protecting everything except the signature scripts against modification.
 
 * [`SIGHASH_NONE`][/en/glossary/sighash-none]{:#term-sighash-none}{:.term} signs all of the inputs but none of the outputs,
-  allowing anyone to change where the satoshis are going unless other
+  allowing anyone to change where the duffs are going unless other
   signatures using other signature hash flags protect the outputs.
 
 * [`SIGHASH_SINGLE`][/en/glossary/sighash-single]{:#term-sighash-single}{:.term}
@@ -549,8 +549,8 @@ pay) flag, creating three new combined types:
 
 * `SIGHASH_ALL|SIGHASH_ANYONECANPAY` signs all of the outputs but only
   this one input, and it also allows anyone to add or remove other
-  inputs, so anyone can contribute additional satoshis but they cannot
-  change how many satoshis are sent nor where they go.
+  inputs, so anyone can contribute additional duffs but they cannot
+  change how many duffs are sent nor where they go.
 
 * `SIGHASH_NONE|SIGHASH_ANYONECANPAY` signs only this one input and
   allows anyone to add or remove other inputs or outputs, so anyone who
@@ -565,7 +565,7 @@ example, a single-input transaction signed with `NONE` could have its
 output changed by the miner who adds it to the block chain. On the other
 hand, if a two-input transaction has one input signed with `NONE` and
 one input signed with `ALL`, the `ALL` signer can choose where to spend
-the satoshis without consulting the `NONE` signer---but nobody else can
+the duffs without consulting the `NONE` signer---but nobody else can
 modify the transaction.
 
 <!-- TODO: describe useful combinations maybe using a 3x3 grid;
@@ -583,7 +583,7 @@ hash types sign, including the procedure for inserting the subscript -->
 {% autocrossref %}
 
 One thing all signature hash types sign is the transaction's [locktime][/en/glossary/locktime]{:#term-locktime}{:.term}.
-(Called nLockTime in the Bitcoin Core source code.)
+(Called nLockTime in the Dash Core source code.)
 The locktime indicates the earliest time a transaction can be added to
 the block chain.
 
@@ -605,7 +605,7 @@ to two hours before its time lock officially expires. Also, blocks are
 not created at guaranteed intervals, so any attempt to cancel a valuable
 transaction should be made a few hours before the time lock expires.
 
-Previous versions of Bitcoin Core provided a feature which prevented
+Previous versions of Dash Core provided a feature which prevented
 transaction signers from using the method described above to cancel a
 time-locked transaction, but a necessary part of this feature was
 disabled to prevent denial of service attacks. A legacy of this system are four-byte
@@ -617,7 +617,7 @@ allowing the transaction to be added to a block even if its time lock
 had not expired.
 
 Even today, setting all sequence numbers to 0xffffffff (the default in
-Bitcoin Core) can still disable the time lock, so if you want to use
+Dash Core) can still disable the time lock, so if you want to use
 locktime, at least one input must have a sequence number below the
 maximum. Since sequence numbers are not used by the network for any
 other purpose, setting any sequence number to zero is sufficient to
@@ -641,19 +641,27 @@ enable locktime.
 
 {% autocrossref %}
 
-Transactions pay fees based on the total byte size of the signed transaction. Fees per byte are calculated based on current demand for space in mined blocks with fees rising as demand increases.  The transaction fee is given to the
-Bitcoin miner, as explained in the [block chain section][section block chain], and so it is
-ultimately up to each miner to choose the minimum transaction fee they
+Transactions pay fees based on the total byte size of the signed transaction.
+Fees per byte are calculated based on current demand for space in mined blocks
+with fees rising as demand increases.  The transaction fee is given to the
+Dash miner, as explained in the [block chain section][section block chain], and
+so it is ultimately up to each miner to choose the minimum transaction fee they
 will accept.
 
-There is also a concept of so-called "[high-priority transactions][/en/glossary/high-priority-transaction]{:#term-high-priority-transactions}{:.term}" which spend satoshis that have not moved for a long time.
+There is also a concept of so-called "[high-priority transactions][/en/glossary/high-priority-transaction]{:#term-high-priority-transactions}{:.term}"
+which spend duffs that have not moved for a long time.
 
-In the past, these "priority" transaction were often exempt from the normal fee requirements. Before Bitcoin Core 0.12, 50 KB of each block would be reserved for these high-priority transactions, however this is now set to 0 KB by default.  After the priority area, all transactions are prioritized based on their fee per byte, with higher-paying transactions being added in sequence until all of the available space is filled. <!-- Consider adding links to blockmaxsize and blockmaxweight options once available in the glossary. -->
+These "priority" transaction can be often exempt from the normal fee
+requirements. As of Dash Core 0.12.2, 10 KB of each block are reserved for these
+high-priority transactions.  After the priority area, all transactions are
+prioritized based on their fee per byte, with higher-paying transactions being
+added in sequence until all of the available space is filled.
+<!-- Consider adding links to blockmaxsize and blockmaxweight options once available in the glossary. -->
 
-As of Bitcoin Core 0.9, a [minimum fee][/en/glossary/minimum-relay-fee]{:#term-minimum-fee}{:.term} (currently 1,000 satoshis) has been required to
-broadcast a transaction across the network. Any transaction paying only the minimum fee
-should be prepared to wait a long time before there's enough spare space
-in a block to include it. Please see the [verifying payment section][section verifying payment]
+As of Dash Core 0.12.2.x, a [minimum fee][/en/glossary/minimum-relay-fee]{:#term-minimum-fee}{:.term}(1,000 duffs following [DIP1][] activation) is required to
+broadcast a non-priority transaction across the network. Any transaction paying
+only the minimum fee should be prepared to wait a long time before there's
+enough spare space in a block to include it. Please see the [verifying payment section][section verifying payment]
 for why this could be important.
 
 Since each transaction spends Unspent Transaction Outputs (UTXOs) and
@@ -662,7 +670,7 @@ UTXOs must be spent or given to a miner as a transaction fee.  Few
 people will have UTXOs that exactly match the amount they want to pay,
 so most transactions include a change output.
 
-[Change outputs][/en/glossary/change-address]{:#term-change-output}{:.term} are regular outputs which spend the surplus satoshis
+[Change outputs][/en/glossary/change-address]{:#term-change-output}{:.term} are regular outputs which spend the surplus duffs
 from the UTXOs back to the spender.  They can reuse the same P2PKH pubkey hash
 or P2SH script hash as was used in the UTXO, but for the reasons
 described in the [next subsection](#avoiding-key-reuse), it is highly recommended that change
@@ -681,9 +689,9 @@ person to use the public block chain to track past and future
 transactions involving the other person's same public keys or addresses.
 
 If the same public key is reused often, as happens when people use
-Bitcoin addresses (hashed public keys) as static payment addresses,
+Dash addresses (hashed public keys) as static payment addresses,
 other people can easily track the receiving and spending habits of that
-person, including how many satoshis they control in known addresses.
+person, including how many duffs they control in known addresses.
 
 It doesn't have to be that way. If each public key is used exactly
 twice---once to receive a payment and once to spend that payment---the
@@ -692,9 +700,9 @@ user can gain a significant amount of financial privacy.
 Even better, using new public keys or [unique
 addresses][]{:#term-unique-address}{:.term} when accepting payments or creating
 change outputs can be combined with other techniques discussed later,
-such as CoinJoin or merge avoidance, to make it extremely difficult to
+such as PrivateSend or merge avoidance, to make it extremely difficult to
 use the block chain by itself to reliably track how users receive and
-spend their satoshis.
+spend their duffs.
 
 Avoiding key reuse can also provide security against attacks which might
 allow reconstruction of private keys from public keys (hypothesized) or
@@ -703,7 +711,7 @@ described below, with more general attacks hypothesized).
 
 1. Unique (non-reused) P2PKH and P2SH addresses protect against the first
    type of attack by keeping ECDSA public keys hidden (hashed) until the
-   first time satoshis sent to those addresses are spent, so attacks
+   first time duffs sent to those addresses are spent, so attacks
    are effectively useless unless they can reconstruct private keys in
    less than the hour or two it takes for a transaction to be well
    protected by the block chain.
@@ -720,7 +728,7 @@ So, for both privacy and security, we encourage you to build your
 applications to avoid public key reuse and, when possible, to discourage
 users from reusing addresses. If your application needs to provide a
 fixed URI to which payments should be sent, please see the
-[`bitcoin:` URI section][bitcoin URI subsection] below.
+[`dash:` URI section][bitcoin URI subsection] below.
 
 {% endautocrossref %}
 
@@ -729,7 +737,7 @@ fixed URI to which payments should be sent, please see the
 
 {% autocrossref %}
 
-None of Bitcoin's signature hash types protect the signature script, leaving
+None of Dash's signature hash types protect the signature script, leaving
 the door open for a limited denial of service attack called [transaction
 malleability][/en/glossary/malleability]{:.term}{:#term-transaction-malleability}. The signature script
 contains the secp256k1 signature, which can't sign itself, allowing attackers to
@@ -744,11 +752,12 @@ links to previous transactions using hashes as a transaction
 identifier (txid), a modified transaction will not have the txid its
 creator expected.
 
-This isn't a problem for most Bitcoin transactions which are designed to
+This isn't a problem for most Dash transactions which are designed to
 be added to the block chain immediately. But it does become a problem
 when the output from a transaction is spent before that transaction is
 added to the block chain.
 
+<!-- Not applicable to Dash
 Bitcoin developers have been working to reduce transaction malleability
 among standard transaction types, one outcome of those efforts is
 [BIP 141: Segregated Witness](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki),
@@ -756,8 +765,9 @@ which is supported by Bitcoin Core but not activated. At present, new
 transactions should not depend on
 previous transactions which have not been added to the block chain yet,
 especially if large amounts of satoshis are at stake.
+-->
 
-Transaction malleability also affects payment tracking.  Bitcoin Core's
+Transaction malleability also affects payment tracking.  Dash Core's
 RPC interface lets you track transactions by their txid---but if that
 txid changes because the transaction was modified, it may appear that
 the transaction has disappeared from the network.

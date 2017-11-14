@@ -405,6 +405,8 @@ http://opensource.org/licenses/MIT.
 [RFC5737]: http://tools.ietf.org/html/rfc5737
 [secp256k1]: http://www.secg.org/sec2-v2.pdf
 
+[DIP1]: https://github.com/dashpay/dips/blob/master/dip-0001.md
+
 {% comment %}<!-- Other external site links; alphabetical order -->{% endcomment %}
 [#bitcoin]: https://webchat.freenode.net/?channels=bitcoin&uio=d4
 [#bitcoin-dev]: https://webchat.freenode.net/?channels=bitcoin-dev&uio=d4
