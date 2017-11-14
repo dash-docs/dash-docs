@@ -68,7 +68,7 @@ As of Dash Core 0.12.2.0, the most recent protocol version is 70208.
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------
 | 70208  | Dash Core 0.12.2.x <br>(Nov 2017)  | • DIP-0001 (2MB blocks)<br>• Fee reduction (10x)<br>• InstantSend fix<br>• PrivateSend improvements<br>• _Experimental_ HD wallet
-| 70206  | Dash Core 0.12.1.x <br>(Mar 2017)  | • BIP-0065 (CheckLockTimeVerify)<br>• BIP-0112 (CheckSequenceVerify)
+| 70206  | Dash Core 0.12.1.x <br>(Mar 2017)  | • Switch to Bitcoin Core 0.12.1<br>• BIP-0065 (CheckLockTimeVerify)<br>• BIP-0112 (CheckSequenceVerify)
 | 70103  | Dash Core 0.12.0.x <br>(Aug 2015)  | • Switch to Bitcoin Core 0.10<br>• Decentralized budget system<br>• New IX implementation
 | 70076  | Dash Core 0.11.2.x <br>(Mar 2015)  | • Masternode enhancements<br>• Mining/relay policy enhancements<br>• BIP-66 - strict DER encoding for signatures
 | 70066  | Dash Core 0.11.1.x <br>(Feb 2015)  | • InstantX fully implemented<br>• Spork fully implemented<br>• Masternode payment updates<br>• Rebrand to Dash (0.11.1.26)

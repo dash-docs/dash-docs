@@ -19,28 +19,28 @@ various ways the outputs/inputs are used, such as "prevout", "nextout",
 when I'm terribly bored, I should rewrite this whole transaction section
 to use those terms and then get feedback to see if it actually helps. -harding -->
 
-Transactions let users spend satoshis. Each transaction is constructed
+Transactions let users spend duffs. Each transaction is constructed
 out of several parts which enable both simple direct payments and complex
 transactions. This section will describe each part and
 demonstrate how to use them together to build complete transactions.
 
 To keep things simple, this section pretends coinbase transactions do
-not exist. Coinbase transactions can only be created by Bitcoin miners
+not exist. Coinbase transactions can only be created by Dash miners
 and they're an exception to many of the rules listed below. Instead of
 pointing out the coinbase exception to each rule, we invite you to read
 about coinbase transactions in the block chain section of this guide.
 
 ![The Parts Of A Transaction](/img/dev/en-tx-overview.svg)
 
-The figure above shows the main parts of a Bitcoin transaction. Each
+The figure above shows the main parts of a Dash transaction. Each
 transaction has at least one input and one output. Each [input][/en/glossary/input]{:#term-input}{:.term} spends the
-satoshis paid to a previous output. Each [output][/en/glossary/output]{:#term-output}{:.term} then waits as an Unspent
+duffs paid to a previous output. Each [output][/en/glossary/output]{:#term-output}{:.term} then waits as an Unspent
 Transaction Output (UTXO) until a later input spends it. When your
-Bitcoin wallet tells you that you have a 10,000 satoshi balance, it really
-means that you have 10,000 satoshis waiting in one or more UTXOs.
+Dash wallet tells you that you have a 10,000 duff balance, it really
+means that you have 10,000 duffs waiting in one or more UTXOs.
 
 Each transaction is prefixed by a four-byte [transaction version number][]{:#term-transaction-version-number}{:.term} which tells
-Bitcoin peers and miners which set of rules to use to validate it.  This
+Dash peers and miners which set of rules to use to validate it.  This
 lets developers create new rules for future transactions without
 invalidating previous transactions.
 
@@ -48,9 +48,9 @@ invalidating previous transactions.
 
 An output has an implied index number based on its location in the
 transaction---the first output is output zero. The output also has an
-amount in satoshis which it pays to a conditional pubkey script. Anyone
+amount in duffs which it pays to a conditional pubkey script. Anyone
 who can satisfy the conditions of that pubkey script can spend up to the
-amount of satoshis paid to it.
+amount of duffs paid to it.
 
 An input uses a transaction identifier (txid) and an output index number
 (often called "vout" for output vector) to identify a particular output to
@@ -63,14 +63,14 @@ The figures below help illustrate how these features are used by
 showing the workflow Alice uses to send Bob a transaction and which Bob
 later uses to spend that transaction. Both Alice and Bob will use the
 most common form of the standard Pay-To-Public-Key-Hash (P2PKH) transaction
-type. [P2PKH][/en/glossary/p2pkh-address]{:#term-p2pkh}{:.term} lets Alice spend satoshis to a typical Bitcoin address,
-and then lets Bob further spend those satoshis using a simple
+type. [P2PKH][/en/glossary/p2pkh-address]{:#term-p2pkh}{:.term} lets Alice spend duffs to a typical Dash address,
+and then lets Bob further spend those duffs using a simple
 cryptographic key pair.
 
 ![Creating A P2PKH Public Key Hash To Receive Payment](/img/dev/en-creating-p2pkh-output.svg)
 
 Bob must first generate a private/public [key pair][]{:#term-key-pair}{:.term} before Alice can create the
-first transaction. Bitcoin uses the Elliptic Curve Digital Signature Algorithm (ECDSA) with
+first transaction. Dash uses the Elliptic Curve Digital Signature Algorithm (ECDSA) with
 the secp256k1 curve; secp256k1 [private keys][/en/glossary/private-key]{:#term-private-key}{:.term} are 256 bits of random
 data. A copy of that data is deterministically transformed into an secp256k1 [public
 key][/en/glossary/public-key]{:#term-public-key}{:.term}. Because the transformation can be reliably repeated later, the
@@ -89,12 +89,12 @@ different states of a public key and to help the text better match the
 space-constrained diagrams where "public-key hash" wouldn't fit. -harding -->
 
 Bob provides the pubkey hash to Alice. Pubkey hashes are almost always
-sent encoded as Bitcoin [addresses][/en/glossary/address]{:#term-address}{:.term}, which are base58-encoded strings
+sent encoded as Dash [addresses][/en/glossary/address]{:#term-address}{:.term}, which are base58-encoded strings
 containing an address version number, the hash, and an error-detection
 checksum to catch typos. The address can be transmitted
 through any medium, including one-way mediums which prevent the spender
 from communicating with the receiver, and it can be further encoded
-into another format, such as a QR code containing a `bitcoin:`
+into another format, such as a QR code containing a `dash:`
 URI.
 
 Once Alice has the address and decodes it back into a standard hash, she
@@ -143,13 +143,13 @@ broadcast them over the peer-to-peer network.
 As illustrated in the figure above, the data Bob signs includes the
 txid and output index of the previous transaction, the previous
 output's pubkey script, the pubkey script Bob creates which will let the next
-recipient spend this transaction's output, and the amount of satoshis to
+recipient spend this transaction's output, and the amount of duffs to
 spend to the next recipient. In essence, the entire transaction is
 signed except for any signature scripts, which hold the full public keys and
 secp256k1 signatures.
 
 After putting his signature and public key in the signature script, Bob
-broadcasts the transaction to Bitcoin miners through the peer-to-peer
+broadcasts the transaction to Dash miners through the peer-to-peer
 network. Each peer and miner independently validates the transaction
 before broadcasting it further or attempting to include it in a new block of
 transactions.
@@ -257,7 +257,7 @@ Pubkey scripts are created by spenders who have little interest what
 that script does. Receivers do care about the script conditions and, if
 they want, they can ask spenders to use a particular pubkey script.
 Unfortunately, custom pubkey scripts are less convenient than short
-Bitcoin addresses and there was no standard way to communicate them
+Dash addresses and there was no standard way to communicate them
 between programs prior to widespread implementation of the BIP70 Payment
 Protocol discussed later.
 
@@ -285,7 +285,7 @@ Bob spend the output if the redeem script does not return false.
 ![Unlocking A P2SH Output For Spending](/img/dev/en-unlocking-p2sh-output.svg)
 
 The hash of the redeem script has the same properties as a pubkey
-hash---so it can be transformed into the standard Bitcoin address format
+hash---so it can be transformed into the standard Dash address format
 with only one small change to differentiate it from a standard address.
 This makes collecting a P2SH-style address as simple as collecting a
 P2PKH-style address. The hash also obfuscates any public keys in the
@@ -307,11 +307,11 @@ is the `IsStandard()` test, and transactions which pass it are called
 standard transactions.
 
 Non-standard transactions---those that fail the test---may be accepted
-by nodes not using the default Bitcoin Core settings. If they are
+by nodes not using the default Dash Core settings. If they are
 included in blocks, they will also avoid the IsStandard test and be
 processed.
 
-Besides making it more difficult for someone to attack Bitcoin for
+Besides making it more difficult for someone to attack Dash for
 free by broadcasting harmful transactions, the standard transaction
 test also helps prevent users from creating transactions today that
 would make adding new transaction features in the future more
@@ -321,7 +321,7 @@ number, it would become useless as a tool for introducing
 backwards-incompatible features.
 
 
-As of Bitcoin Core 0.9, the standard pubkey script types are:
+As of Dash Core 0.12.2, the standard pubkey script types are:
 
 {% endautocrossref %}
 
@@ -332,7 +332,7 @@ As of Bitcoin Core 0.9, the standard pubkey script types are:
 {% autocrossref %}
 
 P2PKH is the most common form of pubkey script used to send a transaction to one
-or multiple Bitcoin addresses.
+or multiple Dash addresses.
 
 {% endautocrossref %}
 
@@ -439,9 +439,9 @@ Consensus rules allow null data outputs up to the maximum allowed pubkey
 script size of 10,000 bytes provided they follow all other consensus
 rules, such as not having any data pushes larger than 520 bytes.
 
-Bitcoin Core 0.9.x to 0.10.x will, by default, relay and mine null data
+Dash Core 0.11.x will, by default, relay and mine null data
 transactions with up to 40 bytes in a single data push and only one null
-data output that pays exactly 0 satoshis:
+data output that pays exactly 0 duffs:
 
 {% endautocrossref %}
 
@@ -450,16 +450,13 @@ Pubkey Script: OP_RETURN <0 to 40 bytes of data>
 (Null data scripts cannot be spent, so there's no signature script.)
 ~~~
 
-Bitcoin Core 0.11.x increases this default to 80 bytes, with the other
-rules remaining the same.
-
-Bitcoin Core 0.12.0 defaults
+Dash Core 0.12.1 defaults
 to relaying and mining null data outputs with up to 83 bytes with any
 number of data pushes, provided the total byte limit is not exceeded.
 There must still only be a single null data output and it must still pay
-exactly 0 satoshis.
+exactly 0 duffs.
 
-The `-datacarriersize` Bitcoin Core configuration option allows you to
+The `-datacarriersize` Dash Core configuration option allows you to
 set the maximum number of bytes in null data outputs that you will relay
 or mine.
 
@@ -469,7 +466,7 @@ or mine.
 {% autocrossref %}
 
 If you use anything besides a standard pubkey script in an output, peers
-and miners using the default Bitcoin Core settings will neither
+and miners using the default Dash Core settings will neither
 accept, broadcast, nor mine your transaction. When you try to broadcast
 your transaction to a peer running the default settings, you will
 receive an error.
@@ -485,10 +482,9 @@ that don't follow the standard mempool policy.
 
 Note: standard transactions are designed to protect and help the
 network, not prevent you from making mistakes. It's easy to create
-standard transactions which make the satoshis sent to them unspendable.
+standard transactions which make the duffs sent to them unspendable.
 
-As of Bitcoin Core 0.9.3, standard transactions must also meet the following
-conditions:
+Standard transactions must also meet the following conditions:
 
 * The transaction must be finalized: either its locktime must be in the
   past (or less than or equal to the current block height), or all of its sequence
@@ -511,9 +507,9 @@ conditions:
 
 * The transaction must not include any outputs which receive fewer than
   1/3 as many satoshis as it would take to spend it in a typical input.
-  That's [currently 546 satoshis][bitcoin core fee drop commit] for a
-  P2PKH or P2SH output on a Bitcoin Core node with the default relay fee.
-  Exception: standard null data outputs must receive zero satoshis.
+  That's currently 5460 duffs for a
+  P2PKH or P2SH output on a Dash Core node with the default relay fee.
+  Exception: standard null data outputs must receive zero duffs.
 
 {% endautocrossref %}
 

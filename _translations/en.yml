@@ -62,23 +62,23 @@ en:
     transparency: "Accounting transparency"
     transparencytext: "Many organizations are required to produce accounting documents about their activity. Using Bitcoin allows you to offer the highest level of transparency since you can provide information your members can use to verify your balances and transactions. Non-profit organizations can also allow the public to see how much they receive in donations."
   bitcoin-for-developers:
-    title: "Bitcoin for Developers - Bitcoin"
-    pagetitle: "Bitcoin for Developers"
-    summary: "Bitcoin can be used to build amazing things or just answer common needs."
+    title: "Dash for Developers - Dash"
+    pagetitle: "Dash for Developers"
+    summary: "Dash can be used to build amazing things or just answer common needs."
     simple: "The simplest of all payment systems"
-    simpletext: "Unless payment needs to be associated with automatic invoices, accepting money is as simple as sending a bitcoin: link or displaying a QR code. This simple setup is within reach of any user and can fulfill the needs of a good range of clients. When done publicly, it is especially suitable for transparent donations and tips."
+    simpletext: "Unless payment needs to be associated with automatic invoices, accepting money is as simple as sending Dash: link or displaying a QR code. This simple setup is within reach of any user and can fulfill the needs of a good range of clients. When done publicly, it is especially suitable for transparent donations and tips."
     api: "Many third party APIs"
-    apitext: "There are many third party payment processing services that provide APIs; you don't need to store bitcoins on your server and handle the security that this implies. Additionally, most of these APIs allow you to process invoices and exchange your bitcoins into your local currency at competitive costs."
+    apitext: "There are many third party payment processing services that provide APIs; you don't need to store Dash on your server and handle the security that this implies. Additionally, most of these APIs allow you to process invoices and exchange your Dash into your local currency at competitive costs."
     own: "You can be your own financial system"
     owntext: >
-      If you don't use any third party APIs, you can integrate a Bitcoin
+      If you don't use any third party APIs, you can integrate a Dash
       node directly into your applications, allowing you to become your
       own bank and payment processor. With all the responsibilities that
-      this implies, you can build amazing systems that process Bitcoin
+      this implies, you can build amazing systems that process Dash
       transactions however you would like.
 
-    invoice: "Bitcoin addresses to track invoices"
-    invoicetext: "Bitcoin creates a unique address for each transaction. So if you were to build a payment system associated with an invoice, you simply need to generate and monitor a Bitcoin address for each payment. You should never use the same address for more than one transaction."
+    invoice: "Dash addresses to track invoices"
+    invoicetext: "Dash creates a unique address for each transaction. So if you were to build a payment system associated with an invoice, you simply need to generate and monitor a Dash address for each payment. You should never use the same address for more than one transaction."
     security: "Most of the security is on client side"
     securitytext: >
       Most security is handled by the protocol, eliminating the need for
@@ -86,13 +86,13 @@ en:
       monitoring a single variable: the <a
       href="#you-need-to-know##instant">confirmation score</a>. Beyond
       that, keeping
-      your bitcoins secure is mainly a matter of <a
+      your Dash secure is mainly a matter of <a
       href="#secure-your-wallet#">securing your wallet</a> and using
       HTTPS or other secure protocols to send payment requests to customers.
 
     micro: "New payment possibilities"
     microtext: >
-      Bitcoin allows you to design new and creative online services
+      Dash allows you to design new and creative online services
       that couldn't exist before because of financial limitations. This
       includes tipping systems, automated payment solutions,
       distributed crowd-funding services, time locked payment
@@ -588,12 +588,12 @@ en:
     readmoretxt: "This is only a very short and concise summary of the system. If you want to get into the details, you can <a href=\"#bitcoin-paper#\">read the original paper</a> that describes the system's design, read the <a href=\"/en/developer-documentation\">developer documentation</a>, and explore the <a href=\"https://en.bitcoin.it/wiki/Main_Page\">Bitcoin wiki</a>."
   index:
     title: "Dash - Open source P2P money"
-    metadescription: "Bitcoin is an innovative payment network and a new kind of money. Find all you need to know and get started with Bitcoin on bitcoin.org."
-    listintro: "Bitcoin is an innovative payment network and a new kind of money."
+    metadescription: "Dash is an innovative payment network and a new kind of money. Find all you need to know and get started with Dash on dash.org."
+    listintro: "Dash is an innovative payment network and a new kind of money."
     list1: "Fast peer-to-peer<br>transactions"
     list2: "Worldwide<br>payments"
     list3: "Low<br>processing fees"
-    desc: "Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network. <b>Bitcoin is open-source; its design is public, nobody owns or controls Bitcoin and <a href=\"#support-bitcoin#\">everyone can take part</a></b>. Through many of its unique properties, Bitcoin allows exciting uses that could not be covered by any previous payment system."
+    desc: "Dash uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of Dash is carried out collectively by the network. <b>Dash is open-source; its design is public, nobody owns or controls Dash and <a href=\"#support-bitcoin#\">everyone can take part</a></b>. Through many of its unique properties, Dash allows exciting uses that could not be covered by any previous payment system."
     overview: "Or get a quick overview for"
   innovation:
     title: "Innovation - Bitcoin"
@@ -688,7 +688,7 @@ en:
     privacytxt11: "We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on the Site. You are advised to review this privacy policy periodically for any changes."
     privacytxt12: "This Privacy Policy was last updated"
     privacycontactus: "Contact Us"
-    privacytxt13: "If you have any questions about our privacy policy, or how your data is being collected and processed, please e-mail <a href=\"mailto:privacy@bitcoin.org?Subject=Privacy\">privacy@bitcoin.org</a>." 
+    privacytxt13: "If you have any questions about our privacy policy, or how your data is being collected and processed, please e-mail <a href=\"mailto:privacy@bitcoin.org?Subject=Privacy\">privacy@bitcoin.org</a>."
   cookie-notification:
     cookiemessage: "<p class=\"cc_message\">We use cookies to ensure you get the best experience on our website. <br><br>Please read our <a href=\"/en/privacy\">privacy policy</a> to find out more.</p>"
     cookieaccept: "OK"
