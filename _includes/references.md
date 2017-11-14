@@ -455,6 +455,7 @@ http://opensource.org/licenses/MIT.
 [core paymentrequest.proto]: https://github.com/dashpay/dash/blob/master/src/qt/paymentrequest.proto
 [core script.h]: https://github.com/dashpay/dash/blob/master/src/script/script.h
 [creative commons attribution 3.0 license]: https://creativecommons.org/licenses/by/3.0/
+[DashJ]: https://github.com/HashEngineering/dashj
 [DER]: https://en.wikipedia.org/wiki/X.690#DER_encoding
 [dig command]: https://en.wikipedia.org/wiki/Dig_%28Unix_command%29
 [DNS A records]: http://tools.ietf.org/html/rfc1035#section-3.2.2
