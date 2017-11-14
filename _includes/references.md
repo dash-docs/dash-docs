@@ -322,8 +322,8 @@ http://opensource.org/licenses/MIT.
 [bitcoin URI subsection]: /en/developer-guide#bitcoin-uri
 [bitcoind initial setup]: /en/developer-examples
 [bitcoinpdf]: https://bitcoin.org/en/bitcoin-paper
-[choose your wallet]: /en/choose-your-wallet
-[communities]: /en/community
+[choose your wallet]: https://www.dash.org/wallets/
+[communities]: https://www.dash.org/community/
 [core executable]: https://www.dash.org/wallets/#wallets
 [dev communities]: https://www.dash.org/community/
 [developer documentation]: /en/developer-documentation

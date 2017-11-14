@@ -7,7 +7,6 @@ lang: en
 id: developer-documentation
 title: "Developer Documentation - Dash"
 breadcrumbs:
-  - bitcoin
   - Developer Documentation
 end_of_page: |
   <script src="/js/jquery/jquery-1.11.2.min.js"></script>
