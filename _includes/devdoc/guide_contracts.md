@@ -198,12 +198,13 @@ For larger payments, Dash transaction fees are very low as a
 percentage of the total transaction value, so it makes more sense to
 protect payments with immediately-broadcast separate transactions.
 
+<!-- dashj _may_ support the bitcoinj micropayment functions, but has not been tested
 **Resource:** The [dashj][] Java library
 provides a complete set of micropayment functions, an example
 implementation, and [a
 tutorial (from bitcoinj)][bitcoinj micropayment tutorial]
 all under an Apache license.
-
+-->
 {% endautocrossref %}
 
 <!-- Obsolesced by PrivateSend
