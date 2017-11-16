@@ -583,6 +583,33 @@ information. If a peer gets a banscore above the `-banscore=<n>` threshold, he
 will be banned for the number of seconds defined by `-bantime=<n>`, which is
 86,400 by default (24 hours).
 
+| Type | Misbehavior | Ban Score | Description |
+| ---- | ----------- | --------- | ----------- |
+| Net | |
+| Net | Bloom Filter Service | **100** | Bloom filter message received from peer that has bloom filter commands disabled by default (protocol version > 70201) (`filterload` message, `filteradd` message, or `filterclear` message)
+| Net | Duplicate Version | 1 | Duplicate `version` message received
+| Net | No Version | 1 | Received a message prior to receiving a `version` message
+| Net | Address List Size | 20 | More than 1000 addresses received (`addr` message)
+| Net | Inventory List | 20 | More than 50000 inventories received (`inv` message)
+| Net | Get Data Size | 20 | More than 50000 inventories requested (`getdata` message)
+| Net | Orphan Transaction | **??** | Peer relayed an invalid orphan transaction
+| Net |  | **??** |
+| Net | Header List Size | 20 | More than 2000 headers received (`headers` message)
+| Net | Header List Sequence | 20 | Non-continous headers sequence received (`headers` message)
+| Net | Invalid Block | Varies |
+| Net | Invalid/Expired Alert | 10 | Invalid or expired alert received (`alert` message)
+| Net | Bloom Filter Size | **100** | Maximum script element size (520) exceeded (`filterload` message or `filteradd` message)
+| | |
+| Governance | Sync | 20 | Requesting a governance sync too frequently (`govsync` message with empty hash)
+| Governance | Invalid Object | 20 | Peer relayed an invalid governance object (`govobj` message)
+| Governance | Invalid Vote | 20 | Peer relayed an invalid/invalid old vote(`govobjvote` message)
+| Governance | Unsupported Vote Signal | 20 | Vote signal outside the accepted range (see `govobjvote` message)
+| Payment | Sync | 20 | Requesting a masternode payment sync too frequently (`mnget` message)
+| Payment | Vote Signature<!--noref--> | 20 | Invalid signature on payment vote (`mnw` message)
+| Payment | Non-quorum Vote | 20 | Payment vote from masternode not in the quorum. Rule activates with DIP1 (`mnw` message)
+| Spork | Signature<!--noref-->  | **100** | Peer relayed a spork with an invalid signature (`spork` message)
+
+
 {% endautocrossref %}
 
 ### Alerts
