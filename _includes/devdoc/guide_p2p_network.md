@@ -18,7 +18,7 @@ store the entire blockchain and can serve historical blocks to other nodes.
 Pruned nodes are full nodes which do not store the entire blockchain. Many SPV
 clients also use the Dash network protocol to connect to full nodes.
 
-Consensus rules do not cover networking, so Dash programs may use
+Consensus rules do _not_ cover networking, so Dash programs may use
 alternative networks and protocols, such as the [high-speed block relay
 network][] used by some miners and the [dedicated transaction
 information servers][electrum server] used by some wallets that provide
@@ -317,7 +317,7 @@ to the reference page for that message.
 
 {% autocrossref %}
 
-Bitcoin Core 0.10.0 uses an initial block download (IBD) method called
+Dash Core 0.12.0 uses an initial block download (IBD) method called
 *headers-first*. The goal is to download the headers for the best [header
 chain][/en/glossary/header-chain]{:#term-header-chain}{:.term}, partially validate them as best
 as possible, and then download the corresponding blocks in parallel.  This
@@ -334,7 +334,7 @@ node chooses a remote peer, which we'll call the sync node, and sends it the
 
 In the header hashes field of the `getheaders` message, the new node
 sends the header hash of the only block it has, the genesis block
-(6fe2...0000 in internal byte order).  It also sets the stop hash field
+(b67a...0000 in internal byte order).  It also sets the stop hash field
 to all zeroes to request a maximum-size response.
 
 Upon receipt of the `getheaders` message, the sync node takes the first
@@ -355,6 +355,11 @@ block.)
 After the IBD node has partially validated the block headers, it can do
 two things in parallel:
 
+<!-- Values referenced below are from src/validation.h:
+  MAX_HEADERS_RESULTS = 2000
+  MAX_BLOCKS_IN_TRANSIT_PER_PEER = 16
+-->
+
 1. **Download More Headers:** the IBD node can send another `getheaders`
    message to the sync node to request the next 2,000 headers on the
    best header chain. Those headers can be immediately validated and
@@ -371,7 +376,7 @@ two things in parallel:
     has downloaded belong to the best header chain reported by any of
     its outbound peers. This means a dishonest sync node will quickly be
     discovered even if checkpoints aren't used (as long as the IBD node
-    connects to at least one honest peer; Bitcoin Core will continue to
+    connects to at least one honest peer; Dash Core will continue to
     provide checkpoints in case honest peers can't be found).
 
 2. **Download Blocks:** While the IBD node continues downloading
@@ -385,21 +390,21 @@ two things in parallel:
    avoid having its download speed constrained to the upload speed of a
    single sync node.
 
-    To spread the load between multiple peers, Bitcoin Core will only
+    To spread the load between multiple peers, Dash Core will only
     request up to 16 blocks at a time from a single peer. Combined with
     its maximum of 8 outbound connections, this means headers-first
-    Bitcoin Core will request a maximum of 128 blocks simultaneously
-    during IBD (the same maximum number that blocks-first Bitcoin Core
+    Dash Core will request a maximum of 128 blocks simultaneously
+    during IBD (the same maximum number that blocks-first Dash Core
     requested from its sync node).
 
 ![Simulated Headers-First Download Window](/img/dev/en-headers-first-moving-window.svg)
 
-Bitcoin Core's headers-first mode uses a 1,024-block moving download
+Dash Core's headers-first mode uses a 1,024-block moving download
 window to maximize download speed. The lowest-height block in the window
 is the next block to be validated; if the block hasn't arrived by the
-time Bitcoin Core is ready to validate it, Bitcoin Core will wait a
+time Dash Core is ready to validate it, Dash Core will wait a
 minimum of two more seconds for the stalling node to send the block. If
-the block still hasn't arrived, Bitcoin Core will disconnect from the
+the block still hasn't arrived, Dash Core will disconnect from the
 stalling node and attempt to connect to another node. For example, in
 the illustration above, Node A will be disconnected if it doesn't send
 block 3 within at least two seconds.
@@ -459,7 +464,7 @@ peers using one of the following methods:
    bloom filter in a `merkleblock` message followed by zero or more
    `tx` messages.
 
-By default, Bitcoin Core broadcasts blocks using standard block relay,
+By default, Dash Core broadcasts blocks using standard block relay,
 but it will accept blocks sent using either of the methods described above.
 
 Full nodes validate the received block and then advertise it to their
@@ -470,7 +475,7 @@ headers-first node, and an SPV client; *any* refers to a node using any
 block retrieval method.)
 
 | **Message** | [`inv`][inv message]                                   | [`getdata`][getdata message]               | [`getheaders`][getheaders message]                                     | [`headers`][headers message]
-| **From→To** | Relay→*Any*                                            | BF→Relay                                   | HF→Relay                                                               | Relay→HF
+| **From→To** | Relay→_Any_                                            | BF→Relay                                   | HF→Relay                                                               | Relay→HF
 | **Payload** | The inventory of the new block                         | The inventory of the new block             | One or more header hashes on the HF node's best header chain (BHC)     | Up to 2,000 headers connecting HF node's BHC to relay node's BHC
 | **Message** | [`block`][block message]                               | [`merkleblock`][merkleblock message]       | [`tx`][tx message]                                                     |
 | **From→To** | Relay→BF/HF                                            | Relay→SPV                                  | Relay→SPV                                                              |
@@ -522,7 +527,10 @@ ignore orphan blocks sent by miners in an unsolicited block push.
 
 {% autocrossref %}
 
-In order to send a transaction to a peer, an `inv` message is sent. If a `getdata` response message is received, the transaction is sent using `tx`. The peer receiving this transaction also forwards the transaction in the same manner, given that it is a valid transaction.
+In order to send a transaction to a peer, an `inv` message is sent. If a
+`getdata` message is received in reply, the transaction is sent using a
+`tx` message. If it is a valid transaction, the peer receiving the transaction
+also forwards the transaction to its peers.
 
 {% endautocrossref %}
 
@@ -537,8 +545,8 @@ actually mine some or all of those transactions, but it's also useful
 for any peer who wants to keep track of unconfirmed transactions, such
 as peers serving unconfirmed transaction information to SPV clients.
 
-Because unconfirmed transactions have no permanent status in Bitcoin,
-Bitcoin Core stores them in non-persistent memory, calling them a memory
+Because unconfirmed transactions have no permanent status in Dash,
+Dash Core stores them in non-persistent memory, calling them a memory
 pool or mempool. When a peer shuts down, its memory pool is lost except
 for any transactions stored by its wallet. This means that never-mined
 unconfirmed transactions tend to slowly disappear from the network as
@@ -548,7 +556,7 @@ for others.
 Transactions which are mined into blocks that later become stale blocks may be
 added back into the memory pool. These re-added transactions may be
 re-removed from the pool almost immediately if the replacement blocks
-include them. This is the case in Bitcoin Core, which removes stale
+include them. This is the case in Dash Core, which removes stale
 blocks from the chain one by one, starting with the tip (highest block).
 As each block is removed, its transactions are added back to the memory
 pool. After all of the stale blocks are removed, the replacement
@@ -564,15 +572,16 @@ next block.
 
 {% endautocrossref %}
 
-
-
-
 ### Misbehaving Nodes
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}
 
-Take note that for both types of broadcasting, mechanisms are in place to punish misbehaving peers who take up bandwidth and computing resources by sending false information. If a peer gets a banscore above the `-banscore=<n>` threshold, he will be banned for the number of seconds defined by `-bantime=<n>`, which is 86,400 by default (24 hours).
+Take note that for both types of broadcasting, mechanisms are in place to punish
+misbehaving peers who take up bandwidth and computing resources by sending false
+information. If a peer gets a banscore above the `-banscore=<n>` threshold, he
+will be banned for the number of seconds defined by `-bantime=<n>`, which is
+86,400 by default (24 hours).
 
 {% endautocrossref %}
 

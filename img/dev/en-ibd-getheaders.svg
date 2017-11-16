@@ -21,7 +21,7 @@
 <text text-anchor="start" x="199.5" y="-197.3" font-family="Sans" font-style="italic" font-size="14.00">Message Header</text>
 <polygon fill="none" stroke="black" points="95.5,-151.5 95.5,-189.5 179.5,-189.5 179.5,-151.5 95.5,-151.5"/>
 <text text-anchor="start" x="97.5" y="-174.3" font-family="Sans" font-style="italic" font-size="14.00">Start String</text>
-<text text-anchor="start" x="104" y="-160.3" font-family="Courier,monospace" font-size="14.00">f9beb4d9</text>
+<text text-anchor="start" x="104" y="-160.3" font-family="Courier,monospace" font-size="14.00">bf0c6bbd</text>
 <polygon fill="none" stroke="black" points="181.5,-151.5 181.5,-189.5 274.5,-189.5 274.5,-151.5 181.5,-151.5"/>
 <text text-anchor="start" x="193" y="-174.3" font-family="Sans" font-style="italic" font-size="14.00">Command</text>
 <text text-anchor="start" x="186.5" y="-160.3" font-family="Courier,monospace" font-size="14.00">getheaders</text>
@@ -34,13 +34,13 @@
 <text text-anchor="start" x="229.5" y="-138.3" font-family="Sans" font-style="italic" font-size="14.00">Payload</text>
 <polygon fill="none" stroke="black" points="95.5,-98.5 95.5,-130.5 274.5,-130.5 274.5,-98.5 95.5,-98.5"/>
 <text text-anchor="start" x="128.5" y="-118.3" font-family="Sans" font-style="italic" font-size="14.00">Protocol Version</text>
-<text text-anchor="start" x="164" y="-104.3" font-family="Courier,monospace" font-size="14.00">70002</text>
+<text text-anchor="start" x="164" y="-104.3" font-family="Courier,monospace" font-size="14.00">70208</text>
 <polygon fill="none" stroke="black" points="276.5,-98.5 276.5,-130.5 418.5,-130.5 418.5,-98.5 276.5,-98.5"/>
 <text text-anchor="start" x="279.5" y="-118.3" font-family="Sans" font-style="italic" font-size="14.00">Header Hash Count</text>
 <text text-anchor="start" x="343" y="-104.3" font-family="Courier,monospace" font-size="14.00">1</text>
 <polygon fill="none" stroke="black" points="95.5,-64.5 95.5,-96.5 418.5,-96.5 418.5,-64.5 95.5,-64.5"/>
 <text text-anchor="start" x="127.5" y="-84.3" font-family="Sans" font-style="italic" font-size="14.00">Header Hashes (Highest&#45;Height First)</text>
-<text text-anchor="start" x="129" y="-70.3" font-family="Courier,monospace" font-size="14.00">6fe28c0ab6f1b3...d6190000000000</text>
+<text text-anchor="start" x="129" y="-70.3" font-family="Courier,monospace" font-size="14.00">b67a40f3cd5804...140b59fd0f0000</text>
 <polygon fill="none" stroke="black" points="95.5,-30.5 95.5,-62.5 418.5,-62.5 418.5,-30.5 95.5,-30.5"/>
 <text text-anchor="start" x="138.5" y="-50.3" font-family="Sans" font-style="italic" font-size="14.00">Stopping Hash (Zero Is &quot;No Stop&quot;)</text>
 <text text-anchor="start" x="129" y="-36.3" font-family="Courier,monospace" font-size="14.00">00000000000000...00000000000000</text>

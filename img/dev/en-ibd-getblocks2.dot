@@ -42,7 +42,7 @@ getblocks [ shape="plaintext", label=<
       </tr>
 
       <tr>
-        <td colspan="2"><i>Protocol Version</i><br /><font face="courier">70002</font></td>
+        <td colspan="2"><i>Protocol Version</i><br /><font face="courier">70208</font></td>
         <td colspan="2"><i>Header Hash Count</i><br /><font face="courier">20</font></td>
       </tr>
 

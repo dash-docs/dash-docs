@@ -28,7 +28,7 @@ getblocks [ shape="plaintext", label=<
       </tr>
 
       <tr>
-        <td border="1"><i>Start String</i><br/><font face="courier">f9beb4d9</font></td>
+        <td border="1"><i>Start String</i><br/><font face="courier">bf0c6bbd</font></td>
         <td border="1" cellpadding="4"><i>Command</i><br/><font face="courier">getheaders</font></td>
         <td border="1"><i>Size</i><br/><font face="courier">69</font></td>
         <td border="1"><i>Checksum</i><br/><font face="courier">f5fcbcad</font></td>
@@ -39,12 +39,12 @@ getblocks [ shape="plaintext", label=<
       </tr>
 
       <tr>
-        <td colspan="2"><i>Protocol Version</i><br /><font face="courier">70002</font></td>
+        <td colspan="2"><i>Protocol Version</i><br /><font face="courier">70208</font></td>
         <td colspan="2"><i>Header Hash Count</i><br /><font face="courier">1</font></td>
       </tr>
 
       <tr>
-        <td colspan="4"><i>Header Hashes (Highest-Height First)</i><br /><font face="courier">6fe28c0ab6f1b3...d6190000000000</font></td>
+        <td colspan="4"><i>Header Hashes (Highest-Height First)</i><br /><font face="courier">b67a40f3cd5804...140b59fd0f0000</font></td>
       </tr>
 
       <tr>

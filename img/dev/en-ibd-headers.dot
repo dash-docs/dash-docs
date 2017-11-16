@@ -28,7 +28,7 @@ inv [ shape="plaintext", label=<
       </tr>
 
       <tr>
-        <td border="1"><i>Start String</i><br/><font face="courier">f9beb4d9</font></td>
+        <td border="1"><i>Start String</i><br/><font face="courier">bf0c6bbd</font></td>
         <td border="1"><i>Command</i><br/><font face="courier">headers</font></td>
         <td border="1"><i>Size</i><br/><font face="courier">162003</font></td>
         <td border="1"><i>Checksum</i><br/><font face="courier">a65b2b77</font></td>
@@ -48,6 +48,9 @@ inv [ shape="plaintext", label=<
           <tr>
             <td><i>80-byte Block Headers + 0x00 (The Empty Tx Count)</i></td>
           </tr>
+
+		  // Block headers not updated for Dash
+
           <tr>
             <td><font face="courier">010000006fe28cab...ff001d01e3629900</font></td>
           </tr>

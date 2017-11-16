@@ -34,7 +34,7 @@
 <text text-anchor="start" x="230" y="-173.3" font-family="Sans" font-style="italic" font-size="14.00">Payload</text>
 <polygon fill="none" stroke="black" points="100,-130.5 100,-164.5 269,-164.5 269,-130.5 100,-130.5"/>
 <text text-anchor="start" x="128" y="-151.3" font-family="Sans" font-style="italic" font-size="14.00">Protocol Version</text>
-<text text-anchor="start" x="163.5" y="-137.3" font-family="Courier,monospace" font-size="14.00">70002</text>
+<text text-anchor="start" x="163.5" y="-137.3" font-family="Courier,monospace" font-size="14.00">70208</text>
 <polygon fill="none" stroke="black" points="271,-130.5 271,-164.5 415,-164.5 415,-130.5 271,-130.5"/>
 <text text-anchor="start" x="275" y="-151.3" font-family="Sans" font-style="italic" font-size="14.00">Header Hash Count</text>
 <text text-anchor="start" x="334.5" y="-137.3" font-family="Courier,monospace" font-size="14.00">20</text>
