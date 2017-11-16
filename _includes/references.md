@@ -437,9 +437,8 @@ http://opensource.org/licenses/MIT.
 [Bitcoin Core master]: https://github.com/dashpay/dash
 [Bitcoin Core pull #4468]: https://github.com/bitcoin/bitcoin/pull/4468
 [Bitcoin core transifex]: https://www.transifex.com/projects/p/bitcoin/
-[Bitcoin reddit]: http://www.reddit.com/r/Bitcoin
-[Bitcoin reddit new]: http://www.reddit.com/r/Bitcoin/new
-[Bitcoin Seeder]: https://github.com/sipa/bitcoin-seeder
+[Bitcoin reddit]: http://www.reddit.com/r/dashpay
+[Bitcoin reddit new]: http://www.reddit.com/r/dashpay/new
 [Bitcoin stackexchange]: http://bitcoin.stackexchange.com
 [Bitcoin stackexchange tag bitcoin-qt]: http://bitcoin.stackexchange.com/questions/tagged/bitcoin-qt
 <!--[bitcoin-documentation mailing list]: https://groups.google.com/forum/#!forum/bitcoin-documentation-->
@@ -455,6 +454,7 @@ http://opensource.org/licenses/MIT.
 [core paymentrequest.proto]: https://github.com/dashpay/dash/blob/master/src/qt/paymentrequest.proto
 [core script.h]: https://github.com/dashpay/dash/blob/master/src/script/script.h
 [creative commons attribution 3.0 license]: https://creativecommons.org/licenses/by/3.0/
+[Dash Seeder]: https://github.com/nightlydash/dash-seeder/tree/master
 [DashJ]: https://github.com/HashEngineering/dashj
 [DER]: https://en.wikipedia.org/wiki/X.690#DER_encoding
 [dig command]: https://en.wikipedia.org/wiki/Dig_%28Unix_command%29

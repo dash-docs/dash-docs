@@ -21,7 +21,7 @@
 <text text-anchor="start" x="197.5" y="-151.3" font-family="Sans" font-style="italic" font-size="14.00">Message Header</text>
 <polygon fill="none" stroke="black" points="102,-99.5 102,-139.5 194,-139.5 194,-99.5 102,-99.5"/>
 <text text-anchor="start" x="108" y="-123.3" font-family="Sans" font-style="italic" font-size="14.00">Start String</text>
-<text text-anchor="start" x="114.5" y="-109.3" font-family="Courier,monospace" font-size="14.00">f9beb4d9</text>
+<text text-anchor="start" x="114.5" y="-109.3" font-family="Courier,monospace" font-size="14.00">bf0c6bbd</text>
 <polygon fill="none" stroke="black" points="196,-99.5 196,-139.5 278,-139.5 278,-99.5 196,-99.5"/>
 <text text-anchor="start" x="202" y="-123.3" font-family="Sans" font-style="italic" font-size="14.00">Command</text>
 <text text-anchor="start" x="216" y="-109.3" font-family="Courier,monospace" font-size="14.00">block</text>

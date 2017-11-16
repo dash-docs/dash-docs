@@ -28,7 +28,7 @@ getdata [ shape="plaintext", label=<
       </tr>
 
       <tr>
-        <td border="1"><i>Start String</i><br/><font face="courier">f9beb4d9</font></td>
+        <td border="1"><i>Start String</i><br/><font face="courier">bf0c6bbd</font></td>
         <td border="1"><i>Command</i><br/><font face="courier">getdata</font></td>
         <td border="1"><i>Size</i><br/><font face="courier">4609</font></td>
         <td border="1"><i>Checksum</i><br/><font face="courier">33e41222</font></td>
@@ -54,11 +54,11 @@ getdata [ shape="plaintext", label=<
           </tr>
           <tr>
             <td>Block</td>
-            <td><font face="courier">4860eb18bf1b1620...688e9a8300000000</font></td>
+            <td><font face="courier">434341c0ecf9a2b4...d654121dd9070000</font></td>
           </tr>
           <tr>
             <td>Block</td>
-            <td><font face="courier">bddd99ccfda39da1...065f626a00000000</font></td>
+            <td><font face="courier">bddd99ccfda39da1...ce1e57ccaf0b0000</font></td>
           </tr>
           <tr>
             <td colspan="2"><i>...............126 more inventory entries...............</i></td>

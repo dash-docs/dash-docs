@@ -17,6 +17,9 @@ ibd -> inv:f1 -> sync [ dir = "back" ];
 ibd [ label = "IBD\nNode", shape="none" ];
 sync [ label = "Sync\nNode", shape="none" ];
 
+// Block 1 - 000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343
+// Block 2 - 00000bafcc571ece7c5c436f887547ef41b574e10ef7cc6937873a74ef1efeae
+
 inv [ shape="plaintext", label=<
     <table border="2" cellborder="1">
       <tr>
@@ -28,7 +31,7 @@ inv [ shape="plaintext", label=<
       </tr>
 
       <tr>
-        <td border="1"><i>Start String</i><br/><font face="courier">f9beb4d9</font></td>
+        <td border="1"><i>Start String</i><br/><font face="courier">bf0c6bbd</font></td>
         <td border="1"><i>Command</i><br/><font face="courier">inv</font></td>
         <td border="1"><i>Size</i><br/><font face="courier">18003</font></td>
         <td border="1"><i>Checksum</i><br/><font face="courier">25173c57</font></td>
@@ -54,11 +57,11 @@ inv [ shape="plaintext", label=<
           </tr>
           <tr>
             <td><font face="courier">block</font></td>
-            <td><font face="courier">4860eb18bf1b1620...688e9a8300000000</font></td>
+            <td><font face="courier">434341c0ecf9a2b4...d654121dd9070000</font></td>
           </tr>
           <tr>
             <td><font face="courier">block</font></td>
-            <td><font face="courier">bddd99ccfda39da1...065f626a00000000</font></td>
+            <td><font face="courier">bddd99ccfda39da1...ce1e57ccaf0b0000</font></td>
           </tr>
           <tr>
             <td colspan="2"><i>...............498 more inventory entries...............</i></td>

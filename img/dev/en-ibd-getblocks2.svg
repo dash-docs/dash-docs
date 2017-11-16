@@ -21,7 +21,7 @@
 <text text-anchor="start" x="200" y="-230.3" font-family="Sans" font-style="italic" font-size="14.00">Message Header</text>
 <polygon fill="none" stroke="black" points="100,-187.5 100,-221.5 186,-221.5 186,-187.5 100,-187.5"/>
 <text text-anchor="start" x="103" y="-208.3" font-family="Sans" font-style="italic" font-size="14.00">Start String</text>
-<text text-anchor="start" x="109.5" y="-194.3" font-family="Courier,monospace" font-size="14.00">f9beb4d9</text>
+<text text-anchor="start" x="109.5" y="-194.3" font-family="Courier,monospace" font-size="14.00">bf0c6bbd</text>
 <polygon fill="none" stroke="black" points="188,-187.5 188,-221.5 269,-221.5 269,-187.5 188,-187.5"/>
 <text text-anchor="start" x="193.5" y="-208.3" font-family="Sans" font-style="italic" font-size="14.00">Command</text>
 <text text-anchor="start" x="191" y="-194.3" font-family="Courier,monospace" font-size="14.00">getblocks</text>
@@ -40,8 +40,8 @@
 <text text-anchor="start" x="334.5" y="-137.3" font-family="Courier,monospace" font-size="14.00">20</text>
 <polygon fill="none" stroke="black" points="100,-66.5 100,-128.5 415,-128.5 415,-66.5 100,-66.5"/>
 <text text-anchor="start" x="128" y="-115.3" font-family="Sans" font-style="italic" font-size="14.00">Header Hashes (Highest&#45;Height First)</text>
-<text text-anchor="start" x="129.5" y="-101.3" font-family="Courier,monospace" font-size="14.00">db773c8f3b90ef...64f64f00000000</text>
-<text text-anchor="start" x="129.5" y="-87.3" font-family="Courier,monospace" font-size="14.00">459f16a1c695d0...f66d8000000000</text>
+<text text-anchor="start" x="129.5" y="-101.3" font-family="Courier,monospace" font-size="14.00">aa5f7f1f823938...05108b24070000</text>
+<text text-anchor="start" x="129.5" y="-87.3" font-family="Courier,monospace" font-size="14.00">ab595df0e00813...6fe18aad030000</text>
 <text text-anchor="start" x="148" y="-73.3" font-family="Sans" font-style="italic" font-size="14.00">......18 more header hashes......</text>
 <polygon fill="none" stroke="black" points="100,-30.5 100,-64.5 415,-64.5 415,-30.5 100,-30.5"/>
 <text text-anchor="start" x="139" y="-51.3" font-family="Sans" font-style="italic" font-size="14.00">Stopping Hash (Zero Is &quot;No Stop&quot;)</text>

@@ -92,9 +92,7 @@ the status of payment.
      https://github.com/dashpay/dash/commit/2e7009d67b862cf822a1c70e181de6af659a3096
      -->
 
-To avoid this possible delay, BitcoinJ always uses dynamic DNS seeds to
-get IP addresses for nodes believed to be currently active.
-Dash Core also tries to strike a balance between minimizing delays
+Dash Core tries to strike a balance between minimizing delays
 and avoiding unnecessary DNS seed use: if Dash Core has entries in
 its peer database, it spends up to 11 seconds attempting to connect to
 at least one of them before falling back to seeds; if a connection is
@@ -106,7 +104,7 @@ and a function to use them, but I don't see that function being used in
 any of the examples/wallet templates (but I'm not Java fluent, so
 maybe PEBKAC). -@harding -->
 
-Both Bitcoin Core and BitcoinJ also include a hardcoded list of IP
+Dash Core also include a hardcoded list of IP
 addresses and port numbers to several dozen nodes which were active
 around the time that particular version of the software was first
 released. Dash Core will start attempting to connect to these nodes
@@ -117,12 +115,11 @@ As a manual fallback option, Dash Core also provides several
 command-line connection options, including the ability to get a list of
 peers from a specific node by IP address, or to make a persistent
 connection to a specific node by IP address.  See the `-help` text for
-details.  BitcoinJ can be programmed to do the same thing.
+details.
 
-**Resources:** [Bitcoin Seeder][], the program run by several of the
-seeds used by Bitcoin Core and BitcoinJ. The Bitcoin Core [DNS Seed
-Policy][].  The hardcoded list of IP addresses used by Bitcoin Core and
-BitcoinJ is generated using the [makeseeds script][].
+**Resources:** [Dash Seeder][], the program run by several of the
+seeds used by Dash Core. The Dash Core [DNS SeedPolicy][]. The hardcoded list
+ of IP addresses used by Dash Core is generated using the [makeseeds script][].
 
 {% endautocrossref %}
 
@@ -164,7 +161,7 @@ all the blocks which were produced since the last time it was online.
 
 Dash Core uses the IBD method any time the last block on its local
 best block chain has a block header time more than 24 hours in the past.
-Bitcoin Core 0.10.0 will also perform IBD if its local best block chain is
+Dash Core will also perform IBD if its local best block chain is
 more than 144 blocks lower than its local best header chain (that is,
 the local block chain is more than about 6 hours in the past).
 
@@ -175,9 +172,9 @@ the local block chain is more than about 6 hours in the past).
 
 {% autocrossref %}
 
-Bitcoin Core (up until version [0.9.3][bitcoin core 0.9.3]) uses a
-simple initial block download (IBD) method we'll call *blocks-first*.
-The goal is to download the blocks from the best block chain in sequence.
+Dash Core (up until version 0.12.0.x) uses a simple initial block download (IBD)
+method we'll call *blocks-first*. The goal is to download the blocks from the
+best block chain in sequence.
 
 ![Overview Of Blocks-First Method](/img/dev/en-blocks-first-flowchart.svg)
 
@@ -190,7 +187,7 @@ node chooses a remote peer, called the sync node, and sends it the
 
 In the header hashes field of the `getblocks` message, this new node
 sends the header hash of the only block it has, the genesis block
-(6fe2...0000 in internal byte order).  It also sets the stop hash field
+(b67a...0000 in internal byte order).  It also sets the stop hash field
 to all zeroes to request a maximum-size response.
 
 Upon receipt of the `getblocks` message, the sync node takes the first
@@ -210,7 +207,7 @@ the block's header.
 The block inventories appear in the `inv` message in the same order they
 appear in the block chain, so this first `inv` message contains
 inventories for blocks 1 through 501. (For example, the hash of block 1
-is 4860...0000 as seen in the illustration above.)
+is 4343...0000 as seen in the illustration above.)
 
 The IBD node uses the received inventories to request 128 blocks from
 the sync node in the `getdata` message illustrated below.
@@ -277,7 +274,7 @@ of its downloading. This has several implications:
 
 * **Speed Limits:** All requests are made to the sync node, so if the
   sync node has limited upload bandwidth, the IBD node will have slow
-  download speeds.  Note: if the sync node goes offline, Bitcoin Core
+  download speeds.  Note: if the sync node goes offline, Dash Core
   will continue downloading from another node---but it will still only
   download from a single sync node at a time.
 
@@ -285,7 +282,7 @@ of its downloading. This has several implications:
   otherwise valid) block chain to the IBD node. The IBD node won't be
   able to identify it as non-best until the initial block download nears
   completion, forcing the IBD node to restart its block chain download
-  over again from a different node. Bitcoin Core ships with several
+  over again from a different node. Dash Core ships with several
   block chain checkpoints at various block heights selected by
   developers to help an IBD node detect that it is being fed an
   alternative block chain history---allowing the IBD node to restart
@@ -303,7 +300,7 @@ of its downloading. This has several implications:
   which may lead to high memory use.
 
 All of these problems are addressed in part or in full by the
-headers-first IBD method used in Bitcoin Core 0.10.0.
+headers-first IBD method used in Dash Core 0.12.0.x.
 
 **Resources:** The table below summarizes the messages mentioned
 throughout this subsection. The links in the message field will take you

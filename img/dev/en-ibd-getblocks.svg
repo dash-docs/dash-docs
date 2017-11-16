@@ -21,7 +21,7 @@
 <text text-anchor="start" x="195.5" y="-202.3" font-family="Sans" font-style="italic" font-size="14.00">Message Header</text>
 <polygon fill="none" stroke="black" points="95.5,-159.5 95.5,-193.5 181.5,-193.5 181.5,-159.5 95.5,-159.5"/>
 <text text-anchor="start" x="98.5" y="-180.3" font-family="Sans" font-style="italic" font-size="14.00">Start String</text>
-<text text-anchor="start" x="105" y="-166.3" font-family="Courier,monospace" font-size="14.00">f9beb4d9</text>
+<text text-anchor="start" x="105" y="-166.3" font-family="Courier,monospace" font-size="14.00">bf0c6bbd</text>
 <polygon fill="none" stroke="black" points="183.5,-159.5 183.5,-193.5 264.5,-193.5 264.5,-159.5 183.5,-159.5"/>
 <text text-anchor="start" x="189" y="-180.3" font-family="Sans" font-style="italic" font-size="14.00">Command</text>
 <text text-anchor="start" x="186.5" y="-166.3" font-family="Courier,monospace" font-size="14.00">getblocks</text>
@@ -40,7 +40,7 @@
 <text text-anchor="start" x="334" y="-109.3" font-family="Courier,monospace" font-size="14.00">1</text>
 <polygon fill="none" stroke="black" points="95.5,-66.5 95.5,-100.5 410.5,-100.5 410.5,-66.5 95.5,-66.5"/>
 <text text-anchor="start" x="123.5" y="-87.3" font-family="Sans" font-style="italic" font-size="14.00">Header Hashes (Highest&#45;Height First)</text>
-<text text-anchor="start" x="125" y="-73.3" font-family="Courier,monospace" font-size="14.00">6fe28c0ab6f1b3...d6190000000000</text>
+<text text-anchor="start" x="125" y="-73.3" font-family="Courier,monospace" font-size="14.00">b67a40f3cd5804...140b59fd0f0000</text>
 <polygon fill="none" stroke="black" points="95.5,-30.5 95.5,-64.5 410.5,-64.5 410.5,-30.5 95.5,-30.5"/>
 <text text-anchor="start" x="134.5" y="-51.3" font-family="Sans" font-style="italic" font-size="14.00">Stopping Hash (Zero Is &quot;No Stop&quot;)</text>
 <text text-anchor="start" x="125" y="-37.3" font-family="Courier,monospace" font-size="14.00">00000000000000...00000000000000</text>

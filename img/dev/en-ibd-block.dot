@@ -28,7 +28,7 @@ block [ shape="plaintext", label=<
       </tr>
 
       <tr>
-        <td border="1"><i>Start String</i><br/><font face="courier">f9beb4d9</font></td>
+        <td border="1"><i>Start String</i><br/><font face="courier">bf0c6bbd</font></td>
         <td border="1"><i>Command</i><br/><font face="courier">block</font></td>
         <td border="1"><i>Size</i><br/><font face="courier">215</font></td>
         <td border="1"><i>Checksum</i><br/><font face="courier">934d270a</font></td>
@@ -38,6 +38,7 @@ block [ shape="plaintext", label=<
         <td colspan="4" border="0"><i>Payload</i></td>
       </tr>
 
+	  // Serialized block value not changed to Dash block
       <tr>
         <td colspan="4" border="1"><i>Serialized Block</i><br/><font face="courier">010000006fe2...58eeac00000000</font></td>
       </tr>
