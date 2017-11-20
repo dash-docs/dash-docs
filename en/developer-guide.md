@@ -53,13 +53,13 @@ of the following file. -->
 
 {% include devdoc/guide_wallets.md %}
 
-{% include devdoc/guide_payment_processing.md %}
-
 {% include devdoc/guide_operating_modes.md %}
 
 {% include devdoc/guide_p2p_network.md %}
 
 {% include devdoc/guide_mining.md %}
+
+{% include devdoc/guide_payment_processing.md %}
 
 {% include references.md %}
 {{site.glossary_links}}
