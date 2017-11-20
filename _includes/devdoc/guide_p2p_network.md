@@ -579,34 +579,42 @@ next block.
 
 Take note that for both types of broadcasting, mechanisms are in place to punish
 misbehaving peers who take up bandwidth and computing resources by sending false
-information. If a peer gets a banscore above the `-banscore=<n>` threshold, he
-will be banned for the number of seconds defined by `-bantime=<n>`, which is
-86,400 by default (24 hours).
+information. If a peer gets a banscore above the `-banscore=<n>` threshold
+(100 by default), they will be banned for the number of seconds defined by
+`-bantime=<n>`, which is 86,400 by default (24 hours).
 
 | Type | Misbehavior | Ban Score | Description |
 | ---- | ----------- | --------- | ----------- |
-| Net | |
 | Net | Bloom Filter Service | **100** | Bloom filter message received from peer that has bloom filter commands disabled by default (protocol version > 70201) (`filterload` message, `filteradd` message, or `filterclear` message)
 | Net | Duplicate Version | 1 | Duplicate `version` message received
 | Net | No Version | 1 | Received a message prior to receiving a `version` message
 | Net | Address List Size | 20 | More than 1000 addresses received (`addr` message)
 | Net | Inventory List | 20 | More than 50000 inventories received (`inv` message)
 | Net | Get Data Size | 20 | More than 50000 inventories requested (`getdata` message)
-| Net | Orphan Transaction | **??** | Peer relayed an invalid orphan transaction
-| Net |  | **??** |
+| Net | Orphan Transaction | **Varies** | Peer relayed an invalid orphan transaction. Ban score varies from 0-100 based on the specific reason (values set by `AcceptToMemoryPoolWorker()`)
+| Net | Bad Transaction | **Varies** | Transaction rejected from the mempool
 | Net | Header List Size | 20 | More than 2000 headers received (`headers` message)
 | Net | Header List Sequence | 20 | Non-continous headers sequence received (`headers` message)
-| Net | Invalid Block | Varies |
+| Net | Invalid Block | Varies | Invalid block header received from peer
 | Net | Invalid/Expired Alert | 10 | Invalid or expired alert received (`alert` message)
 | Net | Bloom Filter Size | **100** | Maximum script element size (520) exceeded (`filterload` message or `filteradd` message)
-| | |
+| Masternode Manager | Invalid Broadcast | **Varies** | Timestamp in past (1), public key issue (**100**), signature issue (**100**), or collateral doesn't match vin (33) (`mnb` message)
+| Masternode Manager | Invalid Ping | **Varies** | Signature too far in future (1), bad ping signature (33)
+| Masternode Manager | List Sync | 34 | Requesting a sync of the entire masternode list too frequently (`dseg` message)
+| Masternode Manager | Verify | 20 | Peer requested a verification too recently (`mnv` message)
+| Masternode Manager | Unrequested Verify | 20 | Peer provided unrequested verification (`mnv` message)
+| Masternode Manager | Verify Nonce | 20 | Masternode verification contains the wrong nonce (`mnv` message)
+| Masternode Manager | Verify Block Height| 20 | Masternode verification contains the wrong block height (`mnv` message)
+| Masternode Manager | Duplicate Verify | 20 | Peer provided a duplicate verification (`mnv` message)
+| Masternode Manager | Invalid Masternode | 20 | No masternode found for the provided address (`mnv` message)
+| Masternode Manager | Invalid Verify | **100** | Masternode "verified" itself (`mnv` message)
 | Governance | Sync | 20 | Requesting a governance sync too frequently (`govsync` message with empty hash)
 | Governance | Invalid Object | 20 | Peer relayed an invalid governance object (`govobj` message)
 | Governance | Invalid Vote | 20 | Peer relayed an invalid/invalid old vote(`govobjvote` message)
 | Governance | Unsupported Vote Signal | 20 | Vote signal outside the accepted range (see `govobjvote` message)
-| Payment | Sync | 20 | Requesting a masternode payment sync too frequently (`mnget` message)
-| Payment | Vote Signature<!--noref--> | 20 | Invalid signature on payment vote (`mnw` message)
-| Payment | Non-quorum Vote | 20 | Payment vote from masternode not in the quorum. Rule activates with DIP1 (`mnw` message)
+| Masternode Payment | Sync | 20 | Requesting a masternode payment sync too frequently (`mnget` message)
+| Masternode Payment | Vote Signature<!--noref--> | 20 | Invalid signature on payment vote (`mnw` message)
+| Masternode Payment | Non-quorum Vote | 20 | Payment vote from masternode not in the quorum. Rule activates with DIP1 (`mnw` message)
 | Spork | Signature<!--noref-->  | **100** | Peer relayed a spork with an invalid signature (`spork` message)
 
 
