@@ -128,7 +128,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_spork-rpc="reads or updates spork settings on the network." %}
 {% assign summary_stop="safely shuts down the Dash Core server." %}
 {% assign summary_submitBlock="accepts a block, verifies it is a valid addition to the block chain, and broadcasts it to the network. Extra parameters are ignored by Dash Core but may be used by mining pools or other programs." %}
-{% assign summary_validateAddress="returns information about the given Bitcoin address." %}
+{% assign summary_validateAddress="returns information about the given Dash address." %}
 {% assign summary_verifyChain="verifies each entry in the local block chain database." %}
 {% assign summary_verifyMessage="verifies a signed message." %}
 {% assign summary_verifyTxOutProof="verifies that a proof points to one or more transactions in a block, returning the transactions the proof commits to and throwing an RPC error if the block is not in our best block chain." %}
