@@ -7,6 +7,8 @@ http://opensource.org/licenses/MIT.
 ## Mining
 {% include helpers/subhead-links.md %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 Mining adds new blocks to the block chain, making transaction history
@@ -30,9 +32,9 @@ hard to modify.  Mining today takes on two forms:
 
 {% autocrossref %}
 
-As illustrated below, solo miners typically use `bitcoind` to get new
+As illustrated below, solo miners typically use `dashd` to get new
 transactions from the network. Their mining software periodically polls
-`bitcoind` for new transactions using the `getblocktemplate` RPC, which
+`dashd` for new transactions using the `getblocktemplate` RPC, which
 provides the list of new transactions plus the public key to which the
 coinbase transaction should be sent.
 
@@ -52,8 +54,8 @@ coinbase field of the coinbase transaction.
 On the other hand, if a hash is found below the target threshold, the
 mining hardware returns the block header with the successful nonce to
 the mining software. The mining software combines the header with the
-block and sends the completed block to `bitcoind` to be broadcast to the network for addition to the
-block chain.
+block and sends the completed block to `dashd` to be broadcast to the network
+for addition to the block chain.
 
 {% endautocrossref %}
 
@@ -65,7 +67,7 @@ block chain.
 Pool miners follow a similar workflow, illustrated below, which allows
 mining pool operators to pay miners based on their share of the work
 done. The mining pool gets new transactions from the network using
-`bitcoind`. Using one of the methods discussed later, each miner's mining
+`dashd`. Using one of the methods discussed later, each miner's mining
 software connects to the pool and requests the information it needs to
 construct block headers.
 
@@ -118,12 +120,11 @@ are used to keep ASIC hashers working at maximum capacity,
 
 {% autocrossref %}
 
-The simplest and earliest method was the now-deprecated Bitcoin Core
+The simplest and earliest method was the now-deprecated Dash Core
 `getwork` RPC, which constructs a header for the miner directly. Since a
 header only contains a single 4-byte nonce good for about 4 gigahashes,
 many modern miners need to make dozens or hundreds of `getwork` requests
-a second. Solo miners may still use `getwork` on v0.9.5 or below, but most pools today
-discourage or disallow its use.
+a second.
 
 {% endautocrossref %}
 
@@ -132,13 +133,13 @@ discourage or disallow its use.
 
 {% autocrossref %}
 
-An improved method is the Bitcoin Core `getblocktemplate` RPC. This
+An improved method is the Dash Core `getblocktemplate` RPC. This
 provides the mining software with much more information:
 
 1. The information necessary to construct a coinbase transaction
-   paying the pool or the solo miner's `bitcoind` wallet.
+   paying the pool or the solo miner's `dashd` wallet.
 
-2. A complete dump of the transactions `bitcoind` or the mining pool
+2. A complete dump of the transactions `dashd` or the mining pool
    suggests including in the block, allowing the mining software to
    inspect the transactions, optionally add additional transactions, and
    optionally remove non-required transactions.
@@ -156,7 +157,7 @@ Whenever the extra nonce field needs to be changed, the mining software
 rebuilds the necessary parts of the merkle tree and updates the time and
 merkle root fields in the block header.
 
-Like all `bitcoind` RPCs, `getblocktemplate` is sent over HTTP. To
+Like all `dashd` RPCs, `getblocktemplate` is sent over HTTP. To
 ensure they get the most recent work, most miners use [HTTP longpoll][] to
 leave a `getblocktemplate` request open at all times. This allows the
 mining pool to push a new `getblocktemplate` to the miner as soon as any

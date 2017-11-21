@@ -125,7 +125,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_signMessage="signs a message with the private key of an address." %}
 {% assign summary_signMessageWithPrivKey="signs a message with a given private key." %}
 {% assign summary_signRawTransaction="signs a transaction in the serialized transaction format using private keys stored in the wallet or provided in the call." %}
-{% assign summary_spork-rpc="" %}
+{% assign summary_spork-rpc="reads or updates spork settings on the network." %}
 {% assign summary_stop="safely shuts down the Dash Core server." %}
 {% assign summary_submitBlock="accepts a block, verifies it is a valid addition to the block chain, and broadcasts it to the network. Extra parameters are ignored by Dash Core but may be used by mining pools or other programs." %}
 {% assign summary_validateAddress="returns information about the given Bitcoin address." %}

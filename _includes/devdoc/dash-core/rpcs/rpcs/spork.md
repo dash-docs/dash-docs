@@ -40,7 +40,7 @@ To display the status of sporks, use the `show` or `active` syntax.
 - n: "→<br>`Spork Value`"
   t: "int64_t"
   p: "Required<br>(1 or more)"
-  d: "Spork value"
+  d: "Spork value (epoch datetime to enable/disable)"
 
 {% enditemplate %}
 
