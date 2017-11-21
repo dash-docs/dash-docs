@@ -95,7 +95,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_listUnspent="returns an array of unspent transaction outputs belonging to this wallet." %}
 {% assign summary_lockUnspent="temporarily locks or unlocks specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection when spending bitcoins. Locks are stored in memory only, so nodes start with zero locked outputs and the locked output list is always cleared when a node stops or fails." %}
 {% assign summary_masternode="" %}
-{% assign summary_masternodeBroadcast="" %}
+{% assign summary_masternodeBroadcast="provides a set of commands to create and relay masternode broadcast messages." %}
 {% assign summary_masternodeList="returns a list of masternodes in different modes." %}
 {% assign summary_mnSync="returns the sync status, updates to the next step or resets it entirely." %}
 {% assign summary_move="moves a specified amount from one account in your wallet to another using an off-block-chain transaction." %}

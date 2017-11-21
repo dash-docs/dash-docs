@@ -71,7 +71,9 @@ end_of_page: |
   <div>
     <div>
       <h2 id="payment-processing"><span class="fa fa-cart-plus fa-lg"></span> Payment Processing</h2>
+      <!--
       <p><a href="/en/developer-guide#payment-processing">Payment Processing Guide</a></p>
+      -->
       <p><a href="/en/developer-examples#payment-processing">Payment Processing Examples</a></p>
       <p><a href="https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki"><span class="fa fa-external-link"></span> Payment Protocol</a> - BIP70</p>
     </div><div>
