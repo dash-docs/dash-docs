@@ -117,6 +117,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_sendMany="creates and broadcasts a transaction which sends outputs to multiple addresses." %}
 {% assign summary_sendRawTransaction="validates a transaction and broadcasts it to the peer-to-peer network." %}
 {% assign summary_sendToAddress="spends an amount to a given address." %}
+{% assign summary_sentinelPing="sends a Sentinel Ping to the network." %}
 {% assign summary_setAccount="puts the specified address in the given account." %}
 {% assign summary_setBan="attempts add or remove a IP/Subnet from the banned list." %}
 {% assign summary_setGenerate="enables or disables hashing to attempt to find the next block." %}

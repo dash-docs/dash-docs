@@ -300,6 +300,8 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/signrawtransaction.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/sentinelping.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/spork.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/stop.md %}

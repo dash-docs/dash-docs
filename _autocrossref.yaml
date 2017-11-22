@@ -471,6 +471,8 @@ CVE-2012-2459:
 '`signmessagewithprivkey` RPC': rpc signmessagewithprivkey
 '`signrawtransaction`': rpc signrawtransaction
 '`signrawtransaction` RPC': rpc signrawtransaction
+'`sentinelping`': rpc sentinelping
+'`sentinelping` RPC': rpc sentinelping
 '`spork`': rpc spork
 '`spork` RPC': rpc spork
 '`stop`': rpc stop

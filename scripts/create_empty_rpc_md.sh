@@ -59,6 +59,7 @@ if [ "$PARAMCOUNT" == 1 ]; then
 
 	echo " "
 	echo "Next copy the created file ('$FILENAME') to ../_includes/devdoc/dash-core/rpcs/rpcs"
+	echo "Then update _autocrossref.yaml, _config.yaml, _includes/references.md, en/developer-reference.md, and rpcs/quick-reference.md"
 else
 	echo "Incorrect number of parameters (Should be exactly 1)"
 	echo "Usage: create_empty_rpc_md RPCNAME"

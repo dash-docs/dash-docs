@@ -370,6 +370,7 @@ devsearches:
     - 'SignMessage': "/en/developer-reference#signmessage"
     - 'SignMessageWithPrivKey': "/en/developer-reference#signmessagewithprivkey"
     - 'SignRawTransaction': "/en/developer-reference#signrawtransaction"
+    - 'SentinelPing': "/en/developer-reference#sentinelping"
     - 'Spork': "/en/developer-reference#spork-rpc"
     - 'Stop': "/en/developer-reference#stop"
     - 'SubmitBlock': "/en/developer-reference#submitblock"

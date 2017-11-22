@@ -6,7 +6,7 @@ http://opensource.org/licenses/MIT.
 
 #### Quick Reference {#rpc-quick-reference}
 {% include helpers/subhead-links.md %}
-
+<!-- __ -->
 {% comment %}
 Styling notes: use highly-visible style for upcoming changes (not yet
 released) and changes made in the last 6 months.  Use less-visible
@@ -140,6 +140,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [MasternodeList][rpc masternodelist]: {{summary_masternodeList}}
 * [MnSync][rpc mnsync]: {{summary_mnSync}}
 * [PrivateSend][rpc privatesend]: {{summary_privateSend}}
+* [SentinelPing][rpc sentinelping]: {{summary_sentinelPing}}
 * [Spork][rpc spork]: {{summary_spork-rpc}}
 * [VoteRaw][rpc voteraw]: {{summary_voteRaw}}
 

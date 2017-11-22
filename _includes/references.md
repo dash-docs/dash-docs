@@ -199,6 +199,7 @@ http://opensource.org/licenses/MIT.
 [rpc signmessage]: /en/developer-reference#signmessage
 [rpc signmessagewithprivkey]: /en/developer-reference#signmessagewithprivkey
 [rpc signrawtransaction]: /en/developer-reference#signrawtransaction
+[rpc sentinelping]: /en/developer-reference#sentinelping
 [rpc spork]: /en/developer-reference#spork-rpc
 [rpc stop]: /en/developer-reference#stop
 [rpc submitblock]: /en/developer-reference#submitblock
