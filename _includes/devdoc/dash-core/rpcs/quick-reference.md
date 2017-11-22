@@ -57,10 +57,14 @@ Use v0.n.n in abbreviation title to prevent autocrossrefing.
      _includes/rpc/getbestblockhash.md and run `make manual-update-summaries`. -->
 {% include helpers/summaries.md %}
 
+####RPC Summary Table
+
+{% include layout/base/rpc-table.html %}
+
 #### Addressindex RPCs
-These RPCs are all Dash-specific and not found in Bitcoin Core
 {:.no_toc}
 <!-- no subhead-links here -->
+These RPCs are all Dash-specific and not found in Bitcoin Core
 
 {% autocrossref %}
 
