@@ -6,7 +6,7 @@ http://opensource.org/licenses/MIT.
 
 ##### SignMessage
 {% include helpers/subhead-links.md %}
-
+<!-- __ -->
 {% assign summary_signMessage="signs a message with the private key of an address." %}
 
 {% autocrossref %}
@@ -42,27 +42,26 @@ The `signmessage` RPC {{summary_signMessage}}
 - n: "`result`"
   t: "string (base64)"
   p: "Required<br>(exactly 1)"
-  d: "The signature of the message, encoded in base64.  Note that Bitcoin Core before 0.10.0 creates signatures with random *k* values, so each time you sign the same message, it will create a different signature"
+  d: "The signature of the message, encoded in base64."
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.13.1*
+*Example from Dash Core 0.12.2*
 
 Sign a the message "Hello, World!" using the following address:
 
 {% highlight bash %}
-bitcoin-cli signmessage 17fshh33qUze2yifiJ2sXgijSMzJ2KNEwu "Hello, World!"
+dash-cli -testnet signmessage yNpezfFDfoikDuT1f4iK75AiLp2YLPsGAb "Hello, World!"
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-ILypRih424AWRYXK1goB6mskx99aelWcVCTEKolaW7U4VPnwj6Khf+vJSED7pMtPQd3KnXuqq1JvavrQdPMFFB0=
+H4XULzfHCf16In2ECk9Ta9QxQPq639zQto2JA3OLlo3JbUdrClvJ89+A1z+Z9POd6l8LJhn1jGpQYF8mX4jkQvE=
 {% endhighlight %}
 
 *See also*
 
-* [SignMessageWithPrivKey][rpc signmessagewithprivkey]: {{summary_signMessageWithPrivKey}}
 * [VerifyMessage][rpc verifymessage]: {{summary_verifyMessage}}
 
 {% endautocrossref %}

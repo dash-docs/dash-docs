@@ -6,7 +6,7 @@ http://opensource.org/licenses/MIT.
 
 ##### VerifyMessage
 {% include helpers/subhead-links.md %}
-
+<!-- __ -->
 {% assign summary_verifyMessage="verifies a signed message." %}
 
 {% autocrossref %}
@@ -53,15 +53,15 @@ The `verifymessage` RPC {{summary_verifyMessage}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Check the signature on the message created in the example for
 `signmessage`:
 
 {% highlight bash %}
-bitcoin-cli -testnet verifymessage \
-  mgnucj8nYqdrPFh2JfZSB1NmUThUGnmsqe \
-  IL98ziCmwYi5pL+dqKp4Ux+zCa4hP/xbjHmWh+Mk/lefV/0pWV1p/gQ94jgExSmgH2/+PDcCCrOHAady2IEySSI= \
+dash-cli -testnet verifymessage \
+  yNpezfFDfoikDuT1f4iK75AiLp2YLPsGAb \
+  H4XULzfHCf16In2ECk9Ta9QxQPq639zQto2JA3OLlo3JbUdrClvJ89+A1z+Z9POd6l8LJhn1jGpQYF8mX4jkQvE= \
   'Hello, World!'
 {% endhighlight %}
 
