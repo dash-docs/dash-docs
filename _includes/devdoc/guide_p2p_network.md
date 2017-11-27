@@ -943,5 +943,31 @@ Once the syncing node receives the counts and inventories, it may request any
 | `getdata` message (govobjvote) | →              |                           | (Optional) Syncing node requests govobjvote
 |                          | ←              | `govobjvote` message      | (If requested) Governance object vote
 
+#### Sentinel
+
+Sentinel is a Python application that connects to a masternode's local dashd
+instance to run as an autonomous agent for persisting, processing, and automating
+Dash 12.1+ governance objects and tasks. Sentinel abstracts some governance
+details away from Dash Core for easier extensibility of the governance system in
+the future. This will allow the integration between Evolution and Dash Core to
+proceed more smoothly and enable new governance object additions with minimal
+impact to Dash Core.
+
+##### Sentinel Sync
+Sentinel issues a `gobject list` RPC command and updates its database with the
+results returned from dashd. When objects are removed from the network, they are
+purged from the Sentinel database.
+
+##### Sentinel ping
+
+In Dash Core 12.2, use of the `watchdog` governance object type was replaced
+by integrating a sentinel information into the masternode ping (`mnp` message)
+via [Pull Request #1491](https://github.com/dashpay/dash/pull/1491).
+Sentinel calls the `sentinelping` RPC which updates the masternode info to
+prevent it from entering a `MASTERNODE_WATCHDOG_EXPIRED` state.
+
+##### Sentinel Prune
+
+##### Sentinel Superblock
 
 {% endautocrossref %}
