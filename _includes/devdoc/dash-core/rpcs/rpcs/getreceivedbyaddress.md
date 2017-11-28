@@ -45,7 +45,7 @@ The `getreceivedbyaddress` RPC {{summary_getReceivedByAddress}}
 
 {% itemplate ntpd1 %}
 - n: "`result`"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
   d: "The amount of dash received by the address, excluding coinbase transactions.  May be `0`"
 

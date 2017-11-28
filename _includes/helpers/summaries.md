@@ -26,7 +26,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_generate="mines blocks immediately (before the RPC call returns)." %}
 {% assign summary_generateToAddress="mines blocks immediately to a specified address." %}
 {% assign summary_getAccount="returns the name of the account associated with the given address." %}
-{% assign summary_getAccountAddress="returns the current Bitcoin address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address." %}
+{% assign summary_getAccountAddress="returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address." %}
 {% assign summary_getAddedNodeInfo="returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the `addnode` RPC will have their information displayed." %}
 {% assign summary_getAddressBalance="returns the balance for address(es)." %}
 {% assign summary_getAddressDeltas="returns all changes for an address." %}
@@ -34,7 +34,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_getAddressTxids="returns the txids for an address(es)." %}
 {% assign summary_getAddressUtxos="returns all unspent outputs for an address." %}
 {% assign summary_getAddressesByAccount="returns a list of every address assigned to a particular account." %}
-{% assign summary_getBalance="gets the balance in decimal bitcoins across all accounts or for a particular account." %}
+{% assign summary_getBalance="gets the balance in decimal dash across all accounts or for a particular account." %}
 {% assign summary_getBestBlockHash="returns the header hash of the most recent block on the best block chain." %}
 {% assign summary_getBlock="gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block." %}
 {% assign summary_getBlockChainInfo="provides information about the current state of the block chain." %}
@@ -60,10 +60,10 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_getNetTotals="returns information about network traffic, including bytes in, bytes out, and the current time." %}
 {% assign summary_getNetworkHashPS="returns the estimated network hashes per second based on the last n blocks." %}
 {% assign summary_getNetworkInfo="returns information about the node's connection to the network." %}
-{% assign summary_getNewAddress="returns a new Bitcoin address for receiving payments. If an account is specified, payments received with the address will be credited to that account." %}
+{% assign summary_getNewAddress="returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account." %}
 {% assign summary_getPeerInfo="returns data about each connected network node." %}
 {% assign summary_getPoolInfo="returns an object containing mixing pool related information." %}
-{% assign summary_getRawChangeAddress="returns a new Bitcoin address for receiving change. This is for use with raw transactions, not normal use." %}
+{% assign summary_getRawChangeAddress="returns a new Dash address for receiving change. This is for use with raw transactions, not normal use." %}
 {% assign summary_getRawMemPool="returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object." %}
 {% assign summary_getRawTransaction="gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings." %}
 {% assign summary_getReceivedByAccount="returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions." %}
