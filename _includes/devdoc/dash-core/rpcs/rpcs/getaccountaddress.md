@@ -9,13 +9,15 @@ http://opensource.org/licenses/MIT.
 
 {% autocrossref %}
 
-{% assign summary_getAccountAddress="returns the current Bitcoin address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address." %}
+<!-- __ -->
+
+{% assign summary_getAccountAddress="returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address." %}
 
 *Requires wallet support.*
 
 The `getaccountaddress` RPC {{summary_getAccountAddress}}
 
-{{WARNING}} `getaccountaddress` will be removed in a later version of Bitcoin
+{{WARNING}} `getaccountaddress` will be removed in a later version of Dash
 Core.  Use the RPCs listed in the See Also subsection below instead.
 
 *Parameter #1---an account name*
@@ -28,7 +30,7 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% enditemplate %}
 
-*Result---a bitcoin address*
+*Result---a Dash address*
 
 {% itemplate ntpd1 %}
 - n: "`result`"
@@ -38,18 +40,18 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Get an address for the default account:
 
 {% highlight bash %}
-bitcoin-cli -testnet getaccountaddress ""
+dash-cli -testnet getaccountaddress ""
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-msQyFNYHkFUo4PG3puJBbpesvRCyRQax7r
+yNUQ6RzTpNj5GP5ebdRcusJ7K9JJKx6VvV
 {% endhighlight %}
 
 *See also*

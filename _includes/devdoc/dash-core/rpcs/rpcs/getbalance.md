@@ -7,7 +7,9 @@ http://opensource.org/licenses/MIT.
 ##### GetBalance
 {% include helpers/subhead-links.md %}
 
-{% assign summary_getBalance="gets the balance in decimal bitcoins across all accounts or for a particular account." %}
+{% assign summary_getBalance="gets the balance in decimal dash across all accounts or for a particular account." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
@@ -29,35 +31,60 @@ The `getbalance` RPC {{summary_getBalance}}
 
 {{INCLUDE_CONFIRMATIONS_PARAMETER}}
 
-*Parameter #3---whether to include watch-only addresses*
-
-{{INCLUDE_INCLUDE_WATCH_ONLY_PARAMETER}}
-
-*Result---the balance in bitcoins*
+*Parameter #3---whether to add 5 confirmations to transactions locked via InstantSend*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
-  t: "number (bitcoins)"
-  p: "Required<br>(exactly 1)"
-  d: "The balance of the account (or all accounts) in bitcoins"
+- n: "addlockconf"
+  t: "bool"
+  p: "Optional<br>(exactly 1)"
+  d: "Add the number of InstantSend confirmations to InstantSend locked transactions"
 
 {% enditemplate %}
 
-*Examples from Bitcoin Core 0.10.0*
+*Parameter #4---whether to include watch-only addresses*
 
-Get the balance for the "test1" account, including transactions with
-at least one confirmation and those spent to watch-only addresses in
-that account.
+{{INCLUDE_INCLUDE_WATCH_ONLY_PARAMETER}}
+
+*Result---the balance in dash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "number (dash)"
+  p: "Required<br>(exactly 1)"
+  d: "The balance of the account (or all accounts) in dash"
+
+{% enditemplate %}
+
+*Examples from Dash Core 0.12.2*
+
+Get the balance for the main ("") account, including transactions with
+at least five confirmations and those spent to watch-only addresses in
+that account. Do not add the InstantSend confirmations (5) for locked transactions.
 
 {% highlight bash %}
-bitcoin-cli -testnet getbalance "test1" 1 true
+dash-cli -testnet getbalance "" 3 false true
 {% endhighlight %}
 
 Result:
 
 {% highlight json %}
-1.99900000
+0.00000000
 {% endhighlight %}
+
+Get the balance for the main ("") account, including transactions with
+at least one confirmation and those spent to watch-only addresses in
+that account. Add the InstantSend confirmations (5) for locked transactions.
+
+{% highlight bash %}
+dash-cli -testnet getbalance "" 3 true true
+{% endhighlight %}
+
+Result:
+
+{% highlight json %}
+1.00000000
+{% endhighlight %}
+
 
 *See also*
 

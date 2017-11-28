@@ -7,7 +7,9 @@ http://opensource.org/licenses/MIT.
 ##### GetNewAddress
 {% include helpers/subhead-links.md %}
 
-{% assign summary_getNewAddress="returns a new Bitcoin address for receiving payments. If an account is specified, payments received with the address will be credited to that account." %}
+{% assign summary_getNewAddress="returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
@@ -25,7 +27,7 @@ The `getnewaddress` RPC {{summary_getNewAddress}}
 
 {% enditemplate %}
 
-*Result---a bitcoin address never previously returned*
+*Result---a dash address never previously returned*
 
 {% itemplate ntpd1 %}
 - n: "`result`"
@@ -35,18 +37,18 @@ The `getnewaddress` RPC {{summary_getNewAddress}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Create a new address in the "doc test" account:
 
 {% highlight bash %}
-bitcoin-cli -testnet getnewaddress "doc test"
+dash-cli -testnet getnewaddress "doc test"
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-mft61jjkmiEJwJ7Zw3r1h344D6aL1xwhma
+yPuNTqCGzXtU3eEV5jHvhhJkzEPyJLmVkb
 {% endhighlight %}
 
 *See also*

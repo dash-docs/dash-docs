@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_encryptWallet="encrypts the wallet with a passphrase.  This is only to enable encryption for the first time. After encryption is enabled, you will need to enter the passphrase to use private keys." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -42,17 +44,19 @@ the `dumpwallet` RPC.
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet encryptwallet "test"
+dash-cli -testnet encryptwallet "test"
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-wallet encrypted; Bitcoin server stopping, restart to run with encrypted
-wallet. The keypool has been flushed, you need to make a new backup.
+Wallet encrypted; Dash Core server stopping, restart to run with encrypted wallet.
+The keypool has been flushed and a new HD seed was generated (if you are using
+HD). You need to make a new backup.
+
 {% endhighlight %}
 
 *See also*

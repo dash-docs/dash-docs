@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_getReceivedByAddress="returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -29,23 +31,48 @@ The `getreceivedbyaddress` RPC {{summary_getReceivedByAddress}}
 
 {{INCLUDE_CONFIRMATIONS_PARAMETER}}
 
-*Result---the number of bitcoins received*
+*Parameter #3---whether to add 5 confirmations to transactions locked via InstantSend*
+
+{% itemplate ntpd1 %}
+- n: "addlockconf"
+  t: "bool"
+  p: "Optional<br>(exactly 1)"
+  d: "Add the number of InstantSend confirmations to InstantSend locked transactions"
+
+{% enditemplate %}
+
+*Result---the amount of dash received*
 
 {% itemplate ntpd1 %}
 - n: "`result`"
   t: "number (bitcoins)"
   p: "Required<br>(exactly 1)"
-  d: "The number of bitcoins received by the address, excluding coinbase transactions.  May be `0`"
+  d: "The amount of dash received by the address, excluding coinbase transactions.  May be `0`"
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
-Get the bitcoins received for a particular address, only counting
-transactions with six or more confirmations:
+Get the dash received for a particular address, only counting
+transactions with six or more confirmations (ignore InstantSend confirmations for
+locked InstantSend transactions):
 
 {% highlight bash %}
-bitcoin-cli -testnet getreceivedbyaddress mjSk1Ny9spzU2fouzYgLqGUD8U41iR35QN 6
+dash-cli -testnet getreceivedbyaddress yYoCWcjbykWsQJ7MVJrTMeQd8TZe5N4Q7g 6
+{% endhighlight %}
+
+Result:
+
+{% highlight json %}
+0.00000000
+{% endhighlight %}
+
+Get the dash received for a particular address, only counting
+transactions with six or more confirmations (include InstantSend confirmations for
+locked InstantSend transactions):
+
+{% highlight bash %}
+dash-cli -testnet getreceivedbyaddress yYoCWcjbykWsQJ7MVJrTMeQd8TZe5N4Q7g 6 true
 {% endhighlight %}
 
 Result:
@@ -53,6 +80,7 @@ Result:
 {% highlight json %}
 0.30000000
 {% endhighlight %}
+
 
 *See also*
 

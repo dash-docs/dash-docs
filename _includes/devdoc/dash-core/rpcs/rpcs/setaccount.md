@@ -9,16 +9,18 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_setAccount="puts the specified address in the given account." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
 
 The `setaccount` RPC {{summary_setAccount}}
 
-{{WARNING}} `setaccount` will be removed in a later version of Bitcoin
+{{WARNING}} `setaccount` will be removed in a later version of Dash
 Core.  Use the RPCs listed in the See Also subsection below instead.
 
-*Parameter #1---a bitcoin address*
+*Parameter #1---a dash address*
 
 {% itemplate ntpd1 %}
 - n: "Address"
@@ -48,13 +50,13 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Put the address indicated below in the "doc test" account.
 
 {% highlight bash %}
-bitcoin-cli -testnet setaccount \
-    mmXgiR6KAhZCyQ8ndr2BCfEq1wNG2UnyG6 "doc test"
+dash-cli -testnet setaccount \
+    yMTFRnrfJ4NpnYVeidDNHVwT7uuNsVjevq "doc test"
 {% endhighlight %}
 
 (Success: no result displayed.)

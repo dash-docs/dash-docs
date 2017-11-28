@@ -9,13 +9,15 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_getReceivedByAccount="returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
 
 The `getreceivedbyaccount` RPC {{summary_getReceivedByAccount}}
 
-{{WARNING}} `getreceivedbyaccount` will be removed in a later version of Bitcoin
+{{WARNING}} `getreceivedbyaccount` will be removed in a later version of Dash
 Core.  Use the RPCs listed in the See Also subsection below instead.
 
 *Parameter #1---the account name*
@@ -32,23 +34,33 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {{INCLUDE_CONFIRMATIONS_PARAMETER}}
 
-*Result---the number of bitcoins received*
+*Parameter #3---whether to add 5 confirmations to transactions locked via InstantSend*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
-  t: "number (bitcoins)"
-  p: "Required<br>(exactly 1)"
-  d: "The number of bitcoins received by the account.  May be `0`"
+- n: "addlockconf"
+  t: "bool"
+  p: "Optional<br>(exactly 1)"
+  d: "Add the number of InstantSend confirmations to InstantSend locked transactions (default=false)"
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Result---the number of dash received*
 
-Get the bitcoins received by the "doc test" account with six or more
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "number (dash)"
+  p: "Required<br>(exactly 1)"
+  d: "The number of dash received by the account.  May be `0`"
+
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+Get the dash received by the "doc test" account with six or more
 confirmations:
 
 {% highlight bash %}
-bitcoin-cli -testnet getreceivedbyaccount "doc test" 6
+dash-cli -testnet getreceivedbyaccount "doc test" 6
 {% endhighlight %}
 
 Result:

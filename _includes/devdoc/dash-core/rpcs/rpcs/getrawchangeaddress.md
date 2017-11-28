@@ -7,7 +7,9 @@ http://opensource.org/licenses/MIT.
 ##### GetRawChangeAddress
 {% include helpers/subhead-links.md %}
 
-{% assign summary_getRawChangeAddress="returns a new Bitcoin address for receiving change. This is for use with raw transactions, not normal use." %}
+{% assign summary_getRawChangeAddress="returns a new Dash address for receiving change. This is for use with raw transactions, not normal use." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
@@ -27,16 +29,16 @@ The `getrawchangeaddress` RPC {{summary_getRawChangeAddress}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet getrawchangeaddress
+dash-cli -testnet getrawchangeaddress
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-mnycUc8FRjJodfKhaj9QBZs2PwxxYoWqaK
+yXBr9BiJmugTzHPgByDmvjJMAkvhTmXVJ8
 {% endhighlight %}
 
 *See also*

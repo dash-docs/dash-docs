@@ -249,7 +249,7 @@ default.
 * [DumpPrivKey][rpc dumpprivkey]: {{summary_dumpPrivKey}}
 * [DumpWallet][rpc dumpwallet]: {{summary_dumpWallet}}
 * [EncryptWallet][rpc encryptwallet]: {{summary_encryptWallet}}
-* [GetAccount][rpc getaccount]: {{summary_getAccount}}
+* [GetAccount][rpc getaccount]: {{summary_getAccount}} {{DEPRECATED}}
 * [GetAccountAddress][rpc getaccountaddress]: {{summary_getAccountAddress}} {{DEPRECATED}}
 * [GetAddressesByAccount][rpc getaddressesbyaccount]: {{summary_getAddressesByAccount}} {{DEPRECATED}}
 * [GetBalance][rpc getbalance]: {{summary_getBalance}}

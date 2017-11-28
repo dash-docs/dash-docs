@@ -9,13 +9,15 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_getAddressesByAccount="returns a list of every address assigned to a particular account." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
 
 The `getaddressesbyaccount` RPC {{summary_getAddressesByAccount}}
 
-{{WARNING}} `getaddressesbyaccount` will be removed in a later version of Bitcoin
+{{WARNING}} `getaddressesbyaccount` will be removed in a later version of Dash
 Core.  Use the RPCs listed in the See Also subsection below instead.
 
 *Parameter #1---the account name*
@@ -43,21 +45,20 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Get the addresses assigned to the account "doc test":
 
 {% highlight bash %}
-bitcoin-cli -testnet getaddressesbyaccount "doc test"
+dash-cli -testnet getaddressesbyaccount "doc test"
 {% endhighlight %}
 
 Result:
 
 {% highlight json %}
 [
-    "mjSk1Ny9spzU2fouzYgLqGUD8U41iR35QN",
-    "mft61jjkmiEJwJ7Zw3r1h344D6aL1xwhma",
-    "mmXgiR6KAhZCyQ8ndr2BCfEq1wNG2UnyG6"
+  "yMTFRnrfJ4NpnYVeidDNHVwT7uuNsVjevq",
+  "yhT2HS1SxvXkMVdAdf6RNtGPfuVFvwZi35"
 ]
 {% endhighlight %}
 

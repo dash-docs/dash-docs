@@ -9,19 +9,24 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_getAccount="returns the name of the account associated with the given address." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
 
 The `getaccount` RPC {{summary_getAccount}}
 
-*Parameter #1---a Bitcoin address*
+{{WARNING}} `setaccount` will be removed in a later version of Dash
+Core.  Use the RPCs listed in the See Also subsection below instead.
+
+*Parameter #1---a Dash address*
 
 {% itemplate ntpd1 %}
 - n: "Address"
   t: "string (base58)"
   p: "Required<br>(exactly 1)"
-  d: "A P2PKH or P2SH Bitcoin address belonging either to a specific account or the default account (\"\")"
+  d: "A P2PKH or P2SH Dash address belonging either to a specific account or the default account (\"\")"
 
 {% enditemplate %}
 
@@ -35,10 +40,10 @@ The `getaccount` RPC {{summary_getAccount}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet getaccount mjSk1Ny9spzU2fouzYgLqGUD8U41iR35QN
+dash-cli -testnet getaccount yMTFRnrfJ4NpnYVeidDNHVwT7uuNsVjevq
 {% endhighlight %}
 
 Result:
