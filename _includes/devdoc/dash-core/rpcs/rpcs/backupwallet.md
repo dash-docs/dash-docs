@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_backupWallet="safely copies `wallet.dat`<!--noref--> to the specified file, which can be a directory or a path with filename." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -35,10 +37,10 @@ The `backupwallet` RPC {{summary_backupWallet}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet backupwallet /tmp/backup.dat
+dash-cli -testnet backupwallet /tmp/backup.dat
 {% endhighlight %}
 
 *See also*

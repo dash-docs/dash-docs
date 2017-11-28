@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_importPrivKey="adds a private key to your wallet. The key should be formatted in the wallet import format created by the `dumpprivkey` RPC." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.  Wallet must be unlocked.*
@@ -55,15 +57,15 @@ The `importprivkey` RPC {{summary_importPrivKey}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Import the private key for the address
-mgnucj8nYqdrPFh2JfZSB1NmUThUGnmsqe, giving it a label and scanning the
+ycBuREgSskHHkWLxDa9A5WppCki6PfFycL, giving it a label and scanning the
 entire block chain:
 
 {% highlight bash %}
-bitcoin-cli -testnet importprivkey \
-              cU8Q2jGeX3GNKNa5etiC8mgEgFSeVUTRQfWE2ZCzszyqYNK4Mepy \
+dash-cli -testnet importprivkey \
+              cQZZ4awQvcXXyES3CmUJqSgeTobQm9t9nyUr337kvUtsWsnvvMyw \
               "test label" \
               true
 {% endhighlight %}

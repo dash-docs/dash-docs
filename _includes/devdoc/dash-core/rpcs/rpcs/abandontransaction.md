@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_abandonTransaction="marks an in-wallet transaction and all its in-wallet descendants as abandoned. This allows their inputs to be respent." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Added in Bitcoin Core 0.12.0*
@@ -35,15 +37,15 @@ The `abandontransaction` RPC {{summary_abandonTransaction}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.13.1*
+*Example from Dash Core 0.12.2*
 
 Abandons the transaction on your node.
 
 {% highlight bash %}
-bitcoin-cli abandontransaction fa3970c341c9f5de6ab13f128cbfec58d732e736a505fe32137ad551c799ecc4
+dash-cli abandontransaction fa3970c341c9f5de6ab13f128cbfec58d732e736a505fe32137ad551c799ecc4
 {% endhighlight %}
 
-Result (no output from `bitcoin-cli` because result is set to `null`).
+Result (no output from `dash-cli` because result is set to `null`).
 
 *See also*
 

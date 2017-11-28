@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_addMultiSigAddress="adds a P2SH multisig address to the wallet." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -60,28 +62,26 @@ The `addmultisigaddress` RPC {{summary_addMultiSigAddress}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Adding a 2-of-3 P2SH multisig address to the "test account" by mixing
 two P2PKH addresses and one full public key:
 
 {% highlight bash %}
-bitcoin-cli -testnet addmultisigaddress \
-  2 \
-  '''
-    [
-      "mjbLRSidW1MY8oubvs4SMEnHNFXxCcoehQ",
-      "02ecd2d250a76d204011de6bc365a56033b9b3a149f679bc17205555d3c2b2854f",
-      "mt17cV37fBqZsnMmrHnGCm9pM28R1kQdMG"
-    ]
-  ''' \
-  'test account'
+dash-cli -testnet addmultisigaddress 2 '''
+  [
+    "yNpezfFDfoikDuT1f4iK75AiLp2YLPsGAb",
+    "0311f97539724e0de38fb1ff79f5148e5202459d06ed07193ab18c730274fd0d88",
+    "yVJj7TB3ZhMcSP2wo65ZFNqy23BQH9tT87"
+  ]
+''' \
+ 'test account'
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-2MyVxxgNBk5zHRPRY2iVjGRJHYZEp1pMCSq
+8uJLxDxk2gEMbidF5vT8XLS2UCgQmVcroW
 {% endhighlight %}
 
 (New P2SH multisig address also stored in wallet.)
