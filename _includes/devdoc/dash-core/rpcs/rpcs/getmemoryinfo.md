@@ -9,10 +9,15 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_getMemoryInfo="returns information about memory usage." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Added in Bitcoin Core 0.14.0*
 
+**_Not implemented in Dash Core (as of 0.12.2)_**
+
+{% comment %}
 The `getmemoryinfo` RPC {{summary_getMemoryInfo}}
 
 *Parameters: none*
@@ -28,8 +33,8 @@ The `getmemoryinfo` RPC {{summary_getMemoryInfo}}
 - n: "→<br>`locked`"
   t: "string : object"
   p: "Required<br>(exactly 1)"
-  d: "An object containing information about locked memory manager" 
-  
+  d: "An object containing information about locked memory manager"
+
 - n: "→→<br>`used`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
@@ -59,7 +64,7 @@ The `getmemoryinfo` RPC {{summary_getMemoryInfo}}
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "Number unused chunks"
-  
+
 {% enditemplate %}
 
 *Example from Bitcoin Core 0.14.1*
@@ -87,5 +92,7 @@ Result:
 *See also*
 
 * [GetMemPoolInfo][rpc getmempoolinfo]: {{summary_getMemPoolInfo}}
+
+{% endcomment %}
 
 {% endautocrossref %}
