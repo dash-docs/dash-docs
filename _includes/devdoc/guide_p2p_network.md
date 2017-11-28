@@ -953,13 +953,16 @@ the future. This will allow the integration between Evolution and Dash Core to
 proceed more smoothly and enable new governance object additions with minimal
 impact to Dash Core.
 
+Sentinel runs periodically and performs four main tasks as described below:
+governance sync, ping, governance object pruning, and superblock management.
+The governance object data is stored in a SQLite database.
+
 ##### Sentinel Sync
 Sentinel issues a `gobject list` RPC command and updates its database with the
 results returned from dashd. When objects are removed from the network, they are
 purged from the Sentinel database.
 
-##### Sentinel ping
-
+##### Sentinel Ping
 In Dash Core 12.2, use of the `watchdog` governance object type was replaced
 by integrating a sentinel information into the masternode ping (`mnp` message)
 via [Pull Request #1491](https://github.com/dashpay/dash/pull/1491).
@@ -967,7 +970,14 @@ Sentinel calls the `sentinelping` RPC which updates the masternode info to
 prevent it from entering a `MASTERNODE_WATCHDOG_EXPIRED` state.
 
 ##### Sentinel Prune
+Sentinel 1.1.0 introduced proposal pruning which automatically votes to delete
+expired proposals following approximately half of a superblock cycle. This delay
+period ensures that proposals are not deleted prematurely. Prior to this,
+proposals remained in memory unless a sufficient number of masternodes manually
+voted to delete them.
 
 ##### Sentinel Superblock
+Sentinel manages superblock creation, voting, and submission to dashd for
+network propagation.
 
 {% endautocrossref %}
