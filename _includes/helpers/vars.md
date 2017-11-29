@@ -22,12 +22,12 @@ http://opensource.org/licenses/MIT.
 - n: "{{DEPTH}}<br>`category`"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "Set to one of the following values:<br>• `send` if sending payment<br>• `receive` if this wallet received payment in a regular transaction<br>• `generate` if a matured and spendable coinbase<br>• `immature` if a coinbase that is not spendable yet<br>• `orphan` if a coinbase from a block that's not in the local best block chain"
+  d: "Set to one of the following values:<br>• `send` if sending payment normally<br>• `privatesend` if sending PrivateSent payment<br>• `receive` if this wallet received payment in a regular transaction<br>• `generate` if a matured and spendable coinbase<br>• `immature` if a coinbase that is not spendable yet<br>• `orphan` if a coinbase from a block that's not in the local best block chain"
 
 - n: "{{DEPTH}}<br>`amount`"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "A negative bitcoin amount if sending payment; a positive bitcoin amount if receiving payment (including coinbases)"
+  d: "A negative dash amount if sending payment; a positive dash amount if receiving payment (including coinbases)"
 
 - n: "{{DEPTH}}<br>`vout`"
   t: "number (int)"
@@ -35,9 +35,9 @@ http://opensource.org/licenses/MIT.
   d: "For an output, the output index (vout) for this output in this transaction.  For an input, the output index for the output being spent in its transaction.  Because inputs list the output indexes from previous transactions, more than one entry in the details array may have the same output index"
 
 - n: "{{DEPTH}}<br>`fee`"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Optional<br>(0 or 1)"
-  d: "If sending payment, the fee paid as a negative bitcoins value.  May be `0`. Not returned if receiving payment"
+  d: "If sending payment, the fee paid as a negative dash value.  May be `0`. Not returned if receiving payment"
 
 {% endcapture %}
 
@@ -122,7 +122,7 @@ http://opensource.org/licenses/MIT.
 ![Warning icon](/img/icons/icon_warning.svg)
 **Warning:** if account1 receives an unconfirmed payment and transfers
 it to account2 with the `move` RPC, account2 will be able to spend those
-bitcoins even if this parameter is set to `1` or higher.{% endcapture %}
+dash even if this parameter is set to `1` or higher.{% endcapture %}
 
 
 {% capture INCLUDE_DECODE_RAW_TRANSACTION %}

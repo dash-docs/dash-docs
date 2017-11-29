@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_importWallet="imports private keys from a file in wallet dump file format (see the `dumpwallet` RPC). These keys will be added to the keys currently in the wallet.  This call may need to rescan all or parts of the block chain for transactions affecting the newly-added keys, which may take several minutes." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support. Requires an unlocked wallet or an
@@ -22,7 +24,7 @@ The `importwallet` RPC {{summary_importWallet}}
 - n: "Filename"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "The file to import.  The path is relative to Bitcoin Core's working directory"
+  d: "The file to import.  The path is relative to Dash Core's working directory"
 
 {% enditemplate %}
 
@@ -36,12 +38,12 @@ The `importwallet` RPC {{summary_importWallet}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Import the file shown in the example subsection of the `dumpwallet` RPC.
 
 {% highlight bash %}
-bitcoin-cli -testnet importwallet /tmp/dump.txt
+dash-cli -testnet importwallet /tmp/dump.txt
 {% endhighlight %}
 
 (Success: no result displayed.)

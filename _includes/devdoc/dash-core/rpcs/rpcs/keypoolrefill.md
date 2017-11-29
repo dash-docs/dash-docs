@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_keyPoolRefill="fills the cache of unused pre-generated keys (the keypool)." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.  Requires an unlocked wallet or an unencrypted
@@ -22,7 +24,7 @@ The `keypoolrefill` RPC {{summary_keyPoolRefill}}
 - n: "Key Pool Size"
   t: "number (int)"
   p: "Optional<br>(0 or 1)"
-  d: "The new size of the keypool; if the number of keys in the keypool is less than this number, new keys will be generated.  Default is `100`.  The value `0` also equals the default.  The value specified is for this call only---the default keypool size is not changed"
+  d: "The new size of the keypool; if the number of keys in the keypool is less than this number, new keys will be generated.  Default is `1000`.  The value `0` also equals the default.  The value specified is for this call only---the default keypool size is not changed"
 
 {% enditemplate %}
 
@@ -36,12 +38,12 @@ The `keypoolrefill` RPC {{summary_keyPoolRefill}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Generate one extra key than the default:
 
 {% highlight bash %}
-bitcoin-cli -testnet keypoolrefill 101
+dash-cli -testnet keypoolrefill 1001
 {% endhighlight %}
 
 (No result shown: success.)

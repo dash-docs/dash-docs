@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_importAddress="adds an address or pubkey script to the wallet without the associated private key, allowing you to watch for transactions affecting that address or pubkey script without being able to spend any of its outputs." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -28,10 +30,10 @@ The `importaddress` RPC {{summary_importAddress}}
 *Parameter #2---The account into which to place the address or pubkey script*
 
 {% itemplate ntpd1 %}
-- n: "Account"
+- n: "Label"
   t: "string"
   p: "Optional<br>(0 or 1)"
-  d: "An account name into which the address should be placed.  Default is the default account, an empty string(\"\")"
+  d: "An optional label.  Default is an empty string(\"\")"
 
 {% enditemplate %}
 
@@ -41,7 +43,17 @@ The `importaddress` RPC {{summary_importAddress}}
 - n: "Rescan"
   t: "bool"
   p: "Optional<br>(0 or 1)"
-  d: "Set to `true` (the default) to rescan the entire local block database for transactions affecting any address or pubkey script in the wallet (including transaction affecting the newly-added address or pubkey script).  Set to `false` to not rescan the block database (rescanning can be performed at any time by restarting Bitcoin Core with the `-rescan` command-line argument).  Rescanning may take several minutes."
+  d: "Set to `true` (the default) to rescan the entire local block database for transactions affecting any address or pubkey script in the wallet (including transaction affecting the newly-added address or pubkey script).  Set to `false` to not rescan the block database (rescanning can be performed at any time by restarting Dash Core with the `-rescan` command-line argument).  Rescanning may take several minutes."
+
+{% enditemplate %}
+
+*Parameter #4---whether to rescan the block chain*
+
+{% itemplate ntpd1 %}
+- n: "P2SH"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "Add the P2SH version of the script as well"
 
 {% enditemplate %}
 
@@ -55,14 +67,14 @@ The `importaddress` RPC {{summary_importAddress}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Add an address, rescanning the local block database for any transactions
 matching it.
 
 {% highlight bash %}
-bitcoin-cli -testnet importaddress \
-  muhtvdmsnbQEPFuEmxcChX58fGvXaaUoVt "watch-only test" true
+dash-cli -testnet importaddress \
+  yg89Yt5Tjzs9nRpX3wJCuvr7KuQvgkvmeC "watch-only test" true
 {% endhighlight %}
 
 Result:
@@ -72,7 +84,7 @@ Result:
 Show that the address has been added:
 
 {% highlight bash %}
-bitcoin-cli -testnet getaccount muhtvdmsnbQEPFuEmxcChX58fGvXaaUoVt
+dash-cli -testnet getaccount yg89Yt5Tjzs9nRpX3wJCuvr7KuQvgkvmeC
 {% endhighlight %}
 
 Result:

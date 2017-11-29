@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_getUnconfirmedBalance="returns the wallet's total unconfirmed balance." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -21,16 +23,16 @@ The `getunconfirmedbalance` RPC {{summary_getUnconfirmedBalance}}
 
 {% itemplate ntpd1 %}
 - n: "`result`"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "The total number of bitcoins paid to this wallet in unconfirmed transactions"
+  d: "The total number of dash paid to this wallet in unconfirmed transactions"
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet getunconfirmedbalance
+dash-cli -testnet getunconfirmedbalance
 {% endhighlight %}
 
 Result (no unconfirmed incoming payments):
