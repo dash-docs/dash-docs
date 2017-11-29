@@ -13,10 +13,13 @@ http://opensource.org/licenses/MIT.
 
 *Added in Bitcoin Core 0.13.0*
 
+{{WARNING_ICON}} **_Not implemented in Dash Core (as of 0.12.2)_**
+
+{% comment %}
 *Requires wallet support.*
 
-The `importprunedfunds` RPC {{summary_importPrunedFunds}} Corresponding address or script must previously be included in wallet. 
-The end-user is responsible to import additional transactions that subsequently spend the imported 
+The `importprunedfunds` RPC {{summary_importPrunedFunds}} Corresponding address or script must previously be included in wallet.
+The end-user is responsible to import additional transactions that subsequently spend the imported
 outputs or rescan after the point in the blockchain the transaction is included.
 
 *Parameter #1---the raw transaction to import*
@@ -61,5 +64,7 @@ bitcoin-cli importprunedfunds "txhex" "txoutproof"
 
 * [ImportPrivKey][rpc importprivkey]: {{summary_importPrivKey}}
 * [RemovePrunedFunds][rpc removeprunedfunds]: {{summary_removePrunedFunds}}
+
+{% endcomment %}
 
 {% endautocrossref %}

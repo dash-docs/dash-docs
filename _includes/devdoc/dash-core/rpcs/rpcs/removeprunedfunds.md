@@ -13,6 +13,9 @@ http://opensource.org/licenses/MIT.
 
 *Added in Bitcoin Core 0.13.0*
 
+{{WARNING_ICON}} **_Not implemented in Dash Core (as of 0.12.2)_**
+
+{% comment %}
 *Requires wallet support.*
 
 The `removeprunedfunds` RPC {{summary_removePrunedFunds}} This will effect wallet balances.
@@ -50,5 +53,7 @@ ebf46446a512166eae7628734ea0a5
 
 * [ImportPrivKey][rpc importprivkey]: {{summary_importPrivKey}}
 * [ImportPrunedFunds][rpc importprunedfunds]: {{summary_importPrunedFunds}}
+
+{% endcomment %}
 
 {% endautocrossref %}

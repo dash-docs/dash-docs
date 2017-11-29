@@ -13,6 +13,9 @@ http://opensource.org/licenses/MIT.
 
 *Added in Bitcoin Core 0.14.0*
 
+{{WARNING_ICON}} **_Not implemented in Dash Core (as of 0.12.2)_**
+
+{% comment %}
 *Requires wallet support.  Wallet must be unlocked.*
 
 The `importmulti` RPC {{summary_importMulti}}
@@ -49,7 +52,7 @@ The `importmulti` RPC {{summary_importMulti}}
   t: "string"
   p: "Optional<br>(0 or 1)"
   d: "A redeem script. Only allowed if either the `address` field is a P2SH address or the `scriptPubKey` field is a P2SH scriptPubKey"
-  
+
 - n: "→ →<br>`pubkeys`"
   t: "array"
   p: "Optional<br>(0 or 1)"
@@ -59,7 +62,7 @@ The `importmulti` RPC {{summary_importMulti}}
   t: "array"
   p: "Optional<br>(0 or 1)"
   d: "Array of strings giving private keys whose corresponding public keys must occur in the scriptPubKey or redeemscript"
-  
+
 - n: "→ →<br>`internal`"
   t: "bool"
   p: "Optional<br>(0 or 1)"
@@ -99,27 +102,27 @@ The `importmulti` RPC {{summary_importMulti}}
   t: "array"
   p: "Required<br>(exactly 1)"
   d: "An array of JSON objects, with each object describing the execution result of each import"
-  
+
 - n: "→ Result"
   t: "object"
   p: "Required<br>(1 or more)"
-  d: "A JSON object describing the execution result of an imported address or script" 
+  d: "A JSON object describing the execution result of an imported address or script"
 
 - n: "→ → <br>`success`"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "Displays `true` if the import has been successful or `false` if it failed" 
+  d: "Displays `true` if the import has been successful or `false` if it failed"
 
 - n: "→ → <br>`error`"
   t: "string : object"
   p: "Optional<br>(0 or 1)"
   d: "A JSON object containing details about the error. Only displayed if the import fails"
-  
+
 - n: "→ → → <br>`code`"
   t: "number (int)"
   p: "Optional<br>(0 or 1)"
   d: "The error code"  
-  
+
 - n: "→ → → <br>`message`"
   t: "string"
   p: "Optional<br>(0 or 1)"
@@ -153,7 +156,7 @@ Result (scriptPubKey import failed because `internal` was not set to `true`):
   [
     {
       "success": true
-    }, 
+    },
     {
       "success": false,
       "error": {
@@ -169,5 +172,7 @@ Result (scriptPubKey import failed because `internal` was not set to `true`):
 * [ImportPrivKey][rpc importprivkey]: {{summary_importPrivKey}}
 * [ImportAddress][rpc importaddress]: {{summary_importAddress}}
 * [ImportWallet][rpc importwallet]: {{summary_importWallet}}
+
+{% endcomment %}
 
 {% endautocrossref %}

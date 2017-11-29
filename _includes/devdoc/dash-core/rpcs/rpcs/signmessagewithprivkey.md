@@ -13,6 +13,9 @@ http://opensource.org/licenses/MIT.
 
 *Added in Bitcoin Core 0.13.0*
 
+{{WARNING_ICON}} **_Not implemented in Dash Core (as of 0.12.2)_**
+
+{% comment %}
 The `signmessagewithprivkey` RPC {{summary_signMessageWithPrivKey}}
 
 *Parameter #1---the private key to sign with*
@@ -64,5 +67,7 @@ G+ZauMFgQExAJRKZSldbAVEaZo4i0p2AVivbFASo50PkUnynAMDUiNMVdXDlpYMWvatxCmYmLn8C9zyg
 
 * [SignMessage][rpc signmessage]: {{summary_signMessage}}
 * [VerifyMessage][rpc verifymessage]: {{summary_verifyMessage}}
+
+{% endcomment %}
 
 {% endautocrossref %}

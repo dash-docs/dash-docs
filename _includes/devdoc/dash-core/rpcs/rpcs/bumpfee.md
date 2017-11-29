@@ -9,13 +9,18 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_bumpFee="replaces an unconfirmed wallet transaction that signaled RBF with a new transaction that pays a higher fee." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Added in Bitcoin Core 0.14.0*
 
+{{WARNING_ICON}} **_Not implemented in Dash Core (as of 0.12.2)_**
+
+{% comment %}
 *Requires wallet support. Wallet must be unlocked.*
 
-The `bumpfee` RPC {{summary_bumpFee}} The increased fee is deducted from the change output. The command fails if the change output is too small to increase the fee or 
+The `bumpfee` RPC {{summary_bumpFee}} The increased fee is deducted from the change output. The command fails if the change output is too small to increase the fee or
 if the wallet or mempool contains a transaction that spends one of the transaction's outputs. The `-walletrbf` option needs to be enabled (default is `false`).
 
 *Parameter #1---The TXID of the transaction*
@@ -40,7 +45,7 @@ if the wallet or mempool contains a transaction that spends one of the transacti
   t: "numeric (int)"
   p: "Optional<br>(0 or 1)"
   d: "The confirmation target in blocks. Based on this value the new fee will be calculated using the same code as the `estimatefee` RPC. If not set, the default target of ´6´ blocks will be used"
-  
+
 - n: "→ <br>`totalFee`"
   t: "numeric (satoshis)"
   p: "Optional<br>(0 or 1)"
@@ -50,7 +55,7 @@ if the wallet or mempool contains a transaction that spends one of the transacti
   t: "bool"
   p: "Optional<br>(0 or 1)"
   d: "Whether the new transaction should still be BIP 125 replaceable. Even if set to `false` the transaction may still be replacable, for example if it has unconfirmed ancestors which are replaceable. The default is `true`"
-  
+
 {% enditemplate %}
 
 *Result---information about the new transaction*
@@ -75,7 +80,7 @@ if the wallet or mempool contains a transaction that spends one of the transacti
   t: "numeric (bitcoins)"
   p: "Required<br>(exactly 1)"
   d: "The fee of the new transaction"
-  
+
 - n: "→ <br>`errors`"
   t: "array"
   p: "Required<br>(exactly 1)"
@@ -112,5 +117,7 @@ Result:
 * [SignRawTransaction][rpc signrawtransaction]: {{summary_signRawTransaction}}
 * [SendRawTransaction][rpc sendrawtransaction]: {{summary_sendRawTransaction}}
 * [Serialized Transaction Format][raw transaction format]
+
+{% endcomment %}
 
 {% endautocrossref %}
