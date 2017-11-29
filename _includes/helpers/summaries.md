@@ -88,12 +88,12 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_listAddressGroupings="lists groups of addresses that may have had their common ownership made public by common use as inputs in the same transaction or from being used as change from a previous transaction." %}
 {% assign summary_listBanned="lists all banned IPs/Subnets." %}
 {% assign summary_listLockUnspent="returns a list of temporarily unspendable (locked) outputs." %}
-{% assign summary_listReceivedByAccount="lists the total number of bitcoins received by each account." %}
-{% assign summary_listReceivedByAddress="lists the total number of bitcoins received by each address." %}
+{% assign summary_listReceivedByAccount="lists the total number of dash received by each account." %}
+{% assign summary_listReceivedByAddress="lists the total number of dash received by each address." %}
 {% assign summary_listSinceBlock="gets all transactions affecting the wallet which have occurred since a particular block, plus the header hash of a block at a particular depth." %}
 {% assign summary_listTransactions="returns the most recent transactions that affect the wallet." %}
 {% assign summary_listUnspent="returns an array of unspent transaction outputs belonging to this wallet." %}
-{% assign summary_lockUnspent="temporarily locks or unlocks specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection when spending bitcoins. Locks are stored in memory only, so nodes start with zero locked outputs and the locked output list is always cleared when a node stops or fails." %}
+{% assign summary_lockUnspent="temporarily locks or unlocks specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection when spending dash. Locks are stored in memory only, so nodes start with zero locked outputs and the locked output list is always cleared when a node stops or fails." %}
 {% assign summary_masternode="" %}
 {% assign summary_masternodeBroadcast="provides a set of commands to create and relay masternode broadcast messages." %}
 {% assign summary_masternodeList="returns a list of masternodes in different modes." %}

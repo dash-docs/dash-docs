@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_listSinceBlock="gets all transactions affecting the wallet which have occurred since a particular block, plus the header hash of a block at a particular depth." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -69,13 +71,13 @@ The `listsinceblock` RPC {{summary_listSinceBlock}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.13.1*
+*Example from Dash Core 0.12.2*
 
 Get all transactions since a particular block (including watch-only
 transactions) and the header hash of the sixth most recent block.
 
 {% highlight bash %}
-bitcoin-cli -testnet listsinceblock \
+dash-cli -testnet listsinceblock \
               00000000688633a503f69818a70eac281302e9189b1bb57a76a05c329fcda718 \
               6 true
 {% endhighlight %}
@@ -84,45 +86,51 @@ Result (edited to show only two payments):
 
 {% highlight json %}
 {
-    "transactions" : [
-        {
-            "account" : "doc test",
-            "address" : "mmXgiR6KAhZCyQ8ndr2BCfEq1wNG2UnyG6",
-            "category" : "receive",
-            "amount" : 0.10000000,
-            "vout" : 0,
-            "confirmations" : 76478,
-            "blockhash" : "000000000017c84015f254498c62a7c884a51ccd75d4dd6dbdcb6434aa3bd44d",
-            "blockindex" : 1,
-            "blocktime" : 1399294967,
-            "txid" : "85a98fdf1529f7d5156483ad020a51b7f3340e47448cf932f470b72ff01a6821",
-            "walletconflicts" : [
-            ],
-            "time" : 1399294967,
-            "timereceived" : 1418924714,
-            "bip125-replaceable": "no"		
-        },
-        {
-            "involvesWatchonly" : true,
-            "account" : "someone else's address2",
-            "address" : "n3GNqMveyvaPvUbH469vDRadqpJMPc84JA",
-            "category" : "receive",
-            "amount" : 0.00050000,
-            "vout" : 0,
-            "confirmations" : 34714,
-            "blockhash" : "00000000bd0ed80435fc9fe3269da69bb0730ebb454d0a29128a870ea1a37929",
-            "blockindex" : 11,
-            "blocktime" : 1411051649,
-            "txid" : "99845fd840ad2cc4d6f93fafb8b072d188821f55d9298772415175c456f3077d",
-            "walletconflicts" : [
-            ],
-            "time" : 1418695703,
-            "timereceived" : 1418925580,
-            "bip125-replaceable": "no"
-        }
-    ],
-    "lastblock" : "0000000000984add1a686d513e66d25686572c7276ec3e358a7e3e9f7eb88619"
+  "transactions": [
+    {
+      "account": "",
+      "address": "yfCjqf9F7oNGD1sRqta2rNpCXSQ9dknDf5",
+      "category": "send",
+      "amount": -0.01000010,
+      "vout": 7,
+      "fee": 0.05000050,
+      "confirmations": 95,
+      "instantlock": false,
+      "blockhash": "0000000002aa705754c6ab4e15cf2183a1d174e61c080f64eb469c458669144b",
+      "blockindex": 1,
+      "blocktime": 1511972930,
+      "txid": "52e34eec71a4cf95c043b76567f55cec1bc293c444810d454a2d05f2a819b5ed",
+      "walletconflicts": [
+      ],
+      "time": 1511972930,
+      "timereceived": 1511974218,
+      "bip125-replaceable": "no",
+      "abandoned": false
+    },
+    {
+      "account": "",
+      "address": "yi2U4Cx2QH33LdNwk2c2oLABWzEZWhYU9k",
+      "category": "send",
+      "amount": -0.01000010,
+      "vout": 8,
+      "fee": 0.05000050,
+      "confirmations": 95,
+      "instantlock": false,
+      "blockhash": "0000000002aa705754c6ab4e15cf2183a1d174e61c080f64eb469c458669144b",
+      "blockindex": 1,
+      "blocktime": 1511972930,
+      "txid": "52e34eec71a4cf95c043b76567f55cec1bc293c444810d454a2d05f2a819b5ed",
+      "walletconflicts": [
+      ],
+      "time": 1511972930,
+      "timereceived": 1511974218,
+      "bip125-replaceable": "no",
+      "abandoned": false
+    }
+  ],
+  "lastblock": "000000000dba5583e3fc5c2df06b478e922702f53a1476aac8eb4322f648ccea"
 }
+
 {% endhighlight %}
 
 *See also*

@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_listUnspent="returns an array of unspent transaction outputs belonging to this wallet." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -83,7 +85,7 @@ the *spendable* field in the results described below.
 - n: "→ →<br>`account`"
   t: "string"
   p: "Optional<br>(0 or 1)"
-  d: "*Deprecated: will be removed in a later version of Bitcoin Core*<br><br>If the address returned belongs to an account, this is the account.  Otherwise not returned"
+  d: "*Deprecated: will be removed in a later version of Dash Core*<br><br>If the address returned belongs to an account, this is the account.  Otherwise not returned"
 
 - n: "→ →<br>`scriptPubKey`"
   t: "string (hex)"
@@ -98,18 +100,23 @@ the *spendable* field in the results described below.
 - n: "→ →<br>`amount`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
-  d: "The amount paid to the output in bitcoins"
+  d: "The amount paid to the output in dash"
 
 - n: "→ →<br>`confirmations`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "The number of confirmations received for the transaction containing this output"
 
+- n: "→ →<br>`ps_rounds`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The number of PrivateSend rounds"
+
 - n: "→ →<br>`spendable`"
   t: "bool"
   p: "Required<br>(exactly 1)"
   d: "Set to `true` if the private key or keys needed to spend this output are part of the wallet.  Set to `false` if not (such as for watch-only addresses)"
-  
+
 - n: "→ →<br>`solvable`"
   t: "bool"
   p: "Required<br>(exactly 1)"
@@ -117,15 +124,15 @@ the *spendable* field in the results described below.
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.13.1*
+*Example from Dash Core 0.12.2*
 
 Get all outputs confirmed at least 6 times for a particular
 address:
 
 {% highlight bash %}
-bitcoin-cli -testnet listunspent 6 99999999 '''
+dash-cli -testnet listunspent 6 99999999 '''
   [
-    "mgnucj8nYqdrPFh2JfZSB1NmUThUGnmsqe"
+    "yTQNnbby2yhxoK1UtL9E5J9epGtkAoFWSm"
   ]
 '''
 {% endhighlight %}
@@ -134,17 +141,17 @@ Result:
 
 {% highlight json %}
 [
-    {
-        "txid" : "d54994ece1d11b19785c7248868696250ab195605b469632b7bd68130e880c9a",
-        "vout" : 1,
-        "address" : "mgnucj8nYqdrPFh2JfZSB1NmUThUGnmsqe",
-        "account" : "test label",
-        "scriptPubKey" : "76a9140dfc8bafc8419853b34d5e072ad37d1a5159f58488ac",
-        "amount" : 0.00010000,
-        "confirmations" : 6210,
-        "spendable" : true,
-        "sovable" : true
-    }
+  {
+    "txid": "52e34eec71a4cf95c043b76567f55cec1bc293c444810d454a2d05f2a819b5ed",
+    "vout": 3,
+    "address": "yTQNnbby2yhxoK1UtL9E5J9epGtkAoFWSm",
+    "scriptPubKey": "76a9144db791c2388be4716f048be2648bafe1944f787688ac",
+    "amount": 0.01000010,
+    "confirmations": 113,
+    "ps_rounds": 4,
+    "spendable": true,
+    "solvable": true
+  }
 ]
 {% endhighlight %}
 

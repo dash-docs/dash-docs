@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_listTransactions="returns the most recent transactions that affect the wallet." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -21,7 +23,7 @@ The `listtransactions` RPC {{summary_listTransactions}}
 - n: "Account"
   t: "string"
   p: "Optional<br>(0 or 1)"
-  d: "*Deprecated: will be removed in a later version of Bitcoin Core*<br><br>The name of an account to get transactinos from.  Use an empty string (\"\") to get transactions for the default account.  Default is `*` to get transactions for all accounts."
+  d: "*Deprecated: will be removed in a later version of Dash Core*<br><br>The name of an account to get transactinos from.  Use an empty string (\"\") to get transactions for the default account.  Default is `*` to get transactions for all accounts."
 
 {% enditemplate %}
 
@@ -65,7 +67,7 @@ The `listtransactions` RPC {{summary_listTransactions}}
 - n: "→ →<br>`account`"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "*Deprecated: will be removed in a later version of Bitcoin Core*<br><br>The account which the payment was credited to or debited from.  May be an empty string (\"\") for the default account"
+  d: "*Deprecated: will be removed in a later version of Dash Core*<br><br>The account which the payment was credited to or debited from.  May be an empty string (\"\") for the default account"
 
 - n: "→ →<br>`address`"
   t: "string (base58)"
@@ -78,30 +80,35 @@ The `listtransactions` RPC {{summary_listTransactions}}
   d: "Set to one of the following values:<br>• `send` if sending payment<br>• `receive` if this wallet received payment in a regular transaction<br>• `generate` if a matured and spendable coinbase<br>• `immature` if a coinbase that is not spendable yet<br>• `orphan` if a coinbase from a block that's not in the local best block chain<br>• `move` if an off-block-chain move made with the `move` RPC"
 
 - n: "→ →<br>`amount`"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "A negative bitcoin amount if sending payment; a positive bitcoin amount if receiving payment (including coinbases)"
+  d: "A negative dash amount if sending payment; a positive dash amount if receiving payment (including coinbases)"
 
 - n: "→ →<br>`label`"
   t: "string"
   p: "Optional<br>(0 or 1)"
   d: "A comment for the address/transaction"  
- 
+
 - n: "→ →<br>`vout`"
   t: "number (int)"
   p: "Optional<br>(0 or 1)"
   d: "For an output, the output index (vout) for this output in this transaction.  For an input, the output index for the output being spent in its transaction.  Because inputs list the output indexes from previous transactions, more than one entry in the details array may have the same output index.  Not returned for *move* category payments"
 
 - n: "→ →<br>`fee`"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Optional<br>(0 or 1)"
-  d: "If sending payment, the fee paid as a negative bitcoins value.  May be `0`. Not returned if receiving payment or for *move* category payments"
+  d: "If sending payment, the fee paid as a negative dash value.  May be `0`. Not returned if receiving payment or for *move* category payments"
 
 - n: "→ →<br>`confirmations`"
   t: "number (int)"
   p: "Optional<br>(0 or 1)"
   d: "The number of confirmations the transaction has received.  Will be `0` for unconfirmed and `-1` for conflicted.  Not returned for *move* category payments"
-  
+
+- n: "→<br>`instantlock`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "Current transaction lock state"  
+
 - n: "→ →<br>`trusted`"
   t: "bool"
   p: "Optional<br>(0 or 1)"
@@ -165,52 +172,52 @@ The `listtransactions` RPC {{summary_listTransactions}}
 - n: "→ →<br>`otheraccount`"
   t: "string"
   p: "Optional<br>(0 or 1)"
-  d: "This is the account the bitcoins were moved from or moved to, as indicated by a negative or positive *amount* field in this payment.  Only returned by *move* category payments"
+  d: "This is the account the dash were moved from or moved to, as indicated by a negative or positive *amount* field in this payment.  Only returned by *move* category payments"
 
 - n: "→ →<br>`bip125-replaceable`"
   t: "string"
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.12.0*<br><br>Indicates if a transaction is replaceable under BIP125:<br>• `yes` replaceable<br>• `no` not replaceable<br>• `unknown` for unconfirmed transactions not in the mempool"
-  
+
 - n: "→ →<br>`abandoned`"
   t: "bool"
   p: "Optional<br>(0 or 1)"
   d: "*Added in Bitcoin Core 0.12.1*<br><br>Indicates if a transaction is was abandoned:<br>• `true` if it was abandoned (inputs are respendable)<br>• `false`  if it was not abandoned<br>Only returned by *send* category payments"
-  
+
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.13.1*
+*Example from Dash Core 0.12.2*
 
-List the most recent transaction from all accounts including watch-only addresses.
+List the most recent transaction from the main account including watch-only addresses.
 
 {% highlight bash %}
-bitcoin-cli listtransactions "*" 1 0 true
+dash-cli listtransactions "" 1 0 true
 {% endhighlight %}
 
 Result:
 
 {% highlight json %}
 [
-    {
-        "involvesWatchonly" : true,
-        "account" : "",
-        "address" : "1GeDA9rRpqaCdsdkTzGtbajt6jPvn3pg2N",
-        "category" : "send",
-        "amount" : -3.45902877,
-        "vout" : 0,
-        "fee" : -0.00032890,
-        "confirmations" : 29710,
-        "blockhash" : "0000000000000000008b9cb38cd3105e75af94b3af79d0a59cbe4edb618fb814",
-        "blockindex" : 1705,
-        "blocktime" : 1463173519,
-        "txid" : "9b32d4315ac4c5e0d3a5fb947b9a198d3641698badc820643a7df23081f99695e",
-        "walletconflicts" : [
-        ],
-        "time" : 1418695703,
-        "timereceived" : 1418925580,
-	"bip125-replaceable" : "no",
-	"abandoned": false
-    }
+  {
+    "account": "MN Setup",
+    "address": "yY6AmGopsZS31wy1JLHR9P6AC6owFaXwuh",
+    "category": "immature",
+    "amount": 11.25000000,
+    "label": "MN Setup",
+    "vout": 3,
+    "confirmations": 20,
+    "instantlock": false,
+    "generated": true,
+    "blockhash": "000000000207e556193e19287d2e554a5f99e1ff7cb19367e8de8ad6bacc494e",
+    "blockindex": 0,
+    "blocktime": 1511986957,
+    "txid": "cd9d44cd87ffb784f9dac384bad7db55324d3f47724eb60e16b3de6a26175936",
+    "walletconflicts": [
+    ],
+    "time": 1511986957,
+    "timereceived": 1511986982,
+    "bip125-replaceable": "no"
+  }
 ]
 {% endhighlight %}
 
