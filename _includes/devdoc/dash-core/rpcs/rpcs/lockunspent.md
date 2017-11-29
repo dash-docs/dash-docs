@@ -7,7 +7,9 @@ http://opensource.org/licenses/MIT.
 ##### LockUnspent
 {% include helpers/subhead-links.md %}
 
-{% assign summary_lockUnspent="temporarily locks or unlocks specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection when spending bitcoins. Locks are stored in memory only, so nodes start with zero locked outputs and the locked output list is always cleared when a node stops or fails." %}
+{% assign summary_lockUnspent="temporarily locks or unlocks specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection when spending dash. Locks are stored in memory only, so nodes start with zero locked outputs and the locked output list is always cleared when a node stops or fails." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
@@ -60,20 +62,20 @@ The `lockunspent` RPC {{summary_lockUnspent}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Lock two outputs:
 
 {% highlight bash %}
-bitcoin-cli -testnet lockunspent false '''
+dash-cli -testnet lockunspent false '''
   [
     {
-      "txid": "5a7d24cd665108c66b2d56146f244932edae4e2376b561b3d396d5ae017b9589",
+      "txid": "d3d57ec5e4168b7145e911d019e9713563c1f2db5b2d6885739ea887feca4c87",
       "vout": 0
     },
     {
-      "txid": "6c5edd41a33f9839257358ba6ddece67df9db7f09c0db6bbea00d0372e8fe5cd",
-      "vout": 0
+      "txid": "607897611b2f7c5b23297b2a352a8d6f4383f8d0782585f93220082d361f8db9",
+      "vout": 1
     }
   ]
 '''
@@ -88,7 +90,7 @@ true
 Verify the outputs have been locked:
 
 {% highlight bash %}
-bitcoin-cli -testnet listlockunspent
+dash-cli -testnet listlockunspent
 {% endhighlight %}
 
 Result
@@ -96,12 +98,12 @@ Result
 {% highlight json %}
 [
   {
-    "txid": "5a7d24cd665108c66b2d56146f244932edae4e2376b561b3d396d5ae017b9589",
+    "txid": "d3d57ec5e4168b7145e911d019e9713563c1f2db5b2d6885739ea887feca4c87",
     "vout": 0
   },
   {
-    "txid": "6c5edd41a33f9839257358ba6ddece67df9db7f09c0db6bbea00d0372e8fe5cd",
-    "vout": 0
+    "txid": "607897611b2f7c5b23297b2a352a8d6f4383f8d0782585f93220082d361f8db9",
+    "vout": 1
   }
 ]
 {% endhighlight %}
@@ -109,11 +111,11 @@ Result
 Unlock one of the above outputs:
 
 {% highlight bash %}
-bitcoin-cli -testnet lockunspent true '''
+dash-cli -testnet lockunspent true '''
 [
   {
-    "txid": "5a7d24cd665108c66b2d56146f244932edae4e2376b561b3d396d5ae017b9589",
-    "vout": 0
+    "txid": "607897611b2f7c5b23297b2a352a8d6f4383f8d0782585f93220082d361f8db9",
+    "vout": 1
   }
 ]
 '''
@@ -128,7 +130,7 @@ true
 Verify the output has been unlocked:
 
 {% highlight bash %}
-bitcoin-cli -testnet listlockunspent
+dash-cli -testnet listlockunspent
 {% endhighlight %}
 
 Result:
@@ -136,7 +138,7 @@ Result:
 {% highlight json %}
 [
   {
-    "txid": "6c5edd41a33f9839257358ba6ddece67df9db7f09c0db6bbea00d0372e8fe5cd",
+    "txid": "d3d57ec5e4168b7145e911d019e9713563c1f2db5b2d6885739ea887feca4c87",
     "vout": 0
   }
 ]

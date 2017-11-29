@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_listAddressGroupings="lists groups of addresses that may have had their common ownership made public by common use as inputs in the same transaction or from being used as change from a previous transaction." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -48,31 +50,40 @@ The `listaddressgroupings` RPC {{summary_listAddressGroupings}}
 - n: "→ → →<br>Account"
   t: "string"
   p: "Optional<br>(0 or 1)"
-  d: "*Deprecated: will be removed in a later version of Bitcoin Core*<br><br>The account the address belongs to, if any.  This field will not be returned for change addresses.  The default account is an empty string (\"\")"
+  d: "*Deprecated: will be removed in a later version of Dash Core*<br><br>The account the address belongs to, if any.  This field will not be returned for change addresses.  The default account is an empty string (\"\")"
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet listaddressgroupings
+dash-cli -testnet listaddressgroupings
 {% endhighlight %}
 
-Result (edited to only the first two results):
+Result (edited to only three results):
 
 {% highlight json %}
 [
+  [
     [
-        [
-            "mgKgzJ7HR64CrB3zm1B4FUUCLtaSqUKfDb",
-            0.00000000
-        ],
-        [
-            "mnUbTmdAFD5EAg3348Ejmonub7JcWtrMck",
-            0.00000000,
-            "test1"
-        ]
+      "yNpezfFDfoikDuT1f4iK75AiLp2YLPsGAb",
+      0.00000000
     ]
+  ],
+  [
+    [
+      "yX7SvurfpwSD7QDA3pZNYNxt6kPPiZmRAk",
+      27.02970000,
+      "Test1"
+    ]
+  ],
+  [
+    [
+      "ygMuVDN2raRBma86GpwyQeJV18kR1261d1",
+      11.00000000,
+      "Test2"
+    ]
+  ]
 ]
 {% endhighlight %}
 

@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_listLockUnspent="returns a list of temporarily unspendable (locked) outputs." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -42,20 +44,20 @@ The `listlockunspent` RPC {{summary_listLockUnspent}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet listlockunspent
+dash-cli -testnet listlockunspent
 {% endhighlight %}
 
 Result:
 
 {% highlight json %}
 [
-    {
-        "txid" : "ca7cb6a5ffcc2f21036879493db4530c0ce9b5bff9648f9a3be46e2dfc8e0166",
-        "vout" : 0
-    }
+  {
+    "txid": "d3d57ec5e4168b7145e911d019e9713563c1f2db5b2d6885739ea887feca4c87",
+    "vout": 0
+  }
 ]
 {% endhighlight %}
 

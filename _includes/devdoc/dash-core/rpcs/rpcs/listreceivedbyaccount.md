@@ -7,7 +7,9 @@ http://opensource.org/licenses/MIT.
 ##### ListReceivedByAccount
 {% include helpers/subhead-links.md %}
 
-{% assign summary_listReceivedByAccount="lists the total number of bitcoins received by each account." %}
+{% assign summary_listReceivedByAccount="lists the total number of dash received by each account." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
@@ -15,14 +17,24 @@ http://opensource.org/licenses/MIT.
 
 The `listreceivedbyaccount` RPC {{summary_listReceivedByAccount}}
 
-{{WARNING}} `listreceivedbyaccount` will be removed in a later version of Bitcoin
+{{WARNING}} `listreceivedbyaccount` will be removed in a later version of Dash
 Core.  Use the RPCs listed in the See Also subsection below instead.
 
 *Parameter #1---the minimum number of confirmations a transaction must have to be counted*
 
 {{INCLUDE_CONFIRMATIONS_PARAMETER}}
 
-*Parameter #2---whether to include empty accounts*
+*Parameter #2---whether to add 5 confirmations to transactions locked via InstantSend*
+
+{% itemplate ntpd1 %}
+- n: "addlockconf"
+  t: "bool"
+  p: "Optional<br>(exactly 1)"
+  d: "Add the number of InstantSend confirmations to InstantSend locked transactions"
+
+{% enditemplate %}
+
+*Parameter #3---whether to include empty accounts*
 
 {% itemplate ntpd1 %}
 - n: "Include Empty"
@@ -32,7 +44,7 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% enditemplate %}
 
-*Parameter #3---whether to include watch-only addresses in results*
+*Parameter #4---whether to include watch-only addresses in results*
 
 {{INCLUDE_INCLUDE_WATCH_ONLY_PARAMETER}}
 
@@ -60,24 +72,30 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
   d: "The name of the account"
 
 - n: "→ →<br>`amount`<!--noref-->"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "The total amount received by this account in bitcoins"
+  d: "The total amount received by this account in dash"
 
 - n: "→ →<br>`confirmations`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "The number of confirmations received by the last transaction received by this account.  May be `0`"
 
+- n: "→ →<br>`label`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "A comment for the address/transaction"
+
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Get the balances for all non-empty accounts, including only transactions
-which have been confirmed at least six times:
+which have been confirmed at least six times (include InstantSend confirmations
+for locked InstantSend transactions):
 
 {% highlight bash %}
-bitcoin-cli -testnet listreceivedbyaccount 6 false
+dash-cli -testnet listreceivedbyaccount 6 true false true
 {% endhighlight %}
 
 Result (edited to only show the first two results):

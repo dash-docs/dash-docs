@@ -7,7 +7,9 @@ http://opensource.org/licenses/MIT.
 ##### ListReceivedByAddress
 {% include helpers/subhead-links.md %}
 
-{% assign summary_listReceivedByAddress="lists the total number of bitcoins received by each address." %}
+{% assign summary_listReceivedByAddress="lists the total number of dash received by each address." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
@@ -19,7 +21,17 @@ The `listreceivedbyaddress` RPC {{summary_listReceivedByAddress}}
 
 {{INCLUDE_CONFIRMATIONS_PARAMETER}}
 
-*Parameter #2---whether to include empty accounts*
+*Parameter #2---whether to add 5 confirmations to transactions locked via InstantSend*
+
+{% itemplate ntpd1 %}
+- n: "addlockconf"
+  t: "bool"
+  p: "Optional<br>(exactly 1)"
+  d: "Add the number of InstantSend confirmations to InstantSend locked transactions"
+
+{% enditemplate %}
+
+*Parameter #3---whether to include empty accounts*
 
 {% itemplate ntpd1 %}
 - n: "Include Empty"
@@ -29,7 +41,7 @@ The `listreceivedbyaddress` RPC {{summary_listReceivedByAddress}}
 
 {% enditemplate %}
 
-*Parameter #3---whether to include watch-only addresses in results*
+*Parameter #4---whether to include watch-only addresses in results*
 
 {{INCLUDE_INCLUDE_WATCH_ONLY_PARAMETER}}
 
@@ -59,12 +71,12 @@ The `listreceivedbyaddress` RPC {{summary_listReceivedByAddress}}
 - n: "→ →<br>`account`"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "*Deprecated: will be removed in a later version of Bitcoin Core*<br><br>The account the address belongs to.  May be the default account, an empty string (\"\")"
+  d: "*Deprecated: will be removed in a later version of Dash Core*<br><br>The account the address belongs to.  May be the default account, an empty string (\"\")"
 
 - n: "→ →<br>`amount`"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "The total amount the address has received in bitcoins"
+  d: "The total amount the address has received in dash"
 
 - n: "→ →<br>`confirmations`"
   t: "number (int)"
@@ -88,41 +100,42 @@ The `listreceivedbyaddress` RPC {{summary_listReceivedByAddress}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.13.1*
+*Example from Dash Core 0.12.2*
 
 List addresses with balances confirmed by at least six blocks, including
-watch-only addresses:
+watch-only addresses (include InstantSend confirmations for locked InstantSend
+transactions):
 
 {% highlight bash %}
-bitcoin-cli -testnet listreceivedbyaddress 6 false true
+dash-cli -testnet listreceivedbyaddress 6 true false true
 {% endhighlight %}
 
 Result (edit to show only two entries):
 
 {% highlight json %}
 [
-    {
-        "address" : "mnUbTmdAFD5EAg3348Ejmonub7JcWtrMck",
-        "account" : "test1",
-        "amount" : 1.99900000,
-        "confirmations" : 55680,
-        "label" : "test1",
-        "txids" : [
-            "4d71a6127796766c39270881c779b6e05183f2bf35589261e9572436356f287f",
-            "997115d0cf7b83ed332e6c1f2e8c44f803c95ea43490c84ce3e9ede4b2e1605f"
-        ]
-    },
-    {
-        "involvesWatchonly" : true,
-        "address" : "n3GNqMveyvaPvUbH469vDRadqpJMPc84JA",
-        "account" : "someone else's address2",
-        "amount" : 0.00050000,
-        "confirmations" : 34714,
-        "label" : "someone else's address2",
-        "txids" : [
-            "99845fd840ad2cc4d6f93fafb8b072d188821f55d9298772415175c456f3077d"
-        ]
-    }
+  {
+    "address": "yV3ZTfwyfUmpspncMSitiwzh7EvqSGrqZA",
+    "account": "",
+    "amount": 1000.00000000,
+    "confirmations": 26779,
+    "label": "",
+    "txids": [
+      "0456aaf51a8df21dd47c2a06ede046a5bf7403bcb95d14d1d71b178c189fb933"
+    ]
+  },
+  {
+    "involvesWatchonly" : true,
+    "address": "yfoR9uM3rcDfUc7AEfUNm5BjVYGFw7uQ9w",
+    "account": "Watching",
+    "amount": 1877.78476068,
+    "confirmations": 26876,
+    "label": "Watching",
+    "txids": [
+      "cd64114c803a2a243cb6ce4eb5c98e60cd2c688be8e900b3b957fe520cf42601",
+      "83d3f7f31926908962e336341b1895d5f734f9d7149bdb35f0381cc78019bd83"
+    ]
+  }
 ]
 {% endhighlight %}
 
