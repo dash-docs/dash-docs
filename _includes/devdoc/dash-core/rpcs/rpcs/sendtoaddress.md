@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_sendToAddress="spends an amount to a given address." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support. Requires an unlocked wallet or an
@@ -22,7 +24,7 @@ The `sendtoaddress` RPC {{summary_sendToAddress}}
 - n: "To Address"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "A P2PKH or P2SH address to which the bitcoins should be sent"
+  d: "A P2PKH or P2SH address to which the dash should be sent"
 
 {% enditemplate %}
 
@@ -30,9 +32,9 @@ The `sendtoaddress` RPC {{summary_sendToAddress}}
 
 {% itemplate ntpd1 %}
 - n: "Amount"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "The amount to spent in bitcoins"
+  d: "The amount to spent in dash"
 
 {% enditemplate %}
 
@@ -62,8 +64,28 @@ The `sendtoaddress` RPC {{summary_sendToAddress}}
 - n: "Subtract Fee From Amount"
   t: "boolean"
   p: "Optional<br>(0 or 1)"
-  d: "The fee will be deducted from the amount being sent. The recipient will receive less bitcoins than you enter in the amount field. Default is `false`"
-  
+  d: "The fee will be deducted from the amount being sent. The recipient will receive less dash than you enter in the amount field. Default is `false`"
+
+{% enditemplate %}
+
+*Parameter #6---use InstantSend*
+
+{% itemplate ntpd1 %}
+- n: "Use InstantSend"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "If set to `true`, send this transaction as InstantSend (default: false)."
+
+{% enditemplate %}
+
+*Parameter #7---use PrivateSend*
+
+{% itemplate ntpd1 %}
+- n: "Use PrivateSend"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "If set to `true`, use anonymized funds only (default: false)."
+
 {% enditemplate %}
 
 *Result---a TXID of the sent transaction*
@@ -73,23 +95,71 @@ The `sendtoaddress` RPC {{summary_sendToAddress}}
   t: "string"
   p: "Required<br>(exactly 1)"
   d: "The TXID of the sent transaction, encoded as hex in RPC byte order"
-  
+
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
-Spend 0.1 bitcoins to the address below with the comment "sendtoadress
+Spend 0.1 dash to the address below with the comment "sendtoadress
 example" and the comment-to "Nemo From Example.com":
 
 {% highlight bash %}
-bitcoin-cli -testnet sendtoaddress mmXgiR6KAhZCyQ8ndr2BCfEq1wNG2UnyG6 \
-  0.1 "sendtoaddress example" "Nemo From Example.com"
+dash-cli -testnet sendtoaddress ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv \
+  1.0 "sendtoaddress example" "Nemo From Example.com"
 {% endhighlight %}
 
 Result:
 
 {% highlight text %}
-a2a2eb18cb051b5fe896a32b1cb20b179d981554b6bd7c5a956e56a0eecb04f0
+70e2029d363f0110fe8a0aa2ba7bd771a579453135568b2aa559b2cb30f875aa
+{% endhighlight %}
+
+*Example from Dash Core 0.12.2 (InstantSend)*
+
+Spend 0.1 dash via InstantSend to the address below with the comment "sendtoadress
+example" and the comment-to "Nemo From Example.com":
+
+{% highlight bash %}
+dash-cli -testnet sendtoaddress ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv \
+  1.0 "sendtoaddress example" "Nemo From Example.com" false true
+{% endhighlight %}
+
+Result:
+
+{% highlight text %}
+af002b9c931b5efb5b2852df3d65efd48c3b9ac2ba0ef8a4cf97b894f3ff08c2
+{% endhighlight %}
+
+*Example from Dash Core 0.12.2 (PrivateSend)*
+
+Spend 0.1 dash via PrivateSend to the address below with the comment "sendtoadress
+example" and the comment-to "Nemo From Example.com":
+
+{% highlight bash %}
+dash-cli -testnet sendtoaddress ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv \
+  1.0 "sendtoaddress example" "Nemo From Example.com" false false true
+{% endhighlight %}
+
+Result:
+
+{% highlight text %}
+949833bc49e0643f63e2afed1704ccccf005a93067a4e46165b06ace42544694
+{% endhighlight %}
+
+*Example from Dash Core 0.12.2 (InstantSend + PrivateSend)*
+
+Spend 0.1 dash via InstantSend and PrivateSend to the address below with the
+comment "sendtoadressexample" and the comment-to "Nemo From Example.com":
+
+{% highlight bash %}
+dash-cli -testnet sendtoaddress ySutkc49Khpz1HQN8AfWNitVBLwqtyaxvv \
+  1.008 "sendtoaddress example" "Nemo From Example.com" false true true
+{% endhighlight %}
+
+Result:
+
+{% highlight text %}
+ba4bbe29fa06b67d6f3f3a73e381627e66abe22e217ce329aefad41ea72c3922
 {% endhighlight %}
 
 *See also*

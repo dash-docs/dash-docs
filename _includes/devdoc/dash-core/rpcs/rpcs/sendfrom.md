@@ -7,7 +7,9 @@ http://opensource.org/licenses/MIT.
 ##### SendFrom
 {% include helpers/subhead-links.md %}
 
-{% assign summary_sendFrom="spends an amount from a local account to a bitcoin address." %}
+{% assign summary_sendFrom="spends an amount from a local account to a dash address." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
@@ -16,7 +18,7 @@ unencrypted wallet.*
 
 The `sendfrom` RPC {{summary_sendFrom}}
 
-{{WARNING}} `sendfrom` will be removed in a later version of Bitcoin
+{{WARNING}} `sendfrom` will be removed in a later version of Dash
 Core.  Use the RPCs listed in the See Also subsection below instead.
 
 *Parameter #1---from account*
@@ -25,7 +27,7 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 - n: "From Account"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "The name of the account from which the bitcoins should be spent.  Use an empty string (\"\") for the default account"
+  d: "The name of the account from which the dash should be spent.  Use an empty string (\"\") for the default account"
 
 {% enditemplate %}
 
@@ -35,7 +37,7 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 - n: "To Address"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "A P2PKH or P2SH address to which the bitcoins should be sent"
+  d: "A P2PKH or P2SH address to which the dash should be sent"
 
 {% enditemplate %}
 
@@ -43,9 +45,9 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% itemplate ntpd1 %}
 - n: "Amount"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "The amount to spend in bitcoins.  Bitcoin Core will ensure the account has sufficient bitcoins to pay this amount (but the transaction fee paid is not included in the calculation, so an account can spend a total of its balance plus the transaction fee)"
+  d: "The amount to spend in dash.  Dash Core will ensure the account has sufficient dash to pay this amount (but the transaction fee paid is not included in the calculation, so an account can spend a total of its balance plus the transaction fee)"
 
 {% enditemplate %}
 
@@ -53,7 +55,11 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {{INCLUDE_SPEND_CONFIRMATIONS}}
 
-*Parameter #5---a comment*
+*Parameter #5---whether to add 5 confirmations to transactions locked via InstantSend*
+
+{{INCLUDE_ADD_LOCK_CONFIRMATIONS_PARAMETER}}
+
+*Parameter #6---a comment*
 
 {% itemplate ntpd1 %}
 - n: "Comment"
@@ -63,7 +69,7 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% enditemplate %}
 
-*Parameter #6---a comment about who the payment was sent to*
+*Parameter #7---a comment about who the payment was sent to*
 
 {% itemplate ntpd1 %}
 - n: "Comment To"
@@ -83,19 +89,20 @@ Core.  Use the RPCs listed in the See Also subsection below instead.
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
-Spend 0.1 bitcoins from the account "test" to the address indicated below
+Spend 0.1 dash from the account "test" to the address indicated below
 using only UTXOs with at least six confirmations, giving the
 transaction the comment "Example spend" and labeling the spender
 "Example.com":
 
 
 {% highlight bash %}
-bitcoin-cli -testnet sendfrom "test" \
-            mgnucj8nYqdrPFh2JfZSB1NmUThUGnmsqe \
+dash-cli -testnet sendfrom "test" \
+            yhJays6zGUFKq1KS5V5WLbyk3cwCXyGrKd \
             0.1 \
             6 \
+            false \
             "Example spend" \
             "Example.com"
 {% endhighlight %}
@@ -103,7 +110,7 @@ bitcoin-cli -testnet sendfrom "test" \
 Result:
 
 {% highlight text %}
-f14ee5368c339644d3037d929bbe1f1544a532f8826c7b7288cb994b0b0ff5d8
+cd64b9d55c63bf247f2eca32f978e340622107b607a46c422dabcdc20c0571fe
 {% endhighlight %}
 
 *See also*

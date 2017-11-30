@@ -113,7 +113,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_restGetMemPool-contents="returns all transaction in the memory pool with detailed information." %}
 {% assign summary_restGetMemPool-info="returns information about the node's current transaction memory pool." %}
 {% assign summary_restGetTx="gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Bitcoin Core only stores complete transaction data for UTXOs and your own transactions, so this method may fail on historic transactions unless you use the non-default `txindex=1` in your Bitcoin Core startup settings." %}
-{% assign summary_sendFrom="spends an amount from a local account to a bitcoin address." %}
+{% assign summary_sendFrom="spends an amount from a local account to a dash address." %}
 {% assign summary_sendMany="creates and broadcasts a transaction which sends outputs to multiple addresses." %}
 {% assign summary_sendRawTransaction="validates a transaction and broadcasts it to the peer-to-peer network." %}
 {% assign summary_sendToAddress="spends an amount to a given address." %}

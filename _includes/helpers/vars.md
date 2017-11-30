@@ -319,6 +319,17 @@ NOT IN DASH
 {% enditemplate %}
 {% endcapture %}
 
+{% capture INCLUDE_ADD_LOCK_CONFIRMATIONS_PARAMETER %}
+{% itemplate ntpd1 %}
+- n: "addlockconf"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "If set to `true`, add the number of InstantSend confirmations (default=5) to the confirmation count for transactions locked via InstantSend. If set to `false` (the default), the standard confirmation count is not modified for InstantSend transactions."
+
+{% enditemplate %}
+{% endcapture %}
+
+
 {% assign WARNING="![Warning icon](/img/icons/icon_warning.svg) **Warning:**" %}
 {% assign WARNING_ICON="![Warning icon](/img/icons/icon_warning.svg)" %}
 
