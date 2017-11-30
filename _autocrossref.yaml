@@ -262,6 +262,8 @@ CVE-2012-2459:
 '`decodescript` RPC': rpc decodescript
 '`disconnectnode`': rpc disconnectnode
 '`disconnectnode` RPC': rpc disconnectnode
+'`dumphdinfo`': rpc dumphdinfo
+'`dumphdinfo` RPC': rpc dumphdinfo
 '`dumpprivkey`': rpc dumpprivkey
 '`dumpprivkey` RPC': rpc dumpprivkey
 '`dumpwallet`': rpc dumpwallet
@@ -392,14 +394,22 @@ CVE-2012-2459:
 '`help` RPC': rpc help
 '`importaddress`': rpc importaddress
 '`importaddress` RPC': rpc importaddress
+'`importelectrumwallet`': rpc importelectrumwallet
+'`importelectrumwallet` RPC': rpc importelectrumwallet
 '`importmulti`': rpc importmulti
 '`importmulti` RPC': rpc importmulti
 '`importprivkey`': rpc importprivkey
 '`importprivkey` RPC': rpc importprivkey
 '`importprunedfunds`': rpc importprunedfunds
 '`importprunedfunds` RPC': rpc importprunedfunds
+'`importpubkey`': rpc importpubkey
+'`importpubkey` RPC': rpc importpubkey
 '`importwallet`': rpc importwallet
 '`importwallet` RPC': rpc importwallet
+'`instantsendtoaddress`': rpc instantsendtoaddress
+'`instantsendtoaddress` RPC': rpc instantsendtoaddress
+'`keepass`': rpc keepass
+'`keepass` RPC': rpc keepass
 '`keypoolrefill`': rpc keypoolrefill
 '`keypoolrefill` RPC': rpc keypoolrefill
 '`listaccounts`': rpc listaccounts

@@ -19,9 +19,17 @@ Use v0.n.n in abbreviation title to prevent autocrossrefing.
 <!-- Dash - Not Implemented -->
 {% assign DASH_NOT_IMPLEMENTED='**<abbr title="Not Implemented in Dash">Not Implemented</abbr>**' %}
 
+<!-- Dash Core 0.12.2.0 Nov 2017 -->
+{% assign DASH_NEW0_12_2='*<abbr title="New in Dash Core v0.12.2">New in Dash Core 0.12.2</abbr>*' %}
+{% assign DASH_UPDATED0_12_2='**<abbr title="Updated in Dash Core v0.12.2">Updated in Dash Core 0.12.2</abbr>**' %}
+
 <!-- Dash Core 0.12.1.0 Feb 2017 -->
 {% assign DASH_NEW0_12_1='*<abbr title="New in Dash Core v0.12.1">New in Dash Core 0.12.1</abbr>*' %}
 {% assign DASH_UPDATED0_12_1='**<abbr title="Updated in Dash Core v0.12.1">Updated in Dash Core 0.12.1</abbr>**' %}
+
+<!-- Darkcoin Core 0.11.0 Jan 2015 -->
+{% assign DARKCOIN_NEW0_11_0='*<abbr title="New in Darkcoin Core v0.11.0">New in Darkcoin Core 0.11.0</abbr>*' %}
+{% assign DARKCOIN_UPDATED0_11_0='**<abbr title="Updated in Dash Core v0.11.0">Updated in Darkcoin Core 0.11.0</abbr>**' %}
 
 <!-- Deprecated -->
 {% assign DEPRECATED='**<abbr title="Deprecated; will be removed in a future version of Bitcoin Core">Deprecated</abbr>**' %}
@@ -245,7 +253,7 @@ default.
 * [AbandonTransaction][rpc abandontransaction]: {{summary_abandonTransaction}} {{NEW0_12_0}}
 * [AddMultiSigAddress][rpc addmultisigaddress]: {{summary_addMultiSigAddress}}
 * [BackupWallet][rpc backupwallet]: {{summary_backupWallet}}
-  * [DumpHDInfo][rpc dumphdinfo]: {{summary_dumpHdInfo}}
+* [DumpHDInfo][rpc dumphdinfo]: {{summary_dumpHDInfo}} {{DASH_NEW0_12_2}}
 * [DumpPrivKey][rpc dumpprivkey]: {{summary_dumpPrivKey}}
 * [DumpWallet][rpc dumpwallet]: {{summary_dumpWallet}}
 * [EncryptWallet][rpc encryptwallet]: {{summary_encryptWallet}}
@@ -261,12 +269,12 @@ default.
 * [GetUnconfirmedBalance][rpc getunconfirmedbalance]: {{summary_getUnconfirmedBalance}}
 * [GetWalletInfo][rpc getwalletinfo]: {{summary_getWalletInfo}}
 * [ImportAddress][rpc importaddress]: {{summary_importAddress}}
-    * [ImportElectrumWallet][rpc importelecturmwallet]: {{summary_importElectrumWallet}} {{DASH_NEW0_12_1}}
+* [ImportElectrumWallet][rpc importelectrumwallet]: {{summary_importElectrumWallet}} {{DASH_NEW0_12_1}}
 * [ImportPrivKey][rpc importprivkey]: {{summary_importPrivKey}}
-    * [ImportPubKey][rpc importpubkey]: {{summary_importPubKey}}
+* [ImportPubKey][rpc importpubkey]: {{summary_importPubKey}}
 * [ImportWallet][rpc importwallet]: {{summary_importWallet}}
-  * [InstantSendToAddress][rpc instantsendtoaddress]: {{summary_instantSendToAddress}}
-  * [Keepass][rpc keepass]: {{summary_keepass}}
+* [InstantSendToAddress][rpc instantsendtoaddress]: {{summary_instantSendToAddress}}
+* [Keepass][rpc keepass]: {{summary_keepass}} {{DARKCOIN_NEW0_11_0}}
 * [KeyPoolRefill][rpc keypoolrefill]: {{summary_keyPoolRefill}}
 * [ListAccounts][rpc listaccounts]: {{summary_listAccounts}} {{DEPRECATED}}
 * [ListAddressGroupings][rpc listaddressgroupings]: {{summary_listAddressGroupings}}

@@ -84,15 +84,17 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/createmultisig.md %}
 
-{% include devdoc/dash-core/rpcs/rpcs/debug.md %}
-
 {% include devdoc/dash-core/rpcs/rpcs/createrawtransaction.md %}
+
+{% include devdoc/dash-core/rpcs/rpcs/debug.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/decoderawtransaction.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/decodescript.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/disconnectnode.md %}
+
+{% include devdoc/dash-core/rpcs/rpcs/dumphdinfo.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/dumpprivkey.md %}
 
@@ -224,13 +226,21 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/importaddress.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/importelectrumwallet.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/importmulti.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/importprivkey.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/importprunedfunds.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/importpubkey.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/importwallet.md %}
+
+{% include devdoc/dash-core/rpcs/rpcs/instantsendtoaddress.md %}
+
+{% include devdoc/dash-core/rpcs/rpcs/keepass.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/keypoolrefill.md %}
 

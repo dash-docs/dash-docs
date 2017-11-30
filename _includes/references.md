@@ -96,6 +96,7 @@ http://opensource.org/licenses/MIT.
 [rpc decoderawtransaction]: /en/developer-reference#decoderawtransaction
 [rpc decodescript]: /en/developer-reference#decodescript
 [rpc disconnectnode]: /en/developer-reference#disconnectnode
+[rpc dumphdinfo]: /en/developer-reference#dumphdinfo
 [rpc dumpprivkey]: /en/developer-reference#dumpprivkey
 [rpc dumpwallet]: /en/developer-reference#dumpwallet
 [rpc encryptwallet]: /en/developer-reference#encryptwallet
@@ -161,10 +162,14 @@ http://opensource.org/licenses/MIT.
 [rpc gobject]: /en/developer-reference#gobject
 [rpc help]: /en/developer-reference#help
 [rpc importaddress]: /en/developer-reference#importaddress
+[rpc importelectrumwallet]: /en/developer-reference#importelectrumwallet
 [rpc importmulti]: /en/developer-reference#importmulti
 [rpc importprivkey]: /en/developer-reference#importprivkey
 [rpc importprunedfunds]: /en/developer-reference#importprunedfunds
+[rpc importpubkey]: /en/developer-reference#importpubkey
 [rpc importwallet]: /en/developer-reference#importwallet
+[rpc instantsendtoaddress]: /en/developer-reference#instantsendtoaddress
+[rpc keepass]: /en/developer-reference#keepass
 [rpc keypoolrefill]: /en/developer-reference#keypoolrefill
 [rpc listaccounts]: /en/developer-reference#listaccounts
 [rpc listaddressgroupings]: /en/developer-reference#listaddressgroupings
