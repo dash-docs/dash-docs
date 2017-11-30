@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_walletPassphraseChange="changes the wallet passphrase from 'old passphrase' to 'new passphrase'." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.  Requires an encrypted wallet.*
@@ -49,12 +51,12 @@ value of the passphrase parameter).
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Change the wallet passphrase from "test" to "example":
 
 {% highlight bash %}
-bitcoin-cli -testnet walletpassphrasechange test example
+dash-cli -testnet walletpassphrasechange "test" "example"
 {% endhighlight %}
 
 (Success: no result printed.)

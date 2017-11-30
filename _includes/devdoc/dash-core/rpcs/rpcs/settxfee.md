@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_setTxFee="sets the transaction fee per kilobyte paid by transactions created by this wallet." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support.*
@@ -19,9 +21,9 @@ The `settxfee` RPC {{summary_setTxFee}}
 
 {% itemplate ntpd1 %}
 - n: "Transaction Fee Per Kilobyte"
-  t: "number (bitcoins)"
+  t: "number (dash)"
   p: "Required<br>(exactly 1)"
-  d: "The transaction fee to pay, in bitcoins, for each kilobyte of transaction data.  Be careful setting the fee too low---your transactions may not be relayed or included in blocks"
+  d: "The transaction fee to pay, in dash, for each kilobyte of transaction data.  Be careful setting the fee too low---your transactions may not be relayed or included in blocks"
 
 {% enditemplate %}
 
@@ -35,12 +37,12 @@ The `settxfee` RPC {{summary_setTxFee}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
-Set the transaction fee per kilobyte to 100,000 satoshis.
+Set the transaction fee per kilobyte to 10,000 duffs.
 
 {% highlight bash %}
-bitcoin-cli -testnet settxfee 0.00100000
+dash-cli -testnet settxfee 0.00010000
 {% endhighlight %}
 
 Result:

@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_walletPassphrase="stores the wallet decryption key in memory for the indicated number of seconds. Issuing the `walletpassphrase` command while the wallet is already unlocked will set a new unlock time that overrides the old one." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support. Requires an encrypted wallet.*
@@ -39,6 +41,16 @@ value of the passphrase parameter).
 
 {% enditemplate %}
 
+*Parameter #3---unlock for PrivateSend mixing only*
+
+{% itemplate ntpd1 %}
+- n: "Mixing Only"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "If `true`, the wallet will be locked for sending functions but unlocked for mixing transactions (default: false)"
+
+{% enditemplate %}
+
 *Result---`null` on success*
 
 {% itemplate ntpd1 %}
@@ -49,12 +61,21 @@ value of the passphrase parameter).
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 Unlock the wallet for 10 minutes (the passphrase is "test"):
 
 {% highlight bash %}
-bitcoin-cli -testnet walletpassphrase test 600
+dash-cli -testnet walletpassphrase test 600
+{% endhighlight %}
+
+(Success: no result printed.)
+
+
+Unlock the wallet for mixing transactions only for 10 minutes (the passphrase is "test"):
+
+{% highlight bash %}
+dash-cli -testnet walletpassphrase test 600 true
 {% endhighlight %}
 
 (Success: no result printed.)

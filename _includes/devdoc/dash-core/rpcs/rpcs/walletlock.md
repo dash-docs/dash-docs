@@ -9,6 +9,8 @@ http://opensource.org/licenses/MIT.
 
 {% assign summary_walletLock="removes the wallet encryption key from memory, locking the wallet. After calling this method, you will need to call `walletpassphrase` again before being able to call any methods which require the wallet to be unlocked." %}
 
+<!-- __ -->
+
 {% autocrossref %}
 
 *Requires wallet support. Requires an unlocked wallet.*
@@ -27,10 +29,10 @@ The `walletlock` RPC {{summary_walletLock}}
 
 {% enditemplate %}
 
-*Example from Bitcoin Core 0.10.0*
+*Example from Dash Core 0.12.2*
 
 {% highlight bash %}
-bitcoin-cli -testnet walletlock
+dash-cli -testnet walletlock
 {% endhighlight %}
 
 (Success: nothing printed.)
