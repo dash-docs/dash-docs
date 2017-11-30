@@ -43,7 +43,7 @@ The `importprivkey` RPC {{summary_importPrivKey}}
 - n: "Rescan"
   t: "bool"
   p: "Optional<br>(0 or 1)"
-  d: "Set to `true` (the default) to rescan the entire local block database for transactions affecting any address or pubkey script in the wallet (including transaction affecting the newly-added address for this private key).  Set to `false` to not rescan the block database (rescanning can be performed at any time by restarting Bitcoin Core with the `-rescan` command-line argument).  Rescanning may take several minutes.  Notes: if the address for this key is already in the wallet, the block database will not be rescanned even if this parameter is set"
+  d: "Set to `true` (the default) to rescan the entire local block database for transactions affecting any address or pubkey script in the wallet (including transaction affecting the newly-added address for this private key).  Set to `false` to not rescan the block database (rescanning can be performed at any time by restarting Dash Core with the `-rescan` command-line argument).  Rescanning may take several minutes.  Notes: if the address for this key is already in the wallet, the block database will not be rescanned even if this parameter is set"
 
 {% enditemplate %}
 
@@ -76,6 +76,7 @@ dash-cli -testnet importprivkey \
 
 * [DumpPrivKey][rpc dumpprivkey]: {{summary_dumpPrivKey}}
 * [ImportAddress][rpc importaddress]: {{summary_importAddress}}
+* [ImportPrivKey][rpc importpubkey]: {{summary_importPubKey}}
 * [ImportWallet][rpc importwallet]: {{summary_importWallet}}
 
 {% endautocrossref %}

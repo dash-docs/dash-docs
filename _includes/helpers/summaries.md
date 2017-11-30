@@ -13,6 +13,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_decodeRawTransaction="decodes a serialized transaction hex string into a JSON object describing the transaction." %}
 {% assign summary_decodeScript="decodes a hex-encoded P2SH redeem script." %}
 {% assign summary_disconnectNode="immediately disconnects from a specified node." %}
+{% assign summary_dumpHDInfo="" %}
 {% assign summary_dumpPrivKey="returns the wallet-import-format (WIP) private key corresponding to an address. (But does not remove it from the wallet.)" %}
 {% assign summary_dumpWallet="creates or overwrites a file with all wallet keys in a human-readable format." %}
 {% assign summary_encryptWallet="encrypts the wallet with a passphrase.  This is only to enable encryption for the first time. After encryption is enabled, you will need to enter the passphrase to use private keys." %}
@@ -49,7 +50,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_getDifficulty="returns the proof-of-work difficulty as a multiple of the minimum difficulty." %}
 {% assign summary_getGenerate="returns if the server is set to generate coins or not." %}
 {% assign summary_getGovernanceInfo="returns an object containing governance parameters." %}
-{% assign summary_getHashesPerSec="was removed in Bitcoin Core 0.11.0." %}
+{% assign summary_getHashesPerSec="was removed in Bitcoin Core 0.11.0 and is not part of Dash." %}
 {% assign summary_getInfo="prints various information about the node and the network." %}
 {% assign summary_getMemPoolAncestors="returns all in-mempool ancestors for a transaction in the mempool." %}
 {% assign summary_getMemPoolDescendants="returns all in-mempool descendants for a transaction in the mempool." %}
@@ -76,13 +77,17 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_getTxOutSetInfo="returns statistics about the confirmed unspent transaction output (UTXO) set. Note that this call may take some time and that it only counts outputs from confirmed transactions---it does not count outputs from the memory pool." %}
 {% assign summary_getUnconfirmedBalance="returns the wallet's total unconfirmed balance." %}
 {% assign summary_getWalletInfo="provides information about the wallet." %}
-{% assign summary_getWork="was removed in Bitcoin Core 0.10.0." %}
+{% assign summary_getWork="was removed in Bitcoin Core 0.10.0. and is not part of Dash" %}
 {% assign summary_help="lists all available public RPC commands, or gets help for the specified RPC.  Commands which are unavailable will not be listed, such as wallet RPCs if wallet support is disabled." %}
 {% assign summary_importAddress="adds an address or pubkey script to the wallet without the associated private key, allowing you to watch for transactions affecting that address or pubkey script without being able to spend any of its outputs." %}
+{% assign summary_importElectrumWallet="imports keys from an Electrum wallet export file (.csv or .json)" %}
 {% assign summary_importMulti="imports addresses or scripts (with private keys, public keys, or P2SH redeem scripts) and optionally performs the minimum necessary rescan for all imports." %}
 {% assign summary_importPrivKey="adds a private key to your wallet. The key should be formatted in the wallet import format created by the `dumpprivkey` RPC." %}
 {% assign summary_importPrunedFunds="imports funds without the need of a rescan. Meant for use with pruned wallets." %}
+{% assign summary_importPubKey="imports a public key (in hex) that can be watched as if it were in your wallet but cannot be used to spend" %}
 {% assign summary_importWallet="imports private keys from a file in wallet dump file format (see the `dumpwallet` RPC). These keys will be added to the keys currently in the wallet.  This call may need to rescan all or parts of the block chain for transactions affecting the newly-added keys, which may take several minutes." %}
+{% assign summary_instantSendToAddress="" %}
+{% assign summary_keepass="" %}
 {% assign summary_keyPoolRefill="fills the cache of unused pre-generated keys (the keypool)." %}
 {% assign summary_listAccounts="lists accounts and their balances." %}
 {% assign summary_listAddressGroupings="lists groups of addresses that may have had their common ownership made public by common use as inputs in the same transaction or from being used as change from a previous transaction." %}
