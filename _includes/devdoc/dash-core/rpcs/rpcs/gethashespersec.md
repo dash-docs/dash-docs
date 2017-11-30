@@ -7,14 +7,15 @@ http://opensource.org/licenses/MIT.
 ##### GetHashesPerSec
 {% include helpers/subhead-links.md %}
 
-{% assign summary_getHashesPerSec="was removed in Bitcoin Core 0.11.0." %}
+{% assign summary_getHashesPerSec="was removed in Bitcoin Core 0.11.0 and is not part of Dash." %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
 *Requires wallet support.*
 
-The `gethashespersec` RPC {{summary_getHashesPerSec}} If you have an older
-version of Bitcoin Core, use `help gethashespersec` to get help.
+{{WARNING_ICON}} The `gethashespersec` RPC {{summary_getHashesPerSec}}.
 
 *See also*
 
