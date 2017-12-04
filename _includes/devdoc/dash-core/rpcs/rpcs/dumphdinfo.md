@@ -7,15 +7,41 @@ http://opensource.org/licenses/MIT.
 ##### DumpHDInfo
 {% include helpers/subhead-links.md %}
 
-{% assign summary_dumpHDInfo="" %}
+{% assign summary_dumpHDInfo="returns an object containing sensitive private info about this HD wallet" %}
+
+<!-- __ -->
 
 {% autocrossref %}
 
 The `dumphdinfo` RPC {{summary_dumpHDInfo}}
 
-*Parameter #1---PARAMETER DESCRIPTION*
+*Parameters: none*
 
-*Result---RESULT DESCRIPTION*
+*Result---HD wallet information*
+
+{% itemplate ntpd1 %}
+- n: "Result"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "An object containing sensitive private info about this HD wallet."
+
+- n: "→ <br>`hdseed`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "The BIP-32 HD seed (in hex)"
+
+- n: "→ <br>`mnemonic`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "The BIP-39 mnemonic for this HD wallet (English words)"
+
+- n: "→ <br>`mnemonicpassphrase`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "The BIP-39 mnemonic passphrase for this HD wallet (may be empty)"
+
+{% enditemplate %}
+
 
 *Example from Dash Core 0.12.2*
 
@@ -23,11 +49,15 @@ The `dumphdinfo` RPC {{summary_dumpHDInfo}}
 dash-cli -testnet dumphdinfo
 {% endhighlight %}
 
-Result:
+Result (truncated for security reasons):
 {% highlight json %}
-	*INSERT RESULTS HERE*
+{
+  "hdseed": "20c63c3fb298ebd52de3 ...",
+  "mnemonic": "cost circle shiver ...",
+  "mnemonicpassphrase": ""
+}
 {% endhighlight %}
 
-*See also:*
+*See also: none*
 
 {% endautocrossref %}

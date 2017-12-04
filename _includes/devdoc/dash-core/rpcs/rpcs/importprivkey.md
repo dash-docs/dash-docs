@@ -76,7 +76,7 @@ dash-cli -testnet importprivkey \
 
 * [DumpPrivKey][rpc dumpprivkey]: {{summary_dumpPrivKey}}
 * [ImportAddress][rpc importaddress]: {{summary_importAddress}}
-* [ImportPrivKey][rpc importpubkey]: {{summary_importPubKey}}
+* [ImportPubKey][rpc importpubkey]: {{summary_importPubKey}}
 * [ImportWallet][rpc importwallet]: {{summary_importWallet}}
 
 {% endautocrossref %}

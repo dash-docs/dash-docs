@@ -164,9 +164,9 @@ ba4bbe29fa06b67d6f3f3a73e381627e66abe22e217ce329aefad41ea72c3922
 
 *See also*
 
+* [InstantSendToAddress][rpc instantsendtoaddress]: {{summary_instantSendToAddress}}
 * [SendFrom][rpc sendfrom]: {{summary_sendFrom}}
 * [SendMany][rpc sendmany]: {{summary_sendMany}}
 * [Move][rpc move]: {{summary_move}}
-
 
 {% endautocrossref %}
