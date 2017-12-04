@@ -329,6 +329,100 @@ NOT IN DASH
 {% enditemplate %}
 {% endcapture %}
 
+{% capture INCLUDE_GOVERNANCE_OBJECT %}
+{% itemplate ntpd1 %}
+- n: "Result"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "Information about the governance object"
+
+- n: "→<br>Governance Object(s)"
+  t: "object"
+  p: "Required<br>(1 or more)"
+  d: "Key: Governance object hash<br>Values: Governance object details"
+
+- n: "→ →<br>`DataHex`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Governance object info as hex string"
+
+- n: "→ →<br>`DataString`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Governance object info as string"
+
+- n: "→ →<br>`Hash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Hash of this governance object"
+
+- n: "→ →<br>`CollateralHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Hash of the collateral payment transaction"
+
+- n: "→ →<br>`ObjectType`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "Object types:<br>`1` - Unknown<br>`2` - Proposal<br>`3` - Trigger<br>`4` - Watchdog"
+
+- n: "→ →<br>`CreationTime`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "Object creation time as Unix epoch time"
+
+- n: "→ →<br>`AbsoluteYesCount`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "Number of `Yes` votes minus number of `No` votes"
+
+- n: "→ →<br>`YesCount`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "Number of `Yes` votes"
+
+- n: "→ →<br>`NoCount`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "Number of `No` votes"
+
+- n: "→ →<br>`AbstainCount`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "Number of `Abstain` votes"
+
+- n: "→<br>`fLocalValidity`"
+  t: "boolean"
+  p: "Required<br>(exactly 1)"
+  d: "Valid by the blockchain"
+
+- n: "→<br>`IsValidReason`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "`fLocalValidity` error result. Empty if no error returned."
+
+- n: "→<br>`fCachedValid`"
+  t: "boolean"
+  p: "Required<br>(exactly 1)"
+  d: "Minimum network support has been reached flagging this object as a valid and understood governance object (e.g, the serialized data is correct format, etc)"
+
+- n: "→<br>`fCachedFunding`"
+  t: "boolean"
+  p: "Required<br>(exactly 1)"
+  d: "Minimum network support has been reached for this object to be funded (doesn't mean it will be for sure though)"
+
+- n: "→<br>`fCachedDelete`"
+  t: "boolean"
+  p: "Required<br>(exactly 1)"
+  d: "Minimum network support has been reached saying this object should be deleted from the system entirely"
+
+- n: "→<br>`fCachedEndorsed`"
+  t: "boolean"
+  p: "Required<br>(exactly 1)"
+  d: "Minimum network support has been reached flagging this object as endorsed"
+
+{% enditemplate %}
+{% endcapture %}
 
 {% assign WARNING="![Warning icon](/img/icons/icon_warning.svg) **Warning:**" %}
 {% assign WARNING_ICON="![Warning icon](/img/icons/icon_warning.svg)" %}

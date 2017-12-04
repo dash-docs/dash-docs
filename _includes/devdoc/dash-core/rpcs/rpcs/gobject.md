@@ -30,7 +30,7 @@ The `gobject check` RPC validates governance object data (_proposals only_).
 *Result---governance object status*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
+- n: "Result"
   t: "object"
   p: "Required<br>(exactly 1)"
   d: "Object containing status"
@@ -239,12 +239,12 @@ deserialized. Examples are shown below for both proposal and trigger object type
 *Result---governance proposal object deserialized to JSON*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
+- n: "Result"
   t: "object"
   p: "Required<br>(exactly 1)"
   d: "Array of governance objects"
 
-- n: "→<br>Object"
+- n: "→<br>`proposal`"
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
   d: "Proposal object"
@@ -317,17 +317,19 @@ Result:
 ]
 {% endhighlight %}
 
+<!-- __ -->
+
 **Result - Trigger**
 
 *Result---governance trigger object deserialized to JSON*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
+- n: "Result"
   t: "object"
   p: "Required<br>(exactly 1)"
   d: "Array of governance objects"
 
-- n: "→<br>Object"
+- n: "→<br>`trigger`"
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
   d: "Trigger object"
@@ -440,7 +442,7 @@ The `gobject get` RPC returns a governance object by hash.
 *Result---governance object details*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
+- n: "Result"
   t: "object"
   p: "Required<br>(exactly 1)"
   d: "Information about the governance object"
@@ -659,6 +661,8 @@ Result (wrapped):
 
 ###### GObject Getvotes
 
+<!-- __ -->
+
 The `gobject getvotes` RPC gets all votes for a governance object hash (including old votes).
 
 *Parameter #1---object hash*
@@ -674,7 +678,7 @@ The `gobject getvotes` RPC gets all votes for a governance object hash (includin
 *Result---votes for specified governance*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
+- n: "Result"
   t: "object"
   p: "Required<br>(exactly 1)"
   d: "The governance object votes"
@@ -724,7 +728,7 @@ The `gobject getcurrentvotes` RPC gets only current (tallying) votes for a gover
 *Result---votes for specified governance*
 
 {% itemplate ntpd1 %}
-- n: "`result`"
+- n: "Result"
   t: "object"
   p: "Required<br>(exactly 1)"
   d: "The governance object votes"
@@ -779,6 +783,10 @@ The `gobject list` RPC Lists governance objects (can be filtered by signal and/o
 
 {% enditemplate %}
 
+*Result---governance objects*
+
+{{INCLUDE_GOVERNANCE_OBJECT}}
+
 *Example from Dash Core 0.12.2*
 
 {% highlight bash %}
@@ -829,6 +837,8 @@ Result (truncated):
 
 ###### GObject Diff
 
+<!-- __ -->
+
 The `gobject diff` RPC Lists governance objects differences since last diff.
 
 *Parameter #1---signal*
@@ -851,25 +861,307 @@ The `gobject diff` RPC Lists governance objects differences since last diff.
 
 {% enditemplate %}
 
+*Result---governance objects*
+
+{{INCLUDE_GOVERNANCE_OBJECT}}
+
 *Example from Dash Core 0.12.2*
 
 {% highlight bash %}
 dash-cli -testnet gobject diff all all
 {% endhighlight %}
 
-Result:
+Result (truncated):
 {% highlight json %}
 {
+  "17c2bd32005c5168a52f9b5caa74d875ee8a6867a6109f36923887ef6c36b301": {
+    "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a2231353037343533353731222c226e616d65223a227465737470726f706f73616c5f2d5f6162636465666768696a6b6c6d6e6f707172737475767778797a3031323334353637383931353037323634343939222c227061796d656e745f61646472657373223a2279697355653636445352487048504233514245426764574746637068435933626234222c227061796d656e745f616d6f756e74223a2232222c2273746172745f65706f6368223a2231353037323634343939222c2274797065223a312c2275726c223a2268747470733a2f2f7777772e6461736863656e7472616c2e6f72672f702f746573745f70726f706f73616c5f31353037323634343939227d5d5d",
+    "DataString": "[[\"proposal\",{\"end_epoch\":\"1507453571\",\"name\":\"testproposal\",\"payment_address\":\"yisUe66DSRHpHPB3QBEBgdWGFcphCY3bb4\",\"payment_amount\":\"2\",\"start_epoch\":\"1507264499\",\"type\":1,\"url\":\"https://www.dashcentral.org/p/test_proposal_1507264499\"}]]",
+    "Hash": "17c2bd32005c5168a52f9b5caa74d875ee8a6867a6109f36923887ef6c36b301",
+    "CollateralHash": "a25c44b57931afd74530ce39741f91456446a8fd794d2f1c58c42d6f492647ad",
+    "ObjectType": 1,
+    "CreationTime": 1507264499,
+    "AbsoluteYesCount": 0,
+    "YesCount": 0,
+    "NoCount": 0,
+    "AbstainCount": 0,
+    "fBlockchainValidity": true,
+    "IsValidReason": "",
+    "fCachedValid": true,
+    "fCachedFunding": false,
+    "fCachedDelete": false,
+    "fCachedEndorsed": false
+  }
 }
 {% endhighlight %}
 
 
 ###### GObject Vote-alias
 
+The `gobject vote-alias` RPC votes on a governance object by masternode alias (using masternode.conf setup).
+
+*Parameter #1---governance hash*
+
+{% itemplate ntpd1 %}
+- n: "`governance-hash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Hash of the governance object"
+
+{% enditemplate %}
+
+*Parameter #2---vote signal*
+
+{% itemplate ntpd1 %}
+- n: "`signal`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote signal: `funding`, `valid`, or `delete`"
+
+{% enditemplate %}
+
+*Parameter #3---vote outcome*
+
+{% itemplate ntpd1 %}
+- n: "`outcome`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote outcome: `yes`, `no`, or `abstain`"
+
+{% enditemplate %}
+
+*Parameter #4---masternode alias*
+
+{% itemplate ntpd1 %}
+- n: "`alias`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Alias of voting masternode"
+
+{% enditemplate %}
+
+*Result---votes for specified governance*
+
+{% itemplate ntpd1 %}
+- n: "Result"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "The governance object votes"
+
+- n: "→<br>`overall`"
+  t: "string"
+  p: "Required<br>(1 or more)"
+  d: "Reports number of vote successes/failures"
+
+- n: "→<br>`detail`"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "Vote details"
+
+- n: "→ →<br>Masternode Alias"
+  t: "object"
+  p: "Required<br>(1 or more)"
+  d: "Name of the masternode alias"
+
+- n: "→ → →<br>`result`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote result"
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+dash-cli -testnet gobject vote-alias \
+0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b \
+funding yes MN01
+{% endhighlight %}
+
+Result:
+{% highlight json %}
+{
+  "overall": "Voted successfully 1 time(s) and failed 0 time(s).",
+  "detail": {
+    "MN01": {
+      "result": "success"
+    }
+  }
+}
+{% endhighlight %}
+
 ###### GObject Vote-conf
+
+The `gobject vote-conf` RPC votes on a governance object by masternode configured in dash.conf.
+
+*Parameter #1---governance hash*
+
+{% itemplate ntpd1 %}
+- n: "`governance-hash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Hash of the governance object"
+
+{% enditemplate %}
+
+*Parameter #2---vote signal*
+
+{% itemplate ntpd1 %}
+- n: "`signal`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote signal: `funding`, `valid`, or `delete`"
+
+{% enditemplate %}
+
+*Parameter #3---vote outcome*
+
+{% itemplate ntpd1 %}
+- n: "`outcome`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote outcome: `yes`, `no`, or `abstain`"
+
+{% enditemplate %}
+
+*Result---votes for specified governance*
+
+{% itemplate ntpd1 %}
+- n: "Result"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "The governance object votes"
+
+- n: "→<br>`overall`"
+  t: "string"
+  p: "Required<br>(1 or more)"
+  d: "Reports number of vote successes/failures"
+
+- n: "→<br>`detail`"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "Vote details"
+
+- n: "→ →<br>`dash.conf`"
+  t: "object"
+  p: "Required<br>(1 or more)"
+  d: ""
+
+- n: "→ → →<br>`result`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote result"
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+dash-cli -testnet gobject vote-conf \
+0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b funding yes
+{% endhighlight %}
+
+{% highlight json %}
+{
+  "overall": "Voted successfully 1 time(s) and failed 0 time(s).",
+  "detail": {
+    "dash.conf": {
+      "result": "success"
+    }
+  }
+}
+{% endhighlight %}
+
+
 
 ###### GObject Vote-many
 
+The `gobject vote-many` RPC votes on a governance object by all masternodes (using masternode.conf setup).
+
+*Parameter #1---governance hash*
+
+{% itemplate ntpd1 %}
+- n: "`governance-hash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Hash of the governance object"
+
+{% enditemplate %}
+
+*Parameter #2---vote signal*
+
+{% itemplate ntpd1 %}
+- n: "`signal`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote signal: `funding`, `valid`, or `delete`"
+
+{% enditemplate %}
+
+*Parameter #3---vote outcome*
+
+{% itemplate ntpd1 %}
+- n: "`outcome`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote outcome: `yes`, `no`, or `abstain`"
+
+{% enditemplate %}
+
+*Parameter #4---masternode alias*
+
+{% itemplate ntpd1 %}
+- n: "`alias`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Alias of voting masternode"
+
+{% enditemplate %}
+
+*Result---votes for specified governance*
+
+{% itemplate ntpd1 %}
+- n: "Result"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "The governance object votes"
+
+- n: "→<br>`overall`"
+  t: "string"
+  p: "Required<br>(1 or more)"
+  d: "Reports number of vote successes/failures"
+
+- n: "→<br>`detail`"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "Vote details"
+
+- n: "→ →<br>Masternode Alias"
+  t: "object"
+  p: "Required<br>(1 or more)"
+  d: "Name of the masternode alias"
+
+- n: "→ → →<br>`result`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "Vote result"
+{% enditemplate %}
+
+*Example from Dash Core 0.12.2*
+
+{% highlight bash %}
+dash-cli -testnet gobject vote-many \
+0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b funding yes
+{% endhighlight %}
+
+{% highlight json %}
+{
+  "overall": "Voted successfully 1 time(s) and failed 0 time(s).",
+  "detail": {
+    "MN01": {
+      "result": "success"
+    }
+  }
+}
+{% endhighlight %}
 
 *See also:*
 

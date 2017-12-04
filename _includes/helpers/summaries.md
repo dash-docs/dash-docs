@@ -13,7 +13,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_decodeRawTransaction="decodes a serialized transaction hex string into a JSON object describing the transaction." %}
 {% assign summary_decodeScript="decodes a hex-encoded P2SH redeem script." %}
 {% assign summary_disconnectNode="immediately disconnects from a specified node." %}
-{% assign summary_dumpHDInfo="" %}
+{% assign summary_dumpHDInfo="returns an object containing sensitive private info about this HD wallet" %}
 {% assign summary_dumpPrivKey="returns the wallet-import-format (WIP) private key corresponding to an address. (But does not remove it from the wallet.)" %}
 {% assign summary_dumpWallet="creates or overwrites a file with all wallet keys in a human-readable format." %}
 {% assign summary_encryptWallet="encrypts the wallet with a passphrase.  This is only to enable encryption for the first time. After encryption is enabled, you will need to enter the passphrase to use private keys." %}
@@ -86,7 +86,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_importPrunedFunds="imports funds without the need of a rescan. Meant for use with pruned wallets." %}
 {% assign summary_importPubKey="imports a public key (in hex) that can be watched as if it were in your wallet but cannot be used to spend" %}
 {% assign summary_importWallet="imports private keys from a file in wallet dump file format (see the `dumpwallet` RPC). These keys will be added to the keys currently in the wallet.  This call may need to rescan all or parts of the block chain for transactions affecting the newly-added keys, which may take several minutes." %}
-{% assign summary_instantSendToAddress="" %}
+{% assign summary_instantSendToAddress="InstantSend an amount to a given address." %}
 {% assign summary_keepass="" %}
 {% assign summary_keyPoolRefill="fills the cache of unused pre-generated keys (the keypool)." %}
 {% assign summary_listAccounts="lists accounts and their balances." %}
