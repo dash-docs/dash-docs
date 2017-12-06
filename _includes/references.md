@@ -460,8 +460,10 @@ http://opensource.org/licenses/MIT.
 [core paymentrequest.proto]: https://github.com/dashpay/dash/blob/master/src/qt/paymentrequest.proto
 [core script.h]: https://github.com/dashpay/dash/blob/master/src/script/script.h
 [creative commons attribution 3.0 license]: https://creativecommons.org/licenses/by/3.0/
+[Dash Masternode Tool]: https://github.com/Bertrand256/dash-masternode-tool
 [Dash Seeder]: https://github.com/nightlydash/dash-seeder/tree/master
 [DashJ]: https://github.com/HashEngineering/dashj
+[dashmnb]: https://github.com/chaeplin/dashmnb
 [DER]: https://en.wikipedia.org/wiki/X.690#DER_encoding
 [dig command]: https://en.wikipedia.org/wiki/Dig_%28Unix_command%29
 [DNS A records]: http://tools.ietf.org/html/rfc1035#section-3.2.2
@@ -541,3 +543,4 @@ periodically to point to recent code. Last update: 2017-09-05 --> {% endcomment 
 [spork pubkey]: https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158
 [masternode payments pubkey]: https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L159
 [block subsidy]: https://github.com/dashpay/dash/blob/9ed9474a9eb007bba70278ce19df68e84aeeb712/src/main.cpp#L1741
+[governance vote signature format]: https://github.com/dashpay/dash/blob/48d63ab296f5613c727306ea39524f51d157a04c/src/governance-vote.cpp#L240-#L241
