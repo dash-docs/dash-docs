@@ -274,7 +274,7 @@ default.
 * [ImportPubKey][rpc importpubkey]: {{summary_importPubKey}}
 * [ImportWallet][rpc importwallet]: {{summary_importWallet}}
 * [InstantSendToAddress][rpc instantsendtoaddress]: {{summary_instantSendToAddress}}
-* [Keepass][rpc keepass]: {{summary_keepass}} {{DARKCOIN_NEW0_11_0}}
+* [KeePass][rpc keepass]: {{summary_keepass}} {{DARKCOIN_NEW0_11_0}}
 * [KeyPoolRefill][rpc keypoolrefill]: {{summary_keyPoolRefill}}
 * [ListAccounts][rpc listaccounts]: {{summary_listAccounts}} {{DEPRECATED}}
 * [ListAddressGroupings][rpc listaddressgroupings]: {{summary_listAddressGroupings}}

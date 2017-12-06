@@ -23,7 +23,6 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_estimateSmartPriority="estimates the priority that a transaction needs in order to be included within a certain number of blocks as a free high-priority transaction and returns the number of blocks for which the estimate is valid." %}
 {% assign summary_fundRawTransaction="adds inputs to a transaction until it has enough in value to meet its out value." %}
 {% assign summary_gObject="provides a set of commands for managing governance objects and displaying information about them." %}
-{% assign summary_gObjectCheck="." %}
 {% assign summary_generate="mines blocks immediately (before the RPC call returns)." %}
 {% assign summary_generateToAddress="mines blocks immediately to a specified address." %}
 {% assign summary_getAccount="returns the name of the account associated with the given address." %}
@@ -87,7 +86,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_importPubKey="imports a public key (in hex) that can be watched as if it were in your wallet but cannot be used to spend" %}
 {% assign summary_importWallet="imports private keys from a file in wallet dump file format (see the `dumpwallet` RPC). These keys will be added to the keys currently in the wallet.  This call may need to rescan all or parts of the block chain for transactions affecting the newly-added keys, which may take several minutes." %}
 {% assign summary_instantSendToAddress="InstantSend an amount to a given address." %}
-{% assign summary_keepass="" %}
+{% assign summary_keepass="provides commands for configuring and managing KeePass authentication" %}
 {% assign summary_keyPoolRefill="fills the cache of unused pre-generated keys (the keypool)." %}
 {% assign summary_listAccounts="lists accounts and their balances." %}
 {% assign summary_listAddressGroupings="lists groups of addresses that may have had their common ownership made public by common use as inputs in the same transaction or from being used as change from a previous transaction." %}
