@@ -8,7 +8,7 @@ http://opensource.org/licenses/MIT.
 {% include helpers/subhead-links.md %}
 
 {% assign summary_restGetMemPool-info="returns information about the node's current transaction memory pool." %}
-
+<!-- __ -->
 {% autocrossref %}
 
 The `GET mempool/info` operation {{summary_restGetMemPool-info}}  Supports only `json` as output format.
@@ -56,25 +56,24 @@ GET /mempool/info.json
 
 {% enditemplate %}
 
-*Examples from Bitcoin Core 0.13.1*
+*Examples from Dash Core 0.12.2*
 
 Get memory pool info in JSON:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/mempool/info.json
+curl http://localhost:19998/rest/mempool/info.json
 {% endhighlight %}
 
 Result (whitespaced added):
 
 {% highlight json %}
-{
-  "size": 989,
-  "bytes": 736919,
-  "usage": 1970496,
-  "maxmempool": 300000000,
-  "mempoolminfee": 0
+{  
+   "size":1,
+   "bytes":1256,
+   "usage":3376,
+   "maxmempool":300000000,
+   "mempoolminfee":0.00000000
 }
-
 {% endhighlight %}
 
 *See also*

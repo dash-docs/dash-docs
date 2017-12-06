@@ -6,7 +6,7 @@ http://opensource.org/licenses/MIT.
 
 #### Quick Reference {#rest-quick-reference}
 {% include helpers/subhead-links.md %}
-
+<!-- __ -->
 {% autocrossref %}
 
 * [GET Block][rest get block] {{summary_restGetBlock}} {{UPDATED0_13_0}}

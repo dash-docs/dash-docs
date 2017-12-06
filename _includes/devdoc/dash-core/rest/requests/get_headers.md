@@ -8,7 +8,7 @@ http://opensource.org/licenses/MIT.
 {% include helpers/subhead-links.md %}
 
 {% assign summary_restGetHeaders="returns a specified amount of block headers in upward direction." %}
-
+<!-- __ -->
 {% autocrossref %}
 
 The `GET headers` operation {{summary_restGetHeaders}}
@@ -56,7 +56,7 @@ GET /headers/<count>/<hash>.<format>
   t: "array"
   p: "Required<br>(exactly 1)"
   d: "An array containing the requested block headers"
-  
+
 - n: "→<br>Block Header"
   t: "object"
   p: "Required<br>(1 or more)"
@@ -81,11 +81,6 @@ GET /headers/<count>/<hash>.<format>
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "This block's version number.  See [block version numbers][section block versions]"
-  
-- n: "→→<br>`versionHex`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "*Added in Bitcoin Core 0.13.0*<br><br>This block's version number formatted in hexadecimal.  See [BIP9 assignments][]"
 
 - n: "→→<br>`merkleroot`"
   t: "string (hex)"
@@ -96,7 +91,7 @@ GET /headers/<count>/<hash>.<format>
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "The value of the *time* field in the block header, indicating approximately when the block was created"
-  
+
 - n: "→→<br>`mediantime`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
@@ -134,66 +129,64 @@ GET /headers/<count>/<hash>.<format>
 
 {% enditemplate %}
 
-*Examples from Bitcoin Core 0.13.1*
+*Examples from Dash Core 0.12.2*
 
-Request 5 block headers in hex-encoded serialized block format:
+Request 2 block headers in hex-encoded serialized block format:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/headers/5/000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a.hex
+curl http://localhost:19998/rest/headers/2/0000000000ccbf46cf6b78827ac1019f82598be839bce08bff00d188e75fb451.hex
 {% endhighlight %}
 
 Result (wrapped):
 
 {% highlight bash %}
-040000004b9e8debb1bb9df8f85d0f64cf45d408f5f7fcf3293ec40400000000\
-000000008c37685c878a66aa2709c3dc27a35020269ce1ce7ecb41dabe8f4e0c\
-ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087\
-065e0262465658f6fe8d53020000000000000000cb9a492474a4791b7f4dee49\
-0b3d813b1eb192fb67109c0c99317101019f72a7cd1f2b57762706185c2921b4
+0000002097e8135d73afa52145f6d0b4d0f957030cd598837ddc6750271fb109\
+000000008478305a7abf2f7cb21a889fb68d53c3e51685349e18e1b104b5956c\
+100bfea2c72d285a84030a1cd0041ed70000002051b45fe788d100ff8be0bc39\
+e88b59829f01c17a82786bcf46bfcc000000000004dc24bddd15f790efcd7af3\
+8d03f805cc1c74516888ccec8874db2ac8beb043092e285a999f091c5d6ec419
 {% endhighlight %}
 
 Get the same block headers in JSON:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/headers/5/000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a.json
+curl http://localhost:19998/rest/headers/2/0000000000ccbf46cf6b78827ac1019f82598be839bce08bff00d188e75fb451.json
 {% endhighlight %}
 
 Result (whitespaced added):
 
 {% highlight json %}
-[
-  {
-    "hash": "000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a",
-    "confirmations": 33009,
-    "height": 410334,
-    "version": 4,
-    "versionHex": "00000004",
-    "merkleroot": "08c58fca0c4e8fbeda41cb7ecee19c262050a327dcc30927aa668a875c68378c",
-    "time": 1462442853,
-    "mediantime": 1462441310,
-    "nonce": 307247563,
-    "bits": "18062776",
-    "difficulty": 178659257772.5273,
-    "chainwork": "00000000000000000000000000000000000000000018562bc90589834ae929d0",
-    "previousblockhash": "000000000000000004c43e29f3fcf7f508d445cf640f5df8f89dbbb1eb8d9e4b",
-    "nextblockhash": "000000000000000000f198b9f92bc29fa294be4bb777e61fdd56aac07f174553"
-  },
-  {
-    "hash": "000000000000000000f198b9f92bc29fa294be4bb777e61fdd56aac07f174553",
-    "confirmations": 33008,
-    "height": 410335,
-    "version": 536870912,
-    "versionHex": "20000000",
-    "merkleroot": "a7729f01017131990c9c1067fb92b11e3b813d0b49ee4d7f1b79a47424499acb",
-    "time": 1462443981,
-    "mediantime": 1462441496,
-    "nonce": 3022072156,
-    "bits": "18062776",
-    "difficulty": 178659257772.5273,
-    "chainwork": "000000000000000000000000000000000000000000185655621b104558a77160",
-    "previousblockhash": "000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a",
-    "nextblockhash": "0000000000000000005b3caade164fcc5f3f00fd99ddbdb47ee66ea4bbe9387a"
-  }
+[  
+   {  
+      "hash":"0000000000ccbf46cf6b78827ac1019f82598be839bce08bff00d188e75fb451",
+      "confirmations":80,
+      "height":38010,
+      "version":536870912,
+      "merkleroot":"a2fe0b106c95b504b1e1189e348516e5c3538db69f881ab27c2fbf7a5a307884",
+      "time":1512582599,
+      "mediantime":1512582025,
+      "nonce":3609068752,
+      "bits":"1c0a0384",
+      "difficulty":25.56450187425715,
+      "chainwork":"00000000000000000000000000000000000000000000000000092fc476457b68",
+      "previousblockhash":"0000000009b11f275067dc7d8398d50c0357f9d0b4d0f64521a5af735d13e897",
+      "nextblockhash":"0000000000a9baff28a79db2a50e13af8f313138f4568339f58d73eda14a4d51"
+   },
+   {  
+      "hash":"0000000000a9baff28a79db2a50e13af8f313138f4568339f58d73eda14a4d51",
+      "confirmations":79,
+      "height":38011,
+      "version":536870912,
+      "merkleroot":"43b0bec82adb7488eccc886851741ccc05f8038df37acdef90f715ddbd24dc04",
+      "time":1512582665,
+      "mediantime":1512582146,
+      "nonce":432303709,
+      "bits":"1c099f99",
+      "difficulty":26.60134045579303,
+      "chainwork":"00000000000000000000000000000000000000000000000000092fdf1051882b",
+      "previousblockhash":"0000000000ccbf46cf6b78827ac1019f82598be839bce08bff00d188e75fb451",
+      "nextblockhash":"0000000008de9da638149042323fc05ded619a922ff1fac6e66f66fc773bd716"
+   }
 ]
 {% endhighlight %}
 

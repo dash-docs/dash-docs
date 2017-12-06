@@ -8,7 +8,7 @@ http://opensource.org/licenses/MIT.
 {% include helpers/subhead-links.md %}
 
 {% assign summary_restGetMemPool-contents="returns all transaction in the memory pool with detailed information." %}
-
+<!-- __ -->
 {% autocrossref %}
 
 The `GET mempool/contents` operation {{summary_restGetMemPool-contents}}  Supports only `json` as output format.
@@ -43,7 +43,7 @@ GET /mempool/contents.json
   t: "number (bitcoins)"
   p: "Required<br>(exactly 1)"
   d: "The transaction fee paid by the transaction in decimal bitcoins"
-  
+
 - n: "→ →<br>`modifiedfee`"
   t: "number (bitcoins)"
   p: "Required<br>(exactly 1)"
@@ -84,6 +84,19 @@ GET /mempool/contents.json
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.12.0*<br><br>The modified fees (see `modifiedfee` above) of in-mempool descendants (including this one)"
 
+- n: "→ →<br>`depends`"
+  t: "array"
+  p: "Required<br>(exactly 1)"
+  d: "An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty"
+
+- n: "→ → →<br>Depends TXID"
+  t: "string"
+  p: "Optional (0 or more)"
+  d: "The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order"
+
+{% enditemplate %}
+
+<!-- Not present in Dash
 - n: "→ →<br>`ancestorcount`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
@@ -98,65 +111,35 @@ GET /mempool/contents.json
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.13.0*<br><br>The modified fees (see `modifiedfee` above) of in-mempool ancestors (including this one)"
+-->
 
-- n: "→ →<br>`depends`"
-  t: "array"
-  p: "Required<br>(exactly 1)"
-  d: "An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty"
-
-- n: "→ → →<br>Depends TXID"
-  t: "string"
-  p: "Optional (0 or more)"
-  d: "The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order"
-
-{% enditemplate %}
-
-*Examples from Bitcoin Core 0.13.1*
+*Examples from Dash Core 0.12.2*
 
 Get all transactions in the memory pool in JSON:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/mempool/contents.json
+curl http://localhost:19998/rest/mempool/contents.json
 {% endhighlight %}
 
 Result (whitespaced added):
 
 {% highlight json %}
-{
-  "b104586f229e330caf42c475fd52684e9eb5e2d02f0fcd216d9554c5347b0873": {
-    "size": 485,
-    "fee": 0.00009700,
-    "modifiedfee": 0.00009700,
-    "time": 1479423635,
-    "height": 439431,
-    "startingpriority": 15327081.81818182,
-    "currentpriority": 21536936.36363636,
-    "descendantcount": 1,
-    "descendantsize": 485,
-    "descendantfees": 9700,
-    "ancestorcount": 1,
-    "ancestorsize": 485,
-    "ancestorfees": 9700,
-    "depends": [
-    ]
-  },
-  "094f7dcbc7494510d4daeceb2941ed73b1bd011bf527f6c3b7c897fee85c11d4": {
-    "size": 554,
-    "fee": 0.00005540,
-    "modifiedfee": 0.00005540,
-    "time": 1479423327,
-    "height": 439430,
-    "startingpriority": 85074.91071428571,
-    "currentpriority": 3497174.4375,
-    "descendantcount": 1,
-    "descendantsize": 554,
-    "descendantfees": 5540,
-    "ancestorcount": 1,
-    "ancestorsize": 554,
-    "ancestorfees": 5540,
-    "depends": [
-    ]
-  }
+{  
+   "b06edec446fbcc0fc04a6e2774a843823f5238c2e15de40e61767a44f6788d32":{  
+      "size":225,
+      "fee":0.00010000,
+      "modifiedfee":0.00010000,
+      "time":1512596309,
+      "height":38094,
+      "startingpriority":1934576927.410256,
+      "currentpriority":1934576927.410256,
+      "descendantcount":1,
+      "descendantsize":225,
+      "descendantfees":10000,
+      "depends":[  
+
+      ]
+   }
 }
 {% endhighlight %}
 

@@ -7,8 +7,8 @@ http://opensource.org/licenses/MIT.
 ##### GET Tx
 {% include helpers/subhead-links.md %}
 
-{% assign summary_restGetTx="gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Bitcoin Core only stores complete transaction data for UTXOs and your own transactions, so this method may fail on historic transactions unless you use the non-default `txindex=1` in your Bitcoin Core startup settings." %}
-
+{% assign summary_restGetTx="gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so this method may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings." %}
+<!-- __ -->
 {% autocrossref %}
 
 The `GET tx` operation {{summary_restGetTx}}
@@ -58,6 +58,11 @@ GET /tx/<txid>.<format>
   p: "Optional<br>(0 or 1)"
   d: "If the transaction has been included in a block on the local best block chain, this is the hash of that block encoded as hex in RPC byte order"
 
+- n: "→<br>`height`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height of this block on its block chain"
+
 - n: "→<br>`confirmations`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
@@ -75,86 +80,86 @@ GET /tx/<txid>.<format>
 
 {% enditemplate %}
 
-*Examples from Bitcoin Core 0.13.1*
+*Examples from Dash Core 0.12.2*
 
 Request a transaction in hex-encoded serialized transaction format:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/tx/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120.hex
+curl http://localhost:19998/rest/tx/b06edec446fbcc0fc04a6e2774a843823f5238c2e15de40e61767a44f6788d32.hex
 {% endhighlight %}
 
 Result (wrapped):
 
 {% highlight text %}
-0100000001bf33f5e034d1774f4019c03e119f4fa9e421339271f7476e5e34ff\
-72839ebc16000000006b483045022100dab0ade70063cbc5ad44664b707391f8\
-ffe6e406b1bab43abfb547d701694d98022067580db89b81c69ba83487ea0a1b\
-cb6a325d2903b726980865210d2127de09710121023ee7a6437e9ad2957cd032\
-38b9668c15cb1dc6ac9c9d142f829168e1a3e4a9c4feffffff02c88833030000\
-00001976a9145f4865d1865127807f714b0ad1ddfae9870866d888ac102697eb\
-000000001976a91479e19d5c1cbc1c18f59c57d37ca403f3bcdaa73f88acd0c3\
-0600
+0100000001c91d4bb14e061f8f6b775ca8e62ec8a66739b375f169bce1964cee\
+a2368197e5000000006a473044022050644e406be3e463d94868c617309dc021\
+174551dbb340665f48119e110a72b2022022f3cc93deeb4c44ce70bebe8e7f0f\
+69c462f120eb64b47eeb77f0a62e9bd361012102f542dde7c155717ac8df05d0\
+fc8f65e2ecc078ecad42b23462f27832b441ffa5feffffff0200e1f505000000\
+001976a91443d11ad5889532f22f069b18b24489b1f94f253188ac7dbafa0800\
+0000001976a914bb900427682b8f7cae6779fb955a610ff71d68c888acce940000
 {% endhighlight %}
 
 Get the same transaction in JSON:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/tx/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120.json
+curl http://localhost:19998/rest/tx/b06edec446fbcc0fc04a6e2774a843823f5238c2e15de40e61767a44f6788d32.json
 {% endhighlight %}
 
 Result (whitespaced added):
 
 {% highlight json %}
-{
-  "txid": "42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120",
-  "hash": "42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120",
-  "size": 226,
-  "vsize": 226,
-  "version": 1,
-  "locktime": 443344,
-  "vin": [
-    {
-      "txid": "16bc9e8372ff345e6e47f771923321e4a94f9f113ec019404f77d134e0f533bf",
-      "vout": 0,
-      "scriptSig": {
-        "asm": "3045022100dab0ade70063cbc5ad44664b707391f8ffe6e406b1bab43abfb547d701694d98022067580db89b81c69ba83487ea0a1bcb6a325d2903b726980865210d2127de0971[ALL] 023ee7a6437e9ad2957cd03238b9668c15cb1dc6ac9c9d142f829168e1a3e4a9c4",
-        "hex": "483045022100dab0ade70063cbc5ad44664b707391f8ffe6e406b1bab43abfb547d701694d98022067580db89b81c69ba83487ea0a1bcb6a325d2903b726980865210d2127de09710121023ee7a6437e9ad2957cd03238b9668c15cb1dc6ac9c9d142f829168e1a3e4a9c4"
+{  
+   "txid":"b06edec446fbcc0fc04a6e2774a843823f5238c2e15de40e61767a44f6788d32",
+   "size":225,
+   "version":1,
+   "locktime":38094,
+   "vin":[  
+      {  
+         "txid":"e5978136a2ee4c96e1bc69f175b33967a6c82ee6a85c776b8f1f064eb14b1dc9",
+         "vout":0,
+         "scriptSig":{  
+            "asm":"3044022050644e406be3e463d94868c617309dc021174551dbb340665f48119e110a72b2022022f3cc93deeb4c44ce70bebe8e7f0f69c462f120eb64b47eeb77f0a62e9bd361[ALL] 02f542dde7c155717ac8df05d0fc8f65e2ecc078ecad42b23462f27832b441ffa5",
+            "hex":"473044022050644e406be3e463d94868c617309dc021174551dbb340665f48119e110a72b2022022f3cc93deeb4c44ce70bebe8e7f0f69c462f120eb64b47eeb77f0a62e9bd361012102f542dde7c155717ac8df05d0fc8f65e2ecc078ecad42b23462f27832b441ffa5"
+         },
+         "sequence":4294967294
+      }
+   ],
+   "vout":[  
+      {  
+         "value":1.00000000,
+         "valueSat":100000000,
+         "n":0,
+         "scriptPubKey":{  
+            "asm":"OP_DUP OP_HASH160 43d11ad5889532f22f069b18b24489b1f94f2531 OP_EQUALVERIFY OP_CHECKSIG",
+            "hex":"76a91443d11ad5889532f22f069b18b24489b1f94f253188ac",
+            "reqSigs":1,
+            "type":"pubkeyhash",
+            "addresses":[  
+               "ySW2cuvm2wJ4EU5KzX4waYfFPV3xQni6Nm"
+            ]
+         }
       },
-      "sequence": 4294967294
-    }
-  ],
-  "vout": [
-    {
-      "value": 0.53709,
-      "n": 0,
-      "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 5f4865d1865127807f714b0ad1ddfae9870866d8 OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a9145f4865d1865127807f714b0ad1ddfae9870866d888ac",
-        "reqSigs": 1,
-        "type": "pubkeyhash",
-        "addresses": [
-          "19govWMzsRXqLUsUrHQKQ3DzekRxhsqwWH"
-        ]
+      {  
+         "value":1.50649469,
+         "valueSat":150649469,
+         "n":1,
+         "scriptPubKey":{  
+            "asm":"OP_DUP OP_HASH160 bb900427682b8f7cae6779fb955a610ff71d68c8 OP_EQUALVERIFY OP_CHECKSIG",
+            "hex":"76a914bb900427682b8f7cae6779fb955a610ff71d68c888ac",
+            "reqSigs":1,
+            "type":"pubkeyhash",
+            "addresses":[  
+               "ydRBjVr78ejCqXuGs2wbtYoFpGbDkqV8V4"
+            ]
+         }
       }
-    },
-    {
-      "value": 39.5255144,
-      "n": 1,
-      "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 79e19d5c1cbc1c18f59c57d37ca403f3bcdaa73f OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a91479e19d5c1cbc1c18f59c57d37ca403f3bcdaa73f88ac",
-        "reqSigs": 1,
-        "type": "pubkeyhash",
-        "addresses": [
-          "1C7T3CJ6MEYf1YCYYPfN6zuGirqZcD3wuE"
-        ]
-      }
-    }
-  ],
-  "blockhash": "0000000000000000023da07114323ad9676896f354951e6b563d143428b69c03",
-  "confirmations": 28,
-  "time": 1481662934,
-  "blocktime": 1481662934
+   ],
+   "blockhash":"0000000003b6a57e3614176e5b93caf9498009853e06d16028ebffeb361afda5",
+   "height":38095,
+   "confirmations":9,
+   "time":1512596315,
+   "blocktime":1512596315
 }
 {% endhighlight %}
 

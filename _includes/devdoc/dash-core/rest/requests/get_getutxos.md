@@ -8,10 +8,10 @@ http://opensource.org/licenses/MIT.
 {% include helpers/subhead-links.md %}
 
 {% assign summary_restGetGetUtxos="returns an UTXO set given a set of outpoints." %}
-
+<!-- __ -->
 {% autocrossref %}
 
-The `GET getutxos` operation {{summary_restGetGetUtxos}} 
+The `GET getutxos` operation {{summary_restGetGetUtxos}}
 
 *Request*
 
@@ -86,12 +86,12 @@ GET /getutxos/<checkmempool>/<txid>-<n>/<txid>-<n>/.../<txid>-<n>.<bin|hex|json>
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "The version number of the transaction the UTXO was found in"
-  
+
 - n: "→<br>`height`"
   t: "number (int)"
   p: "Required (exactly 1)"
   d: "The height of the block containing the defining transaction, or 0x7FFFFFFF if the tx is in the mempool"
-  
+
 - n: "→ → →<br>`value`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
@@ -131,54 +131,54 @@ GET /getutxos/<checkmempool>/<txid>-<n>/<txid>-<n>/.../<txid>-<n>.<bin|hex|json>
   t: "string"
   p: "Required<br>(1 or more)"
   d: "A P2PKH or P2SH address"
-  
+
 {% enditemplate %}
 
-*Examples from Bitcoin Core 0.13.1*
+*Examples from Dash Core 0.12.2*
 
 Request the UTXO set:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/getutxos/checkmempool/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120-0.hex
+curl http://localhost:19998/rest/getutxos/checkmempool/7b6caf68c33794b0bda65e63691739919f13156b57c7ec20a0b4de1f33c580bd-0.hex
 {% endhighlight %}
 
 Result (wrapped):
 
 {% highlight bash %}
-d0c306004f438cea9c68557da34e8e7823a963eb9350daa107ffd80100000000\
-0000000001010101000000ffffff7fc8883303000000001976a9145f4865d186\
-5127807f714b0ad1ddfae9870866d888ac
+c39400005ac8db505390f3c77635132117a7fdf07b2eb45c3d9fe38535b77b05\
+0000000001010101000000c394000050ae3b16000000001976a9146f4def95a3\
+15e83bef5e1197ace4aa7ec55f2ecc88ac
 {% endhighlight %}
 
 Same request in JSON:
 
 {% highlight bash %}
-curl http://localhost:8332/rest/getutxos/checkmempool/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120-0.json
+curl http://localhost:19998/rest/getutxos/checkmempool/7b6caf68c33794b0bda65e63691739919f13156b57c7ec20a0b4de1f33c580bd-0.json
 {% endhighlight %}
 
 Result (whitespaced added):
 
 {% highlight json %}
-{
-  "chainHeight": 443344,
-  "chaintipHash": "000000000000000001d8ff07a1da5093eb63a923788e4ea37d55689cea8c434f",
-  "bitmap": "1",
-  "utxos": [
-    {
-      "txvers": 1,
-      "height": 2147483647,
-      "value": 0.53709,
-      "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 5f4865d1865127807f714b0ad1ddfae9870866d8 OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a9145f4865d1865127807f714b0ad1ddfae9870866d888ac",
-        "reqSigs": 1,
-        "type": "pubkeyhash",
-        "addresses": [
-          "19govWMzsRXqLUsUrHQKQ3DzekRxhsqwWH"
-        ]
+{  
+   "chainHeight":38083,
+   "chaintipHash":"00000000057bb73585e39f3d5cb42e7bf0fda71721133576c7f3905350dbc85a",
+   "bitmap":"1",
+   "utxos":[  
+      {  
+         "txvers":1,
+         "height":38083,
+         "value":3.73010000,
+         "scriptPubKey":{  
+            "asm":"OP_DUP OP_HASH160 6f4def95a315e83bef5e1197ace4aa7ec55f2ecc OP_EQUALVERIFY OP_CHECKSIG",
+            "hex":"76a9146f4def95a315e83bef5e1197ace4aa7ec55f2ecc88ac",
+            "reqSigs":1,
+            "type":"pubkeyhash",
+            "addresses":[  
+               "yWTyDaMb1KZSRYwrq2DDW3Q4rKYuuPutDS"
+            ]
+         }
       }
-    }
-  ]
+   ]
 }
 {% endhighlight %}
 

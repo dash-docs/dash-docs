@@ -340,7 +340,7 @@ devsearches:
     - 'ImportPubkey': "/en/developer-reference#importpubkey"
     - 'ImportWallet': "/en/developer-reference#importwallet"
     - 'InstantSendToAddress': "/en/developer-reference#instantsendtoaddress"
-    - 'Keepass': "/en/developer-reference#keepass"
+    - 'KeePass': "/en/developer-reference#keepass"
     - 'KeypoolRefill': "/en/developer-reference#keypoolrefill"
     - 'ListAccounts': "/en/developer-reference#listaccounts"
     - 'ListAddressGroupings': "/en/developer-reference#listaddressgroupings"
