@@ -57,6 +57,8 @@ of the following file. -->
 
 {% include devdoc/guide_p2p_network.md %}
 
+{% include devdoc/guide_dash_features.md %}
+
 {% include devdoc/guide_mining.md %}
 
 <!-- Services like Blockcyper are more likely to be used by most than building a ground-up payment system
