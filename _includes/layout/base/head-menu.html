@@ -32,7 +32,7 @@ http://opensource.org/licenses/MIT.
       {% if page.lang == 'en' %}<li{% if page.id == 'exchanges' %} class="active"{% endif %}><a href="/en/exchanges">Exchanges</a></li>{% endif %}
       <li{% if page.id == 'community' %} class="active"{% endif %}><a href="/{{ page.lang }}/{% translate community url %}">{% translate menu-community layout %}</a></li>
       -->
-      <li{% if page.id == 'community' %} class="active"{% endif %}><a href="https://www.dash.org/community/">{% translate menu-community layout %}</a></li>
+      <li{% if page.id == 'community' %} class="active"{% endif %}><a rel="noopener noreferrer" target="_blank" href="https://www.dash.org/community/">{% translate menu-community layout %}</a></li>
       <!-- {% if page.lang == 'en' %}<li{% if page.id == 'developer-documentation' %} class="active"{% endif %}><a href="/en/developer-documentation">Documentation</a></li>{% endif %} -->
       <li{% if page.id == 'vocabulary' %} class="active"{% endif %}><a href="/{{ page.lang }}/{% translate vocabulary url %}">{% translate menu-vocabulary layout %}</a></li>
       <!--
