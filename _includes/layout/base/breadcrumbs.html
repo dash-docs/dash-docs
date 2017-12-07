@@ -30,7 +30,7 @@ http://opensource.org/licenses/MIT.
 
         {% when "dash" %}<a href="/{{page.lang}}/">{% translate dash vocabulary %}</a>
 
-        {% when "dev docs" %}<a href="/en/developer-documentation">Developer Documentation</a>
+        {% when "dev docs" %}<a href="/en/">Developer Documentation</a>
         {% when "glossary" %}<a href="/en/developer-glossary">Glossary</a>
         {% else %}{% die "Breadcrumb not found in _includes/layout/breadcrumbs.html" %}
       {% endcase %}
