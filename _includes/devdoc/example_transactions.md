@@ -3,6 +3,7 @@ This file is licensed under the MIT License (MIT) available on
 http://opensource.org/licenses/MIT.
 {% endcomment %}
 {% assign filename="_includes/devdoc/example_transactions.md" %}
+<!-- __ -->
 
 ## Transactions
 {% include helpers/subhead-links.md %}
@@ -12,17 +13,17 @@ http://opensource.org/licenses/MIT.
 
 {% autocrossref %}
 
-Creating transactions is something most Bitcoin applications do.
-This section describes how to use Bitcoin Core's RPC interface to
+Creating transactions is something most Dash applications do.
+This section describes how to use Dash Core's RPC interface to
 create transactions with various attributes.
 
-Your applications may use something besides Bitcoin Core to create
+Your applications may use something besides Dash Core to create
 transactions, but in any system, you will need to provide the same kinds
 of data to create transactions with the same attributes as those
 described below.
 
-In order to use this tutorial, you will need to setup [Bitcoin Core][core executable]
-and create a regression test mode environment with 50 BTC in your test
+In order to use this tutorial, you will need to setup [Dash Core][core executable]
+and create a regression test mode environment with 500 DASH in your test
 wallet.
 
 {% endautocrossref %}
@@ -37,36 +38,36 @@ wallet.
 
 {% autocrossref %}
 
-Bitcoin Core provides several RPCs which handle all the details of
+Dash Core provides several RPCs which handle all the details of
 spending, including creating change outputs and paying appropriate fees.
 Even advanced users should use these RPCs whenever possible to decrease
-the chance that satoshis will be lost by mistake.
+the chance that duffs will be lost by mistake.
 
 {% highlight bash %}
-> bitcoin-cli -regtest getnewaddress
-mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou
+> dash-cli -regtest getnewaddress
+yLp6ZJueuigiF4s9E1Pv8tEunDPEsjyQfd
 
-> NEW_ADDRESS=mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou
+> NEW_ADDRESS=yLp6ZJueuigiF4s9E1Pv8tEunDPEsjyQfd
 {% endhighlight %}
 
-Get a new Bitcoin address and save it in the shell variable `$NEW_ADDRESS`.
+Get a new Dash address and save it in the shell variable `$NEW_ADDRESS`.
 
 {% highlight bash %}
-> bitcoin-cli -regtest sendtoaddress $NEW_ADDRESS 10.00
-263c018582731ff54dc72c7d67e858c002ae298835501d80200f05753de0edf0
+> dash-cli -regtest sendtoaddress $NEW_ADDRESS 10.00
+c7e5ae1240fdd83bb94c94a93816ed2ab7bcb56ec3ff8a9725c5c1e0482684ea
 {% endhighlight %}
 
-Send 10 bitcoins to the address using the `sendtoaddress` RPC.  The
+Send 10 dash to the address using the `sendtoaddress` RPC.  The
 returned hex string is the transaction identifier (txid).
 
 The `sendtoaddress` RPC automatically selects an unspent transaction
-output (UTXO) from which to spend the satoshis. In this case, it
-withdrew the satoshis from our only available UTXO, the coinbase
+output (UTXO) from which to spend the duffs. In this case, it
+withdrew the duffs from our only available UTXO, the coinbase
 transaction for block #1 which matured with the creation of block #101.
 To spend a specific UTXO, you could use the `sendfrom` RPC instead.
 
 {% highlight bash %}
-> bitcoin-cli -regtest listunspent
+> dash-cli -regtest listunspent
 [
 ]
 {% endhighlight %}
@@ -77,35 +78,33 @@ UTXOs and we just spent our only confirmed UTXO.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest listunspent 0
+> dash-cli -regtest listunspent 0
 {% endhighlight %}
 {% highlight json %}
-[
-    {
-        "txid" : "263c018582731ff54dc72c7d67e858c002ae298835501d\
-                  80200f05753de0edf0",
-        "vout" : 0,
-        "address" : "muhtvdmsnbQEPFuEmxcChX58fGvXaaUoVt",
-        "scriptPubKey" : "76a9149ba386253ea698158b6d34802bb9b550\
-                          f5ce36dd88ac",
-        "amount" : 40.00000000,
-        "confirmations" : 0,
-        "spendable" : true,
-        "solvable" : true
-    },
-    {
-        "txid" : "263c018582731ff54dc72c7d67e858c002ae298835501d\
-                  80200f05753de0edf0",
-        "vout" : 1,
-        "address" : "mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou",
-        "account" : "",
-        "scriptPubKey" : "76a914a57414e5ffae9ef5074bacbe10a320bb\
-                          2614e1f388ac",
-        "amount" : 10.00000000,
-        "confirmations" : 0,
-        "spendable" : true,
-        "solvable" : true
-    }
+[  
+   {  
+      "txid":"c7e5ae1240fdd83bb94c94a93816ed2ab7bcb56ec3ff8a9725c5c1e0482684ea",
+      "vout":0,
+      "address":"yLp6ZJueuigiF4s9E1Pv8tEunDPEsjyQfd",
+      "account":"",
+      "scriptPubKey":"76a914056b1fe57914236149feb21dcbc6b86f4bdd9f4988ac",
+      "amount":10.00000000,
+      "confirmations":0,
+      "ps_rounds":-2,
+      "spendable":true,
+      "solvable":true
+   },
+   {  
+      "txid":"c7e5ae1240fdd83bb94c94a93816ed2ab7bcb56ec3ff8a9725c5c1e0482684ea",
+      "vout":1,
+      "address":"yeP6Tw2uW4nWAFWRytw8TyshErTq59dUkN",
+      "scriptPubKey":"76a914c622e98a6ccf34d02620612f58f20a50061cf4b188ac",
+      "amount":490.00000000,
+      "confirmations":0,
+      "ps_rounds":-2,
+      "spendable":true,
+      "solvable":true
+   }
 ]
 {% endhighlight %}
 </div>
@@ -114,12 +113,12 @@ Re-running the `listunspent` RPC with the argument "0" to also display
 unconfirmed transactions shows that we have two UTXOs, both with the
 same txid. The first UTXO shown is a change output that `sendtoaddress`
 created using a new address from the key pool. The second UTXO shown is
-the spend to the address we provided. If we had spent those satoshis to
+the spend to the address we provided. If we had spent those duffs to
 someone else, that second transaction would not be displayed in our
 list of UTXOs.
 
 {% highlight bash %}
-> bitcoin-cli -regtest generate 1
+> dash-cli -regtest generate 1
 
 > unset NEW_ADDRESS
 {% endhighlight %}
@@ -141,15 +140,15 @@ second) and clear the shell variable.
 
 The raw transaction RPCs allow users to create custom transactions and
 delay broadcasting those transactions. However, mistakes made in raw
-transactions may not be detected by Bitcoin Core, and a number of raw
-transaction users have permanently lost large numbers of satoshis, so
+transactions may not be detected by Dash Core, and a number of raw
+transaction users have permanently lost large numbers of duffs, so
 please be careful using raw transactions on mainnet.
 
 This subsection covers one of the simplest possible raw transactions.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest listunspent
+> dash-cli -regtest listunspent
 {% endhighlight %}
 {% highlight json %}
 [
@@ -193,7 +192,7 @@ This subsection covers one of the simplest possible raw transactions.
 ]
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > UTXO_TXID=3f4fa19803dec4d6a84fae3821da7ac7577080ef75451294e71f[...]
 > UTXO_VOUT=0
 {% endhighlight %}
@@ -205,7 +204,7 @@ txid and output index number (vout) of that coinbase UTXO to shell
 variables.
 
 {% highlight bash %}
-> bitcoin-cli -regtest getnewaddress
+> dash-cli -regtest getnewaddress
 mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG
 
 > NEW_ADDRESS=mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG
@@ -215,7 +214,7 @@ Get a new address to use in the raw transaction.
 
 {% highlight bash %}
 ## Outputs - inputs = transaction fee, so always double-check your math!
-> bitcoin-cli -regtest createrawtransaction '''
+> dash-cli -regtest createrawtransaction '''
     [
       {
         "txid": "'$UTXO_TXID'",
@@ -238,24 +237,24 @@ raw format transaction. The first argument (a JSON array) references
 the txid of the coinbase transaction from block #2 and the index
 number (0) of the output from that transaction we want to spend. The
 second argument (a JSON object) creates the output with the address
-(public key hash) and number of bitcoins we want to transfer.
+(public key hash) and number of dash we want to transfer.
 We save the resulting raw format transaction to a shell variable.
 
 ![Warning icon](/img/icons/icon_warning.svg)
  **Warning:** `createrawtransaction` does not automatically create change
 outputs, so you can easily accidentally pay a large transaction fee. In
-this example, our input had 50.0000 bitcoins and our output
-(`$NEW_ADDRESS`) is being paid 49.9999 bitcoins, so the transaction will
-include a fee of 0.0001 bitcoins. If we had paid `$NEW_ADDRESS` only 10
-bitcoins with no other changes to this transaction, the transaction fee
-would be a whopping 40 bitcoins. See the Complex Raw Transaction
+this example, our input had 50.0000 dash and our output
+(`$NEW_ADDRESS`) is being paid 49.9999 dash, so the transaction will
+include a fee of 0.0001 dash. If we had paid `$NEW_ADDRESS` only 10
+dash with no other changes to this transaction, the transaction fee
+would be a whopping 40 dash. See the Complex Raw Transaction
 subsection below for how to create a transaction with multiple outputs so you
 can send the change back to yourself.
 
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest decoderawtransaction $RAW_TX
+> dash-cli -regtest decoderawtransaction $RAW_TX
 {% endhighlight %}
 {% highlight json %}
 {
@@ -304,7 +303,7 @@ we just created does.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest signrawtransaction $RAW_TX
+> dash-cli -regtest signrawtransaction $RAW_TX
 {% endhighlight %}
 {% highlight json %}
 {
@@ -319,23 +318,23 @@ we just created does.
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > SIGNED_RAW_TX=01000000017b1eabe0209b1fe794124575ef807057c77ada[...]
 {% endhighlight %}
 </div>
 
 Use the `signrawtransaction` RPC to sign the transaction created by
 `createrawtransaction` and save the returned "hex" raw format signed
-transaction to a shell variable. 
+transaction to a shell variable.
 
-Even though the transaction is now complete, the Bitcoin Core node we're
+Even though the transaction is now complete, the Dash Core node we're
 connected to doesn't know anything about the transaction, nor does any
 other part of the network. We've created a spend, but we haven't
 actually spent anything because we could simply unset the
 `$SIGNED_RAW_TX` variable to eliminate the transaction.
 
 {% highlight bash %}
-> bitcoin-cli -regtest sendrawtransaction $SIGNED_RAW_TX
+> dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
 c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a966011aaa79965ffba
 {% endhighlight %}
 
@@ -345,7 +344,7 @@ would usually then broadcast it to other peers, but we're not currently
 connected to other peers because we started in regtest mode.
 
 {% highlight bash %}
-> bitcoin-cli -regtest generate 1
+> dash-cli -regtest generate 1
 
 > unset UTXO_TXID UTXO_VOUT NEW_ADDRESS RAW_TX SIGNED_RAW_TX
 {% endhighlight %}
@@ -371,7 +370,7 @@ transaction together (such as a CoinJoin transaction).
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest listunspent
+> dash-cli -regtest listunspent
 {% endhighlight %}
 {% highlight json %}
 [
@@ -428,11 +427,11 @@ transaction together (such as a CoinJoin transaction).
 ]
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > UTXO1_TXID=78203a8f6b529693759e1917a1b9f05670d036fbb129110ed26[...]
 > UTXO1_VOUT=0
 > UTXO1_ADDRESS=n2KprMQm4z2vmZnPMENfbp2P1LLdAEFRjS
- 
+
 > UTXO2_TXID=263c018582731ff54dc72c7d67e858c002ae298835501d80200[...]
 > UTXO2_VOUT=0
 > UTXO2_ADDRESS=muhtvdmsnbQEPFuEmxcChX58fGvXaaUoVt
@@ -446,10 +445,10 @@ transactions. We need the addresses so we can get the corresponding
 private keys from our wallet.
 
 {% highlight bash %}
-> bitcoin-cli -regtest dumpprivkey $UTXO1_ADDRESS
+> dash-cli -regtest dumpprivkey $UTXO1_ADDRESS
 cSp57iWuu5APuzrPGyGc4PGUeCg23PjenZPBPoUs24HtJawccHPm
 
-> bitcoin-cli -regtest dumpprivkey $UTXO2_ADDRESS
+> dash-cli -regtest dumpprivkey $UTXO2_ADDRESS
 cT26DX6Ctco7pxaUptJujRfbMS2PJvdqiSMaGaoSktHyon8kQUSg
 
 > UTXO1_PRIVATE_KEY=cSp57iWuu5APuzrPGyGc4PGUeCg23PjenZPBPoUs24Ht[...]
@@ -470,9 +469,9 @@ These examples are to help you learn, not for you to emulate on
 mainnet.
 
 {% highlight bash %}
-> bitcoin-cli -regtest getnewaddress
+> dash-cli -regtest getnewaddress
 n4puhBEeEWD2VvjdRC9kQuX2abKxSCMNqN
-> bitcoin-cli -regtest getnewaddress
+> dash-cli -regtest getnewaddress
 n4LWXU59yM5MzQev7Jx7VNeq1BqZ85ZbLj
 
 > NEW_ADDRESS1=n4puhBEeEWD2VvjdRC9kQuX2abKxSCMNqN
@@ -483,12 +482,12 @@ For our two outputs, get two new addresses.
 
 {% highlight bash %}
 ## Outputs - inputs = transaction fee, so always double-check your math!
-> bitcoin-cli -regtest createrawtransaction '''
+> dash-cli -regtest createrawtransaction '''
     [
       {
-        "txid": "'$UTXO1_TXID'", 
+        "txid": "'$UTXO1_TXID'",
         "vout": '$UTXO1_VOUT'
-      }, 
+      },
       {
         "txid": "'$UTXO2_TXID'",
         "vout": '$UTXO2_VOUT'
@@ -496,8 +495,8 @@ For our two outputs, get two new addresses.
     ]
     ''' '''
     {
-      "'$NEW_ADDRESS1'": 79.9999, 
-      "'$NEW_ADDRESS2'": 10 
+      "'$NEW_ADDRESS1'": 79.9999,
+      "'$NEW_ADDRESS2'": 10
     }'''
 0100000002f327e86da3e66bd20e1129b1fb36d07056f0b9a117199e75939652\
 6b8f3a20780000000000fffffffff0ede03d75050f20801d50358829ae02c058\
@@ -514,7 +513,7 @@ before, except now we have two inputs and two outputs.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest signrawtransaction $RAW_TX '[]' '''
+> dash-cli -regtest signrawtransaction $RAW_TX '[]' '''
     [
       "'$UTXO1_PRIVATE_KEY'"
     ]'''
@@ -544,7 +543,7 @@ before, except now we have two inputs and two outputs.
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > PARTLY_SIGNED_RAW_TX=0100000002f327e86da3e66bd20e1129b1fb36d07[...]
 {% endhighlight %}
 </div>
@@ -567,7 +566,7 @@ transaction hex to a shell variable.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest signrawtransaction $PARTLY_SIGNED_RAW_TX '[]' '''
+> dash-cli -regtest signrawtransaction $PARTLY_SIGNED_RAW_TX '[]' '''
     [
       "'$UTXO2_PRIVATE_KEY'"
     ]'''
@@ -654,7 +653,7 @@ variable.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest decoderawtransaction $OLD_SIGNED_RAW_TX
+> dash-cli -regtest decoderawtransaction $OLD_SIGNED_RAW_TX
 {% endhighlight %}
 {% highlight json %}
 {
@@ -738,7 +737,7 @@ variable.
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > UTXO_TXID=682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40[...]
 > UTXO_VOUT=1
 > UTXO_OUTPUT_SCRIPT=76a914fa5139067622fd7e1e722a05c17c2bb7d5fd6[...]
@@ -751,17 +750,17 @@ specific one of its UTXOs to spend and save that UTXO's output index number
 (vout) and hex pubkey script (scriptPubKey) into shell variables.
 
 {% highlight bash %}
-> bitcoin-cli -regtest getnewaddress
+> dash-cli -regtest getnewaddress
 mfdCHEFL2tW9eEUpizk7XLZJcnFM4hrp78
 
 > NEW_ADDRESS=mfdCHEFL2tW9eEUpizk7XLZJcnFM4hrp78
 {% endhighlight %}
 
-Get a new address to spend the satoshis to.
+Get a new address to spend the duffs to.
 
 {% highlight bash %}
 ## Outputs - inputs = transaction fee, so always double-check your math!
-> bitcoin-cli -regtest createrawtransaction '''
+> dash-cli -regtest createrawtransaction '''
     [
       {
         "txid": "'$UTXO_TXID'",
@@ -784,7 +783,7 @@ subsections.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-    > bitcoin-cli -regtest signrawtransaction $RAW_TX
+    > dash-cli -regtest signrawtransaction $RAW_TX
 {% endhighlight %}
 {% highlight json %}
     {
@@ -821,11 +820,11 @@ so it can't automatically insert the previous pubkey script.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest signrawtransaction $RAW_TX '''
+> dash-cli -regtest signrawtransaction $RAW_TX '''
     [
       {
-        "txid": "'$UTXO_TXID'", 
-        "vout": '$UTXO_VOUT', 
+        "txid": "'$UTXO_TXID'",
+        "vout": '$UTXO_VOUT',
         "scriptPubKey": "'$UTXO_OUTPUT_SCRIPT'"
       }
     ]'''
@@ -844,13 +843,13 @@ so it can't automatically insert the previous pubkey script.
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > SIGNED_RAW_TX=0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee9[...]
 {% endhighlight %}
 </div>
 
 Successfully sign the transaction by providing the previous pubkey
-script and other required input data. 
+script and other required input data.
 
 This specific operation is typically what offline signing wallets do.
 The online wallet creates the raw transaction and gets the previous
@@ -862,7 +861,7 @@ broadcasts it.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest sendrawtransaction $SIGNED_RAW_TX
+> dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
 {% endhighlight %}
 {% highlight json %}
 error: {"code":-22,"message":"TX rejected"}
@@ -874,9 +873,9 @@ first transaction.  The node rejects this attempt because the second
 transaction spends an output which is not a UTXO the node knows about.
 
 {% highlight bash %}
-> bitcoin-cli -regtest sendrawtransaction $OLD_SIGNED_RAW_TX
+> dash-cli -regtest sendrawtransaction $OLD_SIGNED_RAW_TX
 682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40cf18ffbb8e09
-> bitcoin-cli -regtest sendrawtransaction $SIGNED_RAW_TX
+> dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
 67d53afa1a8167ca093d30be7fb9dcb8a64a5fdecacec9d93396330c47052c57
 {% endhighlight %}
 
@@ -886,7 +885,7 @@ the UTXO.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest getrawmempool
+> dash-cli -regtest getrawmempool
 {% endhighlight %}
 {% highlight json %}
 [
@@ -904,7 +903,7 @@ are part of the local node's memory pool.
 > unset OLD_SIGNED_RAW_TX SIGNED_RAW_TX RAW_TX [...]
 {% endhighlight %}
 
-Remove old shell variables. 
+Remove old shell variables.
 
 {% endautocrossref %}
 
@@ -919,7 +918,7 @@ Remove old shell variables.
 {% autocrossref %}
 
 In this subsection, we will create a P2SH multisig address, spend
-satoshis to it, and then spend those satoshis from it to another
+duffs to it, and then spend those duffs from it to another
 address.
 
 Creating a multisig address is easy. Multisig outputs have two
@@ -928,11 +927,11 @@ parameters, the *minimum* number of signatures required (*m*) and the
 called m-of-n, and in this case we'll be using 2-of-3.
 
 {% highlight bash %}
-    > bitcoin-cli -regtest getnewaddress
+    > dash-cli -regtest getnewaddress
     mhAXF4Eq7iRyvbYk1mpDVBiGdLP3YbY6Dm
-    > bitcoin-cli -regtest getnewaddress
+    > dash-cli -regtest getnewaddress
     moaCrnRfP5zzyhW8k65f6Rf2z5QpvJzSKe
-    > bitcoin-cli -regtest getnewaddress
+    > dash-cli -regtest getnewaddress
     mk2QpYatsKicvFVuTAQLBryyccRXMUaGHP
 
     > NEW_ADDRESS1=mhAXF4Eq7iRyvbYk1mpDVBiGdLP3YbY6Dm
@@ -943,7 +942,7 @@ called m-of-n, and in this case we'll be using 2-of-3.
 Generate three new P2PKH addresses. P2PKH addresses cannot be used with
 the multisig redeem script created below. (Hashing each public key is
 unnecessary anyway---all the public keys are protected by a hash when
-the redeem script is hashed.) However, Bitcoin Core uses addresses as a
+the redeem script is hashed.) However, Dash Core uses addresses as a
 way to reference the underlying full (unhashed) public keys it knows
 about, so we get the three new addresses above in order to use their
 public keys.
@@ -955,7 +954,7 @@ redeem script. You must give them a full public key.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest validateaddress $NEW_ADDRESS3
+> dash-cli -regtest validateaddress $NEW_ADDRESS3
 {% endhighlight %}
 {% highlight json %}
 {
@@ -972,13 +971,13 @@ redeem script. You must give them a full public key.
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > NEW_ADDRESS3_PUBLIC_KEY=029e03a901b85534ff1e92c43c74431f7ce720[...]
 {% endhighlight %}
 </div>
 
 Use the `validateaddress` RPC to display the full (unhashed) public key
-for one of the addresses.  This is the information which will 
+for one of the addresses.  This is the information which will
 actually be included in the multisig redeem script.  This is also the
 information you would give another person or device as part of creating
 a multisig output or P2SH multisig redeem script.
@@ -987,10 +986,10 @@ We save the address returned to a shell variable.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest createmultisig 2 '''
+> dash-cli -regtest createmultisig 2 '''
     [
       "'$NEW_ADDRESS1'",
-      "'$NEW_ADDRESS2'", 
+      "'$NEW_ADDRESS2'",
       "'$NEW_ADDRESS3_PUBLIC_KEY'"
     ]'''
 {% endhighlight %}
@@ -1004,7 +1003,7 @@ We save the address returned to a shell variable.
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > P2SH_ADDRESS=2N7NaqSKYQUeM8VNgBy8D9xQQbiA8yiJayk
 > P2SH_REDEEM_SCRIPT=522103310188e911026cf18c3ce274e0ebb5f95b007[...]
 {% endhighlight %}
@@ -1019,16 +1018,16 @@ one public key---all of which will be converted to public keys in the
 redeem script.
 
 The P2SH address is returned along with the redeem script which must be
-provided when we spend satoshis sent to the P2SH address.
+provided when we spend duffs sent to the P2SH address.
 
 ![Warning icon](/img/icons/icon_warning.svg)
  **Warning:** You must not lose the redeem script, especially if you
 don't have a record of which public keys you used to create the P2SH
-multisig address. You need the redeem script to spend any bitcoins sent
+multisig address. You need the redeem script to spend any dash sent
 to the P2SH address. If you lose the redeem script, you can recreate it
 by running the same command above, with the public keys listed in the
 same order. However, if you lose both the redeem script and even one of
-the public keys, you will never be able to spend satoshis sent to that
+the public keys, you will never be able to spend duffs sent to that
 P2SH address.
 
 Neither the address nor the redeem script are stored in the wallet when
@@ -1037,13 +1036,13 @@ you use `createmultisig`. To store them in the wallet, use the
 you should also make a new backup.
 
 {% highlight bash %}
-> bitcoin-cli -regtest sendtoaddress $P2SH_ADDRESS 10.00
+> dash-cli -regtest sendtoaddress $P2SH_ADDRESS 10.00
 7278d7d030f042ebe633732b512bcb31fff14a697675a1fe1884db139876e175
 
 > UTXO_TXID=7278d7d030f042ebe633732b512bcb31fff14a697675a1fe1884[...]
 {% endhighlight %}
 
-Paying the P2SH multisig address with Bitcoin Core is as simple as
+Paying the P2SH multisig address with Dash Core is as simple as
 paying a more common P2PKH address. Here we use the same command (but
 different variable) we used in the Simple Spending subsection. As
 before, this command automatically selects an UTXO, creates a change
@@ -1054,7 +1053,7 @@ We save that txid to a shell variable as the txid of the UTXO we plan to spend n
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest getrawtransaction $UTXO_TXID 1
+> dash-cli -regtest getrawtransaction $UTXO_TXID 1
 {% endhighlight %}
 {% highlight json %}
 {
@@ -1115,7 +1114,7 @@ We save that txid to a shell variable as the txid of the UTXO we plan to spend n
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > UTXO_VOUT=0
 > UTXO_OUTPUT_SCRIPT=a9149af61346ce0aa2dffcf697352b4b704c84dcbaff87
 {% endhighlight %}
@@ -1123,11 +1122,11 @@ We save that txid to a shell variable as the txid of the UTXO we plan to spend n
 
 We use the `getrawtransaction` RPC with the optional second argument
 (*true*) to get the decoded transaction we just created with
-`spendtoaddress`. We choose one of the outputs to be our UTXO and get
+`sendtoaddress`. We choose one of the outputs to be our UTXO and get
 its output index number (vout) and pubkey script (scriptPubKey).
 
 {% highlight bash %}
-> bitcoin-cli -regtest getnewaddress
+> dash-cli -regtest getnewaddress
 mxCNLtKxzgjg8yyNHeuFSXvxCvagkWdfGU
 
 > NEW_ADDRESS4=mxCNLtKxzgjg8yyNHeuFSXvxCvagkWdfGU
@@ -1138,7 +1137,7 @@ create.
 
 {% highlight bash %}
 ## Outputs - inputs = transaction fee, so always double-check your math!
-> bitcoin-cli -regtest createrawtransaction '''
+> dash-cli -regtest createrawtransaction '''
     [
       {
         "txid": "'$UTXO_TXID'",
@@ -1161,9 +1160,9 @@ We generate the raw transaction the same way we did in the Simple Raw
 Transaction subsection.
 
 {% highlight bash %}
-> bitcoin-cli -regtest dumpprivkey $NEW_ADDRESS1
+> dash-cli -regtest dumpprivkey $NEW_ADDRESS1
 cVinshabsALz5Wg4tGDiBuqEGq4i6WCKWXRQdM8RFxLbALvNSHw7
-> bitcoin-cli -regtest dumpprivkey $NEW_ADDRESS3
+> dash-cli -regtest dumpprivkey $NEW_ADDRESS3
 cNmbnwwGzEghMMe1vBwH34DFHShEj5bcXD1QpFRPHgG9Mj1xc5hq
 
 > NEW_ADDRESS1_PRIVATE_KEY=cVinshabsALz5Wg4tGDiBuqEGq4i6WCKWXRQd[...]
@@ -1182,12 +1181,12 @@ complex raw transaction].
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest signrawtransaction $RAW_TX '''
+> dash-cli -regtest signrawtransaction $RAW_TX '''
     [
       {
-        "txid": "'$UTXO_TXID'", 
-        "vout": '$UTXO_VOUT', 
-        "scriptPubKey": "'$UTXO_OUTPUT_SCRIPT'", 
+        "txid": "'$UTXO_TXID'",
+        "vout": '$UTXO_VOUT',
+        "scriptPubKey": "'$UTXO_OUTPUT_SCRIPT'",
         "redeemScript": "'$P2SH_REDEEM_SCRIPT'"
       }
     ]
@@ -1213,7 +1212,7 @@ complex raw transaction].
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > PARTLY_SIGNED_RAW_TX=010000000175e1769813db8418fea17576694af1f[...]
 {% endhighlight %}
 </div>
@@ -1224,12 +1223,12 @@ to the signature script after the two signatures.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-> bitcoin-cli -regtest signrawtransaction $PARTLY_SIGNED_RAW_TX '''
+> dash-cli -regtest signrawtransaction $PARTLY_SIGNED_RAW_TX '''
     [
       {
         "txid": "'$UTXO_TXID'",
         "vout": '$UTXO_VOUT',
-        "scriptPubKey": "'$UTXO_OUTPUT_SCRIPT'", 
+        "scriptPubKey": "'$UTXO_OUTPUT_SCRIPT'",
         "redeemScript": "'$P2SH_REDEEM_SCRIPT'"
       }
     ]
@@ -1258,7 +1257,7 @@ to the signature script after the two signatures.
 }
 {% endhighlight %}
 {% highlight bash %}
- 
+
 > SIGNED_RAW_TX=010000000175e1769813db8418fea17576694af1ff31cb2b[...]
 {% endhighlight %}
 </div>
@@ -1269,7 +1268,7 @@ two required signatures have been provided, the transaction is marked as
 complete.
 
 {% highlight bash %}
-> bitcoin-cli -regtest sendrawtransaction $SIGNED_RAW_TX
+> dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
 430a4cee3a55efb04cbb8718713cab18dea7f2521039aa660ffb5aae14ff3f50
 {% endhighlight %}
 

@@ -326,7 +326,7 @@ http://opensource.org/licenses/MIT.
 [Bitcoin Core 0.14.1]: /en/release/v0.14.1
 [Bitcoin Core 0.14.2]: /en/release/v0.14.2
 [bitcoin URI subsection]: /en/developer-guide#bitcoin-uri
-[bitcoind initial setup]: /en/developer-examples
+[dashd initial setup]: /en/developer-examples
 [bitcoinpdf]: https://bitcoin.org/en/bitcoin-paper
 [choose your wallet]: https://www.dash.org/wallets/
 [communities]: https://www.dash.org/community/
@@ -519,6 +519,9 @@ http://opensource.org/licenses/MIT.
 [Stratum mining protocol]: http://mining.bitcoin.cz/stratum-mining
 [study of SPV privacy over tor]: http://arxiv.org/abs/1410.6079
 [superblock example]: https://chainz.cryptoid.info/dash/block.dws?731104.htm
+[Testnet Faucet - Dash.org]: https://test.faucet.dash.org/
+[Testnet Faucet - Masternode.io]: http://test.faucet.masternode.io/
+[Testnet Faucet - Dashninja.pl]: https://test.faucet.dashninja.pl/
 [Tor]: https://en.wikipedia.org/wiki/Tor_%28anonymity_network%29
 [transifex]: https://www.transifex.com/projects/p/bitcoinorg/
 [unix epoch time]: https://en.wikipedia.org/wiki/Unix_time

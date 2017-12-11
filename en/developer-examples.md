@@ -5,7 +5,7 @@
 layout: base
 lang: en
 id: developer-examples
-title: "Developer Examples - Bitcoin"
+title: "Developer Examples - Dash"
 breadcrumbs:
 #  - bitcoin
   - dev docs
@@ -18,9 +18,9 @@ end_of_page: |
 ---
 <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-# Bitcoin Developer Examples
+# Dash Developer Examples
 
-<p class="summary">Find examples of how to build programs using Bitcoin.</p>
+<p class="summary">Find examples of how to build programs using Dash.</p>
 
 <div markdown="1" id="toc" class="toc"><div markdown="1">
 
@@ -28,8 +28,8 @@ end_of_page: |
 {:toc}
 
 <ul class="goback"><li><a href="/en">Return To Overview</a></li></ul>
-<ul class="reportissue"><li><a href="https://github.com/bitcoin-dot-org/bitcoin.org/issues/new" onmouseover="updateIssue(event);">Report An Issue</a></li></ul>
-<ul class="editsource"><li><a href="https://github.com/bitcoin-dot-org/bitcoin.org/tree/master/_includes" onmouseover="updateSource(event);">Edit On GitHub</a></li></ul>
+<ul class="reportissue"><li><a href="https://github.com/thephez/dash.org/issues/new" onmouseover="updateIssue(event);">Report An Issue</a></li></ul>
+<ul class="editsource"><li><a href="https://github.com/thephez/dash.org/tree/master/_includes" onmouseover="updateSource(event);">Edit On GitHub</a></li></ul>
 
 </div></div>
 <div markdown="1" class="toccontent">
@@ -44,7 +44,9 @@ end_of_page: |
 
 {% include devdoc/example_transactions.md %}
 
+<!-- Services like Blockcyper are more likely to be used by most than building a ground-up payment system
 {% include devdoc/example_payment_processing.md %}
+-->
 
 {% include devdoc/example_p2p_networking.md %}
 
