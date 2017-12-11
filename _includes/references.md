@@ -466,6 +466,7 @@ http://opensource.org/licenses/MIT.
 [dashmnb]: https://github.com/chaeplin/dashmnb
 [DER]: https://en.wikipedia.org/wiki/X.690#DER_encoding
 [dig command]: https://en.wikipedia.org/wiki/Dig_%28Unix_command%29
+[Discord channels]: http://www.dashchat.org
 [DNS A records]: http://tools.ietf.org/html/rfc1035#section-3.2.2
 [DNS Seed Policy]: https://github.com/dashpay/dash/blob/master/doc/dnsseed-policy.md
 [docs issue]: https://github.com/thephez/dash.org/issues
@@ -475,7 +476,7 @@ http://opensource.org/licenses/MIT.
 [Eloipool]: https://github.com/luke-jr/eloipool
 [errors in docs]: https://github.com/thephez/dash.org/issues?q=is%3Aissue+label%3A%22Dev+Docs%22
 [fake satoshi transaction]: https://www.reddit.com/r/Bitcoin/comments/3fv42j/blockchaininfo_spoofed_transactions_problem_aug_4/
-[forum tech support]: https://bitcointalk.org/index.php?board=4.0
+[forum tech support]: https://www.dash.org/forum/categories/dash-support.61/
 [ghash betcoin double spend]: https://bitcointalk.org/index.php?topic=321630.msg3445371
 [gitian sigs]: https://github.com/bitcoin/gitian.sigs
 [high-speed block relay network]: https://www.mail-archive.com/bitcoin-development@lists.sourceforge.net/msg03189.html

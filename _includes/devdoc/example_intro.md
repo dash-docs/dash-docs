@@ -5,37 +5,38 @@ http://opensource.org/licenses/MIT.
 {% assign filename="_includes/devdoc/example_intro.md" %}
 
 {% autocrossref %}
+<!-- __ -->
 
 The following guide aims to provide examples to help you start
-building Bitcoin-based applications. To make the best use of this document,
-you may want to install the current version of Bitcoin Core, either from
+building Dash-based applications. To make the best use of this document,
+you may want to install the current version of Dash Core, either from
 [source][core git] or from a [pre-compiled executable][core executable].
 
-Once installed, you'll have access to three programs: `bitcoind`,
-`bitcoin-qt`, and `bitcoin-cli`.
+Once installed, you'll have access to three programs: `dashd`,
+`dash-qt`, and `dash-cli`.
 
-* `bitcoin-qt` provides a combination full Bitcoin peer and wallet
+* `dash-qt` provides a combination full Dash peer and wallet
   frontend. From the Help menu, you can access a console where you can
   enter the RPC commands used throughout this document.
 
-* `bitcoind` is more useful for programming: it provides a full peer
-  which you can interact with through RPCs to port 8332 (or 18332
-  for testnet).
+* `dashd` is more useful for programming: it provides a full peer
+  which you can interact with through RPCs to port 9998 (or 19998
+  for testnet / 18332 for regtest).
 
-* `bitcoin-cli` allows you to send RPC commands to `bitcoind` from the
-  command line.  For example, `bitcoin-cli help`
+* `dash-cli` allows you to send RPC commands to `dashd` from the
+  command line.  For example, `dash-cli help`
 
-All three programs get settings from `bitcoin.conf` in the `Bitcoin`
+All three programs get settings from `dash.conf` in the `DashCore`
 application directory:
 
-* Windows: `%APPDATA%\Bitcoin\`
+* Windows: `%APPDATA%\DashCore\`
 
-* OSX: `$HOME/Library/Application Support/Bitcoin/`
+* OSX: `$HOME/Library/Application Support/DashCore/`
 
-* Linux: `$HOME/.bitcoin/`
+* Linux: `$HOME/.dashcore/`
 
-To use `bitcoind` and `bitcoin-cli`, you will need to add a RPC password
-to your `bitcoin.conf` file. Both programs will read from the same file
+To use `dashd` and `dash-cli`, you will need to add a RPC password
+to your `dash.conf` file. Both programs will read from the same file
 if both run on the same system as the same user, so any long random
 password will work:
 
@@ -43,22 +44,21 @@ password will work:
 rpcpassword=change_this_to_a_long_random_password
 ~~~~
 
-You should also make the `bitcoin.conf` file only readable to its
+You should also make the `dash.conf` file only readable to its
 owner.  On Linux, Mac OSX, and other Unix-like systems, this can be
-accomplished by running the following command in the Bitcoin application
+accomplished by running the following command in the Dash Core application
 directory:
 
 ~~~
-chmod 0600 bitcoin.conf
+chmod 0600 dash.conf
 ~~~
 
-For development, it's safer and cheaper to use Bitcoin's test network (testnet)
+For development, it's safer and cheaper to use Dash's test network (testnet)
 or regression test mode (regtest) described below.
 
-Questions about Bitcoin use are best sent to the [BitcoinTalk forum][forum
-tech support] and [IRC channels][]. Errors or suggestions related to
-documentation on Bitcoin.org can be [submitted as an issue][docs issue]
-or posted to the [bitcoin-documentation mailing list][].
+Questions about Dash use are best sent to the [Dash forum][forum
+tech support] and [Discord channels][Discord channels]. Errors or suggestions related to
+documentation on dash-docs.github.io can be [submitted as an issue][docs issue].
 
 In the following documentation, some strings have been shortened or wrapped: "[...]"
 indicates extra data was removed, and lines ending in a single backslash "\\"
