@@ -368,67 +368,64 @@ transaction together (such as a CoinJoin transaction).
 {% endhighlight %}
 {% highlight json %}
 [
-    {
-        "txid" : "263c018582731ff54dc72c7d67e858c002ae298835501d\
-                  80200f05753de0edf0",
-        "vout" : 0,
-        "address" : "muhtvdmsnbQEPFuEmxcChX58fGvXaaUoVt",
-        "scriptPubKey" : "76a9149ba386253ea698158b6d34802bb9b550\
-                          f5ce36dd88ac",
-        "amount" : 40.00000000,
-        "confirmations" : 2,
-        "spendable" : true,
-        "solvable" : true
-    },
-    {
-        "txid" : "263c018582731ff54dc72c7d67e858c002ae298835501d\
-                  80200f05753de0edf0",
-        "vout" : 1,
-        "address" : "mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou",
-        "account" : "",
-        "scriptPubKey" : "76a914a57414e5ffae9ef5074bacbe10a320bb\
-                          2614e1f388ac",
-        "amount" : 10.00000000,
-        "confirmations" : 2,
-        "spendable" : true,
-        "solvable" : true
-    },
-    {
-        "txid" : "78203a8f6b529693759e1917a1b9f05670d036fbb12911\
-                  0ed26be6a36de827f3",
-        "vout" : 0,
-        "address" : "n2KprMQm4z2vmZnPMENfbp2P1LLdAEFRjS",
-        "scriptPubKey" : "210229688a74abd0d5ad3b06ddff36fa9cd8ed\
-                          d181d97b9489a6adc40431fb56e1d8ac",
-        "amount" : 50.00000000,
-        "confirmations" : 101,
-        "spendable" : true,
-        "solvable" : true
-    },
-    {
-        "txid" : "c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a\
-                  966011aaa79965ffba",
-        "vout" : 0,
-        "address" : "mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG",
-        "account" : "",
-        "scriptPubKey" : "76a914cbc20a7664f2f69e5355aa427045bc15\
-                          e7c6c77288ac",
-        "amount" : 49.99990000,
-        "confirmations" : 1,
-        "spendable" : true,
-        "solvable" : true
-    }
+  {
+    "txid": "fa0f4105b0a2b2706d65581c5e6411d3970253c7f231944fa2f978b4a3d9010d",
+    "vout": 0,
+    "address": "yfV9Wirf5RkYHgNDttjpBz8Wdi8BavLHcP",
+    "account": "",
+    "scriptPubKey": "76a914d240140859744755d73e5967081c3bedceffc5db88ac",
+    "amount": 499.99990000,
+    "confirmations": 1,
+    "ps_rounds": -2,
+    "spendable": true,
+    "solvable": true
+  },
+  {
+    "txid": "f84ca4ad33ec7889d3c6ac670152137a3ee1603c4096230a10562976f700d130",
+    "vout": 0,
+    "address": "yRdk89fwSW1mUBxQo5fCmEfTva7b4wh2H5",
+    "account": "",
+    "scriptPubKey": "76a9143a4e8960f26c1fa82d937046959b656e4dd7966688ac",
+    "amount": 10.00000000,
+    "confirmations": 2,
+    "ps_rounds": -2,
+    "spendable": true,
+    "solvable": true
+  },
+  {
+    "txid": "f84ca4ad33ec7889d3c6ac670152137a3ee1603c4096230a10562976f700d130",
+    "vout": 1,
+    "address": "yavnyFMebbfX4F2VC25P18FW6LS66h2wqJ",
+    "scriptPubKey": "76a914a0411dbed3eab4341d5c41496d61b4fa1b22037e88ac",
+    "amount": 490.00000000,
+    "confirmations": 2,
+    "ps_rounds": -2,
+    "spendable": true,
+    "solvable": true
+  },
+  {
+    "txid": "ea6d596da55a137846f8b08bfd414b4667ce456f9e3b3182e6f05810e8613d84",
+    "vout": 0,
+    "address": "yWtgzKSckhedxtJ8NXhShWGjfBivkvBGgG",
+    "scriptPubKey": "21023fff9c9dc9088c0aeba90d75413705091111311d761054de23\
+                      acdd217450869aac",
+    "amount": 500.00000000,
+    "confirmations": 101,
+    "ps_rounds": -2,
+    "spendable": true,
+    "solvable": true
+  }
 ]
 {% endhighlight %}
 {% highlight bash %}
 
-> UTXO1_TXID=78203a8f6b529693759e1917a1b9f05670d036fbb129110ed26[...]
+> UTXO1_TXID=ea6d596da55a137846f8b08bfd414b4667ce456f9e3b3182e6f05810e8613d84
 > UTXO1_VOUT=0
-> UTXO1_ADDRESS=n2KprMQm4z2vmZnPMENfbp2P1LLdAEFRjS
+> UTXO1_ADDRESS=yWtgzKSckhedxtJ8NXhShWGjfBivkvBGgG
 
-> UTXO2_TXID=263c018582731ff54dc72c7d67e858c002ae298835501d80200[...]
+> UTXO2_TXID=f84ca4ad33ec7889d3c6ac670152137a3ee1603c4096230a10562976f700d130
 > UTXO2_VOUT=0
-> UTXO2_ADDRESS=muhtvdmsnbQEPFuEmxcChX58fGvXaaUoVt
+> UTXO2_ADDRESS=yRdk89fwSW1mUBxQo5fCmEfTva7b4wh2H5
 {% endhighlight %}
 </div>
 
@@ -440,14 +437,14 @@ private keys from our wallet.
 
 {% highlight bash %}
 > dash-cli -regtest dumpprivkey $UTXO1_ADDRESS
-cSp57iWuu5APuzrPGyGc4PGUeCg23PjenZPBPoUs24HtJawccHPm
+cNL522MEQUnQxsZJo4ryPH8sPd2uVZaFKjKnZivo9DyVjpAGU7qP
 
 > dash-cli -regtest dumpprivkey $UTXO2_ADDRESS
-cT26DX6Ctco7pxaUptJujRfbMS2PJvdqiSMaGaoSktHyon8kQUSg
+cPtZ9nagmjQ5bRKMuqoDz8xni6hRPfZ1zp3TSrqH3j3RyUThTYGN
 
-> UTXO1_PRIVATE_KEY=cSp57iWuu5APuzrPGyGc4PGUeCg23PjenZPBPoUs24Ht[...]
+> UTXO1_PRIVATE_KEY=cNL522MEQUnQxsZJo4ryPH8sPd2uVZaFKjKnZivo9DyVjpAGU7qP
 
-> UTXO2_PRIVATE_KEY=cT26DX6Ctco7pxaUptJujRfbMS2PJvdqiSMaGaoSktHy[...]
+> UTXO2_PRIVATE_KEY=cPtZ9nagmjQ5bRKMuqoDz8xni6hRPfZ1zp3TSrqH3j3RyUThTYGN
 {% endhighlight %}
 
 Use the `dumpprivkey` RPC to get the private keys corresponding to the
@@ -459,17 +456,17 @@ the private keys so we can sign each of the inputs separately.
 As dangerous as raw transactions are (see warnings above), making a
 mistake with a private key can be much worse---as in the case of a HD
 wallet [cross-generational key compromise][devguide hardened keys].
-These examples are to help you learn, not for you to emulate on
-mainnet.
+**These examples are to help you learn, not for you to emulate on
+mainnet.**
 
 {% highlight bash %}
 > dash-cli -regtest getnewaddress
-n4puhBEeEWD2VvjdRC9kQuX2abKxSCMNqN
+yhshGrdbh3rWt9EPaSi7xSGRFMvFdzTZ8n
 > dash-cli -regtest getnewaddress
-n4LWXU59yM5MzQev7Jx7VNeq1BqZ85ZbLj
+yesLaP5XFTaLZiWAo2zK8mFfUCtV8rRhKw
 
-> NEW_ADDRESS1=n4puhBEeEWD2VvjdRC9kQuX2abKxSCMNqN
-> NEW_ADDRESS2=n4LWXU59yM5MzQev7Jx7VNeq1BqZ85ZbLj
+> NEW_ADDRESS1=yhshGrdbh3rWt9EPaSi7xSGRFMvFdzTZ8n
+> NEW_ADDRESS2=yesLaP5XFTaLZiWAo2zK8mFfUCtV8rRhKw
 {% endhighlight %}
 
 For our two outputs, get two new addresses.
@@ -489,16 +486,16 @@ For our two outputs, get two new addresses.
     ]
     ''' '''
     {
-      "'$NEW_ADDRESS1'": 79.9999,
+      "'$NEW_ADDRESS1'": 499.9999,
       "'$NEW_ADDRESS2'": 10
     }'''
-0100000002f327e86da3e66bd20e1129b1fb36d07056f0b9a117199e75939652\
-6b8f3a20780000000000fffffffff0ede03d75050f20801d50358829ae02c058\
-e8677d2cc74df51f738285013c260000000000ffffffff02f028d6dc01000000\
-1976a914ffb035781c3c69e076d48b60c3d38592e7ce06a788ac00ca9a3b0000\
-00001976a914fa5139067622fd7e1e722a05c17c2bb7d5fd6df088ac00000000
+0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0f84678135a\
+a56d596dea0000000000ffffffff30d100f7762956100a2396403c60e13e7a13\
+520167acc6d38978ec33ada44cf80000000000ffffffff02f04c3ba40b000000\
+1976a914ec73fe6129b249617bb5f20c8760708055fb6fdb88ac00ca9a3b0000\
+00001976a914cb7a56b046479f8c247875d672d3e1aed18c33f488ac00000000
 
-> RAW_TX=0100000002f327e86da3e66bd20e1129b1fb36d07056f0b9a117199[...]
+> RAW_TX=0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0f[...]
 {% endhighlight %}
 
 Create the raw transaction using `createrawtransaction` much the same as
@@ -514,20 +511,19 @@ before, except now we have two inputs and two outputs.
 {% endhighlight %}
 {% highlight json %}
 {
-    "hex" : "0100000002f327e86da3e66bd20e1129b1fb36d07056f0b9a11\
-             7199e759396526b8f3a20780000000049483045022100fce442\
-             ec52aa2792efc27fd3ad0eaf7fa69f097fdcefab017ea56d179\
-             9b10b2102207a6ae3eb61e11ffaba0453f173d1792f1b7bb8e7\
-             422ea945101d68535c4b474801fffffffff0ede03d75050f208\
-             01d50358829ae02c058e8677d2cc74df51f738285013c260000\
-             000000ffffffff02f028d6dc010000001976a914ffb035781c3\
-             c69e076d48b60c3d38592e7ce06a788ac00ca9a3b0000000019\
-             76a914fa5139067622fd7e1e722a05c17c2bb7d5fd6df088ac0\
-             0000000",
-    "complete" : false
-    "errors": [
+  "hex": "0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0\
+  f84678135aa56d596dea00000000494830450221009f7f356c0cc2d3337b5f\
+  76dfc6de9f9be7c8c5ac2074cbeeba4815b90329602002207790f23361480e\
+  2a5a2d1fa6e293ccd5cd01279ad301176f091b84d6dd8e8f6501ffffffff30\
+  d100f7762956100a2396403c60e13e7a13520167acc6d38978ec33ada44cf8\
+  0000000000ffffffff02f04c3ba40b0000001976a914ec73fe6129b249617b\
+  b5f20c8760708055fb6fdb88ac00ca9a3b000000001976a914cb7a56b04647\
+  9f8c247875d672d3e1aed18c33f488ac00000000",
+  "complete": false,
+  "errors": [
     {
-      "txid": "c53f8f5ac0b6b10cdc77f543718eb3880fee6cf9b5e0cbf4edb2a59c0fae09a4",
+      "txid": "f84ca4ad33ec7889d3c6ac670152137a3ee1603c4096230a1\
+                0562976f700d130",
       "vout": 0,
       "scriptSig": "",
       "sequence": 4294967295,
@@ -538,7 +534,7 @@ before, except now we have two inputs and two outputs.
 {% endhighlight %}
 {% highlight bash %}
 
-> PARTLY_SIGNED_RAW_TX=0100000002f327e86da3e66bd20e1129b1fb36d07[...]
+> PARTLY_SIGNED_RAW_TX=0100000002843d61e81058f0e682313b9e6f45ce6[...]
 {% endhighlight %}
 </div>
 
@@ -567,21 +563,19 @@ transaction hex to a shell variable.
 {% endhighlight %}
 {% highlight json %}
 {
-    "hex" : "0100000002f327e86da3e66bd20e1129b1fb36d07056f0b9a11\
-             7199e759396526b8f3a20780000000049483045022100fce442\
-             ec52aa2792efc27fd3ad0eaf7fa69f097fdcefab017ea56d179\
-             9b10b2102207a6ae3eb61e11ffaba0453f173d1792f1b7bb8e7\
-             422ea945101d68535c4b474801fffffffff0ede03d75050f208\
-             01d50358829ae02c058e8677d2cc74df51f738285013c260000\
-             00006b483045022100b77f935ff366a6f3c2fdeb83589c79026\
-             5d43b3d2cf5e5f0047da56c36de75f40220707ceda75d8dcf2c\
-             caebc506f7293c3dcb910554560763d7659fb202f8ec324b012\
-             102240d7d3c7aad57b68aa0178f4c56f997d1bfab2ded3c2f94\
-             27686017c603a6d6ffffffff02f028d6dc010000001976a914f\
-             fb035781c3c69e076d48b60c3d38592e7ce06a788ac00ca9a3b\
-             000000001976a914fa5139067622fd7e1e722a05c17c2bb7d5f\
-             d6df088ac00000000",
-    "complete" : true
+  "hex": "0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0\
+  f84678135aa56d596dea00000000494830450221009f7f356c0cc2d3337b5f\
+  76dfc6de9f9be7c8c5ac2074cbeeba4815b90329602002207790f23361480e\
+  2a5a2d1fa6e293ccd5cd01279ad301176f091b84d6dd8e8f6501ffffffff30\
+  d100f7762956100a2396403c60e13e7a13520167acc6d38978ec33ada44cf8\
+  000000006a47304402207867e88e3fe2c926df29376d77eba81daf9f4a5573\
+  44d4f02e9c7dcee96a51e4022076274c2365dc069e7ef797c95c75ab6e01ca\
+  3757342f3e6f21a3d9d01086efb7012102ff9005f79aa4c22ac48fa93d9b7f\
+  40f321db1c13cd70cf08bdab3e23c8d19620ffffffff02f04c3ba40b000000\
+  1976a914ec73fe6129b249617bb5f20c8760708055fb6fdb88ac00ca9a3b00\
+  0000001976a914cb7a56b046479f8c247875d672d3e1aed18c33f488ac0000\
+  0000",
+  "complete": true
 }
 {% endhighlight %}
 </div>
@@ -628,18 +622,17 @@ about transaction malleability and adopt good practices before spending
 unconfirmed transactions on mainnet.
 
 {% highlight bash %}
-> OLD_SIGNED_RAW_TX=0100000002f327e86da3e66bd20e1129b1fb36d07056\
-      f0b9a117199e759396526b8f3a20780000000049483045022100fce442\
-      ec52aa2792efc27fd3ad0eaf7fa69f097fdcefab017ea56d1799b10b21\
-      02207a6ae3eb61e11ffaba0453f173d1792f1b7bb8e7422ea945101d68\
-      535c4b474801fffffffff0ede03d75050f20801d50358829ae02c058e8\
-      677d2cc74df51f738285013c26000000006b483045022100b77f935ff3\
-      66a6f3c2fdeb83589c790265d43b3d2cf5e5f0047da56c36de75f40220\
-      707ceda75d8dcf2ccaebc506f7293c3dcb910554560763d7659fb202f8\
-      ec324b012102240d7d3c7aad57b68aa0178f4c56f997d1bfab2ded3c2f\
-      9427686017c603a6d6ffffffff02f028d6dc010000001976a914ffb035\
-      781c3c69e076d48b60c3d38592e7ce06a788ac00ca9a3b000000001976\
-      a914fa5139067622fd7e1e722a05c17c2bb7d5fd6df088ac00000000
+> OLD_SIGNED_RAW_TX=0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0\
+      f84678135aa56d596dea00000000494830450221009f7f356c0cc2d3337b5f76dfc6\
+      de9f9be7c8c5ac2074cbeeba4815b90329602002207790f23361480e2a5a2d1fa6e2\
+      93ccd5cd01279ad301176f091b84d6dd8e8f6501ffffffff30d100f7762956100a23\
+      96403c60e13e7a13520167acc6d38978ec33ada44cf8000000006a47304402207867\
+      e88e3fe2c926df29376d77eba81daf9f4a557344d4f02e9c7dcee96a51e402207627\
+      4c2365dc069e7ef797c95c75ab6e01ca3757342f3e6f21a3d9d01086efb7012102ff\
+      9005f79aa4c22ac48fa93d9b7f40f321db1c13cd70cf08bdab3e23c8d19620ffffff\
+      ff02f04c3ba40b0000001976a914ec73fe6129b249617bb5f20c8760708055fb6fdb\
+      88ac00ca9a3b000000001976a914cb7a56b046479f8c247875d672d3e1aed18c33f4\
+      88ac00000000
 {% endhighlight %}
 
 Put the previously signed (but not sent) transaction into a shell
@@ -651,90 +644,81 @@ variable.
 {% endhighlight %}
 {% highlight json %}
 {
-    "txid" : "682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad\
-              40cf18ffbb8e09",
-    "hash" : "682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40cf18ffbb8e09",
-    "size" : 340,
-    "vsize" : 340,
-    "version" : 1,
-    "locktime" : 0,
-    "vin" : [
-        {
-            "txid" : "78203a8f6b529693759e1917a1b9f05670d036fbb1\
-                      29110ed26be6a36de827f3",
-            "vout" : 0,
-            "scriptSig" : {
-                "asm" : "3045022100fce442ec52aa2792efc27fd3ad0ea\
-                         f7fa69f097fdcefab017ea56d1799b10b210220\
-                         7a6ae3eb61e11ffaba0453f173d1792f1b7bb8e\
-                         7422ea945101d68535c4b474801",
-                "hex" : "483045022100FCE442ec52aa2792efc27fd3ad0\
-                         eaf7fa69f097fdcefab017ea56d1799b10b2102\
-                         207a6ae3eb61e11ffaba0453f173d1792f1b7bb\
-                         8e7422ea945101d68535c4b474801"
-            },
-            "sequence" : 4294967295
-        },
-        {
-            "txid" : "263c018582731ff54dc72c7d67e858c002ae298835\
-                      501d80200f05753de0edf0",
-            "vout" : 0,
-            "scriptSig" : {
-                "asm" : "3045022100b77f935ff366a6f3c2fdeb83589c7\
-                         90265d43b3d2cf5e5f0047da56c36de75f40220\
-                         707ceda75d8dcf2ccaebc506f7293c3dcb91055\
-                         4560763d7659fb202f8ec324b01
-                         02240d7d3c7aad57b68aa0178f4c56f997d1bfa\
-                         b2ded3c2f9427686017c603a6d6",
-                "hex" : "483045022100b77f935ff366a6f3c2fdeb83589\
-                         c790265d43b3d2cf5e5f0047da56c36de75f402\
-                         20707ceda75d8dcf2ccaebc506f7293c3dcb910\
-                         554560763d7659fb202f8ec324b012102240d7d\
-                         3c7aad57b68aa0178f4c56f997d1bfab2ded3c2\
-                         f9427686017c603a6d6"
-            },
-            "sequence" : 4294967295
-        }
-    ],
-    "vout" : [
-        {
-            "value" : 79.99990000,
-            "n" : 0,
-            "scriptPubKey" : {
-                "asm" : "OP_DUP OP_HASH160 ffb035781c3c69e076d48\
-                         b60c3d38592e7ce06a7 OP_EQUALVERIFY OP_CHECKSIG",
-                "hex" : "76a914ffb035781c3c69e076d48b60c3d38592e\
-                         7ce06a788ac",
-                "reqSigs" : 1,
-                "type" : "pubkeyhash",
-                "addresses" : [
-                    "n4puhBEeEWD2VvjdRC9kQuX2abKxSCMNqN"
-                ]
-            }
-        },
-        {
-            "value" : 10.00000000,
-            "n" : 1,
-            "scriptPubKey" : {
-                "asm" : "OP_DUP OP_HASH160 fa5139067622fd7e1e722\
-                         a05c17c2bb7d5fd6df0 OP_EQUALVERIFY OP_CHECKSIG",
-                "hex" : "76a914fa5139067622fd7e1e722a05c17c2bb7d\
-                         5fd6df088ac",
-                "reqSigs" : 1,
-                "type" : "pubkeyhash",
-                "addresses" : [
-                    "n4LWXU59yM5MzQev7Jx7VNeq1BqZ85ZbLj"
-                ]
-            }
-        }
-    ]
+  "txid": "5efd61cf24c9644d79646627c4d1e192e9b2a760a5c720db8f4a9f76cb781077",
+  "size": 339,
+  "version": 1,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "ea6d596da55a137846f8b08bfd414b4667ce456f9e3b3182e6f05810e86\
+                13d84",
+      "vout": 0,
+      "scriptSig": {
+        "asm": "30450221009f7f356c0cc2d3337b5f76dfc6de9f9be7c8c5ac2074cbee\
+                ba4815b90329602002207790f23361480e2a5a2d1fa6e293ccd5cd0127\
+                9ad301176f091b84d6dd8e8f65[ALL]",
+        "hex": "4830450221009f7f356c0cc2d3337b5f76dfc6de9f9be7c8c5ac2074cb\
+                eeba4815b90329602002207790f23361480e2a5a2d1fa6e293ccd5cd01\
+                279ad301176f091b84d6dd8e8f6501"
+      },
+      "sequence": 4294967295
+    },
+    {
+      "txid": "f84ca4ad33ec7889d3c6ac670152137a3ee1603c4096230a10562976f70\
+                0d130",
+      "vout": 0,
+      "scriptSig": {
+        "asm": "304402207867e88e3fe2c926df29376d77eba81daf9f4a557344d4f02e\
+                9c7dcee96a51e4022076274c2365dc069e7ef797c95c75ab6e01ca3757\
+                342f3e6f21a3d9d01086efb7[ALL] 02ff9005f79aa4c22ac48fa93d9b\
+                7f40f321db1c13cd70cf08bdab3e23c8d19620",
+        "hex": "47304402207867e88e3fe2c926df29376d77eba81daf9f4a557344d4f0\
+                2e9c7dcee96a51e4022076274c2365dc069e7ef797c95c75ab6e01ca37\
+                57342f3e6f21a3d9d01086efb7012102ff9005f79aa4c22ac48fa93d9b\
+                7f40f321db1c13cd70cf08bdab3e23c8d19620"
+      },
+      "sequence": 4294967295
+    }
+  ],
+  "vout": [
+    {
+      "value": 499.99990000,
+      "valueSat": 49999990000,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 ec73fe6129b249617bb5f20c8760708055fb6fdb\
+                OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914ec73fe6129b249617bb5f20c8760708055fb6fdb88ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "yhshGrdbh3rWt9EPaSi7xSGRFMvFdzTZ8n"
+        ]
+      }
+    },
+    {
+      "value": 10.00000000,
+      "valueSat": 1000000000,
+      "n": 1,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 cb7a56b046479f8c247875d672d3e1aed18c33f4\
+                OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914cb7a56b046479f8c247875d672d3e1aed18c33f488ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "yesLaP5XFTaLZiWAo2zK8mFfUCtV8rRhKw"
+        ]
+      }
+    }
+  ]
 }
 {% endhighlight %}
 {% highlight bash %}
 
-> UTXO_TXID=682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40[...]
+> UTXO_TXID=5efd61cf24c9644d79646627c4d1e192e9b2a760a5c720db8f4a9f76cb781077
 > UTXO_VOUT=1
-> UTXO_OUTPUT_SCRIPT=76a914fa5139067622fd7e1e722a05c17c2bb7d5fd6[...]
+> UTXO_OUTPUT_SCRIPT=76a914cb7a56b046479f8c247875d672d3e1aed18c33f488ac
 {% endhighlight %}
 </div>
 
@@ -745,9 +729,9 @@ specific one of its UTXOs to spend and save that UTXO's output index number
 
 {% highlight bash %}
 > dash-cli -regtest getnewaddress
-mfdCHEFL2tW9eEUpizk7XLZJcnFM4hrp78
+yfijhy7gYY34J2U77xFKdMwfA8k5mVnSRa
 
-> NEW_ADDRESS=mfdCHEFL2tW9eEUpizk7XLZJcnFM4hrp78
+> NEW_ADDRESS=yfijhy7gYY34J2U77xFKdMwfA8k5mVnSRa
 {% endhighlight %}
 
 Get a new address to spend the duffs to.
@@ -765,11 +749,11 @@ Get a new address to spend the duffs to.
     {
       "'$NEW_ADDRESS'": 9.9999
     }'''
-0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee96c990c8fdfb99cf6\
-1d88ad2c680100000000ffffffff01f0a29a3b000000001976a914012e2ba6a0\
-51c033b03d712ca2ea00a35eac1e7988ac00000000
+0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1c4276664794d64c9\
+24cf61fd5e0100000000ffffffff01f0a29a3b000000001976a914d4d2078580\
+a9eea0ca9368d1c99c097279b8081f88ac00000000
 
-> RAW_TX=0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee96c990c8[...]
+> RAW_TX=0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1c427666[...]
 {% endhighlight %}
 
 Create the raw transaction the same way we've done in the previous
@@ -777,16 +761,25 @@ subsections.
 
 <div markdown="1" class="multicode">
 {% highlight bash %}
-    > dash-cli -regtest signrawtransaction $RAW_TX
+> dash-cli -regtest signrawtransaction $RAW_TX
 {% endhighlight %}
 {% highlight json %}
+{
+  "hex": "0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1c4276664794d64c9\
+          24cf61fd5e0100000000ffffffff01f0a29a3b000000001976a914d4d2078580\
+          a9eea0ca9368d1c99c097279b8081f88ac00000000",
+  "complete": false,
+  "errors": [
     {
-        "hex" : "0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee\
-                 96c990c8fdfb99cf61d88ad2c680100000000ffffffff01\
-                 f0a29a3b000000001976a914012e2ba6a051c033b03d712\
-                 ca2ea00a35eac1e7988ac00000000",
-        "complete" : false
+      "txid": "5efd61cf24c9644d79646627c4d1e192e9b2a760a5c720db8f4a9f76cb7\
+                81077",
+      "vout": 1,
+      "scriptSig": "",
+      "sequence": 4294967295,
+      "error": "Input not found or already spent"
     }
+  ]
+}
 {% endhighlight %}
 </div>
 
@@ -825,20 +818,18 @@ so it can't automatically insert the previous pubkey script.
 {% endhighlight %}
 {% highlight json %}
 {
-    "hex" : "0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee96c9\
-             90c8fdfb99cf61d88ad2c68010000006b483045022100c3f92f\
-             b74bfa687d76ebe75a654510bb291b8aab6f89ded4fe26777c2\
-             eb233ad02207f779ce2a181cc4055cb0362aba7fd7a6f72d5db\
-             b9bd863f4faaf47d8d6c4b500121028e4e62d25760709806131\
-             b014e2572f7590e70be01f0ef16bfbd51ea5f389d4dffffffff\
-             01f0a29a3b000000001976a914012e2ba6a051c033b03d712ca\
-             2ea00a35eac1e7988ac00000000",
-    "complete" : true
+  "hex": "0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1c4276664794d64c9\
+          24cf61fd5e010000006a47304402204ee3aae064dccedb511a84fcade3f35f2d\
+          95119283e2e9f23659d91ce799cb6d02203a4cecbd7c154de8394b9505814f1e\
+          c842e890980e7c4c20ed182f09a71d65f3012103b0b12fb25b6382b0680ce4b0\
+          379bc201c4cbb391d3c0e171181f24c9a5df1468ffffffff01f0a29a3b000000\
+          001976a914d4d2078580a9eea0ca9368d1c99c097279b8081f88ac00000000",
+  "complete": true
 }
 {% endhighlight %}
 {% highlight bash %}
 
-> SIGNED_RAW_TX=0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee9[...]
+> SIGNED_RAW_TX=0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1[...]
 {% endhighlight %}
 </div>
 
@@ -857,7 +848,11 @@ broadcasts it.
 {% highlight bash %}
 > dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
 {% endhighlight %}
-{% highlight json %}
+{% highlight bash %}
+error code: -25
+error message:
+Missing inputs
+
 error: {"code":-22,"message":"TX rejected"}
 {% endhighlight %}
 </div>
@@ -868,9 +863,9 @@ transaction spends an output which is not a UTXO the node knows about.
 
 {% highlight bash %}
 > dash-cli -regtest sendrawtransaction $OLD_SIGNED_RAW_TX
-682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40cf18ffbb8e09
+5efd61cf24c9644d79646627c4d1e192e9b2a760a5c720db8f4a9f76cb781077
 > dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
-67d53afa1a8167ca093d30be7fb9dcb8a64a5fdecacec9d93396330c47052c57
+f89deefb927fbd03c5acab194de2ba8f98ab160b9c4b3f57bde63073c4b5f060
 {% endhighlight %}
 
 Broadcast the first transaction, which succeeds, and then broadcast the
@@ -883,8 +878,8 @@ the UTXO.
 {% endhighlight %}
 {% highlight json %}
 [
-    "67d53afa1a8167ca093d30be7fb9dcb8a64a5fdecacec9d93396330c47052c57",
-    "682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40cf18ffbb8e09"
+  "f89deefb927fbd03c5acab194de2ba8f98ab160b9c4b3f57bde63073c4b5f060",
+  "5efd61cf24c9644d79646627c4d1e192e9b2a760a5c720db8f4a9f76cb781077"
 ]
 {% endhighlight %}
 </div>
