@@ -1,5 +1,7 @@
 #!/bin/bash
-REGTEST_CMD="dash-cli -regtest -rpcuser=user -rpcpassword=pass"
+RPCUSER="user"
+RPCPWD="pass"
+REGTEST_CMD="dash-cli -regtest -rpcuser=$RPCUSER -rpcpassword=$RPCPWD"
 
 # SIMPLE SPENDING EXAMPLE
 # -----------------------

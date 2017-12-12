@@ -128,9 +128,9 @@ second) and clear the shell variable.
 
 {% endautocrossref %}
 
-
-
-
+<!-- Shell script to run previous example
+<script src="https://gist.github.com/dash-docs/f40bddfc0844ec0d66d196720dc936f8.js"></script>
+-->
 
 
 #### Simple Raw Transaction
@@ -152,48 +152,47 @@ This subsection covers one of the simplest possible raw transactions.
 {% endhighlight %}
 {% highlight json %}
 [
-    {
-        "txid" : "263c018582731ff54dc72c7d67e858c002ae298835501d\
-                  80200f05753de0edf0",
-        "vout" : 0,
-        "address" : "muhtvdmsnbQEPFuEmxcChX58fGvXaaUoVt",
-        "scriptPubKey" : "76a9149ba386253ea698158b6d34802bb9b550\
-                          f5ce36dd88ac",
-        "amount" : 40.00000000,
-        "confirmations" : 1,
-        "spendable" : true,
-        "solvable" : true
-    },
-    {
-        "txid" : "263c018582731ff54dc72c7d67e858c002ae298835501d\
-                  80200f05753de0edf0",
-        "vout" : 1,
-        "address" : "mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou",
-        "account" : "",
-        "scriptPubKey" : "76a914a57414e5ffae9ef5074bacbe10a320bb\
-                          2614e1f388ac",
-        "amount" : 10.00000000,
-        "confirmations" : 1,
-        "spendable" : true,
-        "solvable" : true
-    },
-    {
-        "txid" : "3f4fa19803dec4d6a84fae3821da7ac7577080ef754512\
-                  94e71f9b20e0ab1e7b",
-        "vout" : 0,
-        "address" : "mwJTL1dZG8BAP6X7Be3CNNcuVKi7Qqt7Gk",
-        "scriptPubKey" : "210260a275cccf0f4b106220725be516adba27\
-                          52db1bec8c5b7174c89c4c07891f88ac",
-        "amount" : 50.00000000,
-        "confirmations" : 101,
-        "spendable" : true,
-        "solvable" : true
-    }
+  {
+    "txid": "f84ca4ad33ec7889d3c6ac670152137a3ee1603c4096230a10562976f700d130",
+    "vout": 0,
+    "address": "yRdk89fwSW1mUBxQo5fCmEfTva7b4wh2H5",
+    "account": "",
+    "scriptPubKey": "76a9143a4e8960f26c1fa82d937046959b656e4dd7966688ac",
+    "amount": 10.00000000,
+    "confirmations": 1,
+    "ps_rounds": -2,
+    "spendable": true,
+    "solvable": true
+  },
+  {
+    "txid": "f84ca4ad33ec7889d3c6ac670152137a3ee1603c4096230a10562976f700d130",
+    "vout": 1,
+    "address": "yavnyFMebbfX4F2VC25P18FW6LS66h2wqJ",
+    "scriptPubKey": "76a914a0411dbed3eab4341d5c41496d61b4fa1b22037e88ac",
+    "amount": 490.00000000,
+    "confirmations": 1,
+    "ps_rounds": -2,
+    "spendable": true,
+    "solvable": true
+  },
+  {
+    "txid": "9036265a8f577421e556cd4f729752d73469953deea759de11efa9ba354936a8",
+    "vout": 0,
+    "address": "yWtgzKSckhedxtJ8NXhShWGjfBivkvBGgG",
+    "scriptPubKey": "21023fff9c9dc9088c0aeba90d75413705091111311d761054de23ac\
+                      dd217450869aac",
+    "amount": 500.00000000,
+    "confirmations": 101,
+    "ps_rounds": -2,
+    "spendable": true,
+    "solvable": true
+  }
 ]
+
 {% endhighlight %}
 {% highlight bash %}
 
-> UTXO_TXID=3f4fa19803dec4d6a84fae3821da7ac7577080ef75451294e71f[...]
+> UTXO_TXID=9036265a8f577421e556cd4f729752d73469953deea759de11ef[...]
 > UTXO_VOUT=0
 {% endhighlight %}
 </div>
@@ -205,9 +204,9 @@ variables.
 
 {% highlight bash %}
 > dash-cli -regtest getnewaddress
-mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG
+yfV9Wirf5RkYHgNDttjpBz8Wdi8BavLHcP
 
-> NEW_ADDRESS=mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG
+> NEW_ADDRESS=yfV9Wirf5RkYHgNDttjpBz8Wdi8BavLHcP
 {% endhighlight %}
 
 Get a new address to use in the raw transaction.
@@ -223,13 +222,13 @@ Get a new address to use in the raw transaction.
     ]
     ''' '''
     {
-      "'$NEW_ADDRESS'": 49.9999
+      "'$NEW_ADDRESS'": 499.9999
     }'''
-01000000017b1eabe0209b1fe794124575ef807057c77ada2138ae4fa8d6c4de\
-0398a14f3f0000000000ffffffff01f0ca052a010000001976a914cbc20a7664\
-f2f69e5355aa427045bc15e7c6c77288ac00000000
+0100000001a8364935baa9ef11de59a7ee3d956934d75297724fcd56e5217457\
+8f5a2636900000000000ffffffff01f04c3ba40b0000001976a914d240140859\
+744755d73e5967081c3bedceffc5db88ac00000000
 
-> RAW_TX=01000000017b1eabe0209b1fe794124575ef807057c77ada2138ae4[...]
+> RAW_TX=0100000001a8364935baa9ef11de59a7ee3d956934d75297724fcd5[...]
 {% endhighlight %}
 
 Using two arguments to the `createrawtransaction` RPC, we create a new
@@ -243,11 +242,11 @@ We save the resulting raw format transaction to a shell variable.
 ![Warning icon](/img/icons/icon_warning.svg)
  **Warning:** `createrawtransaction` does not automatically create change
 outputs, so you can easily accidentally pay a large transaction fee. In
-this example, our input had 50.0000 dash and our output
-(`$NEW_ADDRESS`) is being paid 49.9999 dash, so the transaction will
-include a fee of 0.0001 dash. If we had paid `$NEW_ADDRESS` only 10
+this example, our input had 500.0000 dash and our output
+(`$NEW_ADDRESS`) is being paid 499.9999 dash, so the transaction will
+include a fee of 0.0001 dash. If we had paid `$NEW_ADDRESS` only 100
 dash with no other changes to this transaction, the transaction fee
-would be a whopping 40 dash. See the Complex Raw Transaction
+would be a whopping 400 dash. See the Complex Raw Transaction
 subsection below for how to create a transaction with multiple outputs so you
 can send the change back to yourself.
 
@@ -258,42 +257,38 @@ can send the change back to yourself.
 {% endhighlight %}
 {% highlight json %}
 {
-    "txid" : "c80b343d2ce2b5d829c2de9854c7c8d423c0e33bda264c4013\
-              8d834aab4c0638",
-    "hash" : "c80b343d2ce2b5d829c2de9854c7c8d423c0e33bda264c40138d834aab4c0638",
-    "size" : 85,
-    "vsize" : 85,		
-    "version" : 1,
-    "locktime" : 0,
-    "vin" : [
-        {
-            "txid" : "3f4fa19803dec4d6a84fae3821da7ac7577080ef75\
-                      451294e71f9b20e0ab1e7b",
-            "vout" : 0,
-            "scriptSig" : {
-                "asm" : "",
-                "hex" : ""
-            },
-            "sequence" : 4294967295
-        }
-    ],
-    "vout" : [
-        {
-            "value" : 49.99990000,
-            "n" : 0,
-            "scriptPubKey" : {
-                "asm" : "OP_DUP OP_HASH160 cbc20a7664f2f69e5355a\
-                         a427045bc15e7c6c772 OP_EQUALVERIFY OP_CHECKSIG",
-                "hex" : "76a914cbc20a7664f2f69e5355aa427045bc15e\
-                         7c6c77288ac",
-                "reqSigs" : 1,
-                "type" : "pubkeyhash",
-                "addresses" : [
-                    "mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG"
-                ]
-            }
-        }
-    ]
+  "txid": "7cbd2245ee5d824c00fc08b3bf2f694ad9a215d38d897fcf2df64a43c59bb97b",
+  "size": 85,
+  "version": 1,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "9036265a8f577421e556cd4f729752d73469953deea759de11efa9ba354936a8",
+      "vout": 0,
+      "scriptSig": {
+        "asm": "",
+        "hex": ""
+      },
+      "sequence": 4294967295
+    }
+  ],
+  "vout": [
+    {
+      "value": 499.99990000,
+      "valueSat": 49999990000,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 d240140859744755d73e5967081c3bedceffc5db\
+                  OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914d240140859744755d73e5967081c3bedceffc5db88ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "yfV9Wirf5RkYHgNDttjpBz8Wdi8BavLHcP"
+        ]
+      }
+    }
+  ]
 }
 {% endhighlight %}
 </div>
@@ -307,19 +302,18 @@ we just created does.
 {% endhighlight %}
 {% highlight json %}
 {
-    "hex" : "01000000017b1eabe0209b1fe794124575ef807057c77ada213\
-             8ae4fa8d6c4de0398a14f3f00000000494830450221008949f0\
-             cb400094ad2b5eb399d59d01c14d73d8fe6e96df1a7150deb38\
-             8ab8935022079656090d7f6bac4c9a94e0aad311a4268e082a7\
-             25f8aeae0573fb12ff866a5f01ffffffff01f0ca052a0100000\
-             01976a914cbc20a7664f2f69e5355aa427045bc15e7c6c77288\
-             ac00000000",
-    "complete" : true
+  "hex": "0100000001a8364935baa9ef11de59a7ee3d956934d75297724fcd\
+          56e52174578f5a2636900000000049483045022100b4e5e9224afa\
+          de8686bb22a957d1ec1587a66ee84943761b2d9061d5f751cd7602\
+          203c88d4064641a413ce3d0824264d6d87908960487afe9a3a133e\
+          7d67a22fd05101ffffffff01f04c3ba40b0000001976a914d24014\
+          0859744755d73e5967081c3bedceffc5db88ac00000000",
+  "complete": true
 }
 {% endhighlight %}
 {% highlight bash %}
 
-> SIGNED_RAW_TX=01000000017b1eabe0209b1fe794124575ef807057c77ada[...]
+> SIGNED_RAW_TX=0100000001a8364935baa9ef11de59a7ee3d956934d75297[...]
 {% endhighlight %}
 </div>
 
@@ -335,7 +329,7 @@ actually spent anything because we could simply unset the
 
 {% highlight bash %}
 > dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
-c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a966011aaa79965ffba
+fa0f4105b0a2b2706d65581c5e6411d3970253c7f231944fa2f978b4a3d9010d
 {% endhighlight %}
 
 Send the signed transaction to the connected node using the
