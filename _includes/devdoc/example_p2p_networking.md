@@ -328,7 +328,7 @@ script, but we will sleep a short bit and send back our own `verack`
 message as if we had accepted their `version` message.
 
 {% highlight python %}
-send("filterload", 
+send("filterload",
       "02"  # ........ Filter bytes: 2
     + "b50f" # ....... Filter: 1010 1101 1111 0000
     + "0b000000" # ... nHashFuncs: 11
@@ -437,7 +437,7 @@ a non-TXID node with a 0 flag (or we finish filling out the tree).
 Finally, on the fifth flag in the example (a 1), we reach a TXID node.
 The 1 flag indicates this TXID's transaction matches our filter and
 that we should take the next (second) hash and use it as this node's
-TXID. 
+TXID.
 
 ![Parsing A MerkleBlock](/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-007.svg)
 
@@ -462,7 +462,7 @@ more child nodes to process.
 We hash as appropriate to fill out the tree.  Note that the eighth flag is
 not used---this is acceptable as it was required to pad out a flag byte.
 
-The final steps would be to ensure the computed computed merkle root
+The final steps would be to ensure the computed merkle root
 is identical to the merkle root in the header and check the other steps
 of the parsing checklist in the `merkleblock` message section.
 
