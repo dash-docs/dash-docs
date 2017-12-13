@@ -4,6 +4,8 @@ http://opensource.org/licenses/MIT.
 {% endcomment %}
 {% assign filename="_includes/devdoc/example_p2p_networking.md" %}
 
+<!-- __ -->
+
 ## P2P Network
 {% include helpers/subhead-links.md %}
 
@@ -149,7 +151,7 @@ Note: for a more optimized Python implementation with fewer external
 dependencies, see [python-bitcoinlib's][python-bitcoinlib] bloom filter
 module which is based directly on Bitcoin Core's C++ implementation.
 
-Using the `filterload` message format, the complete filter created above 
+Using the `filterload` message format, the complete filter created above
 would be the binary form of the annotated hexdump shown below:
 
 {% highlight text %}
@@ -236,6 +238,17 @@ MATCH FAILURE: Index 0x6 not set in 1010110111110000
 {% endhighlight %}
 
 {% endautocrossref %}
+
+### Bloom Filter Script
+
+<!-- Shell script to run previous examples -->
+Complete Python script demonstrating the
+<a href="#creating-a-bloom-filter">Creating</a>/
+<a href="#evaluating-a-bloom-filter">Evaluating</a> bloom filter examples:
+
+<div markdown="1" class="multicode">
+<script src="https://gist.github.com/dash-docs/5d63f095352a717f90d41a5e7fbbdac1.js"></script>
+</div>
 
 ### Retrieving A MerkleBlock
 {% include helpers/subhead-links.md %}

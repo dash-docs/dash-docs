@@ -128,9 +128,14 @@ second) and clear the shell variable.
 
 {% endautocrossref %}
 
-<!-- Shell script to run previous example
+##### Simple Spending Script
+
+<!-- Shell script to run previous example -->
+Shell script to run the previous example:
+<div markdown="1" class="multicode">
 <script src="https://gist.github.com/dash-docs/f40bddfc0844ec0d66d196720dc936f8.js"></script>
--->
+</div>
+
 
 
 #### Simple Raw Transaction
