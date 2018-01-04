@@ -1,0 +1,226 @@
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+	display: block
+}
+
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
+}
+
+.head {
+	margin: 30px 0 30px 0
+}
+
+.head div {
+	width: 940px;
+	margin: auto;
+	position: relative;
+	z-index: 900
+}
+
+
+.menumobile {
+	display: none
+}
+
+.menusimple {
+	margin: 0;
+	position: absolute;
+	top: 8px;
+	left: 245px;
+	padding: 0;
+	height: 35px
+}
+
+.menusimple li {
+	list-style: none;
+	display: inline-block;
+	position: relative;
+	padding: 0;
+	margin: 0 3px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px
+}
+
+.menusimple>li a,.menusimple>li a:active,.menusimple>li a:visited,.menusimple>li a:link {
+	color: #2c6fad
+}
+
+.menusimple>li a {
+	cursor: pointer;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 300;
+	font-size: 110%;
+	display: block;
+	text-decoration: none;
+	padding: 6px 10px 4px 10px;
+	white-space: nowrap
+}
+
+.menusimple>li ul {
+	display: none;
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #2c6fad;
+	min-width: 120%;
+	padding: 5px 0;
+	margin: 0;
+	left: 0
+}
+
+.menusimple>li>ul li {
+	margin: 0;
+	display: block;
+	width: 100%;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0
+}
+
+.menusimple>li>ul>li a {
+	font-size: 100%;
+	margin: 1px 0;
+	padding: 6px 10px 3px 10px
+}
+
+.menusimple li:hover,.menusimple li.active {
+	background-color: #2c6fad
+}
+
+.menusimple li:hover>a,.menusimple li.active>a {
+	color: #fff
+}
+
+.menusimple li:hover>ul {
+	display: block
+}
+
+.menusimple.menumain>li:first-child,.menusimple.menumain>li:first-child+li,.menusimple.menumain>li:first-child+li+li+li,.menusimple.menucore>li:first-child,.menusimple.menucore>li:first-child+li+li {
+	-webkit-border-bottom-left-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	-moz-border-radius-bottomright: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0
+}
+
+.menusimple.menucore>li:first-child+li+li+li+li a {
+	font-weight: 700
+}
+
+body {
+	margin: 0
+}
+
+body {
+	color: #646464;
+	background-color: #f7f7f7
+}
+
+body {
+	font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	color: #646464;
+	background-color: #f7f7f7
+}
+
+.body {
+	/*width: 940px;*/
+	margin: auto;
+	position: relative
+}
+
+/*
+.body {
+	width: auto
+}
+*/
+
+.logo {
+	display: block;
+	margin-left: 40px;
+	width: 191px;
+	height: 40px
+}
+
+/*
+.logo {
+	position: static;
+	display: inline-block;
+	margin: 10px
+}
+*/
+
+.breadcrumbs {
+	font-size: 75%;
+	padding-left: 10px
+}
+
+/*
+.content {
+	position: static;
+	text-align: left;
+	margin: 0;
+	padding: 20px 10px;
+	border-right: 0;
+	border-left: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0
+}
+*/
+
+.content {
+	position: relative;
+	padding: 30px 40px 40px 40px;
+	margin: 0 5px;
+	text-align: justify;
+	background-color: #fff;
+	min-height: 400px;
+	border: 2px solid #ebebeb;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px
+}
+
+.summary {
+	font-size: 125%;
+	margin-bottom: 40px;
+	text-align: center
+}
+
+.ddfooter {
+	text-align: center;
+	width: 940px;
+	margin: auto
+}
+
+.footerlicense {
+	font-size: 94%;
+	padding-bottom: 20px
+}
+
+
+h1 {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 700;
+	color: #0d579b;
+	font-size: 160%;
+	margin-top: 0;
+	text-align: center
+}
+
+#side-nav {
+  padding:0 6px 0 0;
+  margin: 0px;
+  display:block;
+  position: absolute;
+  left: auto;
+  width: 250px;
+}
+

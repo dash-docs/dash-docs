@@ -8,6 +8,7 @@ Redirections can be defined in ```_config.yml```.
   /news: /en/version-history
 ```
 
+<!--
 ### Aliases For Contributors
 
 Aliases for contributors are defined in ```_config.yml```.
@@ -29,3 +30,4 @@ are some notes about updating those keys based on previous experience:
    PR so other people can review it. After the revoked key is uploaded,
    discussion about verifying/adding a replacement key may continue at a
    slower pace.
+-->

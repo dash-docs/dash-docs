@@ -14,7 +14,7 @@ repository into a local directory with the following command lines:
 ```
 git clone (url provided by GitHub on your fork's page) bitcoin.org
 cd bitcoin.org
-git remote add upstream https://github.com/bitcoin-dot-org/bitcoin.org.git
+git remote add upstream https://github.com/thephez/dash.org.git
 ```
 
 **How to send a pull request**
@@ -33,6 +33,7 @@ When submitting a pull request, please take required time to discuss your
 changes and adapt your work. It is generally a good practice to split unrelated
 changes into separate branches and pull requests.
 
+<!--
 **Travis Continuous Integration (CI)**
 
 Shortly after your Pull Request (PR) is submitted, a Travis CI job will
@@ -61,7 +62,7 @@ builds before opening a pull request, it's really simple:
    yellow circle, green checkmark, or red X will appear near the branch
    name when the build finishes, and clicking on the icon will take you
    to the corresponding build report.
-
+-->
 **How to make additional changes in a pull request**
 
 You simply need to push additional commits on the appropriate branch of your
@@ -78,6 +79,6 @@ need to re-create the branch and the pull request.
 
 **Advanced GitHub Workflow**
 
-If you continue to contribute to Bitcoin.org beyond a single pull
+If you continue to contribute to Dash.org beyond a single pull
 request, you may want to use a more [advanced GitHub
 workflow](https://gist.github.com/harding/1a99b0bad37f9498709f).
