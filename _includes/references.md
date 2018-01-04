@@ -302,29 +302,6 @@ http://opensource.org/licenses/MIT.
 [bcc validation protection]: /en/bitcoin-core/features/validation#how-validation-protects-your-bitcoins
 [bcc version history]: /en/version-history
 
-[Bitcoin Core 0.6.0]: /en/release/v0.6.0
-[Bitcoin Core 0.6.1]: /en/release/v0.6.1
-[Bitcoin Core 0.7.0]: /en/release/v0.7.0
-[Bitcoin Core 0.8.0]: /en/release/v0.8.0
-[Bitcoin Core 0.9.0]: /en/release/v0.9.0
-[Bitcoin Core 0.9.1]: /en/release/v0.9.1
-[Bitcoin Core 0.9.2]: /en/release/v0.9.2
-[Bitcoin Core 0.9.3]: /en/release/v0.9.3
-[Bitcoin Core 0.10.0]: /en/release/v0.10.0
-[Bitcoin Core 0.10.1]: /en/release/v0.10.1
-[Bitcoin Core 0.10.2]: /en/release/v0.10.2
-[Bitcoin Core 0.10.3]: /en/release/v0.10.3
-[Bitcoin Core 0.11.0]: /en/release/v0.11.0
-[Bitcoin Core 0.11.1]: /en/release/v0.11.1
-[Bitcoin Core 0.11.2]: /en/release/v0.11.2
-[Bitcoin Core 0.12.0]: /en/release/v0.12.0
-[Bitcoin Core 0.12.1]: /en/release/v0.12.1
-[Bitcoin Core 0.13.0]: /en/release/v0.13.0
-[Bitcoin Core 0.13.1]: /en/release/v0.13.1
-[Bitcoin Core 0.13.2]: /en/release/v0.13.2
-[Bitcoin Core 0.14.0]: /en/release/v0.14.0
-[Bitcoin Core 0.14.1]: /en/release/v0.14.1
-[Bitcoin Core 0.14.2]: /en/release/v0.14.2
 [bitcoin URI subsection]: /en/developer-guide#bitcoin-uri
 [dashd initial setup]: /en/developer-examples
 [bitcoinpdf]: https://bitcoin.org/en/bitcoin-paper
