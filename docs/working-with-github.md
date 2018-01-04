@@ -7,13 +7,13 @@ one](https://www.atlassian.com/git/tutorial/git-basics).
 
 In order to use GitHub, you need to [sign up](http://github.com/signup) and [set
 up git](https://help.github.com/articles/set-up-git). You will also need to
-click the **Fork** button on the bitcoin.org [GitHub
-page](https://github.com/bitcoin-dot-org/bitcoin.org) and clone your GitHub
+click the **Fork** button on the dash.org [GitHub
+page](https://github.com/thephez/dash.org) and clone your GitHub
 repository into a local directory with the following command lines:
 
 ```
-git clone (url provided by GitHub on your fork's page) bitcoin.org
-cd bitcoin.org
+git clone (url provided by GitHub on your fork's page) dash.org
+cd dash.org
 git remote add upstream https://github.com/thephez/dash.org.git
 ```
 
