@@ -14,6 +14,10 @@ _cache
 .jekyll-metadata
 .sass-cache/
 
+# To prevent adding doxygen files since they can 
+# be easily generated from Dash Core source
+en/doxygen/
+
 # To prevent accidental push of translations from
 # Transifex.
 .tx/translations/
