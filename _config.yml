@@ -595,10 +595,6 @@ devsearches:
     - "version": "/en/developer-reference#version"
 
 collections:
-  ## _releases
-  releases:
-    output: true
-    permalink: /en/release/:path
   ## _wallets
   wallets:
     output: false

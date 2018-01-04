@@ -68,20 +68,7 @@ module Jekyll
           data = File.read(file)
           next if !data.index('google-site-verification:').nil?
           sitemap.puts '<url>'
-          sitemap.puts '  <loc>https://bitcoin.org/'+file.gsub('.html','').gsub('.md','')+'</loc>'
-          sitemap.puts '</url>'
-        end
-        #Add releases pages
-        Dir.foreach('_releases') do |file|
-          next if file == '.' or file == '..'
-          file = file.split('-')
-          next if file.length < 4
-          file.shift()
-          file.shift()
-          file.shift()
-          file = file.join('-')
-          sitemap.puts '<url>'
-          sitemap.puts '  <loc>https://bitcoin.org/en/release/'+file.gsub('.md','').gsub('.html','')+'</loc>'
+          sitemap.puts '  <loc>https://dash-docs.github.io/'+file.gsub('.html','').gsub('.md','')+'</loc>'
           sitemap.puts '</url>'
         end
         #Close sitemap

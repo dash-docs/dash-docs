@@ -11,8 +11,6 @@ breadcrumbs:
   - bitcoin
   - Bitcoin Core
 ---
-{% assign date_sorted_releases = site.releases | sort: 'optional_date', 'last' %}
-<link rel="alternate" type="application/rss+xml" href="/en/rss/releases.rss" title="Bitcoin Core releases">
 
 # Bitcoin Core
 {:.not-displayed}
@@ -83,27 +81,6 @@ breadcrumbs:
 <br class="clear">
 
 ### News
-
-{% comment %}<!-- Capture all the releases into a string and convert it to an array -->{% endcomment %}
-{% capture text_releases %}
-{% for p in date_sorted_releases reversed %}
-  {% if p.optional_date %}{{ p.optional_date | date:"%Y-%m-%d" }} - {% endif %}<a href="{{ p.url | replace:'.html','' }}">{{ p.title }}</a>::
- {% endfor %}
-{% endcapture %}
-{% assign array_releases = text_releases | strip_newlines | split: '::' %}
-
-  - [New Bitcoin Core website](https://bitcoincore.org)
-{% comment %}<!-- show the latest three releases -->{% endcomment %}
-{% for release in array_releases %}
- {% if forloop.index <= 3 %}
-  - {{ release }}
- {% endif %}
-{% endfor %}
-
-For more news, see the complete list of [Bitcoin Core releases][bcc
-version history]. For notifications of new releases, <a
-type="application/rss+xml" href="/en/rss/releases.rss">subscribe to the
-RSS feed</a>.
 
 <br class="clear">
 
