@@ -19,6 +19,14 @@ To build the site, you need to go through a one-time installation
 procedure that takes 15 to 30 minutes.  After that you can build the
 site an unlimited number of times with no extra work.
 
+#### Source Code Documentation
+
+The https://dash-docs.github.io site includes Doxygen generated documentation
+for the [Dash Core](https://github.com/dashpay/dash/) source code. To
+generate it, copy the files from `doxygen/` into the Dash Core `doc/` folder
+and run `doxygen doc/Doxyfile-dashdocs`. Then copy the output (Dash Core's
+`doc/doxygen/html/` folder) into the `en/doxygen/` folder of this project.
+
 ##### Install The Dependencies
 
 Before building the site, you need to install the following
@@ -90,14 +98,6 @@ Note that some of the dependencies (particularly nokogiri) can take a
 long time to install on some systems, so be patient.
 
 Once Bundle completes successfully, you can preview or build the site.
-
-##### Source Code Documentation
-
-The https://dash-docs.github.io site includes Doxygen generated documentation
-for the [Dash Core](https://github.com/dashpay/dash/) source code. To
-generate it, copy the files from /doxygen into the Dash Core /doc folder
-and run `doxygen doc/Doxyfile-dashdocs`. Then copy the output (Dash Core's
-/doc/doxygen/html/ folder) into the /en/doxygen/ of this project.
 
 ##### Preview The Site
 
