@@ -13,6 +13,7 @@ vendor
 _cache
 .jekyll-metadata
 .sass-cache/
+_ignore/*
 
 # To prevent adding doxygen files since they can 
 # be easily generated from Dash Core source
