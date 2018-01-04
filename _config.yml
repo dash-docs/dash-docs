@@ -595,10 +595,6 @@ devsearches:
     - "version": "/en/developer-reference#version"
 
 collections:
-  ## _alerts
-  alerts:
-    output: true
-    permalink: /en/alert/:path
   ## _releases
   releases:
     output: true

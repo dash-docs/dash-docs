@@ -71,13 +71,6 @@ module Jekyll
           sitemap.puts '  <loc>https://bitcoin.org/'+file.gsub('.html','').gsub('.md','')+'</loc>'
           sitemap.puts '</url>'
         end
-        #Add alerts pages
-        Dir.foreach('_alerts') do |file|
-          next if file == '.' or file == '..'
-          sitemap.puts '<url>'
-          sitemap.puts '  <loc>https://bitcoin.org/en/alert/'+file.gsub('.html','')+'</loc>'
-          sitemap.puts '</url>'
-        end
         #Add releases pages
         Dir.foreach('_releases') do |file|
           next if file == '.' or file == '..'
