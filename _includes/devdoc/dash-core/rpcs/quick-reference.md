@@ -66,6 +66,7 @@ Use v0.n.n in abbreviation title to prevent autocrossrefing.
 {% include helpers/summaries.md %}
 
 ####RPC Summary Table
+<!-- no subhead-links here -->
 
 {% include layout/base/rpc-table.html %}
 

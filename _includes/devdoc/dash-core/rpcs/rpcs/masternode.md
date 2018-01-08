@@ -15,7 +15,12 @@ http://opensource.org/licenses/MIT.
 
 The `masternode` RPC {{summary_masternode}}
 
+{% endautocrossref %}
+
 ###### Masternode<!--noref--> Count
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> count` RPC prints the number of all known masternodes.
 
@@ -61,8 +66,12 @@ Result:
 Total: 129 (PS Compatible: 97 / Enabled: 97 / Qualify: 90)
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Current
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> current` RPC prints info on current masternode winner to be paid the next block (calculated locally).
 
@@ -132,8 +141,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Debug
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> debug` RPC prints masternode status.
 
@@ -162,8 +175,12 @@ Result:
 Masternode successfully started
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Genkey
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> genkey` RPC generates a new masternodeprivkey.
 
@@ -190,8 +207,12 @@ Result:
 92Mn5DQpnBHjFPbS3ZXcX3EdhuET18u3eXTTtVsdDzdcAMaXqtG
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Outputs<!--noref-->
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> outputs` RPC prints masternode compatible outputs.
 
@@ -225,8 +246,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Start
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> start` RPC starts a local hot masternode configure in dash.conf.
 
@@ -256,8 +281,12 @@ Result:
 Masternode successfully started
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Start-alias
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> start-alias` starts a single remote masternode by assigned alias configured in masternode<!--noref-->.conf.
 
@@ -295,7 +324,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
+
 ###### Masternode<!--noref--> Start-mode
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> start-<mode>` RPC starts remote masternodes configured in
 masternode<!--noref-->.conf. Valid modes are: `all`, `missing`, or `disabled`.
@@ -395,8 +429,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Status
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> status` RPC prints masternode status information.
 
@@ -448,8 +486,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> List
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> list` prints a list of all known masternodes.
 
@@ -470,8 +512,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> List-conf
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> list-conf` RPC prints masternode<!--noref-->.conf in JSON format.
 
@@ -550,8 +596,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Winner
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> winner` RPC prints info on the next masternode winner to vote for.
 
@@ -621,8 +671,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### Masternode<!--noref--> Winners
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternode<!--noref--> winners` RPC prints the list of masternode winners.
 

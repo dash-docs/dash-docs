@@ -23,8 +23,12 @@ The `masternodebroadcast` RPC {{summary_masternodeBroadcast}}
 
 {% enditemplate %}
 
+{% endautocrossref %}
 
 ###### MNB create-alias
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternodebroadcast create-alias` RPC creates single remote masternode broadcast message by assigned alias configured in `masternode<!--noref-->.conf`.
 
@@ -78,8 +82,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### MNB create-all
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternodebroadcast create-all` RPC creates remote masternode broadcast messages for all masternodes configured in `masternode<!--noref-->.conf`.
 
@@ -148,8 +156,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### MNB decode
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternodebroadcast decode` RPC decodes a masternode broadcast message (deserializes from a hex string to JSON).
 
@@ -281,7 +293,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
+
 ###### MNB relay
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `masternodebroadcast relay` RPC relays a masternode broadcast message to the network.
 

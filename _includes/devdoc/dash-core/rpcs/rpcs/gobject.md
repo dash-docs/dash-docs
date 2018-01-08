@@ -13,7 +13,12 @@ http://opensource.org/licenses/MIT.
 
 The `gobject` RPC {{summary_gObject}}
 
+{% endautocrossref %}
+
 ###### GObject Check
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject check` RPC validates governance object data (_proposals only_).
 
@@ -62,7 +67,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
+
 ###### GObject Prepare
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction.
 
@@ -133,8 +143,12 @@ Result (Collateral Transaction ID):
 061ec99eb641ffdeaa05a1a724a255103bebc445b15c6c8c028b19c08608496b
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### GObject Submit
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject submit` RPC submits a governance object to network (objects must first be prepared via `gobject prepare`).
 
@@ -215,7 +229,12 @@ Result (Governance Object Hash):
 75e991c86ed5a50305e315e00c9a95fc74841bd97d58391071edc9ff206a0d3c
 {% endhighlight %}
 
+{% endautocrossref %}
+
 ###### GObject Deserialize
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject deserialize` RPC deserializes a governance object from a hex string to JSON.
 
@@ -395,8 +414,12 @@ Result (wrapped):
 ]
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### GObject Count
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject count` RPC returns the count of governance objects and votes.
 
@@ -424,8 +447,12 @@ Governance Objects: 177 (Proposals: 177, Triggers: 0, Watchdogs: 0/0, \
 	Other: 0; Erased: 5), Votes: 9680
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### GObject Get
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject get` RPC returns a governance object by hash.
 
@@ -658,8 +685,12 @@ Result (wrapped):
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### GObject Getvotes
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 <!-- __ -->
 
@@ -710,8 +741,12 @@ Result (truncated):
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### GObject Getcurrentvotes
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject getcurrentvotes` RPC gets only current (tallying) votes for a governance object hash (does not include old votes).
 
@@ -758,8 +793,12 @@ Result (truncated):
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### GObject List
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject list` RPC Lists governance objects (can be filtered by signal and/or object type).
 
@@ -835,7 +874,12 @@ Result (truncated):
 }
 {% endhighlight %}
 
+{% endautocrossref %}
+
 ###### GObject Diff
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 <!-- __ -->
 
@@ -895,8 +939,12 @@ Result (truncated):
 }
 {% endhighlight %}
 
+{% endautocrossref %}
 
 ###### GObject Vote-alias
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject vote-alias` RPC votes on a governance object by masternode alias (using masternode<!--noref-->.conf setup).
 
@@ -989,7 +1037,12 @@ Result:
 }
 {% endhighlight %}
 
+{% endautocrossref %}
+
 ###### GObject Vote-conf
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject vote-conf` RPC votes on a governance object by masternode configured in dash.conf.
 
@@ -1070,9 +1123,12 @@ dash-cli -testnet gobject vote-conf \
 }
 {% endhighlight %}
 
-
+{% endautocrossref %}
 
 ###### GObject Vote-many
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The `gobject vote-many` RPC votes on a governance object by all masternodes (using masternode<!--noref-->.conf setup).
 
