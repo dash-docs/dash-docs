@@ -47,7 +47,9 @@ end_of_page: |
 {% include devdoc/example_p2p_networking.md %}
 
 <!-- Services like Blockcyper are more likely to be used by most than building a ground-up payment system
-{% include devdoc/example_payment_processing.md %}
+{% comment %}
+  {% include devdoc/example_payment_processing.md %}
+{% endcomment %}
 -->
 
 {% include references.md %}

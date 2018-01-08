@@ -129,6 +129,7 @@ second) and clear the shell variable.
 {% endautocrossref %}
 
 ##### Simple Spending Script
+{% include helpers/subhead-links.md %}
 
 <!-- Shell script to run previous example -->
 Shell script to run the previous example:

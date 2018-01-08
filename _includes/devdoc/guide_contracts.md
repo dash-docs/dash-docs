@@ -207,8 +207,9 @@ all under an Apache license.
 -->
 {% endautocrossref %}
 
-<!-- Obsolesced by PrivateSend
+{% comment %}<!-- Obsolesced by PrivateSend
 ### CoinJoin
+
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}
@@ -290,4 +291,7 @@ saving each one of them a tiny amount of duffs.
 CoinJoin is [CoinMux](http://coinmux.com/), available under the Apache
 license.
 -->
+
 {% endautocrossref %}
+
+{% endcomment %}

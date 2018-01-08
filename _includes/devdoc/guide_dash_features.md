@@ -28,7 +28,6 @@ economy.
 
 
 ### InstantSend
-
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}
@@ -62,7 +61,6 @@ There are a number of limitations on InstantSend transactions:
 
 
 ### PrivateSend
-
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}
@@ -90,7 +88,6 @@ reference this [Official Documentation PrivateSend page](https://dashpay.atlassi
 
 
 ### Masternode Payment
-
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}
@@ -115,7 +112,6 @@ treated as misbehaving and have its ban score increased.
 {% endautocrossref %}
 
 ### Masternode Sync
-
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}
@@ -129,6 +125,7 @@ several conditions that initiate a start/restart the sync process:
 * Issuing a `mnsync reset` RPC command
 
 #### Initial Masternode<!--noref--> Sync
+{% include helpers/subhead-links.md %}
 
 This diagram shows the order in which P2P messages are sent to perform
 masternode synchronization initially after startup.
@@ -176,6 +173,7 @@ are used in both `ssc` messages and the `mnsync` RPC.
 
 
 #### Ongoing Masternode<!--noref--> Sync
+{% include helpers/subhead-links.md %}
 
 Once a masternode completes an initial full sync, continuing synchronization is
 maintained by the exchange of P2P messages with other nodes. This diagram shows
@@ -219,6 +217,7 @@ network. Unsynchronized peers may send `govsync` messages to request governance
 sync.
 
 #### Masternode<!--noref--> Sync Schedule
+{% include helpers/subhead-links.md %}
 
 The following tables detail the timing of various functions used to keep the
 masternodes in sync with each other. This information is derived from
@@ -242,12 +241,12 @@ The following actions only run when the masternode sync is past `MASTERNODE_SYNC
 {% endautocrossref %}
 
 ### Governance
-
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}
 
 #### Synchronization
+{% include helpers/subhead-links.md %}
 
 Dash Core synchronizes the governance system via the Masternode network as the
 last stage of the Masternode sync process (following the sync of sporks, the
@@ -309,6 +308,7 @@ Once the syncing node receives the counts and inventories, it may request any
 |                          | ←              | `govobjvote` message      | (If requested) Governance object vote
 
 #### Sentinel<!--noref-->
+{% include helpers/subhead-links.md %}
 
 [Sentinel](https://github.com/dashpay/sentinel<!--noref-->/) is a Python application that connects to a masternode's local dashd
 instance to run as an autonomous agent for persisting, processing, and automating
@@ -323,11 +323,15 @@ governance sync, ping, governance object pruning, and superblock management.
 The governance object data is stored in a SQLite database.
 
 ##### Sentinel<!--noref--> Sync
+{% include helpers/subhead-links.md %}
+
 Sentinel issues a `gobject list` RPC command and updates its database with the
 results returned from dashd. When objects are removed from the network, they are
 purged from the Sentinel database.
 
 ##### Sentinel<!--noref--> Ping
+{% include helpers/subhead-links.md %}
+
 In Dash Core 12.2, use of the `watchdog` governance object type was replaced
 by integrating sentinel information into the masternode ping (`mnp` message)
 via [Pull Request #1491](https://github.com/dashpay/dash/pull/1491).
@@ -335,13 +339,17 @@ Sentinel calls the `sentinelping` RPC which updates the masternode info to
 prevent it from entering a `MASTERNODE_WATCHDOG_EXPIRED` state.
 
 ##### Sentinel<!--noref--> Prune
+{% include helpers/subhead-links.md %}
+
 Sentinel 1.1.0 introduced proposal pruning which automatically votes to delete
 expired proposals following approximately half of a superblock cycle. This delay
 period ensures that proposals are not deleted prematurely. Prior to this,
 proposals remained in memory unless a sufficient number of masternodes manually
 voted to delete them.
 
-##### Sentinel<!--noref--> Superblock
+##### Sentinel<!--noref--> Superblock<!--noref-->
+{% include helpers/subhead-links.md %}
+
 Sentinel manages superblock creation, voting, and submission to dashd for
 network propagation.
 
@@ -349,7 +357,6 @@ network propagation.
 
 
 ### Quorum Selection
-
 {% include helpers/subhead-links.md %}
 
 {% autocrossref %}

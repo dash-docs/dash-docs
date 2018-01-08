@@ -167,7 +167,7 @@ The currently-available type identifiers are:
 | 15               | [`MSG_MASTERNODE_PING`][msg_masternode_ping]{:#term-msg_masternode_ping}{:.term}                                     | The hash is a Masternode Ping.
 | 16               | [`MSG_DSTX`][msg_dstx]{:#term-msg_dstx}{:.term}                              | The hash is Private Send (Dark Send) Broadcast TX.
 | 17               | [`MSG_GOVERNANCE_OBJECT`][msg_governance_object]{:#term-msg_governance_object}{:.term}                                     | The hash is a Governance Object.
-| 18               | [`MSG_GOVERNANCE_OBJECT_VOTE`][msg_governance_object_vote]{:#term-msg_governance_object}{:.term}                                     | The hash is a Governance Object Vote.
+| 18               | [`MSG_GOVERNANCE_OBJECT_VOTE`][msg_governance_object_vote]{:#term-msg_governance_object_vote}{:.term}                                     | The hash is a Governance Object Vote.
 | 19               | [`MSG_MASTERNODE_VERIFY`][msg_masternode_verify]{:#term-msg_masternode_verify}{:.term}                                     | The hash is a Masternode Verify.
 
 Type identifier zero and type identifiers greater than nineteen are reserved

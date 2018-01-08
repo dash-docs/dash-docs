@@ -661,8 +661,7 @@ added in sequence until all of the available space is filled.
 As of Dash Core 0.12.2.x, a [minimum fee][/en/glossary/minimum-relay-fee]{:#term-minimum-fee}{:.term}(1,000 duffs following [DIP1][] activation) is required to
 broadcast a non-priority transaction across the network. Any transaction paying
 only the minimum fee should be prepared to wait a long time before there's
-enough spare space in a block to include it. Please see the [verifying payment section][section verifying payment]
-for why this could be important.
+enough spare space in a block to include it.
 
 Since each transaction spends Unspent Transaction Outputs (UTXOs) and
 because a UTXO can only be spent once, the full value of the included
@@ -727,8 +726,8 @@ described below, with more general attacks hypothesized).
 So, for both privacy and security, we encourage you to build your
 applications to avoid public key reuse and, when possible, to discourage
 users from reusing addresses. If your application needs to provide a
-fixed URI to which payments should be sent, please see the
-[`dash:` URI section][bitcoin URI subsection] below.
+fixed URI to which payments should be sent, please use `dash:` URIs as defined
+by [BIP21](https://github.com/QuantumExplorer/bips/blob/master/bip-0021.mediawiki#general-format).
 
 {% endautocrossref %}
 

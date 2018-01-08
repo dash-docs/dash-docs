@@ -88,7 +88,7 @@ format:
 | → <br>`result`       | *any*           | Required<br>(exactly 1)     | The RPC output<!--noref--> whose type varies by call.  Has value `null` if an error occurred.
 | → <br>`error`        | null/object     | Required<br>(exactly 1)     | An object describing the error if one occurred, otherwise `null`.
 | → → <br>`code`        | number (int)    | Required<br>(exactly 1)     | The error code returned by the RPC function call. See [rpcprotocol.h][] for a full list of error codes and their meanings.
-| → → <br>`message`     | string          | Required<br>(exactly 1)     | A text description of the error.  May be an empty string ("").
+| → → <br>`message<!--noref-->`     | string          | Required<br>(exactly 1)     | A text description of the error.  May be an empty string ("").
 | → <br>`id`           | string          | Required<br>(exactly 1)     | The value of `id` provided with the request. Has value `null` if the `id` field was omitted in the request.
 {:.ntpd}
 

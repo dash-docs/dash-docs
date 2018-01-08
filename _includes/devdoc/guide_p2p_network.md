@@ -118,7 +118,7 @@ connection to a specific node by IP address.  See the `-help` text for
 details.
 
 **Resources:** [Dash Seeder][], the program run by several of the
-seeds used by Dash Core. The Dash Core [DNS SeedPolicy][]. The hardcoded list
+seeds used by Dash Core. The Dash Core [DNS Seed Policy][]. The hardcoded list
  of IP addresses used by Dash Core is generated using the [makeseeds script][].
 
 {% endautocrossref %}

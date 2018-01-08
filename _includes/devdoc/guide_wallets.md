@@ -244,8 +244,7 @@ design these minimalist wallets:
 
 Neither method adds a significant amount of overhead, especially if a
 database is used anyway to associate each incoming payment with a
-separate public key for payment tracking. See the [Payment
-Processing][devguide payment processing] section for details.
+separate public key for payment tracking.
 
 {% endautocrossref %}
 

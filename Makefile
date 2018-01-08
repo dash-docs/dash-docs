@@ -58,7 +58,6 @@ pre-build-tests-fast: check-for-non-ascii-urls check-for-wrong-filename-assignme
     check-for-missing-copyright-licenses \
     check-bundle \
     check-for-english-in-en-dir \
-    check-validate-yaml \
 
 ## Post-build tests which, aggregated together, take less than 10 seconds to run on a typical PC
 post-build-tests-fast: check-for-build-errors ensure-each-svg-has-a-png check-for-liquid-errors \
@@ -76,7 +75,6 @@ pre-build-tests: pre-build-tests-fast
 
 ## All post-build tests, including those which might take multiple minutes
 post-build-tests: post-build-tests-fast \
-    check-for-broken-bitcoin-core-download-links \
     check-html-proofer
 
 ## All manual updates to content that should be run by a human. This
@@ -244,18 +242,6 @@ manual-check-diff-sha256sums:
 	  | uniq -u \
 	  | sort -k2
 
-check-for-broken-bitcoin-core-download-links:
-## Ensure that the links from the Download page to the current Bitcoin
-## Core binaries are correct
-	$S grep 'class="dl"' _site/en/download.html \
-	  | sed 's/.*href="//; s/".*//' \
-	  | while read url ; do \
-	    if [ "$${url##http*}" ]; then \
-	      curl -sI "https://bitcoin.org$$url" ; \
-	    else \
-	      curl -sI "$$url" ; \
-	    fi | grep -q '200 OK' || echo "Error: Could not retrieve $$url" ; \
-	  done | eval $(ERROR_ON_OUTPUT)
 
 check-html-proofer:
 	$S bundle exec ruby _contrib/bco-htmlproof
@@ -299,7 +285,3 @@ check-for-too-many-wallets-on-one-platform:
 	   ; if [ $$count -gt 14 ] \
 	   ; then echo "ERROR: too many wallets in $$platform platform.  Remove one or change layout" \
 	   ; fi ; done
-
-check-validate-yaml:
-## Validate YAML files against schemas
-	##$S find _wallets -type f -exec bundle exec _contrib/schema-validator.rb quality-assurance/schemas/wallets.yaml {} \;

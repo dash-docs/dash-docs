@@ -14,8 +14,8 @@ Core, either from [source][core git] or from a [pre-compiled executable][core ex
 Questions about Dash development are best asked in one of the
 [Dash development communities][dev communities].
 Errors or suggestions related to
-documentation on {Dash.org} can be [submitted as an issue][docs issue]
-or posted to the [bitcoin-documentation mailing list][].
+documentation on [dash-docs.github.io](https://dash-docs.github.io) can be
+[submitted as an issue][docs issue].
 
 In the following documentation, some strings have been shortened or wrapped: "[...]"
 indicates extra data was removed, and lines ending in a single backslash "\\"

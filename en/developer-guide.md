@@ -62,7 +62,9 @@ of the following file. -->
 {% include devdoc/guide_mining.md %}
 
 <!-- Services like Blockcyper are more likely to be used by most than building a ground-up payment system
-include devdoc/guide_payment_processing.md
+{% comment %}
+  include devdoc/guide_payment_processing.md
+{% endcomment %}
 -->
 
 {% include references.md %}

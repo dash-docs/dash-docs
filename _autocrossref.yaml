@@ -12,7 +12,7 @@
 '`addr` messages': addr message
 '`alert` message': alert message
 '`alert` messages': alert message
-'`amount`': pp amount
+'`amount`': DO NOT AUTOCROSSREF
 bitcoin QR code: URI QR code
 bitcoin QR codes: URI QR code
 '`bitcoin:` URI': bitcoin uri
@@ -87,7 +87,7 @@ IPv6 address: DO NOT AUTOCROSSREF
 IPv6 addresses: DO NOT AUTOCROSSREF
 key index:
 key pair:
-'`label`': label
+'`label`': DO NOT AUTOCROSSREF
 leaf certificate:
 long-term fork:
 man in the middle: man-in-the-middle
@@ -101,7 +101,7 @@ message payload:
 '`merkleblock` message': merkleblock message
 '`merkleblock` messages': merkleblock message
 merge:
-Merge avoidance:
+Merge avoidance: DO NOT AUTOCROSSREF
 micropayment channel:
 micropayment channels: micropayment channel
 '`mnb` message': mnb message
@@ -161,16 +161,16 @@ protocol version 70013: section protocol versions
 protocol version 70014: section protocol versions
 public key infrastructure: pki
 '`r`': r
-receipt:
+receipt: DO NOT AUTOCROSSREF
 recurrent rebilling:
-refund:
-refunds: refund
+refund: DO NOT AUTOCROSSREF
+refunds: DO NOT AUTOCROSSREF
 '`reject` message': reject message
 '`reject` messages': reject message
 root certificate:
 RPC:
 RPCs: rpc
-'`script`': pp script
+'`script`': DO NOT AUTOCROSSREF
 secp256k1:
 '`spork` message': spork message
 '`spork` messages': spork message
