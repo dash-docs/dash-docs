@@ -1,74 +1,74 @@
 langsorder:
-- 'id'
-- 'da'
-- 'de'
+#- 'id'
+#- 'da'
+#- 'de'
 - 'en'
-- 'es'
-- 'fr'
-- 'it'
-- 'hu'
-- 'nl'
-- 'pl'
-- 'pt_BR'
-- 'ro'
-- 'sl'
-- 'sv'
-- 'tr'
-- 'el'
-- 'bg'
-- 'ru'
-- 'uk'
-- 'ar'
-- 'fa'
-- 'hi'
-- 'ko'
-- 'ja'
-- 'zh_CN'
-- 'zh_TW'
+#- 'es'
+#- 'fr'
+#- 'it'
+#- 'hu'
+#- 'nl'
+#- 'pl'
+#- 'pt_BR'
+#- 'ro'
+#- 'sl'
+#- 'sv'
+#- 'tr'
+#- 'el'
+#- 'bg'
+#- 'ru'
+#- 'uk'
+#- 'ar'
+#- 'fa'
+#- 'hi'
+#- 'ko'
+#- 'ja'
+#- 'zh_CN'
+#- 'zh_TW'
 
 langs:
-  'ar': 'العربية'
-  'bg': 'български'
-  'da': 'Dansk'
-  'de': 'Deutsch'
+  #'ar': 'العربية'
+  #'bg': 'български'
+  #'da': 'Dansk'
+  #'de': 'Deutsch'
   'en': 'English'
-  'el': 'Ελληνικά'
-  'es': 'Español'
-  'fa': 'فارسی'
-  'fr': 'Français'
-  'hi': 'हिन्दी'
-  'hu': 'Magyar'
-  'id': 'Bahasa Indonesia'
-  'it': 'Italiano'
-  'ja': '日本語'
-  'ko': '한국의'
-  'nl': 'Nederlands'
-  'pl': 'Polski'
-  'pt_BR': 'Português Brasil'
-  'ro': 'Română'
-  'ru': 'Русский'
-  'sl': 'Slovenščina'
-  'sv': 'Svenska'
-  'tr': 'Türkçe'
-  'uk': 'Українська'
-  'zh_CN': '简体中文'
-  'zh_TW': '繁體中文'
+  #'el': 'Ελληνικά'
+  #'es': 'Español'
+  #'fa': 'فارسی'
+  #'fr': 'Français'
+  #'hi': 'हिन्दी'
+  #'hu': 'Magyar'
+  #'id': 'Bahasa Indonesia'
+  #'it': 'Italiano'
+  #'ja': '日本語'
+  #'ko': '한국의'
+  #'nl': 'Nederlands'
+  #'pl': 'Polski'
+  #'pt_BR': 'Português Brasil'
+  #'ro': 'Română'
+  #'ru': 'Русский'
+  #'sl': 'Slovenščina'
+  #'sv': 'Svenska'
+  #'tr': 'Türkçe'
+  #'uk': 'Українська'
+  #'zh_CN': '简体中文'
+  #'zh_TW': '繁體中文'
 
 redirects:
-  /ar/بت-كوين-للمطورين: /ar/bitcoin-for-developers
-  /ar/مصادر: /ar/resources
-  /ar/مفردات: /ar/vocabulary
-  /fa/بیت-کوین-برای-توسعه-دهندگان: /fa/bitcoin-for-developers
-  /fa/منابع: /fa/resources
-  /fa/واژگان: /fa/vocabulary
-  /ru/биткоин-разработчикам: /ru/bitcoin-for-developers
-  /ru/ресурсы: /ru/resources
-  /ru/термины: /ru/vocabulary
-  /tr/bilmelisiniz: /tr/bilmeniz-gerekenler
-  /tr/yeni-baslamak: /tr/baslarken
-  /tr/hakkinda: /tr/sss
-  ## Old releases pages; stop adding to this list after 0.8.2
-  /bitcoin_es_latam.pdf: /files/bitcoin-paper/bitcoin_es_latam.pdf
+  #/ar/بت-كوين-للمطورين: /ar/bitcoin-for-developers
+  #/ar/مصادر: /ar/resources
+  #/ar/مفردات: /ar/vocabulary
+  #/fa/بیت-کوین-برای-توسعه-دهندگان: /fa/bitcoin-for-developers
+  #/fa/منابع: /fa/resources
+  #/fa/واژگان: /fa/vocabulary
+  #/ru/биткоин-разработчикам: /ru/bitcoin-for-developers
+  #/ru/ресурсы: /ru/resources
+  #/ru/термины: /ru/vocabulary
+  #/tr/bilmelisiniz: /tr/bilmeniz-gerekenler
+  #/tr/yeni-baslamak: /tr/baslarken
+  #/tr/hakkinda: /tr/sss
+  ### Old releases pages; stop adding to this list after 0.8.2
+  #/bitcoin_es_latam.pdf: /files/bitcoin-paper/bitcoin_es_latam.pdf
   /bitcoin_ru.pdf: /files/bitcoin-paper/bitcoin_ru.pdf
 
 aliases:
@@ -502,7 +502,7 @@ devsearches:
     - "addr":  "/en/developer-reference#addr"
     - "alert":  "/en/developer-reference#alert"
     - "block": "/en/developer-reference#block"
-    - "feefilter": "/en/developer-reference#feefilter"
+    #- "feefilter": "/en/developer-reference#feefilter"
     - "filteradd": "/en/developer-reference#filteradd"
     - "filterclear": "/en/developer-reference#filterclear"
     - "filterload": "/en/developer-reference#filterload"

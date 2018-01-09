@@ -1472,7 +1472,7 @@ can be locked.
 
 {% autocrossref %}
 
-The `txlvote` message ([transaction lock vote][msg_txlock_vote]{:#term-msg_txlock_vote}{:.term})
+The `txlvote` message ([transaction lock vote][msg_txlock_vote])
 is sent by masternodes to indicate approval of a transaction lock request
 `ix` message.
 
