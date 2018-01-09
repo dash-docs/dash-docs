@@ -144,7 +144,7 @@ check-for-missing-anchors:
 check-for-broken-markdown-reference-links:
 ## Report Markdown reference-style links which weren't converted to HTML
 ## links in the output, indicating there's no reference definition
-	$S find $(SITEDIR) -name '*.html' -type f | xargs grep '\]\[' | eval $(ERROR_ON_OUTPUT)
+	$S find $(SITEDIR) -name '*.html' -type f -not -path "*/doxygen/html/*" | xargs grep '\]\[' | eval $(ERROR_ON_OUTPUT)
 
 check-for-non-ascii-urls:
 ## Always check all translated urls don't contain non-ASCII
@@ -182,7 +182,7 @@ check-for-headers-containing-auto-link:
 check-for-empty-title-tag:
 ## This checks whether all generated pages have a title tag with
 ## content
-	$S find ./_site -name '*.html' -type f \
+	$S find ./_site -name '*.html' -type f -not -path "*/doxygen/html/*" \
 	   | xargs grep '<title></title>' \
 	   | eval $(ERROR_ON_OUTPUT)
 
@@ -262,26 +262,15 @@ check-for-subheading-anchors:
 ## Ensure all subheadings on the site have anchors so the Javascript
 ## function addAnchorLinks() can add anchor link affordance to each
 ## subhead
-	$S grep -r -i --include \*.html -L 'Note: this file exempt from check-for-subheading-anchors check' _site/ \
+	$S grep -r -i --include \*.html -L 'Note: this file exempt from check-for-subheading-anchors check' _site/ --exclude-dir=doxygen \
 	  | xargs grep '<h[23456]' \
 	  | grep -v '<h[23456][^>]* id=' | eval $(ERROR_ON_OUTPUT)
 
 check-for-javascript-in-svgs:
 ## Security check: don't allow any SVGs that contain Javascript.
-	$S find _site/ -name '*.svg' -type f | xargs grep '<script' | eval $(ERROR_ON_OUTPUT)
+## NOTE: Excludes SVGs in Doxygen folder
+	$S find _site/ -name '*.svg' -type f -not -path "*/doxygen/html/*" | xargs grep '<script' | eval $(ERROR_ON_OUTPUT)
 
 check-for-english-in-en-dir:
 ## All pages must have page.lang set to work properly with the site templates
-	$S grep -rl -- '---' en/ | xargs grep -L '^ *lang: *en' | eval $(ERROR_ON_OUTPUT)
-
-check-for-consistent-bitcoin-core-titles:
-## Ensure all page titles in the en/bitcoin-core/ hierarchy mention
-## Bitcoin Core
-	$S grep -r -L '^title:.*Bitcoin Core' en/bitcoin-core/ | eval $(ERROR_ON_OUTPUT)
-
-check-for-too-many-wallets-on-one-platform:
-	$S for platform in desktop windows mac linux mobile android ios blackberry windowsphone web hardware \
-	   ; do count=$$( grep -c "compat:.*$$platform" _templates/choose-your-wallet.html ) \
-	   ; if [ $$count -gt 14 ] \
-	   ; then echo "ERROR: too many wallets in $$platform platform.  Remove one or change layout" \
-	   ; fi ; done
+	$S grep -rl \\'---' en/ --exclude-dir=doxygen | xargs grep -L '^ *lang: *en' | eval $(ERROR_ON_OUTPUT)

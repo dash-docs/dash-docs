@@ -1,5 +1,7 @@
 # Welcome to Dash-docs.github.io.org's Codebase
 
+Current Build Status: ![Build Status](https://travis-ci.org/thephez/dash.org.svg?branch=master)
+
 Live site: [dash-docs.github.io](https://dash-docs.github.io)
 
 Report problems or help improve the site by opening a [new issue](https://github.com/thephez/dash.org/issues/new) or [pull request](https://github.com/thephez/dash.org/compare).
