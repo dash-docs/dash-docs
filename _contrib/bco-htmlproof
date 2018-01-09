@@ -25,6 +25,8 @@ HTML::Proofer.new(
         ## Check whether HTML is well-formed
         :check_html => true,
 
+        :file_ignore => [ /.*\/(doxygen)\/.*/ ],
+
         ## Links to ignore
         :href_ignore => [
           '#',           ## hrefs pointing to the current page (htmlproofer fails them)
