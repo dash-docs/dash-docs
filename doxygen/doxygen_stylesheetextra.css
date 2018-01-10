@@ -1,3 +1,10 @@
+body, table, div, p, dl {
+	font: 400 16px/22px Ubuntu,sans-serif;
+}
+
+p.reference, p.definition {
+	font: 400 14px/22px Ubuntu,sans-serif;
+}
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
 	display: block
@@ -223,4 +230,3 @@ h1 {
   left: auto;
   width: 250px;
 }
-
