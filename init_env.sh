@@ -5,5 +5,5 @@
 source ~/.rvm/scripts/rvm
 
 # Set default Ruby
-rvm alias create default ruby-2.0.0
+rvm alias create default ruby-2.5.0
 rvm use default
