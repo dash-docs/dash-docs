@@ -10,5 +10,5 @@ env:
 
 before_install:
   - gem update --system
-  - gem update bundler
+
 script: make travis
