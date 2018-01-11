@@ -106,7 +106,7 @@ Get the same transaction in JSON:
 curl http://localhost:19998/rest/tx/b06edec446fbcc0fc04a6e2774a843823f5238c2e15de40e61767a44f6788d32.json
 {% endhighlight %}
 
-Result (whitespaced added):
+Result (whitespace added):
 
 {% highlight json %}
 {  

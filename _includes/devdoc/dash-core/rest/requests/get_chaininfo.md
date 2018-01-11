@@ -191,7 +191,7 @@ Get blockchain info in JSON:
 curl http://localhost:19998/rest/chaininfo.json
 {% endhighlight %}
 
-Result (whitespaced added):
+Result (whitespace added):
 
 {% highlight json %}
 {  

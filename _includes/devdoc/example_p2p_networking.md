@@ -339,7 +339,7 @@ send("filterload",
 {% endhighlight %}
 
 We set a bloom filter with the `filterload` message. This filter is
-described in the two preceeding sections.
+described in the two preceding sections.
 
 {% highlight python %}
 send("getdata",

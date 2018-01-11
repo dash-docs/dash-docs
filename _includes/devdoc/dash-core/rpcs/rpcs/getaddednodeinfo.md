@@ -58,7 +58,7 @@ The `getaddednodeinfo` RPC {{summary_getAddedNodeInfo}}
 
 - n: "→ →<br>`addresses`"
   t: "array"
-  p: "Requred<br>(exactly 1)"
+  p: "Required<br>(exactly 1)"
   d: "This will be an array of addresses<!--noref--> belonging to the added node"
 
 - n: "→ → →<br>Address<!--noref-->"

@@ -153,7 +153,7 @@ Get the same block headers in JSON:
 curl http://localhost:19998/rest/headers/2/0000000000ccbf46cf6b78827ac1019f82598be839bce08bff00d188e75fb451.json
 {% endhighlight %}
 
-Result (whitespaced added):
+Result (whitespace added):
 
 {% highlight json %}
 [  

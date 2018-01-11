@@ -156,7 +156,7 @@ The `getblockchaininfo` RPC {{summary_getBlockChainInfo}}
 - n: "→ → →<br>`status`"
   t: "string"
   p: "Required<br>(exactly 1)"
-  d: "Set to one of the following reasons:<br>• `defined` if voting hasn't started yet<br>• `started` if the voting has started <br>• `locked_in` if the voting was successful but the softfort hasn't been activated yet<br>• `active` if the softfork was activated<br>• `failed` if the softfork has not receieved enough votes"
+  d: "Set to one of the following reasons:<br>• `defined` if voting hasn't started yet<br>• `started` if the voting has started <br>• `locked_in` if the voting was successful but the softfork hasn't been activated yet<br>• `active` if the softfork was activated<br>• `failed` if the softfork has not receieved enough votes"
 
 - n: "→ → →<br>`bit`"
   t: "numeric<br>(int)"

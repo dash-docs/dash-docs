@@ -23,7 +23,7 @@ The `listtransactions` RPC {{summary_listTransactions}}
 - n: "Account"
   t: "string"
   p: "Optional<br>(0 or 1)"
-  d: "*Deprecated: will be removed in a later version of Dash Core*<br><br>The name of an account to get transactinos from.  Use an empty string (\"\") to get transactions for the default account.  Default is `*` to get transactions for all accounts."
+  d: "*Deprecated: will be removed in a later version of Dash Core*<br><br>The name of an account to get transactions from.  Use an empty string (\"\") to get transactions for the default account.  Default is `*` to get transactions for all accounts."
 
 {% enditemplate %}
 

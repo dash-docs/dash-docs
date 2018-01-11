@@ -41,7 +41,7 @@ The `getnettotals` RPC {{summary_getNetTotals}}
 - n: "→<br>`uploadtarget`"
   t: "string : <br>object"
   p: "Required<br>(exactly 1)"
-  d: "The upload traget information"
+  d: "The upload target information"
 
 - n: "→ →<br>`timeframe`"
   t: "number (int)"

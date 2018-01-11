@@ -156,7 +156,7 @@ Same request in JSON:
 curl http://localhost:19998/rest/getutxos/checkmempool/7b6caf68c33794b0bda65e63691739919f13156b57c7ec20a0b4de1f33c580bd-0.json
 {% endhighlight %}
 
-Result (whitespaced added):
+Result (whitespace added):
 
 {% highlight json %}
 {  

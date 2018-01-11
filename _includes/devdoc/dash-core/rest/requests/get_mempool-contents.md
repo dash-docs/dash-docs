@@ -121,7 +121,7 @@ Get all transactions in the memory pool in JSON:
 curl http://localhost:19998/rest/mempool/contents.json
 {% endhighlight %}
 
-Result (whitespaced added):
+Result (whitespace added):
 
 {% highlight json %}
 {  
