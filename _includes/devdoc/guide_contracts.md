@@ -170,9 +170,9 @@ spent anything so far, except possibly a small transaction fee, and
 he'll be able to broadcast the refund transaction in 24 hours for a
 full refund.
 
-Now, when Alice does some work worth 1 millibitcoin, she asks Bob to create
+Now, when Alice does some work worth 1 millidash, she asks Bob to create
 and sign a new version of the refund transaction.  Version two of the
-transaction spends 1 millibitcoin to Alice and the other 99 back to Bob; it does
+transaction spends 1 millidash to Alice and the other 99 back to Bob; it does
 not have a locktime, so Alice can sign it and spend it whenever she
 wants.  (But she doesn't do that immediately.)
 

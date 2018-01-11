@@ -9,7 +9,7 @@
 <g id="graph0" class="graph" transform="scale(0.819672 0.819672) rotate(0) translate(4 500)">
 <title>blockchain</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-500 545,-500 545,4 -4,4"/>
-<text text-anchor="middle" x="270.5" y="-7.8" font-family="Times,serif" font-size="14.00">Triple&#45;Entry Bookkeeping (Transaction&#45;To&#45;Transaction Payments) As Used By Bitcoin</text>
+<text text-anchor="middle" x="270.5" y="-7.8" font-family="Times,serif" font-size="14.00">Triple&#45;Entry Bookkeeping (Transaction&#45;To&#45;Transaction Payments) As Used By Dash</text>
 <g id="clust1" class="cluster"><title>cluster_tx0</title>
 <polygon fill="none" stroke="black" points="62,-286 62,-484 153,-484 153,-286 62,-286"/>
 <text text-anchor="middle" x="107.5" y="-468.8" font-family="Times,serif" font-size="14.00">Transaction 0</text>

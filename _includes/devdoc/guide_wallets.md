@@ -280,7 +280,7 @@ In order to make copying of private keys less prone to error, [Wallet Import For
 
 1. Take a private key.
 
-2. Add a 0x80 byte in front of it for mainnet addresses or 0xef for testnet addresses.
+2. Add a 0xCC byte in front of it for mainnet addresses or 0xEF for testnet addresses.
 
 3. Append a 0x01 byte after it if it should be used with compressed
    public keys (described in a later subsection). Nothing is appended if

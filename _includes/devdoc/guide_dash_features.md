@@ -288,7 +288,7 @@ Once the syncing node receives the counts and inventories, it may request any
 *Governance Sync Data Flow*
 
 | **Syncing Node Message** | **Direction**  | **Masternode Response**   | **Description** |
-| **Inital request** | | | **Requests all governance objects (without votes)** |
+| **Initial request** | | | **Requests all governance objects (without votes)** |
 | `govsync` message        | →              |                           | Syncing node initiates governance sync (hash set to all zeros)
 |                          | ←              | `ssc` message (govobj)    | Number of governance objects (0 or more)
 |                          | ←              | `ssc` message (govobjvote)| Number of governance object votes *(0 since votes are only returned if a specific hash is provided with the `govsync` message)*

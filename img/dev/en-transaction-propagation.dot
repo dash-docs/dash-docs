@@ -82,5 +82,5 @@ tx4_output0 -> tx6_input0 [ label = "10k" ]
 tx5_output0 -> tx6_input1 [ label = "10k" ]
 tx3_output0 -> utxo0 [ style=dashed, labelfloat = true, minlen = 2, label = "20k Unspent TX\nOutput (UTXO)" ]
 tx6_output0 -> utxo1 [ style=dashed, label = "10k\nUTXO" ]
-label = "Triple-Entry Bookkeeping (Transaction-To-Transaction Payments) As Used By Bitcoin"
+label = "Triple-Entry Bookkeeping (Transaction-To-Transaction Payments) As Used By Dash"
 }

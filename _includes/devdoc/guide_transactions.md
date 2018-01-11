@@ -506,7 +506,7 @@ Standard transactions must also meet the following conditions:
   opcodes which solely push data to the stack.
 
 * The transaction must not include any outputs which receive fewer than
-  1/3 as many satoshis as it would take to spend it in a typical input.
+  1/3 as many duffs as it would take to spend it in a typical input.
   That's currently 5460 duffs for a
   P2PKH or P2SH output on a Dash Core node with the default relay fee.
   Exception: standard null data outputs must receive zero duffs.

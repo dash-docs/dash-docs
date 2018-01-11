@@ -22,7 +22,7 @@ subgraph cluster_tx0 {
 
     subgraph cluster_outputs {
         pubkey_script [ label = "Pubkey\nScript" ];
-        amount [ label = "Amount\n(satoshis)" ];
+        amount [ label = "Amount\n(duffs)" ];
         output0_label [ shape = "none", label = "Output 0\n(Implied)" ]
         label = "Example Output Paying A Pubkey Script"
     }
