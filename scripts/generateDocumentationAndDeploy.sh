@@ -2,23 +2,18 @@
 ################################################################################
 # Title         : generateDocumentationAndDeploy.sh
 # Date created  : 2016/02/22
-# Notes         :
+# Notes         : Modified the thephez for deploying with dash-docs
 __AUTHOR__="Jeroen de Bruijn"
 # Preconditions:
-# - Packages doxygen doxygen-doc doxygen-latex doxygen-gui graphviz
-#   must be installed.
-# - Doxygen configuration file must have the destination directory empty and
-#   source code directory with a $(TRAVIS_BUILD_DIR) prefix.
-# - An gh-pages branch should already exist. See below for mor info on hoe to
-#   create a gh-pages branch.
+# - Doxygen must be installed or loaded from cache. The build-install-doxygen
+#   script should be used to do this
+# - A Doxygen configuration file must be located in the TRAVIS_BUILD_DIR/doxygen
+#   directory
+# - This script should be called after the rest of the site has already been
+#   built (i.e. in the Travis-CI after_success section)
 #
 # Required global variables:
-# - TRAVIS_BUILD_NUMBER : The number of the current build.
-# - TRAVIS_COMMIT       : The commit that the current build is testing.
 # - DOXYFILE            : The Doxygen configuration file.
-# - GH_REPO_NAME        : The name of the repository.
-# - GH_REPO_REF         : The GitHub reference to the repository.
-# - GH_REPO_TOKEN       : Secure token to the github repository.
 #
 # For information on how to encrypt variables for Travis CI please go to
 # https://docs.travis-ci.com/user/environment-variables/#Encrypted-Variables
@@ -26,15 +21,14 @@ __AUTHOR__="Jeroen de Bruijn"
 # For information on how to create a clean gh-pages branch from the master
 # branch, please go to https://gist.github.com/vidavidorra/846a2fc7dd51f4fe56a0
 #
-# This script will generate Doxygen documentation and push the documentation to
-# the gh-pages branch of a repository specified by GH_REPO_REF.
-# Before this script is used there should already be a gh-pages branch in the
-# repository.
+# This script will generate Doxygen documentation and copy the documentation to
+# the _site/_en directory of dash-docs so it can be deployed with the rest of
+# the site
 #
 ################################################################################
 
 ################################################################################
-##### Setup this script and get the current gh-pages branch.               #####
+##### Setup this script and clone the Dash repository                      #####
 echo 'Setting up the script...'
 # Exit with nonzero exit code if anything fails
 set -e

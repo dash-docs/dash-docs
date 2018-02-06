@@ -1,4 +1,15 @@
 #!/bin/sh
+################################################################################
+# Title         : build-install-doxygen.sh
+# Date created  : 2018/02/01
+# Notes         :
+__AUTHOR__="thephez"
+#
+# If the doxygen binary is not found, clones the doxygen repository, builds,
+# and copies the binary to a location for Travis-CI caching.
+#
+################################################################################
+
 set -ex
 
 file="$TRAVIS_BUILD_DIR/doxygen-install/doxygen"
