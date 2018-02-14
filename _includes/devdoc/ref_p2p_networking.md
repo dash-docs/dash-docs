@@ -1880,7 +1880,7 @@ message.
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination allowed in this mixing session
-| 41+ | vin | txIn | Required | Unspent output from masternode which is hosting this session
+| 36 | masternodeOutPoint | TxOut | Required | The unspent output of the masternode (holding 1000 DASH) which is hosting this session
 | 8 | nTime | int64_t | Required | Time this `dsq` message was created
 | 1 | fReady | bool | Required | Indicates if the mixing pool is ready to be executed
 | 66* | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))
@@ -2087,7 +2087,7 @@ fees (to provide security in mixing).
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | # | tx | `tx` message | Required | The transaction
-| 41 | vin | txIn | Required | Masternode unspent output
+| 36 | masternodeOutPoint | TxOut | Required | The unspent output of the masternode (holding 1000 DASH) which is signing the message
 | 66 | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))
 | 8 | sigTime | int64_t | Require | Time this message was signed
 
@@ -2144,11 +2144,6 @@ Masternode Unspent Output
 | 387d522def2abfb9bdd15be899f074f3
 | 49b414cef078ec642e1d14b42996b9fc ......... Outpoint TXID
 | 00000000 ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature (None)
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 1b6fb8f90f0df6e502bc10aab9604e49
 2d14214e05331c9761c834d55c7536e3
@@ -2192,7 +2187,7 @@ request if they are not fully synced.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 41 | vin | txIn | Required | Request options:<br>`All Entries` - empty txIn<br>`Single Entry` - Masternode's unspent output which is holding 1000 DASH
+| 36 | masternodeOutPoint | TxOut | Required | Request options:<br>`All Entries` - empty txIn<br>`Single Entry` - Masternode's unspent output which is holding 1000 DASH
 
 
 {% highlight text %}
@@ -2208,11 +2203,6 @@ Masternode Unspent Output
 | 00000000000000000000000000000000
 | 00000000000000000000000000000000 ......... Outpoint TXID
 | ffffffff ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 {% endhighlight %}
 
 The following annotated hexdump shows a `dseg` message requesting a specific
@@ -2223,11 +2213,6 @@ Masternode Unspent Output
 | 7fe33a2901aa654598ae0af572d4fbec
 | ee97af2d0276f189d177dee5848ef3da ......... Outpoint TXID
 | 00000000 ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 {% endhighlight %}
 
 {% endautocrossref %}
@@ -2262,11 +2247,6 @@ Masternode Unspent Output
 | 3fbc7d4a8f68ba6ecb02a8db34d1f5b6
 | 2dc105f0b5c3505243435cf815d02394 ......... Outpoint TXID
 | 01000000 ................................. Outpoint index number: 1
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 Masternode Address
 | 00000000000000000000ffffc0000233 ......... IP Address: ::ffff:192.0.2.51
@@ -2302,11 +2282,6 @@ Masternode Ping Message
 | | 3fbc7d4a8f68ba6ecb02a8db34d1f5b6
 | | 2dc105f0b5c3505243435cf815d02394 ........ Outpoint TXID
 | | 01000000 ................................ Outpoint index number: 1
-| |
-| | 00 ...................................... Bytes in sig. script: 0
-| | ......................................... Secp256k1 signature: None
-| |
-| | ffffffff ................................ Sequence number: UINT32_MAX
 |
 | 94fc0fad18b166c2fedf1a5dc0511372
 | 26c353d57e086737ff05000000000000 ......... Chaintip block hash
@@ -2362,7 +2337,7 @@ uses a minimum masternode ping time of 10 minutes.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 41 | vin | txIn | Required | The unspent output of the masternode (holding 1000 DASH) which is signing the message
+| 36 | masternodeOutPoint | TxOut | Required | The unspent output of the masternode (holding 1000 DASH) which is signing the message
 | 32 | blockHash | uint256 | Required | Block hash from 12 blocks ago (current chaintip minus 12). This offset allows nodes to be slightly out of sync.
 | 8 | sigTime | int64_t | Required | Time which the signature was created
 | 66* | vchSig | char[] | Required | Signature of this message by masternode - verifiable via pubKeyMasternode (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
@@ -2375,11 +2350,6 @@ Masternode Unspent Output
 | 0bfa3616099771bb5f36181ff4060a9b
 | 9afe7b3e47d7f4327800f0f8ce586c6e ......... Outpoint TXID
 | 01000000 ................................. Outpoint index number: 1
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 a26a68ebb733192c1c40f9b42f872ac0
 e23d4c360e20d5ab6608000000000000 ........... Chaintip block hash
@@ -2408,8 +2378,8 @@ masternode 1 being validated as of the provided block height.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 41 | vin1 | txIn | Required | The unspent output which is holding 1000 DASH for masternode 1
-| 41 | vin2 | txIn | Required | The unspent output which is holding 1000 DASH for masternode 2
+| 36 | masternodeOutPoint1 | TxOut | Required | The unspent output which is holding 1000 DASH for masternode 1
+| 36 | masternodeOutPoint2 | TxOut | Required | The unspent output which is holding 1000 DASH for masternode 2
 | # | addr | CService | Required | IPv4 address and port of masternode 1
 | 4 | nonce | int | Required | Random nonce
 | 4 | nBlockHeight | int | Required | Block height
@@ -2426,9 +2396,9 @@ in the table below.
 |   | **Verification request** | |                   | **`mnv` message with no signatures** |
 | 1 | `mnv` message    | → |                   | Contains `addr`, `nonce`, and `nBlockHeight`.<br>Sent by _SendVerifyRequest()_.
 | 2 |                  | ← | `mnv` message     | Add `vchSig1` (signature of the IP address + nonce + hash of the requested block).<br>Sent by _SendVerifyReply()_.
-| 3 | `mnv` message    | → |                   | Verify `vchSig1` <br><br>Add `vin1`, `vin2`, and `vchSig2` (signature of the IP address + nonce + hash of the requested block + `vin1` prevout + `vin2` prevout) and relay message to peers if valid.<br>Sent by _ProcessVerifyReply()_.
+| 3 | `mnv` message    | → |                   | Verify `vchSig1` <br><br>Add `masternodeOutPoint1`, `masternodeOutPoint2`, and `vchSig2` (signature of the IP address + nonce + hash of the requested block + `masternodeOutPoint1` + `masternodeOutPoint2`) and relay message to peers if valid.<br>Sent by _ProcessVerifyReply()_.
 
-Nodes receiving a relayed `mnv` message (one in which `vin1`, `vin2`, `vchSig1`
+Nodes receiving a relayed `mnv` message (one in which `masternodeOutPoint1`, `masternodeOutPoint2`, `vchSig1`
 and `vchSig2` are already present) use it to update the PoSe ban score. If the
 ban score reaches `MASTERNODE_POSE_BAN_MAX_SCORE` (5), the masternode will be
 considered malicious and banned. If the received message is valid, nodes
@@ -2454,21 +2424,11 @@ Masternode 1 Unspent Output (empty)
 | 00000000000000000000000000000000
 | 00000000000000000000000000000000 ......... Outpoint TXID
 | ffffffff ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 Masternode 2 Unspent Output (empty)
 | 00000000000000000000000000000000
 | 00000000000000000000000000000000 ......... Outpoint TXID
 | ffffffff ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 00000000000000000000ffff2d20ed4c ........... IP Address: ::ffff:45.32.237.76
 4e1f ....................................... Port: 19999
@@ -2494,21 +2454,11 @@ Masternode 1 Unspent Output (empty)
 | 00000000000000000000000000000000
 | 00000000000000000000000000000000 ......... Outpoint TXID
 | ffffffff ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 Masternode 2 Unspent Output (empty)
 | 00000000000000000000000000000000
 | 00000000000000000000000000000000 ......... Outpoint TXID
 | ffffffff ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 00000000000000000000ffff2d20ed4c ........... IP Address: ::ffff:45.32.237.76
 4e1f ....................................... Port: 19999
@@ -2540,7 +2490,7 @@ selected masternodes will issue the masternode payment vote message.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 41 | vin | txIn | Required | The unspent output which is holding 1000 DASH
+| 36 | masternodeOutPoint | TxOut | Required | The unspent output of the masternode (holding 1000 DASH) which is signing the message
 | 4 | nBlockHeight | int | Required | The blockheight which the payee should be paid
 | ? | payeeAddress | CScript | Required | The address receiving payment
 | 66* | vchSig | char[] | Required | Signature of the masternode which is signing the message (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
@@ -2553,11 +2503,6 @@ Masternode Unspent Output
 | 0c1b5c5846792b25b05eeea9586d8c34
 | ecb996c566bedb4ecf6a68fe8ffa9582 ......... Outpoint TXID
 | 00000000 ................................. Outpoint index number: 0
-|
-| 00 ....................................... Bytes in sig. script: 0
-| .......................................... Secp256k1 signature: None
-|
-| ffffffff ................................. Sequence number: UINT32_MAX
 
 fb4f0a00 ................................... Block pay height: 675835
 
@@ -2667,7 +2612,7 @@ contract, or setting. Masternodes ignore this request if they are not fully sync
 | 32 | nCollateralHash | uint256 | Required* | Hash of the collateral fee transaction for proposals.<br><br>Set to all zeros for Triggers/Watchdogs.
 | 0-16384 | strData | string | Required | Data field - can be used for anything (leading varint indicates size of data)
 | 4 | nObjectType | int | Required | Type of governance object: <br>• `0` - Unknown<br>• `1` - Proposal<br>• `2` - Trigger<br>• `3` - Watchdog
-| 41 | vinMasternode | CTxIn | Required* | Unspent output for the masternode which is signing this object.<br><br>Set to all zeros for proposals since they can be created by non-masternodes.
+| 36 | masternodeOutPoint | TxOut | Required* | The unspent output of the masternode (holding 1000 DASH) which is signing this object.<br><br>Set to all zeros for proposals since they can be created by non-masternodes.
 | 66* | vchSig | char[] | Required* | Signature of the masternode (Length (1 byte) + Signature (65 bytes))<br><br>Not required for proposals - they will have a length of 0x00 and no Signature.
 
 Governance Object Types (defined by src/governance-object.h)
@@ -2680,9 +2625,8 @@ Governance Object Types (defined by src/governance-object.h)
 | 3 | `GOVERNANCE_OBJECT_WATCHDOG` | Masternode generated. Two hour expiration time.<br><br>DEPRECATED since 12.2.
 
 The following annotated hexdump shows a `govobj` message for a Proposal object.
-Notice the presence of a non-zero collateral hash, a vinMasternode that is an
-empty CTxIn (hash of all zeros, index/sequence of 0xffffffff, no Signature),
-and no vchSig.
+Notice the presence of a non-zero collateral hash, a masternodeOutPoint that is an
+empty TxOut (hash of all zeros), and no vchSig.
 (The message header has been omitted.)
 
 {% highlight text %}
@@ -2699,14 +2643,10 @@ Data
 
 01000000 ............................. Object Type: GOVERNANCE_OBJECT_PROPOSAL (1)
 
-Transaction input
-| Previous Output
-| | 00000000000000000000000000000000
-| | 00000000000000000000000000000000 ... Outpoint TXID
-| | ffffffff ........................... Outpoint index number: 0
-| 00 ................................... Script length: 0
-| ...................................... Signature: None
-| ffffffff ............................. Sequence
+Masternode Unspent Output
+| 00000000000000000000000000000000
+| 00000000000000000000000000000000 ... Outpoint TXID
+| ffffffff ........................... Outpoint index number: 0
 
 00 ................................... Signature length: 0
 
@@ -2731,14 +2671,10 @@ Data
 
 02000000 ............................. Object Type: GOVERNANCE_OBJECT_TRIGGER (2)
 
-Transaction input
-| Previous Output
-| | ffefbe4959085907bcd2ba29e357a441
-| | fa7b6e26e25896d8127332bba2419e97 ... Outpoint TXID
-| | 00000000 ........................... Outpoint index number: 0
-| 00 ................................... Script length: 0
-| ...................................... Signature: None
-| ffffffff ............................. Sequence
+Masternode Unspent Output
+| ffefbe4959085907bcd2ba29e357a441
+| fa7b6e26e25896d8127332bba2419e97 ... Outpoint TXID
+| 00000000 ........................... Outpoint index number: 0
 
 41 ................................... Signature length: 65
 
@@ -2782,7 +2718,7 @@ the node being banned.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 41+ | vinMasternode | CTxIn | Required | Unspent output for the masternode which is voting
+| 36 | masternodeOutPoint | TxOut | Required | The unspent output of the masternode (holding 1000 DASH) which is voting
 | 32 | nParentHash | uint256 | Required | Object (`govobj`) being voted on (proposal, contract, setting or final budget)
 | 4 | nVoteOutcome | int | Required | None (0), Yes (1), No (2), Abstain (3)
 | 4 | nVoteSignal | int | Required |  None (0), Funding (1), Valid (2), Delete (3), Endorsed (4)
@@ -2802,14 +2738,10 @@ The following annotated hexdump shows a `govobjvote` message. (The
 message header has been omitted.)
 
 {% highlight text %}
-Transaction input
-| Previous Output
-| | 57566a0ef85e6cac3415ced67b0b07e1
-| | 781bafb853650d7c9d56d8bc132cc3b4 ... Outpoint TXID
-| | 00000000 ........................... Outpoint index number: 0
-| 00 ................................... Script length: 0
-| ...................................... Signature: None
-| ffffffff ............................. Sequence
+Masternode Unspent Output
+| 57566a0ef85e6cac3415ced67b0b07e1
+| 781bafb853650d7c9d56d8bc132cc3b4 ... Outpoint TXID
+| 00000000 ........................... Outpoint index number: 0
 
 ad9579d5c181eee904156df1c88b050f
 b8b4d39e5fda71f015996dbf14a51bff...... Parent Hash (0 = root)
