@@ -2228,7 +2228,7 @@ entry and how to validate messages from it.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 41 | vin | txIn | Required | The unspent output which is holding 1000 DASH
+| 36 | outPoint | TxOut | Required | The unspent output of the masternode (holding 1000 DASH) which is signing the message
 | # | addr | CService | Required | IPv4 address of the masternode
 | 33-65 | pubKeyCollateralAddress | CPubKey | Required | CPubKey of the main 1000 DASH unspent output. Length determined by if it is a compressed public key or not.
 | 33-65 | pubKeyMasternode | CPubKey | Required | CPubKey of the secondary signing key (For all messaging other than the announce message). Length determined by if it is a compressed public key or not.
