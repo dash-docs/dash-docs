@@ -218,7 +218,7 @@ of blocks in regtest mode.
 {% autocrossref %}
 
 Under current consensus rules, a block is not valid unless its
-serialized size is less than or equal to 1 MB. All fields described
+serialized size is less than or equal to 2 MB. All fields described
 below are counted towards the serialized size.
 
 | Bytes    | Name         | Data Type        | Description
