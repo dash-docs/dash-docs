@@ -74,11 +74,18 @@ transaction lock, it reverts to being a standard transaction.
 
 There are a number of limitations on InstantSend transactions:
 
-* To be used in an InstantSend transaction, an input must have 6+ confirmations (a block depth of 6+) (`INSTANTSEND_CONFIRMATIONS_REQUIRED`)
 * The lock request will timeout 15 seconds after the first vote is seen (`INSTANTSEND_LOCK_TIMEOUT_SECONDS`)
 * The lock request will fail if it has not been locked after 60 seconds (`INSTANTSEND_FAILED_TIMEOUT_SECONDS`)
 * A minimum fee (0.0001 Dash) is required since the transaction involves the masternodes in addition to miners. This fee was most
 recently decreased by [DIP-0001](https://github.com/dashpay/dips/blob/master/dip-0001.md).
+* To be used in an InstantSend transaction, an input must have at least the number confirmations (block depth) indicated by the table below
+
+| **Network** | **Confirmations Required** |
+|---------|--------------|
+| Mainnet | 6 Blocks |
+| Testnet | 2 Blocks |
+| Regtest | 2 Blocks |
+| Devnet  | 2 Blocks |
 
 {% endautocrossref %}
 
