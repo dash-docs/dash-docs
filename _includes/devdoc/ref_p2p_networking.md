@@ -1570,7 +1570,7 @@ queue the remainder of the time.
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination that will be exclusively used when submitting inputs into the pool
-| 41+ | txCollateral | txIn | Required | Collateral TX that will be charged if this client acts maliciously
+| 216+ | txCollateral | `tx` message | Required | Collateral TX that will be charged if this client acts maliciously
 
 The following annotated hexdump shows a `dsa` message. (The message header has
 been omitted.)
@@ -1757,7 +1757,7 @@ pool, it responds with a `dsf` message.
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | ? | vecTxDSIn | CTxDSIn[] | Required | Vector of users inputs (CTxDSIn serialization is equal to CTxIn serialization)
-| ? | txCollateral | `tx` message | Required |Collateral transaction which is used to prevent misbehavior and also to charge fees randomly
+| 216+ | txCollateral | `tx` message | Required | Collateral transaction which is used to prevent misbehavior and also to charge fees randomly
 | ? | vecTxDSOut | CTxDSOut[] | Required | Vector of user outputs (CTxDSOut serialization is equal to CTxOut serialization)
 
 The following annotated hexdump shows a `dsi` message. (The message header has
@@ -2255,7 +2255,7 @@ entry and how to validate messages from it.
 | 8 | sigTime | int64_t | Required | Time which the signature was created
 | 4 | nProtocolVersion | int | Required | The protocol version of the masternode
 | # | lastPing | `mnp` message | Required | The last known ping of the masternode
-| 8 | nLastDsq | int64_t | Deprecated | The last time the masternode sent a `dsq` message (for mixing) (DEPRECATED)
+| 8 | nLastDsq | int64_t | Deprecated | **Removed in Dash Core 0.12.3.0**<br><br>The last time the masternode sent a `dsq` message (for mixing) (DEPRECATED)
 
 The following annotated hexdump shows a `mnb` message. (The
 message header has been omitted and the actual IP address has been replaced
@@ -2333,7 +2333,7 @@ integer value requesting a specific number of payment votes. In protocol version
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 4 | nMnCount | int | Deprecated | Number of masternode payment votes to request<br><br>Deprecated in Dash Core 0.12.3
+| 4 | nMnCount | int | Deprecated | _Deprecated in Dash Core 0.12.3_<br><br>Number of masternode payment votes to request
 
 {% highlight text %}
 Note: Dash Core limits how frequently a masternode payment sync can be
@@ -2364,6 +2364,9 @@ uses a minimum masternode ping time of 10 minutes.
 | 32 | blockHash | uint256 | Required | Block hash from 12 blocks ago (current chaintip minus 12). This offset allows nodes to be slightly out of sync.
 | 8 | sigTime | int64_t | Required | Time which the signature was created
 | 66* | vchSig | char[] | Required | Signature of this message by masternode - verifiable via pubKeyMasternode (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
+| 1 | fSentinelIsCurrent | bool | Required | True if last sentinel ping was current
+| 4 | nSentinelVersion | uint32_t | Required | The version of Sentinel running on the masternode which is signing the message
+| 4 | nDaemonVersion | uint32_t | Required | The version of dashd on the masternode which is signing the message (i.e. CLIENT_VERSION)
 
 The following annotated hexdump shows a `mnp` message. (The
 message header has been omitted.)
