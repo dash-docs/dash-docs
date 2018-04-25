@@ -530,6 +530,39 @@ devsearches:
     - "verack": "/en/developer-reference#verack"
     - "version": "/en/developer-reference#version"
 
+    # Dash - sporks
+    - "getsporks": "/en/developer-reference#getsporks"
+    - "spork": "/en/developer-reference#spork"
+
+    # Dash - instantsend
+    - "ix": "/en/developer-reference#ix"
+    - "txlvote": "/en/developer-reference#txlvote"
+
+    # Dash - privatesend
+    - "dsa": "/en/developer-reference#dsa"
+    - "dsc": "/en/developer-reference#dsc"
+    - "dsf": "/en/developer-reference#dsf"
+    - "dsi": "/en/developer-reference#dsi"
+    - "dsq": "/en/developer-reference#dsq"
+    - "dss": "/en/developer-reference#dss"
+    - "dssu": "/en/developer-reference#dssu"
+    - "dstx": "/en/developer-reference#dstx"
+
+    # Dash - masternode
+    - "dseg": "/en/developer-reference#dseg"
+    - "mnb": "/en/developer-reference#mnb"
+    - "mnget": "/en/developer-reference#mnget"
+    - "mnp": "/en/developer-reference#mnp"
+    - "mnv": "/en/developer-reference#mnv"
+    - "mnw": "/en/developer-reference#mnw"
+    - "mnwb": "/en/developer-reference#mnwb"
+    - "ssc": "/en/developer-reference#ssc"
+
+    # Dash - governance
+    - "govobj": "/en/developer-reference#govobj"
+    - "govobjvote": "/en/developer-reference#govobjvote"
+    - "govsync": "/en/developer-reference#govsync"
+
 donation_banner:
   address: 1GwV7fPX97hmavc6iNrUZUogmjpLPrPFoE
   display: true
