@@ -1819,13 +1819,17 @@ queue the remainder of the time.
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination that will be exclusively used when submitting inputs into the pool
+| 4 | nInputCount | int | Required | *Added in protocol version 70209. Only present when Spork 6 is active.* <br><br>Number of inputs required to join the queue
 | 216+ | txCollateral | `tx` message | Required | Collateral TX that will be charged if this client acts maliciously
 
 The following annotated hexdump shows a `dsa` message. (The message header has
-been omitted.)
+been omitted.) Note that the 'Required inputs' bytes will only be preset if
+Spork 6 is active and protocol version => 70209.
 
 {% highlight text %}
 02000000 ................................... Denomination: 1 Dash (2)
+
+03000000 ................................... Inputs required: 3
 
 Collateral Transaction
 | Previous Output
@@ -2148,6 +2152,7 @@ message.
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination allowed in this mixing session
+| 4 | nInputCount | int | Required | *Added in protocol version 70209. Only present when Spork 6 is active.* <br><br>Number of inputs required to participate in this mixing session
 | 36 | masternodeOutPoint | outPoint | Required | The unspent outpoint of the masternode (holding 1000 DASH) which is hosting this session
 | 8 | nTime | int64_t | Required | Time this `dsq` message was created
 | 1 | fReady | bool | Required | Indicates if the mixing pool is ready to be executed
@@ -2163,10 +2168,13 @@ Denominations (per [`src/privatesend.cpp`][privatesend denominations])
 | 8 | 0.01 Dash
 
 The following annotated hexdump shows a `dsq` message. (The
-message header has been omitted.)
+message header has been omitted.) Note that the 'Required inputs' bytes will only
+be preset if Spork 6 is active and protocol version => 70209.
 
 {% highlight text %}
 08000000 ............................. Denomination: 0.01 Dash (8)
+
+03000000 ............................. Required input(s): 3
 
 Masternode Outpoint
 | aeed0e77c6db30a616507a37a129bc88

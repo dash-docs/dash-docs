@@ -203,10 +203,12 @@ mixing pool.
   * The `dsa` message contains a collateral transaction
     * This transaction uses a collateral input created in the [Wallet Preparation](#privatesend<!--noref-->-wallet<!--noref-->-preparation) phase
     * The collateral is a signed transaction that pays the collateral back to a client address minus a fee of 0.001 DASH
+  * As of protocol version 70209, the `dsa` message indicates how many inputs will be provided to the pool when Spork 6 is active
 
   _**Step 3 - Queue**_
 
   * A masternode broadcasts `dsq` messages when it starts a new queue. These message are relayed by all peers.
+  * As of protocol version 70209, when Spork 6 is active the `dsq` message indicates how many inputs must be provided to participate in the pool.
   * Once the masternode has received valid `dsa` messages from 3 clients (`nPoolMaxTransactions`), it sends a `dsq` message with the ready bit set ([Dash Core Reference](https://github.com/dashpay/dash/blob/e596762ca22d703a79c6880a9d3edb1c7c972fd3/src/chainparams.cpp#L173))
     * Clients must respond to the Queue ready within 30 seconds or risk forfeiting the collateral they provided in the `dsa` message (Step 1) ([Dash Core Reference](https://github.com/dashpay/dash/blob/e596762ca22d703a79c6880a9d3edb1c7c972fd3/src/privatesend<!--noref-->.h#L22))
 
