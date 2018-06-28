@@ -61,7 +61,7 @@ en:
     multisigtext: "Bitcoin also includes a multi-signature feature which allows bitcoins to be spent only if a subset of a group of people authorize the transaction. This can be used by a board of directors to prevent any member to make expenditures without enough consent from other members, as well as to track which members allowed each payment."
     transparency: "Accounting transparency"
     transparencytext: "Many organizations are required to produce accounting documents about their activity. Using Bitcoin allows you to offer the highest level of transparency since you can provide information your members can use to verify your balances and transactions. Non-profit organizations can also allow the public to see how much they receive in donations."
-  bitcoin-for-developers:
+  dash-for-developers:
     title: "Dash for Developers - Dash"
     pagetitle: "Dash for Developers"
     summary: "Dash can be used to build amazing things or just answer common needs."
@@ -868,7 +868,7 @@ en:
   layout:
     menu-about-us: "About bitcoin.org"
     menu-bitcoin-for-businesses: Businesses
-    menu-bitcoin-for-developers: Developers
+    menu-dash-for-developers: Developers
     menu-bitcoin-for-individuals: Individuals
     menu-community: Community
     menu-development: Development
@@ -907,7 +907,7 @@ en:
     donation-modal-optional-message: "Optional description (for your wallet)"
   url:
     about-us: about-us
-    bitcoin-for-developers: bitcoin-for-developers
+    dash-for-developers: dash-for-developers
     bitcoin-for-individuals: bitcoin-for-individuals
     bitcoin-for-businesses: bitcoin-for-businesses
     buy: buy
