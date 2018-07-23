@@ -101,6 +101,7 @@ end_of_page: |
   <p><a href="https://github.com/bitcoin/bips#readme"><span class="fa fa-external-link"></span> Bitcoin Improvement Proposals</a> - GitHub</p>
 
   <p><a href="https://www.blockcypher.com/dev/dash/"><span class="fa fa-external-link"></span> BlockCypher </a> - RESTful JSON API for blockchains</p>
+  <p><a rel="noopener noreferrer" target="_blank" href="https://www.chainrider.io/docs/dash/"><span class="fa fa-external-link"></span> RESTful JSON API for Dash</a> - ChainRider</p>
   <!--<p><a href="https://github.com/minium/Bitcoin-Spec"><span class="fa fa-external-link"></span> Bitcoin Developer Reference (working paper)</a> - Krzysztof Okupski</p>-->
   <!--<p><a href="https://bitcoinj.github.io/#documentation"><span class="fa fa-external-link"></span> Bitcoinj Developer Documentation</a> - bitcoinj.org</p>-->
   <!--<p><a href="https://programmingblockchain.gitbooks.io/programmingblockchain/content/"><span class="fa fa-external-link"></span> The C# Bitcoin book (NBitcoin Developer Documentation)</a> - Nicolas Dorier</p>-->
