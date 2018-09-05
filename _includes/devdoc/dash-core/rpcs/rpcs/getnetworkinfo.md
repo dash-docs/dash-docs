@@ -55,6 +55,11 @@ The `getnetworkinfo` RPC {{summary_getNetworkInfo}}
   p: "Required<br>(exactly 1)"
   d: "The offset of the node's clock from the computer's clock (both in UTC) in seconds.  The offset may be up to 4200 seconds (70 minutes)"
 
+- n: "→<br>`networkactive`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "Set to `true` if P2P networking is enabled.  Set to `false` if P2P networking is disabled. Enabling/disabling done via [SetNetworkActive][rpc setnetworkactive]"
+
 - n: "→<br>`connections`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
@@ -196,5 +201,6 @@ Result (actual addresses<!--noref--> have been replaced with [RFC5737][] reserve
 
 * [GetPeerInfo][rpc getpeerinfo]: {{summary_getPeerInfo}}
 * [GetNetTotals][rpc getnettotals]: {{summary_getNetTotals}}
+* [SetNetworkActive][rpc setnetworkactive]: {{summary_setNetworkActive}}
 
 {% endautocrossref %}
