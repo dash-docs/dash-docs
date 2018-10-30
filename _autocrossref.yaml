@@ -150,6 +150,10 @@ pki:
 '`pong` message': pong message
 '`pong` messages': pong message
 previous block header hash:
+'ProRegTx': proregtx special tx
+'ProUpRegTx': proupregtx special tx
+'ProUpRevTx': prouprevtx special tx
+'ProUpServTx': proupservtx special tx
 protocol buffer: protobuf
 protocol buffers: protobuf
 protocol version 106: section protocol versions
@@ -462,6 +466,8 @@ DIP1:
 '`move` RPC': rpc move
 '`ping`': rpc ping
 '`ping` RPC': rpc ping
+'`protx`': rpc protx
+'`protx` RPC': rpc protx
 '`preciousblock`': rpc preciousblock
 '`preciousblock` RPC': rpc preciousblock
 '`prioritisetransaction`': rpc prioritisetransaction

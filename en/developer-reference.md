@@ -282,6 +282,8 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/ping.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/protx.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/preciousblock.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/privatesend.md %}

@@ -166,6 +166,7 @@ http://opensource.org/licenses/MIT.
 [rpc mnsync]: /en/developer-reference#mnsync
 [rpc move]: /en/developer-reference#move
 [rpc ping]: /en/developer-reference#ping-rpc
+[rpc protx]: /en/developer-reference#protx
 [rpc preciousblock]: /en/developer-reference#preciousblock
 [rpc pruneblockchain]: /en/developer-reference#pruneblockchain
 [rpc prioritisetransaction]: /en/developer-reference#prioritisetransaction
@@ -451,6 +452,10 @@ http://opensource.org/licenses/MIT.
 [Piotr Piasecki's testnet faucet]: https://tpfaucet.appspot.com/
 [prime symbol]: https://en.wikipedia.org/wiki/Prime_%28symbol%29
 [protobuf]: https://developers.google.com/protocol-buffers/
+[proregtx special tx]: /en/developer-reference#proregtx
+[proupregtx special tx]: /en/developer-reference#proupregtx
+[prouprevtx special tx]: /en/developer-reference#prouprevtx
+[proupservtx special tx]: /en/developer-reference#proupservtx
 [python-bitcoinlib]: https://github.com/petertodd/python-bitcoinlib
 [python-blkmaker]: https://gitorious.org/bitcoin/python-blkmaker
 [Satoshi Nakamoto]: https://en.bitcoin.it/wiki/Satoshi_Nakamoto

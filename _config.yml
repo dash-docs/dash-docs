@@ -288,6 +288,7 @@ devsearches:
     - 'MnSync': "/en/developer-reference#mnsync"
     - 'Move': "/en/developer-reference#move"
     - 'Ping': "/en/developer-reference#ping-rpc"
+    - 'ProTx': "/en/developer-reference#protx"
     - 'PreciousBlock': "/en/developer-reference#preciousblock"
     - 'PrioritiseTransaction': "/en/developer-reference#prioritisetransaction"
     - 'PrivateSend': "/en/developer-reference#privatesend"
