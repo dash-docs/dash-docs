@@ -226,6 +226,196 @@ ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd
 
 The `protx<!--noref--> list` RPC returns a list of provider transactions.
 
+Lists all ProTxs in your wallet or on-chain, depending on the given type. If
+`type` is not specified, it defaults to `wallet`. All types have the optional
+argument `detailed` which if set to `true` will result in a detailed list being
+returned. If set to `false`, only the hashes of the ProTx will be returned.
+
+*Parameter #1---type*
+
+{% itemplate ntpd1 %}
+- n: "`collateralHash`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "The type of ProTxs to list:<br>`registered` - all ProTxs registered at height<br>`valid` - all active/valid ProTxs at height<br>`wallet` - all ProTxs found in the current wallet<br><br>Height defaults to current chain-tip if one is not provided"
+{% enditemplate %}
+
+**List Type - `registered` or `valid`**
+
+*Parameter #2---height*
+
+{% itemplate ntpd1 %}
+- n: "`collateralHash`"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "If set to `false` (default), only ProTx hashes are returned. If set to `true`, a detailed list of ProTx details is returned."
+{% enditemplate %}
+
+*Parameter #3---detailed*
+
+{% itemplate ntpd1 %}
+- n: "`collateralHash`"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "If set to `false` (default), only ProTx hashes are returned. If set to `true`, a detailed list of ProTx details is returned."
+{% enditemplate %}
+
+
+**List Type - `wallet`**
+
+*Parameter #2---detailed*
+
+{% itemplate ntpd1 %}
+- n: "`collateralHash`"
+  t: "bool"
+  p: "Optional<br>(0 or 1)"
+  d: "If set to `false` (default), only ProTx hashes are returned. If set to `true`, a detailed list of ProTx details is returned."
+{% enditemplate %}
+
+
+*Result (if `detailed` was `false`)---provider registration transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex): array"
+  p: "Required<br>(exactly 1)"
+  d: "Array of provider transaction (ProTx) hashes"
+{% enditemplate %}
+
+*Result (if `detailed` was `true`)---JSON provider registration transaction details*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "array"
+  p: "Required<br>(exactly 1)"
+  d: "An array of objects each containing a provider transaction, or JSON `null` if an error occurred"
+
+- n: "→<br>Provider Transaction"
+  t: "object/null"
+  p: "Required<br>(exactly 1)"
+  d: "An object containing a provider transaction"
+
+- n: "→ →<br>`proTxHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the provider transaction as hex in RPC byte order"
+
+- n: "→ →<br>`collateralHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the collateral transaction as hex in RPC byte order"
+
+- n: "→ →<br>`collateralIndex`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The collateral index"
+
+- n: "→ →<br>`operatorReward`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The operator reward %"
+
+- n: "→ →<br>`state`"
+  t: "object/null"
+  p: "Required<br>(exactly 1)"
+  d: "An object containing a provider transaction state"
+
+- n: "→ → →<br>`registeredHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode was registered"
+
+- n: "→ → →<br>`lastPaidHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode was last paid"
+
+- n: "→ → →<br>`PoSePenalty`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The masternode's proof of service penalty"
+
+- n: "→ → →<br>`PoSeRevivedHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode recovered from a proof of service ban"
+
+- n: "→ → →<br>`PoSeBanHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode was banned for proof of service violations"
+
+- n: "→ → →<br>`revocationReason`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The reason for a ProUpRegTx revocation"
+
+- n: "→ → →<br>`keyIDOwner`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The owner key"
+
+- n: "→ → →<br>`pubKeyOperator`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The operator public key"
+
+- n: "→ → →<br>`keyIDVoting`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key"
+
+- n: "→ → →<br>`addr`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "The masternode's IP:Port"
+
+- n: "→ → →<br>`payoutAddress`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The payout address"
+
+- n: "→ →<br>`confirmations`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The number of confirmations this ProTx has"
+
+- n: "→ →<br>`wallet`"
+  t: "object/null"
+  p: "Required<br>(exactly 1)"
+  d: "An object containing a wallet details related to this ProTx"
+
+- n: "→ → →<br>`hasOwnerKey`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The owner key is present in this wallet"
+
+- n: "→ → →<br>`hasOperatorKey`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The operator key is present in this wallet"
+
+- n: "→ → →<br>`hasVotingKey`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key is present in this wallet"
+
+- n: "→ → →<br>`ownsCollateral`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The collateral is owned by this wallet"
+
+- n: "→ → →<br>`ownsPayeeScript`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The payee script is owned by this wallet"
+
+- n: "→ → →<br>`ownsOperatorRewardScript`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The operator reward script is owned by this wallet"
+{% enditemplate %}
+
 *Example from Dash Core 0.13.0*
 
 {% highlight bash %}
@@ -242,8 +432,8 @@ Result:
 ]
 {% endhighlight %}
 
-List only ProTx which are active/valid at the given chain height. If height is not
-specified, it defaults to the current chain-tip
+
+List of ProTxs which are active/valid at the given chain height.
 
 {% highlight bash %}
 dash-cli -testnet protx list valid 700
@@ -253,6 +443,47 @@ Result:
 {% highlight json %}
 [
   "2b4a07a9b04dc42a0c19b85edb60954a27acaadfe3ee21d0171385778f34e1c2"
+]
+{% endhighlight %}
+
+
+Detailed list of ProTxs which are active/valid at the given chain height.
+
+{% highlight bash %}
+dash-cli -testnet protx list valid 700 true
+{% endhighlight %}
+
+Result:
+{% highlight json %}
+[
+  {
+    "proTxHash": "2b4a07a9b04dc42a0c19b85edb60954a27acaadfe3ee21d0171385778f34e1c2",
+    "collateralHash": "8d23d08ee6e2e0577550c90afde9bc63745f734605724ba9908e0220c48dec04",
+    "collateralIndex": 1,
+    "operatorReward": 5,
+    "state": {
+      "registeredHeight": 683,
+      "lastPaidHeight": 700,
+      "PoSePenalty": 0,
+      "PoSeRevivedHeight": -1,
+      "PoSeBanHeight": -1,
+      "revocationReason": 0,
+      "keyIDOwner": "29705bab955f252f876cbe47958b20feaa2b3e99",
+      "pubKeyOperator": "0bfd3d519f16de1669e977c316bd53fc902f83a75b6008dff3a7037ab4d3edaa39eadb13f5d6d1f192673f9ab86f17a2",
+      "keyIDVoting": "29705bab955f252f876cbe47958b20feaa2b3e99",
+      "addr": "1.2.3.4:1234",
+      "payoutAddress": "ybeK49S8ineDqNV698GZdMpdiHaYsZUJ2g"
+    },
+    "confirmations": -1,
+    "wallet": {
+      "hasOwnerKey": true,
+      "hasOperatorKey": false,
+      "hasVotingKey": true,
+      "ownsCollateral": true,
+      "ownsPayeeScript": true,
+      "ownsOperatorRewardScript": false
+    }
+  }
 ]
 {% endhighlight %}
 
