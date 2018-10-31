@@ -284,136 +284,17 @@ returned. If set to `false`, only the hashes of the ProTx will be returned.
 
 *Result (if `detailed` was `true`)---JSON provider registration transaction details*
 
+{% assign DEPTH="→" %}
+{% include helpers/vars.md %}
+
 {% itemplate ntpd1 %}
 - n: "`result`"
   t: "array"
   p: "Required<br>(exactly 1)"
   d: "An array of objects each containing a provider transaction, or JSON `null` if an error occurred"
 
-- n: "→<br>Provider Transaction"
-  t: "object/null"
-  p: "Required<br>(exactly 1)"
-  d: "An object containing a provider transaction"
+  {{INCLUDE_PROTX}}
 
-- n: "→ →<br>`proTxHash`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "The hash of the provider transaction as hex in RPC byte order"
-
-- n: "→ →<br>`collateralHash`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "The hash of the collateral transaction as hex in RPC byte order"
-
-- n: "→ →<br>`collateralIndex`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The collateral index"
-
-- n: "→ →<br>`operatorReward`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The operator reward %"
-
-- n: "→ →<br>`state`"
-  t: "object/null"
-  p: "Required<br>(exactly 1)"
-  d: "An object containing a provider transaction state"
-
-- n: "→ → →<br>`registeredHeight`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The height where the masternode was registered"
-
-- n: "→ → →<br>`lastPaidHeight`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The height where the masternode was last paid"
-
-- n: "→ → →<br>`PoSePenalty`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The masternode's proof of service penalty"
-
-- n: "→ → →<br>`PoSeRevivedHeight`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The height where the masternode recovered from a proof of service ban"
-
-- n: "→ → →<br>`PoSeBanHeight`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The height where the masternode was banned for proof of service violations"
-
-- n: "→ → →<br>`revocationReason`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The reason for a ProUpRegTx revocation"
-
-- n: "→ → →<br>`keyIDOwner`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "The owner key"
-
-- n: "→ → →<br>`pubKeyOperator`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "The operator public key"
-
-- n: "→ → →<br>`keyIDVoting`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "The voting key"
-
-- n: "→ → →<br>`addr`"
-  t: "string"
-  p: "Required<br>(exactly 1)"
-  d: "The masternode's IP:Port"
-
-- n: "→ → →<br>`payoutAddress`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "The payout address"
-
-- n: "→ →<br>`confirmations`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The number of confirmations this ProTx has"
-
-- n: "→ →<br>`wallet`"
-  t: "object/null"
-  p: "Required<br>(exactly 1)"
-  d: "An object containing a wallet details related to this ProTx"
-
-- n: "→ → →<br>`hasOwnerKey`"
-  t: "bool"
-  p: "Required<br>(exactly 1)"
-  d: "The owner key is present in this wallet"
-
-- n: "→ → →<br>`hasOperatorKey`"
-  t: "bool"
-  p: "Required<br>(exactly 1)"
-  d: "The operator key is present in this wallet"
-
-- n: "→ → →<br>`hasVotingKey`"
-  t: "bool"
-  p: "Required<br>(exactly 1)"
-  d: "The voting key is present in this wallet"
-
-- n: "→ → →<br>`ownsCollateral`"
-  t: "bool"
-  p: "Required<br>(exactly 1)"
-  d: "The collateral is owned by this wallet"
-
-- n: "→ → →<br>`ownsPayeeScript`"
-  t: "bool"
-  p: "Required<br>(exactly 1)"
-  d: "The payee script is owned by this wallet"
-
-- n: "→ → →<br>`ownsOperatorRewardScript`"
-  t: "bool"
-  p: "Required<br>(exactly 1)"
-  d: "The operator reward script is owned by this wallet"
 {% enditemplate %}
 
 *Example from Dash Core 0.13.0*
@@ -445,7 +326,6 @@ Result:
   "2b4a07a9b04dc42a0c19b85edb60954a27acaadfe3ee21d0171385778f34e1c2"
 ]
 {% endhighlight %}
-
 
 Detailed list of ProTxs which are active/valid at the given chain height.
 

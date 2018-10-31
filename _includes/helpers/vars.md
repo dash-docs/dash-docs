@@ -438,6 +438,133 @@ NOT IN DASH
 {% enditemplate %}
 {% endcapture %}
 
+{% capture INCLUDE_PROTX %}
+- n: "{{DEPTH}}<br>Provider Transaction"
+  t: "object/null"
+  p: "Required<br>(exactly 1)"
+  d: "An object containing a provider transaction"
+
+- n: "{{DEPTH}} →<br>`proTxHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the provider transaction as hex in RPC byte order"
+
+- n: "{{DEPTH}} →<br>`collateralHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the collateral transaction as hex in RPC byte order"
+
+- n: "{{DEPTH}} →<br>`collateralIndex`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The collateral index"
+
+- n: "{{DEPTH}} →<br>`operatorReward`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The operator reward %"
+
+- n: "{{DEPTH}} →<br>`state`"
+  t: "object/null"
+  p: "Required<br>(exactly 1)"
+  d: "An object containing a provider transaction state"
+
+- n: "{{DEPTH}} → →<br>`registeredHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode was registered"
+
+- n: "{{DEPTH}} → →<br>`lastPaidHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode was last paid"
+
+- n: "{{DEPTH}} → →<br>`PoSePenalty`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The masternode's proof of service penalty"
+
+- n: "{{DEPTH}} → →<br>`PoSeRevivedHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode recovered from a proof of service ban"
+
+- n: "{{DEPTH}} → →<br>`PoSeBanHeight`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The height where the masternode was banned for proof of service violations"
+
+- n: "{{DEPTH}} → →<br>`revocationReason`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The reason for a ProUpRegTx revocation"
+
+- n: "{{DEPTH}} → →<br>`keyIDOwner`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The owner key"
+
+- n: "{{DEPTH}} → →<br>`pubKeyOperator`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The operator public key"
+
+- n: "{{DEPTH}} → →<br>`keyIDVoting`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key"
+
+- n: "{{DEPTH}} → →<br>`addr`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "The masternode's IP:Port"
+
+- n: "{{DEPTH}} → →<br>`payoutAddress`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The payout address"
+
+- n: "{{DEPTH}} →<br>`confirmations`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "The number of confirmations this ProTx has"
+
+- n: "{{DEPTH}} →<br>`wallet`"
+  t: "object/null"
+  p: "Required<br>(exactly 1)"
+  d: "An object containing a wallet details related to this ProTx"
+
+- n: "{{DEPTH}} → →<br>`hasOwnerKey`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The owner key is present in this wallet"
+
+- n: "{{DEPTH}} → →<br>`hasOperatorKey`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The operator key is present in this wallet"
+
+- n: "{{DEPTH}} → →<br>`hasVotingKey`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key is present in this wallet"
+
+- n: "{{DEPTH}} → →<br>`ownsCollateral`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The collateral is owned by this wallet"
+
+- n: "{{DEPTH}} → →<br>`ownsPayeeScript`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The payee script is owned by this wallet"
+
+- n: "{{DEPTH}} → →<br>`ownsOperatorRewardScript`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "The operator reward script is owned by this wallet"
+{% endcapture %}
+
 {% assign WARNING="![Warning icon](/img/icons/icon_warning.svg) **Warning:**" %}
 {% assign WARNING_ICON="![Warning icon](/img/icons/icon_warning.svg)" %}
 
