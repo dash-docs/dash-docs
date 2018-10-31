@@ -109,7 +109,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_preciousBlock="treats a block as if it were received before others with the same work." %}
 {% assign summary_prioritiseTransaction="adds virtual priority or fee to a transaction, allowing it to be accepted into blocks mined by this node (or miners which use this node) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined block.)" %}
 {% assign summary_privateSend="controls the mixing process." %}
-{% assign summary_proTx="provides a set of commands to execute ProTx related actions" %}
+{% assign summary_proTx="provides a set of commands to execute ProTx related actions." %}
 {% assign summary_pruneBlockChain="prunes the blockchain up to a specified height or timestamp." %}
 {% assign summary_removePrunedFunds="deletes the specified transaction from the wallet. Meant for use with pruned wallets and as a companion to importprunedfunds." %}
 {% assign summary_restGetBlock-noTxDetails="gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block.  The JSON object includes TXIDs for transactions within the block rather than the complete transactions [GET block][rest get block] returns." %}

@@ -9,7 +9,7 @@ http://opensource.org/licenses/MIT.
 ##### ProTx
 {% include helpers/subhead-links.md %}
 
-{% assign summary_proTx="provides a set of commands to execute ProTx related actions" %}
+{% assign summary_proTx="provides a set of commands to execute ProTx related actions." %}
 
 {% autocrossref %}
 
@@ -26,9 +26,86 @@ The `protx` RPC {{summary_proTx}}
 
 The `protx<!--noref--> register` RPC creates a ProRegTx referencing an existing collateral and and sends it to the network.
 
-*Parameter #1---PARAMETER DESCRIPTION*
+*Parameter #1---collateral address*
 
-*Result---RESULT DESCRIPTION*
+{% itemplate ntpd1 %}
+- n: "`collateralHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The collateral transaction hash"
+{% enditemplate %}
+
+*Parameter #2---collateral index*
+
+{% itemplate ntpd1 %}
+- n: "`collateralIndex`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The collateral transaction output index"
+{% enditemplate %}
+
+*Parameter #3---IP Address and port*
+
+{% itemplate ntpd1 %}
+- n: "`ipAndPort`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "IP and port in the form 'IP:PORT'.<br>Must be unique on the network.<br>Can be set to '0', which will require a ProUpServTx afterwards."
+{% enditemplate %}
+
+*Parameter #4---owner key address*
+
+{% itemplate ntpd1 %}
+- n: "`ownerKeyAddr`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The owner key used for payee updates and proposal voting. The private key belonging to this address be known in your wallet. The address must be unused and must differ from the `collateralAddress`."
+{% enditemplate %}
+
+*Parameter #5---operator public key*
+
+{% itemplate ntpd1 %}
+- n: "`operatorPubKey`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: " The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode."
+{% enditemplate %}
+
+*Parameter #6---voting key address*
+
+{% itemplate ntpd1 %}
+- n: "`votingKeyAddr`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to '0' or an empty string, `ownerAddr` will be used."
+{% enditemplate %}
+
+*Parameter #7---operator reward*
+
+{% itemplate ntpd1 %}
+- n: "`operatorReward`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "The fraction in % to share with the operator. If non-zero, `ipAndPort` must be zero as well.<br>The value must be between '0.00' and '100.00'."
+{% enditemplate %}
+
+*Parameter #8---payout address*
+
+{% itemplate ntpd1 %}
+- n: "`payoutAddress`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
+{% enditemplate %}
+
+*Result---provider registration transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Provider registration transaction (ProRegTx) hash"
+{% enditemplate %}
 
 *Example from Dash Core 0.13.0*
 
@@ -53,6 +130,78 @@ Result:
 {% autocrossref %}
 
 The `protx<!--noref--> fund_register` RPC creates and funds a ProRegTx with the 1,000 DASH necessary for a masternode and then sends it to the network.
+
+*Parameter #1---collateral address*
+
+{% itemplate ntpd1 %}
+- n: "`collateralAddress`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The Dash address to send the collateral to (must be a P2PKH address)"
+{% enditemplate %}
+
+*Parameter #2---IP Address and port*
+
+{% itemplate ntpd1 %}
+- n: "`ipAndPort`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "IP and port in the form 'IP:PORT'.<br>Must be unique on the network.<br>Can be set to '0', which will require a ProUpServTx afterwards."
+{% enditemplate %}
+
+*Parameter #3---owner key address*
+
+{% itemplate ntpd1 %}
+- n: "`ownerKeyAddr`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The owner key used for payee updates and proposal voting. The private key belonging to this address be known in your wallet. The address must be unused and must differ from the `collateralAddress`."
+{% enditemplate %}
+
+*Parameter #4---operator public key*
+
+{% itemplate ntpd1 %}
+- n: "`operatorPubKey`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: " The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode."
+{% enditemplate %}
+
+*Parameter #5---voting key address*
+
+{% itemplate ntpd1 %}
+- n: "`votingKeyAddr`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to '0' or an empty string, `ownerAddr` will be used."
+{% enditemplate %}
+
+*Parameter #6---operator reward*
+
+{% itemplate ntpd1 %}
+- n: "`operatorReward`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "The fraction in % to share with the operator. If non-zero, `ipAndPort` must be zero as well.<br>The value must be between '0.00' and '100.00'."
+{% enditemplate %}
+
+*Parameter #7---payout address*
+
+{% itemplate ntpd1 %}
+- n: "`payoutAddress`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
+{% enditemplate %}
+
+*Result---provider registration transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Provider registration transaction (ProRegTx) hash"
+{% enditemplate %}
 
 *Example from Dash Core 0.13.0*
 
