@@ -234,7 +234,7 @@ returned. If set to `false`, only the hashes of the ProTx will be returned.
 *Parameter #1---type*
 
 {% itemplate ntpd1 %}
-- n: "`collateralHash`"
+- n: "`type`"
   t: "string"
   p: "Optional<br>(0 or 1)"
   d: "The type of ProTxs to list:<br>`registered` - all ProTxs registered at height<br>`valid` - all active/valid ProTxs at height<br>`wallet` - all ProTxs found in the current wallet<br><br>Height defaults to current chain-tip if one is not provided"
@@ -245,16 +245,16 @@ returned. If set to `false`, only the hashes of the ProTx will be returned.
 *Parameter #2---height*
 
 {% itemplate ntpd1 %}
-- n: "`collateralHash`"
+- n: "`height`"
   t: "bool"
   p: "Optional<br>(0 or 1)"
-  d: "If set to `false` (default), only ProTx hashes are returned. If set to `true`, a detailed list of ProTx details is returned."
+  d: "List ProTxs from this height."
 {% enditemplate %}
 
 *Parameter #3---detailed*
 
 {% itemplate ntpd1 %}
-- n: "`collateralHash`"
+- n: "`detailed`"
   t: "bool"
   p: "Optional<br>(0 or 1)"
   d: "If set to `false` (default), only ProTx hashes are returned. If set to `true`, a detailed list of ProTx details is returned."
@@ -266,7 +266,7 @@ returned. If set to `false`, only the hashes of the ProTx will be returned.
 *Parameter #2---detailed*
 
 {% itemplate ntpd1 %}
-- n: "`collateralHash`"
+- n: "`detailed`"
   t: "bool"
   p: "Optional<br>(0 or 1)"
   d: "If set to `false` (default), only ProTx hashes are returned. If set to `true`, a detailed list of ProTx details is returned."
@@ -429,14 +429,14 @@ Result:
 
 {% endautocrossref %}
 
-###### ProTx<!--noref--> update_service
+###### ProTx<!--noref--> Update Service
 <!-- no subhead-links here -->
 
 {% autocrossref %}
 
 The `protx<!--noref--> update_service` RPC creates and sends a ProUpServTx to the network.
 
-*Parameter #1---collateral address*
+*Parameter #1---initial provider registration transaction hash*
 
 {% itemplate ntpd1 %}
 - n: "`proTxHash`"
@@ -469,7 +469,7 @@ The `protx<!--noref--> update_service` RPC creates and sends a ProUpServTx to th
 - n: "`operatorPayoutAddress`"
   t: "string (hex)"
   p: "Optional<br>(0 or 1)"
-  d: "The Dash address to use for the operator portion of masternode reward payments. Can be null"
+  d: "The Dash address used for operator reward payments. Only allowed when the ProRegTx had a non-zero `operatorReward` value."
 {% enditemplate %}
 
 *Result---provider update service transaction hash*
