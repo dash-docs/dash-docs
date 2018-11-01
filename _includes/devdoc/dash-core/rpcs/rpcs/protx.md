@@ -376,6 +376,18 @@ Result:
 
 The `protx<!--noref--> info` RPC returns detailed information about a deterministic masternode.
 
+{% assign DEPTH="→" %}
+{% include helpers/vars.md %}
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "object"
+  p: "Required<br>(exactly 1)"
+  d: "An JSON object containing a provider transaction, or JSON `null` if an error occurred"
+
+  {{INCLUDE_PROTX}}
+{% enditemplate %}
+
 *Example from Dash Core 0.13.0*
 
 {% highlight bash %}
@@ -424,6 +436,51 @@ Result:
 
 The `protx<!--noref--> update_service` RPC creates and sends a ProUpServTx to the network.
 
+*Parameter #1---collateral address*
+
+{% itemplate ntpd1 %}
+- n: "`proTxHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the provider transaction as hex in RPC byte order"
+{% enditemplate %}
+
+*Parameter #2---IP Address and port*
+
+{% itemplate ntpd1 %}
+- n: "`ipAndPort`"
+  t: "string"
+  p: "Required<br>(exactly 1)"
+  d: "IP and port in the form 'IP:PORT'.<br>Must be unique on the network."
+{% enditemplate %}
+
+*Parameter #3---operator public key*
+
+{% itemplate ntpd1 %}
+- n: "`operatorPubKey`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: " The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode."
+{% enditemplate %}
+
+*Parameter #4---operator payout address*
+
+{% itemplate ntpd1 %}
+- n: "`operatorPayoutAddress`"
+  t: "string (hex)"
+  p: "Optional<br>(0 or 1)"
+  d: "The Dash address to use for the operator portion of masternode reward payments. Can be null"
+{% enditemplate %}
+
+*Result---provider update service transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Provider update service transaction (ProUpServTx) hash"
+{% enditemplate %}
+
 *Example from Dash Core 0.13.0*
 
 {% highlight bash %}
@@ -446,6 +503,51 @@ Result:
 {% autocrossref %}
 
 The `protx<!--noref--> update_registrar` RPC creates and sends a ProUpRegTx to the network.
+
+*Parameter #1---initial provider registration transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`proTxHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the provider transaction as hex in RPC byte order"
+{% enditemplate %}
+
+*Parameter #2---operator public key*
+
+{% itemplate ntpd1 %}
+- n: "`operatorPubKey`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: " The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode."
+{% enditemplate %}
+
+*Parameter #3---voting key address*
+
+{% itemplate ntpd1 %}
+- n: "`votingKeyAddr`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to '0' or an empty string, the last on-chain voting key of the masternode will be used."
+{% enditemplate %}
+
+*Parameter #4---operator payout address*
+
+{% itemplate ntpd1 %}
+- n: "`operatorPayoutAddress`"
+  t: "string (hex)"
+  p: "Optional<br>(0 or 1)"
+  d: "The Dash address to use for masternode reward payments. Must match `collateralAddress` of initial ProRegTx. If set to '0' or an empty string, the last on-chain payout address of the masternode will be used."
+{% enditemplate %}
+
+*Result---provider update registrar transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Provider update registrar transaction (ProUpRegTx) hash"
+{% enditemplate %}
 
 *Example from Dash Core 0.13.0*
 
@@ -470,6 +572,42 @@ Result:
 
 The `protx<!--noref--> revoke` RPC creates and sends a ProUpRevTx to the network.
 
+*Parameter #1---initial provider registration transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`proTxHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the provider transaction as hex in RPC byte order"
+{% enditemplate %}
+
+*Parameter #2---operator private key*
+
+{% itemplate ntpd1 %}
+- n: "`operatorPubKey`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: " The operator private key belonging to the registered operator public key."
+{% enditemplate %}
+
+*Parameter #3---reason*
+
+{% itemplate ntpd1 %}
+- n: "`reason`"
+  t: "number"
+  p: "Required<br>(exactly 1)"
+  d: "The reason for revocation."
+{% enditemplate %}
+
+*Result---provider update revoke transaction hash*
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Provider update revoke transaction (ProUpRevTx) hash"
+{% enditemplate %}
+
 *Example from Dash Core 0.13.0*
 
 {% highlight bash %}
@@ -491,6 +629,91 @@ Result:
 {% autocrossref %}
 
 The `protx<!--noref--> diff` RPC calculates a diff and a proof between two masternode list.
+
+*Parameter #1---start block height*
+
+{% itemplate ntpd1 %}
+- n: "`baseBlock`"
+  t: "number (int)"
+  p: "Required<br>(Exactly 1)"
+  d: ""
+{% enditemplate %}
+
+*Parameter #2---end block height*
+
+{% itemplate ntpd1 %}
+- n: "`block`"
+  t: "bool"
+  p: "Required<br>(Exactly 1)"
+  d: ""
+{% enditemplate %}
+
+*Result---JSON provider registration transaction details*
+
+{% assign DEPTH="→" %}
+{% include helpers/vars.md %}
+
+{% itemplate ntpd1 %}
+- n: "`result`"
+  t: "array"
+  p: "Required<br>(exactly 1)"
+  d: "An array of objects each containing a provider transaction, or JSON `null` if an error occurred"
+
+- n: "→<br>`baseBlockHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the base block as hex in RPC byte order"
+
+- n: "→<br>`blockHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the ending block as hex in RPC byte order"
+
+- n: "→<br>`cbTxMerkleTree`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The coinbase transaction merkle tree"
+
+- n: "→<br>`cbTx`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The coinbase transaction"
+
+- n: "→<br>`deletedMNs`"
+  t: "array"
+  p: "Required<br>(exactly 1)"
+  d: "An array of deleted masternode hashes"
+
+- n: "→<br>`mnlist`"
+  t: "array"
+  p: "Required<br>(exactly 1)"
+  d: "An array of masternode details"
+
+- n: "→ →<br>`proRegTxHash`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The hash of the initial provider registration transaction as hex in RPC byte order"
+
+- n: "→ →<br>`pubKeyOperator`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The operator public key"
+
+- n: "→ →<br>`keyIDVoting`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "The voting key"
+
+- n: "→ →<br>`isValid`"
+  t: "bool"
+  p: "Required<br>(exactly 1)"
+  d: "Set to `true` if masternode is valid"
+
+- n: "→<br>`merkleRootMNList`"
+  t: "string (hex)"
+  p: "Required<br>(exactly 1)"
+  d: "Merkle root of the masternode list"
+{% enditemplate %}
 
 *Example from Dash Core 0.13.0*
 
