@@ -33,7 +33,11 @@ economy.
 {% autocrossref %}
 
 Dash Core's InstantSend feature provides a way to lock transaction inputs and
-enable secure, instantaneous transactions.
+enable secure, instantaneous transactions. Since Dash Core 0.13.0, any qualifying
+transaction is automatically upgraded to InstantSend by the network without a
+need for the sending wallet to explicitly request it. For these simple
+transactions (those containing 4 or fewer inputs), the previous requirement for
+a special InstantSend transaction fee was also removed.
 
 The following video provides an overview with a good introduction to the details
 including the InstantSend vulnerability that was fixed in Dash Core 0.12.2.
@@ -62,12 +66,10 @@ Some specific points in the video are listed here for quick reference:
 | `getdata` message (txlvote) | → |                         | Client requests vote
 |                             | ← | `txlvote` message       | Peer responds with vote
 
-Once a sufficient number of votes approve the transaction lock, the InstantSend
-transaction is approved and shows 5 confirmations (`DEFAULT_INSTANTSEND_DEPTH`).
-
-NOTE: The 5 "pseudo-confirmations" are shown to convey confidence that the
-transaction is secure from double-spending and DO NOT indicate the transaction
-has already been confirmed to a block depth of 5 in the blockchain.
+Once an InstantSend lock has been requested, the `instantsend` field of various
+RPCs (e.g. the `getmempoolentry` RPC) is set to `true`. Then, if a sufficient
+number of votes approve the transaction lock, the InstantSend transaction is approved
+the `instantlock` field of the RPC is set to `true`.
 
 If an InstantSend transaction is a valid transaction but does not receive a
 transaction lock, it reverts to being a standard transaction.
@@ -76,7 +78,7 @@ There are a number of limitations on InstantSend transactions:
 
 * The lock request will timeout 15 seconds after the first vote is seen (`INSTANTSEND_LOCK_TIMEOUT_SECONDS`)
 * The lock request will fail if it has not been locked after 60 seconds (`INSTANTSEND_FAILED_TIMEOUT_SECONDS`)
-* A minimum fee (0.0001 Dash) is required since the transaction involves the masternodes in addition to miners. This fee was most
+* A minimum fee (0.0001 Dash) is required for non-simple transactions since they place a higher load on the masternodes. This fee was most
 recently decreased by [DIP-0001](https://github.com/dashpay/dips/blob/master/dip-0001.md).
 * To be used in an InstantSend transaction, an input must have at least the number confirmations (block depth) indicated by the table below
 
@@ -86,6 +88,19 @@ recently decreased by [DIP-0001](https://github.com/dashpay/dips/blob/master/dip
 | Testnet | 2 Blocks |
 | Regtest | 2 Blocks |
 | Devnet  | 2 Blocks |
+
+
+**Historical Note**
+
+Prior to Dash Core 0.13.0, `instantsend` and `instantlock` values were not
+available via RPC. At that time, the InstantSend system worked as described below.
+
+Once a sufficient number of votes approved the transaction lock, the InstantSend
+transaction was approved and showed 5 confirmations (`DEFAULT_INSTANTSEND_DEPTH`).
+
+NOTE: The 5 "pseudo-confirmations" were shown to convey confidence that the
+transaction was secure from double-spending and DID NOT indicate the transaction
+had already been confirmed to a block depth of 5 in the blockchain.
 
 {% endautocrossref %}
 
