@@ -417,23 +417,23 @@ sync.
 {% include helpers/subhead-links.md %}
 
 The following tables detail the timing of various functions used to keep the
-masternodes in sync with each other. This information is derived from
-`ThreadCheckPrivateSend` in `src/privatesend<!--noref-->.cpp`.
+masternodes in sync with each other. This information is derived from the
+scheduler section of `AppInitMain` in `src/init.cpp`.
 
 | **Period (seconds)** | **Action** | **Description** |
-| 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects |
+| 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects (masternode-sync.cpp) |
 
 The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status.
 
 | **Period (seconds)** | **Action** | **Description** |
-| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) |
-| 60  | Process MN Connections    | Disconnects some masternodes |
-| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones |
-| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks  |
-| 60  | InstantSend<!--noref--> Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes |
-| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) |
-| 300 | Maintenance               | Check/remove/reprocess governance objects |
-| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. |
+| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) (masternodeman.cpp) |
+| 60  | Process MN Connections    | Disconnects some masternodes (masternodeman.cpp) |
+| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones (masternodeman.cpp) |
+| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks (masternode-payments.cpp) |
+| 60  | InstantSend<!--noref--> Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes (instantx.cpp) |
+| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) (masternodeman.cpp) |
+| 300 | Maintenance               | Check/remove/reprocess governance objects (governance.cpp) |
+| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. (activemasternode.cpp) |
 
 {% endautocrossref %}
 
