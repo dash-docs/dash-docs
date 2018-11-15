@@ -142,10 +142,13 @@ sending the actual denomination. The table below lists the bit, its associated
 integer value used in P2P messages, and the actual Dash value.
 
 | **Bit** | **Denom. (Integer)** | **Denomination (DASH)** |
-| 0   | 1 | 10.0001              |
-| 1   | 2 | 01.00001             |
-| 2   | 4 | 00.100001            |
-| 3   | 8 | 00.0100001           |
+| 0   |  1 | 10.0001              |
+| 1   |  2 | 01.00001             |
+| 2   |  4 | 00.100001            |
+| 3   |  8 | 00.0100001           |
+| 4   | 16 | 00.00100001          |
+
+Protocol version 70212 added a 5th denomination (0.001 DASH).
 
 The denominations are structured to allow converting between denominations
 directly without requiring additional inputs or creating change (for example,
@@ -160,9 +163,11 @@ directly without requiring additional inputs or creating change (for example,
 **Creating Collaterals**
 
 PrivateSend collaterals are used to pay mixing fees, but are kept separate from
-the denominations to maximize privacy. The minimum collateral fee is 0.001 DASH for
-all mixing sessions regardless of denomination. In Dash Core, collaterals are
-created with enough value to pay 4 collateral fees (4 x 0.001 DASH). ([Dash Core Reference](https://github.com/dashpay/dash/blob/e596762ca22d703a79c6880a9d3edb1c7c972fd3/src/privatesend<!--noref-->.h#L313))
+the denominations to maximize privacy. Since protocol version 70212, the minimum
+collateral fee is 1/10 of the smallest denomination for all mixing sessions
+regardless of denomination.
+In Dash Core, collaterals are created with enough value to pay 4 collateral fees
+(4 x 0.001 DASH). ([Dash Core Reference](https://github.com/dashpay/dash/blob/262454791c4b4f783b2533d1b16b757a71eb5f7d/src/privatesend<!--noref-->.h#L413))
 
 In protocol version 70208, collateral inputs can be anything from 2x the
 minimum collateral amount to the maximum collateral amount (currently defined as
