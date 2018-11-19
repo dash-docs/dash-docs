@@ -37,7 +37,8 @@ enable secure, instantaneous transactions. Since Dash Core 0.13.0, any qualifyin
 transaction is automatically upgraded to InstantSend by the network without a
 need for the sending wallet to explicitly request it. For these simple
 transactions (those containing 4 or fewer inputs), the previous requirement for
-a special InstantSend transaction fee was also removed.
+a special InstantSend transaction fee was also removed. The criteria for
+determining eligibility can be found in the lists of limitations below.
 
 The following video provides an overview with a good introduction to the details
 including the InstantSend vulnerability that was fixed in Dash Core 0.12.2.
@@ -89,6 +90,11 @@ recently decreased by [DIP-0001](https://github.com/dashpay/dips/blob/master/dip
 | Regtest | 2 Blocks |
 | Devnet  | 2 Blocks |
 
+There are some further limitations on Automatic InstantSend transactions:
+
+* DIP3 must be active
+* Spork 16 must be enabled
+* Mempool usage must be lower than 10% (threshold defined by `AUTO_IX_MEMPOOL_THRESHOLD`)
 
 **Historical Note**
 
