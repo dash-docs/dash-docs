@@ -33,7 +33,12 @@ economy.
 {% autocrossref %}
 
 Dash Core's InstantSend feature provides a way to lock transaction inputs and
-enable secure, instantaneous transactions.
+enable secure, instantaneous transactions. Since Dash Core 0.13.0, any qualifying
+transaction is automatically upgraded to InstantSend by the network without a
+need for the sending wallet to explicitly request it. For these simple
+transactions (those containing 4 or fewer inputs), the previous requirement for
+a special InstantSend transaction fee was also removed. The criteria for
+determining eligibility can be found in the lists of limitations below.
 
 The following video provides an overview with a good introduction to the details
 including the InstantSend vulnerability that was fixed in Dash Core 0.12.2.
@@ -62,12 +67,10 @@ Some specific points in the video are listed here for quick reference:
 | `getdata` message (txlvote) | → |                         | Client requests vote
 |                             | ← | `txlvote` message       | Peer responds with vote
 
-Once a sufficient number of votes approve the transaction lock, the InstantSend
-transaction is approved and shows 5 confirmations (`DEFAULT_INSTANTSEND_DEPTH`).
-
-NOTE: The 5 "pseudo-confirmations" are shown to convey confidence that the
-transaction is secure from double-spending and DO NOT indicate the transaction
-has already been confirmed to a block depth of 5 in the blockchain.
+Once an InstantSend lock has been requested, the `instantsend` field of various
+RPCs (e.g. the `getmempoolentry` RPC) is set to `true`. Then, if a sufficient
+number of votes approve the transaction lock, the InstantSend transaction is approved
+the `instantlock` field of the RPC is set to `true`.
 
 If an InstantSend transaction is a valid transaction but does not receive a
 transaction lock, it reverts to being a standard transaction.
@@ -76,7 +79,7 @@ There are a number of limitations on InstantSend transactions:
 
 * The lock request will timeout 15 seconds after the first vote is seen (`INSTANTSEND_LOCK_TIMEOUT_SECONDS`)
 * The lock request will fail if it has not been locked after 60 seconds (`INSTANTSEND_FAILED_TIMEOUT_SECONDS`)
-* A minimum fee (0.0001 Dash) is required since the transaction involves the masternodes in addition to miners. This fee was most
+* A minimum fee (0.0001 Dash) is required for non-simple transactions since they place a higher load on the masternodes. This fee was most
 recently decreased by [DIP-0001](https://github.com/dashpay/dips/blob/master/dip-0001.md).
 * To be used in an InstantSend transaction, an input must have at least the number confirmations (block depth) indicated by the table below
 
@@ -86,6 +89,24 @@ recently decreased by [DIP-0001](https://github.com/dashpay/dips/blob/master/dip
 | Testnet | 2 Blocks |
 | Regtest | 2 Blocks |
 | Devnet  | 2 Blocks |
+
+There are some further limitations on Automatic InstantSend transactions:
+
+* DIP3 must be active
+* Spork 16 must be enabled
+* Mempool usage must be lower than 10% (`AUTO_IX_MEMPOOL_THRESHOLD`). As of Dash Core 0.13.0, this corresponds to a mempool size of 30 MB (`DEFAULT_MAX_MEMPOOL_SIZE` = 300 MB).
+
+**Historical Note**
+
+Prior to Dash Core 0.13.0, `instantsend` and `instantlock` values were not
+available via RPC. At that time, the InstantSend system worked as described below.
+
+Once a sufficient number of votes approved the transaction lock, the InstantSend
+transaction was approved and showed 5 confirmations (`DEFAULT_INSTANTSEND_DEPTH`).
+
+NOTE: The 5 "pseudo-confirmations" were shown to convey confidence that the
+transaction was secure from double-spending and DID NOT indicate the transaction
+had already been confirmed to a block depth of 5 in the blockchain.
 
 {% endautocrossref %}
 
@@ -127,10 +148,13 @@ sending the actual denomination. The table below lists the bit, its associated
 integer value used in P2P messages, and the actual Dash value.
 
 | **Bit** | **Denom. (Integer)** | **Denomination (DASH)** |
-| 0   | 1 | 10.0001              |
-| 1   | 2 | 01.00001             |
-| 2   | 4 | 00.100001            |
-| 3   | 8 | 00.0100001           |
+| 0   |  1 | 10.0001              |
+| 1   |  2 | 01.00001             |
+| 2   |  4 | 00.100001            |
+| 3   |  8 | 00.0100001           |
+| 4   | 16 | 00.00100001          |
+
+Protocol version 70212 added a 5th denomination (0.001 DASH).
 
 The denominations are structured to allow converting between denominations
 directly without requiring additional inputs or creating change (for example,
@@ -145,9 +169,11 @@ directly without requiring additional inputs or creating change (for example,
 **Creating Collaterals**
 
 PrivateSend collaterals are used to pay mixing fees, but are kept separate from
-the denominations to maximize privacy. The minimum collateral fee is 0.001 DASH for
-all mixing sessions regardless of denomination. In Dash Core, collaterals are
-created with enough value to pay 4 collateral fees (4 x 0.001 DASH). ([Dash Core Reference](https://github.com/dashpay/dash/blob/e596762ca22d703a79c6880a9d3edb1c7c972fd3/src/privatesend<!--noref-->.h#L313))
+the denominations to maximize privacy. Since protocol version 70212, the minimum
+collateral fee is 1/10 of the smallest denomination for all mixing sessions
+regardless of denomination.
+In Dash Core, collaterals are created with enough value to pay 4 collateral fees
+(4 x 0.001 DASH). ([Dash Core Reference](https://github.com/dashpay/dash/blob/262454791c4b4f783b2533d1b16b757a71eb5f7d/src/privatesend<!--noref-->.h#L413))
 
 In protocol version 70208, collateral inputs can be anything from 2x the
 minimum collateral amount to the maximum collateral amount (currently defined as
@@ -397,23 +423,23 @@ sync.
 {% include helpers/subhead-links.md %}
 
 The following tables detail the timing of various functions used to keep the
-masternodes in sync with each other. This information is derived from
-`ThreadCheckPrivateSend` in `src/privatesend<!--noref-->.cpp`.
+masternodes in sync with each other. This information is derived from the
+scheduler section of `AppInitMain` in `src/init.cpp`.
 
 | **Period (seconds)** | **Action** | **Description** |
-| 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects |
+| 6   | MN Sync                   | Synchronizes sporks, masternode list, masternode payments, and governance objects (masternode-sync.cpp) |
 
 The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status.
 
 | **Period (seconds)** | **Action** | **Description** |
-| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) |
-| 60  | Process MN Connections    | Disconnects some masternodes |
-| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones |
-| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks  |
-| 60  | InstantSend<!--noref--> Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes |
-| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) |
-| 300 | Maintenance               | Check/remove/reprocess governance objects |
-| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. |
+| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) (masternodeman.cpp) |
+| 60  | Process MN Connections    | Disconnects some masternodes (masternodeman.cpp) |
+| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones (masternodeman.cpp) |
+| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks (masternode-payments.cpp) |
+| 60  | InstantSend<!--noref--> Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes (instantx.cpp) |
+| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) (masternodeman.cpp) |
+| 300 | Maintenance               | Check/remove/reprocess governance objects (governance.cpp) |
+| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. (activemasternode.cpp) |
 
 {% endautocrossref %}
 
