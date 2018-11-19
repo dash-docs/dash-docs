@@ -94,7 +94,7 @@ There are some further limitations on Automatic InstantSend transactions:
 
 * DIP3 must be active
 * Spork 16 must be enabled
-* Mempool usage must be lower than 10% (threshold defined by `AUTO_IX_MEMPOOL_THRESHOLD`)
+* Mempool usage must be lower than 10% (`AUTO_IX_MEMPOOL_THRESHOLD`). As of Dash Core 0.13.0, this corresponds to a mempool size of 30 MB (`DEFAULT_MAX_MEMPOOL_SIZE` = 300 MB).
 
 **Historical Note**
 
