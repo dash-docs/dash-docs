@@ -2344,7 +2344,7 @@ message.
 | 36 | masternodeOutPoint | outPoint | Required | The unspent outpoint of the masternode (holding 1000 DASH) which is hosting this session
 | 8 | nTime | int64_t | Required | Time this `dsq` message was created
 | 1 | fReady | bool | Required | Indicates if the mixing pool is ready to be executed
-| 66* | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))
+| 97 | vchSig | char[] | Required | _ECDSA signature (65 bytes) prior to DIP3 activation_<br><br>BLS Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (96 bytes))
 
 Denominations (per [`src/privatesend.cpp`][privatesend denominations])
 
@@ -2354,30 +2354,32 @@ Denominations (per [`src/privatesend.cpp`][privatesend denominations])
 | 2 | 1 Dash
 | 4 | 0.1 Dash
 | 8 | 0.01 Dash
+| 16 | 0.001 Dash
 
 The following annotated hexdump shows a `dsq` message. (The
 message header has been omitted.) Note that the 'Required inputs' bytes will only
 be preset if Spork 6 is active and protocol version => 70209.
 
 {% highlight text %}
-08000000 ............................. Denomination: 0.01 Dash (8)
+01000000 ............................. Denomination: 10 Dash (1)
 
 Masternode Outpoint
-| aeed0e77c6db30a616507a37a129bc88
-| 1811f08afc51dd485d5322f36c1f04c5 ... Outpoint TXID
-| 01000000 ........................... Outpoint index number: 1
+| a383a2489aedccfab4bb41368d1c8ee3
+| 10d9ee90cb3d181880ce4e0cdb36ecb7
+| 0f000000 ........................... Outpoint index number: 15
 
-1318a85900000000 ..................... Create Time: 2017-08-31 14:07:15 UTC
+10b4235c00000000 ..................... Create Time: 2018-12-26 17:02:08 UTC
 
 00 ................................... Ready: 0
 
-41 ................................... Signature length: 65
+60 ................................... Signature length: 96
 
-1bd74386ea4e111197f1b4b4660c1415
-13486745ca10ba0632426ed3a644d941
-047e43c988680904d4a4fcf551d8813c
-ec12d47ae9b00e870db294cd66708ab7
-dc ................................... Masternode Signature
+0409a1349869a02e90e6e1f6d92bf995
+27a72542fed987f6d2719596973d89e6
+74605a3585b1335650f1555f7576061d
+110fb72b3308e378ac8e8fbebeeffdb4
+9b2a6562ad965bb3c3fd3f8e68483fdb
+0d1401e2264071a74fc01d51e943ce9f ..... Masternode BLS Signature
 {% endhighlight %}
 
 {% endautocrossref %}
@@ -2550,7 +2552,7 @@ fees (to provide security in mixing).
 | ---------- | ----------- | --------- | -------- | -------- |
 | # | tx | `tx` message | Required | The transaction
 | 36 | masternodeOutPoint | outPoint | Required | The unspent outpoint of the masternode (holding 1000 DASH) which is signing the message
-| 66 | vchSig | char[] | Required | Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (65 bytes))
+| 97 | vchSig | char[] | Required | _ECDSA signature (65 bytes) prior to DIP3 activation_<br><br>BLS Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (96 bytes))
 | 8 | sigTime | int64_t | Require | Time this message was signed
 
 
@@ -2559,9 +2561,10 @@ message header has been omitted.)
 
 {% highlight text %}
 Transaction Message
-| 01000000 ................................. Version: 1
+| 0200 ....................................... Version: 2
+| 0000 ....................................... Type: 0 (Classical Tx)
 |
-| 0b ......................................... Number of inputs: 11
+| 05 ......................................... Number of inputs: 5
 |
 | Transaction input #1
 | |
@@ -2569,51 +2572,54 @@ Transaction Message
 | | 74ed8307a566731119b1782362af43ad ......... Outpoint TXID
 | | 05000000 ................................. Outpoint index number: 5
 | |
-| | 6a ....................................... Bytes in sig. script: 106
-| | 47304402204ed56f525ae6df707f9cbe
-| | 55c78d82bbcc02daa1fb27b0bf54588a
-| | 446dcc804102200c4e03c4a2b9a90aef
-| | 9f01de7c28812a0e8b280e6c153b0bd8
-| | 26d2ff660102e18121028c96903b2709
-| | 7b331d55abd1f42d2ff6cc7c784ab839
-| | 7c232b73a34a149a348e ..................... Secp256k1 signature
+| | 6b ....................................... Bytes in sig. script: 107
+| | 483045022100b1243fcba562a0f1d7c4
+| | cc3b320645dfa96c6412f368ccdbc1b7
+| | acb6b0aa1db502201606c81b0d79f52f
+| | 47bcb071b64c37f72dd1378efa67a2de
+| | dd86c44d393668fa812102d6ff581270
+| | 632f5e972b0418ee871867b5c04b6eae
+| | 3458ad135ad8f1daaa4fc2 ................... Secp256k1 signature
 | |
 | | ffffffff ................................. Sequence number: UINT32_MAX
 |
-| [...] ...................................... 10 more transaction inputs omitted
+| [...] ...................................... 4 more transaction inputs omitted
 |
 |
-| 0b ......................................... Number of outputs: 11
+| 05 ......................................... Number of outputs: 5
 |
 | Transaction output #1
-| | e8e4f50500000000 ......................... Duffs (1.00001000 Dash)
+| | 10f19a3b00000000 ......................... Duffs (10.0001000 Dash)
 | |
 | | 19 ....................................... Bytes in pubkey script: 25
 | | | 76 ..................................... OP_DUP
 | | | a9 ..................................... OP_HASH160
 | | | 14 ..................................... Push 20 bytes as data
-| | | | 0febbeaa8818b2c2f80fb8c98f90bdae
-| | | | 41fe5c26 ............................. PubKey hash
+| | | | 3eb7ae776b096231de9eca42dd57a677
+| | | | d3b05452 ............................. PubKey hash
 | | | 88 ..................................... OP_EQUALVERIFY
 | | | ac ..................................... OP_CHECKSIG
 |
-| [...] ...................................... 10 more transaction outputs omitted
+| [...] ...................................... 4 more transaction outputs omitted
 |
 |
 | 00000000 ................................... locktime: 0 (a block height)
 
 Masternode Unspent Outpoint
-| 387d522def2abfb9bdd15be899f074f3
-| 49b414cef078ec642e1d14b42996b9fc ......... Outpoint TXID
-| 00000000 ................................. Outpoint index number: 0
+| ccfbe4e7c220264cb0a8bfa5e91c6957
+| 33c255384790e80e891a0d8f56a59d9e ......... Outpoint TXID
+| 01000000 ................................. Outpoint index number: 1
 
-1b6fb8f90f0df6e502bc10aab9604e49
-2d14214e05331c9761c834d55c7536e3
-3369e5909479ea88116aad7ea64587d9
-59364326c97d7f249f7b9293e120a5b6
-1c ................................... Masternode Signature
+60 ......................................... Signature length: 96
 
-ece5a95900000000 ..................... Signature Timestamp
+94c8e427f448789f58cda17445e76c64
+d0efa7c089addcb378f9b8d04b72f499
+a4e8e616b5011886b9cffcce29e17fc1
+10ad8609c3ee1a3207b882e7ff58400f
+42d6e6544108b349da2cc5e716a5f266
+4a2dc96b0f080effd5349f2ae06ac234 .......... Masternode Signature
+
+59b4235c00000000 .......................... Sig Time: 2018-12-26 17:03:21 UTC
 {% endhighlight %}
 
 {% endautocrossref %}
