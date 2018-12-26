@@ -3161,7 +3161,7 @@ contract, or setting. Masternodes ignore this request if they are not fully sync
 | 0-16384 | strData | string | Required | Data field - can be used for anything (leading varint indicates size of data)
 | 4 | nObjectType | int | Required | Type of governance object: <br>• `0` - Unknown<br>• `1` - Proposal<br>• `2` - Trigger<br>• `3` - Watchdog
 | 36 | masternodeOutPoint | outPoint | Required* | The unspent outpoint of the masternode (holding 1000 DASH) which is signing this object.<br><br>Set to all zeros for proposals since they can be created by non-masternodes.
-| 66* | vchSig | char[] | Required* | Signature of the masternode (Length (1 byte) + Signature (65 bytes))<br><br>Not required for proposals - they will have a length of 0x00 and no Signature.
+| 97 | vchSig | char[] | Required* | _ECDSA signature (65 bytes) prior to DIP3 activation_<br><br>BLS Signature of the masternode (Length (1 byte) + Signature (96 bytes))<br><br>Not required for proposals - they will have a length of 0x00 and no Signature.
 
 Governance Object Types (defined by src/governance-object.h)
 
@@ -3224,13 +3224,14 @@ Masternode Unspent Outpoint
 | fa7b6e26e25896d8127332bba2419e97 ... Outpoint TXID
 | 00000000 ........................... Outpoint index number: 0
 
-41 ................................... Signature length: 65
+60 ................................... Signature length: 96
 
-1ce3b782f66be8ae9fc4158680128864
-341202b6006384083ab2d9cfa73795e2
-6000668e84af4ef6a284a52b53843524
-72037d51bd9079ffd5c087d9632865ee
-75 ................................... Masternode Signature
+06516fa3b38d29fca6194e5d2c929666
+d59d2d105bbbc30a1e5d144e708a610a
+2e0ab3c759988b13ff098ab3dbd4e01d
+129827ef1e1996c211d6d5ecd5199f60
+cf028b1cdb2f7240e33981b16d1270e9
+d289fca20905fd453620238a505582fa ..... Masternode BLS Signature
 {% endhighlight %}
 
 {% endautocrossref %}
@@ -3271,7 +3272,7 @@ the node being banned.
 | 4 | nVoteOutcome | int | Required | None (0), Yes (1), No (2), Abstain (3)
 | 4 | nVoteSignal | int | Required |  None (0), Funding (1), Valid (2), Delete (3), Endorsed (4)
 | 8 | nTime | int64_t | Required | Time the vote was created
-| 66* | vchSig | char[] | Required | Signature of the masternode (66 bytes in most cases. Length (1 byte) + Signature (65 bytes))
+| 97 | vchSig | char[] | Required | _ECDSA signature (65 bytes) prior to DIP3 activation_<br><br>BLS Signature of the masternode (Length (1 byte) + Signature (96 bytes))
 
 Governance Object Vote Signals (defined by src/governance-object.h)
 
@@ -3287,22 +3288,23 @@ message header has been omitted.)
 
 {% highlight text %}
 Masternode Unspent Outpoint
-| 57566a0ef85e6cac3415ced67b0b07e1
-| 781bafb853650d7c9d56d8bc132cc3b4 ... Outpoint TXID
-| 00000000 ........................... Outpoint index number: 0
+| 9425afd65ccce1d655d4dd461b8523b8
+| 2577a8009c25604c65f3e78ea71d65df ... Outpoint TXID
+| 01000000 ........................... Outpoint index number: 1
 
-ad9579d5c181eee904156df1c88b050f
-b8b4d39e5fda71f015996dbf14a51bff...... Parent Hash (0 = root)
+bc1bb26088161ff07dc09d873faa5573
+9a2fd53121d315b2942f3b9db36cb475...... Parent Hash (0 = root)
 01000000 ............................. Vote Outcome: VOTE_OUTCOME_NONE (1)
-02000000 ............................. Vote Signal: VOTE_SIGNAL_VALID (2)
-b517a85900000000 ..................... Vote Create Timestamp: 2017-08-31 14:05:41 UTC
+03000000 ............................. Vote Signal: VOTE_SIGNAL_DELETE (3)
+ec3d235c00000000 ..................... Vote Create Time: 2018-12-26 08:38:04 UTC
 
-41 ................................... Signature length: 65
-1b049113a81fe913f061ad295561d267
-00b8135a021ab0356a1e89b18d663d0b
-dc45e9c09ee0427223e332b52e8d709e
-6d64e86b6435d7bdf207d8f23b6ae0db
-6f ................................... Masternode Signature
+60 ................................... Signature length: 96
+06516fa3b38d29fca6194e5d2c929666
+d59d2d105bbbc30a1e5d144e708a610a
+2e0ab3c759988b13ff098ab3dbd4e01d
+129827ef1e1996c211d6d5ecd5199f60
+cf028b1cdb2f7240e33981b16d1270e9
+d289fca20905fd453620238a505582fa ..... Masternode BLS Signature
 {% endhighlight %}
 
 {% endautocrossref %}
