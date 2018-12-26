@@ -425,12 +425,18 @@ payments, and governance objects synchronized between masternodes.
 
 **Recurring Ping**
 
+![Warning icon](/img/icons/icon_warning.svg) NOTE: This will be deprecated
+following activation of DIP3 which implements deterministic masternode lists.
+
 Each masternode issues a ping (`mnp` message) periodically to notify the network
 that it is still online. Masternodes that do not issue a ping for 3 hours will
 be put into the `MASTERNODE_NEW_START_REQUIRED` state and will need to issue a
 masternode announce (`mnb` message).
 
 **Masternode List**
+
+![Warning icon](/img/icons/icon_warning.svg) NOTE: This will be deprecated
+following activation of DIP3 which implements deterministic masternode lists.
 
 After the initial masternode list has been received, it is kept current by a
 combination of the periodic `mnp` messages received from other masternodes,
@@ -445,6 +451,9 @@ unspent 1000 Dash).
 Unsynchronized peers may send a `dseg` message to request the entire masternode list.
 
 **Masternode Payment**
+
+![Warning icon](/img/icons/icon_warning.svg) NOTE: This will be deprecated
+following activation of DIP3 which implements deterministic masternode lists.
 
 After the initial masternode payment synchronization, payment information is
 kept current via the `mnw` messages relayed on the network. Unsynchronized peers
