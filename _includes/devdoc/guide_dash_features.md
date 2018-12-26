@@ -348,10 +348,15 @@ several conditions that initiate a start/restart the sync process:
 * A failure occurred during the last sync attempt (after a 1 minute cooldown before sync restarts)
 * Issuing a `mnsync reset` RPC command
 
+{% endautocrossref %}
+
 #### Initial Masternode<!--noref--> Sync
 {% include helpers/subhead-links.md %}
 
 ##### Before DIP3 Activation
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 This diagram shows the order in which P2P messages are sent to perform
 masternode synchronization initially after startup.
@@ -382,7 +387,12 @@ initial masternode synchronization before the activation of DIP3 and Spork 15.
 |                                                | ← | `mnw` message(s)          | (If requested) Masternode payment vote message
 | **4. Governance** |   |  | See [Governance sync](#governance) |
 
+{% endautocrossref %}
+
 ##### After DIP3 Activation
+<!-- no subhead-links here -->
+
+{% autocrossref %}
 
 The deterministic masternode lists introduced by DIP3 make the masternode
 list and masternode payments steps of the sync process obsolete. Since the
