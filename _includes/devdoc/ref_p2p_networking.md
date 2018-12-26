@@ -2868,6 +2868,9 @@ ecd50100 ................................... Dashd Deamon Version (12.3.0)
 
 {% autocrossref %}
 
+![Warning icon](/img/icons/icon_warning.svg) NOTE: This message will be deprecated
+following activation of DIP3 which implements deterministic masternode lists.
+
 The `mnv` message is used by masternodes to verify each other. Several `mnv`
 messages are exchanged in the process. This results in the IP address of
 masternode 1 being validated as of the provided block height.
@@ -3068,8 +3071,8 @@ Sync Item IDs
 
 | ID | Description | Response To
 |------|--------------|---------------
-| 2 | MASTERNODE_SYNC_LIST | `dseg` message
-| 3 | MASTERNODE_SYNC_MNW | `mnget` message
+| 2 | MASTERNODE_SYNC_LIST | _Deprecated following activation of DIP3 in Dash Core 0.13.0_<br><br>`dseg` message
+| 3 | MASTERNODE_SYNC_MNW | _Deprecated following activation of DIP3 in Dash Core 0.13.0_<br><br>`mnget` message
 | 10 | MASTERNODE_SYNC_GOVOBJ | `govsync` message
 | 11 | MASTERNODE_SYNC_GOVOBJ_VOTE | `govsync` message with non-zero hash
 
