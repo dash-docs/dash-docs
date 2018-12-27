@@ -399,6 +399,11 @@ list and masternode payments steps of the sync process obsolete. Since the
 information is available on-chain, the P2P messages related to those steps
 are no longer required.
 
+This diagram shows the order in which P2P messages are sent to perform
+masternode synchronization initially after startup.
+
+![Masternode Sync (Initial)](/img/dev/en-masternode-sync-initial-dip3.svg)
+
 The following table details the data flow of P2P messages exchanged during
 initial masternode synchronization after the activation of DIP3 and Spork 15.
 
@@ -489,14 +494,14 @@ scheduler section of `AppInitMain` in `src/init.cpp`.
 The following actions only run when the masternode sync is past `MASTERNODE_SYNC_WAITING` status.
 
 | **Period (seconds)** | **Action** | **Description** |
-| 1   | MN Check                  | Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) (masternodeman.cpp) |
+| 1   | MN Check                  | ![Warning icon](/img/icons/icon_warning.svg) _Deprecated following activation of DIP3 and Spork 15_<br><br>Check the state of each masternode that is still funded and not banned. The action occurs once per second, but individual masternodes are only checked at most every 5 seconds (only a subset of masternodes are checked each time it runs) (masternodeman.cpp) |
 | 60  | Process MN Connections    | Disconnects some masternodes (masternodeman.cpp) |
-| 60  | MN Check/Remove           | Remove spent masternodes and check the state of inactive ones (masternodeman.cpp) |
-| 60  | MN Payment Check/Remove   | Remove old masternode payment votes/blocks (masternode-payments.cpp) |
+| 60  | MN Check/Remove           | ![Warning icon](/img/icons/icon_warning.svg) _Deprecated following activation of DIP3 and Spork 15_<br><br>Remove spent masternodes and check the state of inactive ones (masternodeman.cpp) |
+| 60  | MN Payment Check/Remove   | ![Warning icon](/img/icons/icon_warning.svg) _Deprecated following activation of DIP3 and Spork 15_<br><br>Remove old masternode payment votes/blocks (masternode-payments.cpp) |
 | 60  | InstantSend<!--noref--> Check/Remove  | Remove expired/orphaned/invalid InstantSend candidates and votes (instantx.cpp) |
-| 300 | Full verification         | Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) (masternodeman.cpp) |
+| 300 | Full verification         | ![Warning icon](/img/icons/icon_warning.svg) _Deprecated following activation of DIP3 and Spork 15_<br><br>Verify masternodes via direct requests (`mnv` messages - note time constraints in the Developer Reference section) (masternodeman.cpp) |
 | 300 | Maintenance               | Check/remove/reprocess governance objects (governance.cpp) |
-| 600 | Manage State              | Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. (activemasternode.cpp) |
+| 600 | Manage State              | ![Warning icon](/img/icons/icon_warning.svg) _Deprecated following activation of DIP3 and Spork 15_<br><br>Sends masternode pings (`mnp` message). Also sends initial masternode broadcast (`mnb` message) for local masternodes. (activemasternode.cpp) |
 
 {% endautocrossref %}
 
