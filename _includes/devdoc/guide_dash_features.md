@@ -422,8 +422,8 @@ are used in both `ssc` messages and the `mnsync` RPC.
 | -1  | `MASTERNODE_SYNC_FAILED`      | Synchronization failed |
 | 0   | `MASTERNODE_SYNC_INITIAL`     | Synchronization just started, was reset recently, or is still in IBD |
 | 1   | `MASTERNODE_SYNC_WAITING`     | Synchronization pending - waiting after initial to check for more headers/blocks |
-| 2   | `MASTERNODE_SYNC_LIST`        | _Deprecated following activation of DIP3 and Spork 15_<br><br>Synchronizing masternode list |
-| 3   | `MASTERNODE_SYNC_MNW`         | _Deprecated following activation of DIP3 and Spork 15_<br><br>Synchronizing masternode payments |
+| 2   | `MASTERNODE_SYNC_LIST`        | ![Warning icon](/img/icons/icon_warning.svg) _Deprecated following activation of DIP3 and Spork 15_<br><br>Synchronizing masternode list |
+| 3   | `MASTERNODE_SYNC_MNW`         | ![Warning icon](/img/icons/icon_warning.svg) _Deprecated following activation of DIP3 and Spork 15_<br><br>Synchronizing masternode payments |
 | 4   | `MASTERNODE_SYNC_GOVERNANCE`  | Synchronizing governance objects  |
 | 999 | `MASTERNODE_SYNC_FINISHED`    | Synchronization finished |
 
