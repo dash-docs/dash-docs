@@ -181,7 +181,11 @@ Result (Collateral Transaction ID):
 
 {% autocrossref %}
 
-The `gobject submit` RPC submits a governance object to network (objects must first be prepared via `gobject prepare`).
+The `gobject submit` RPC submits a governance object to network (objects must
+first be prepared via `gobject prepare`).
+
+Note: Parameters 1-4 should be the same values as the ones used for `gobject
+prepare`.
 
 *Parameter #1---parent hash*
 
