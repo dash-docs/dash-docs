@@ -70,6 +70,7 @@ As of Dash Core 0.13.0.0, the most recent protocol version is 70213.
 
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------
+| 70213  | Dash Core 0.13.0.x <br>(Jan 2019)  | • Special Transactions<br>• Deterministic Masternode List<br>• Coinbase Special Transaction<br>• Automatic InstantSend
 | 70210  | Dash Core 0.12.3.x <br>(July 2018)  | • Named Devnets<br>• New signature format / Spork 6 addition<br>• Bitcoin Core 0.13/0.14 backports<br>• [BIP90][]: Buried deployments<br>• [BIP147][]: NULLYDUMMY enforcement<br>• [BIP152][] Compact Blocks<br>• Transaction version increased to 2<br>• Zero fee transactions removed<br>• Pruning in Lite Mode
 | 70208  | Dash Core 0.12.2.x <br>(Nov 2017)  | • [DIP1][] (2MB blocks)<br>• Fee reduction (10x)<br>• InstantSend fix<br>• PrivateSend improvements<br>• _Experimental_ HD wallet<br>• Local Masternode support removed
 | 70206  | Dash Core 0.12.1.x <br>(Mar 2017)  | • Switch to Bitcoin Core 0.12.1<br>• BIP-0065 (CheckLockTimeVerify)<br>• BIP-0112 (CheckSequenceVerify)
