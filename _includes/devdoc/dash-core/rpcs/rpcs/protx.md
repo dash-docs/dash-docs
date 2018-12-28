@@ -93,9 +93,9 @@ The `protx<!--noref--> register` RPC creates a ProRegTx referencing an existing 
 
 {% itemplate ntpd1 %}
 - n: "`payoutAddress`"
-  t: "string (hex)"
+  t: "string"
   p: "Required<br>(exactly 1)"
-  d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
+  d: "The Dash address to use for masternode reward payments."
 {% enditemplate %}
 
 *Parameter #9---fee source address*
@@ -191,16 +191,16 @@ The `protx<!--noref--> register_fund` RPC creates and funds a ProRegTx with the 
 - n: "`operatorReward`"
   t: "number"
   p: "Required<br>(exactly 1)"
-  d: "The fraction in % to share with the operator. If non-zero, `ipAndPort` must be zero as well.<br>The value must be between '0.00' and '100.00'."
+  d: "The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'."
 {% enditemplate %}
 
 *Parameter #7---payout address*
 
 {% itemplate ntpd1 %}
 - n: "`payoutAddress`"
-  t: "string (hex)"
+  t: "string"
   p: "Required<br>(exactly 1)"
-  d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
+  d: "The Dash address to use for masternode reward payments."
 {% enditemplate %}
 
 *Parameter #8---fund address*
@@ -307,7 +307,7 @@ and outputs to cover fees.
 - n: "`operatorReward`"
   t: "number"
   p: "Required<br>(exactly 1)"
-  d: "The fraction in % to share with the operator. If non-zero, `ipAndPort` must be zero as well.<br>The value must be between '0.00' and '100.00'."
+  d: "The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'."
 {% enditemplate %}
 
 *Parameter #8---payout address*
@@ -316,7 +316,7 @@ and outputs to cover fees.
 - n: "`payoutAddress`"
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
-  d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
+  d: "The Dash address to use for masternode reward payments."
 {% enditemplate %}
 
 *Parameter #9---fee source address*
