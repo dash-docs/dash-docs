@@ -98,6 +98,15 @@ The `protx<!--noref--> register` RPC creates a ProRegTx referencing an existing 
   d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
 {% enditemplate %}
 
+*Parameter #9---fee source address*
+
+{% itemplate ntpd1 %}
+- n: "`feeSourceAddress`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet."
+{% enditemplate %}
+
 *Result---provider registration transaction hash*
 
 {% itemplate ntpd1 %}
@@ -192,6 +201,15 @@ The `protx<!--noref--> register_fund` RPC creates and funds a ProRegTx with the 
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
   d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
+{% enditemplate %}
+
+*Parameter #8---fund address*
+
+{% itemplate ntpd1 %}
+- n: "`fundAddress`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet."
 {% enditemplate %}
 
 *Result---provider registration transaction hash*
@@ -299,6 +317,15 @@ and outputs to cover fees.
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
   d: "The Dash address to use for masternode reward payments. Must match `collateralAddress`."
+{% enditemplate %}
+
+*Parameter #9---fee source address*
+
+{% itemplate ntpd1 %}
+- n: "`feeSourceAddress`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet."
 {% enditemplate %}
 
 *Result---unsigned transaction and message to sign*
@@ -645,6 +672,15 @@ The `protx<!--noref--> update_service` RPC creates and sends a ProUpServTx to th
   d: "The Dash address used for operator reward payments. Only allowed when the ProRegTx had a non-zero `operatorReward` value."
 {% enditemplate %}
 
+*Parameter #5---fee source address*
+
+{% itemplate ntpd1 %}
+- n: "`feeSourceAddress`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `operatorPayoutAddress` will be used. The private key belonging to this address must be known in your wallet."
+{% enditemplate %}
+
 *Result---provider update service transaction hash*
 
 {% itemplate ntpd1 %}
@@ -707,10 +743,19 @@ The `protx<!--noref--> update_registrar` RPC creates and sends a ProUpRegTx to t
 *Parameter #4---operator payout address*
 
 {% itemplate ntpd1 %}
-- n: "`operatorPayoutAddress`"
+- n: "`payoutAddress`"
   t: "string (hex)"
   p: "Optional<br>(0 or 1)"
-  d: "The Dash address to use for masternode reward payments. Must match `collateralAddress` of initial ProRegTx. If set to '0' or an empty string, the last on-chain payout address of the masternode will be used."
+  d: "The Dash address to use for masternode reward payments. If set to '0' or an empty string, the last on-chain payout address of the masternode will be used."
+{% enditemplate %}
+
+*Parameter #5---fee source address*
+
+{% itemplate ntpd1 %}
+- n: "`feeSourceAddress`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet."
 {% enditemplate %}
 
 *Result---provider update registrar transaction hash*
@@ -770,6 +815,15 @@ The `protx<!--noref--> revoke` RPC creates and sends a ProUpRevTx to the network
   t: "number"
   p: "Required<br>(exactly 1)"
   d: "The reason for revocation."
+{% enditemplate %}
+
+*Parameter #4---fee source address*
+
+{% itemplate ntpd1 %}
+- n: "`feeSourceAddress`"
+  t: "string"
+  p: "Optional<br>(0 or 1)"
+  d: "If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet."
 {% enditemplate %}
 
 *Result---provider update revoke transaction hash*
