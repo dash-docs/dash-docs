@@ -213,26 +213,33 @@ Dash Core and many other tools print and accept raw transactions
 encoded as hex.
 
 Transactions prior to protocol version 70209 defaulted to version 1. Transaction
-version 2 became the default in protocol version 70209. Version 2 transactions
-have the same format, but the `lock_time` parameter was redefined by BIP68
-to enable relative lock-times.
+version 2 was the default in protocol versions => 70209 and < 70213. Version 2
+transactions have the same format, but the `lock_time` parameter was redefined
+by BIP68 to enable relative lock-times.
 (Note: transactions in the block chain are allowed to list a higher version
 number to permit soft forks, but they are treated as version 2 transactions
 by current software.)
+
+Dash Core 0.13.0 (protocol version 70213) introduced transaction version 3 as
+part of the [DIP2 - Special Transactions](https://github.com/dashpay/dips/blob/master/dip-0002.md)
+ implementation. Details of the changes introduced by
+this feature and currently implemented special transactions can be found in the
+[Special Transactions section](#special-transactions) below as well as in the
+[DIP](https://github.com/dashpay/dips/blob/master/dip-0002.md).
 
 A raw transaction has the following top-level format:
 
 | Bytes    | Name         | Data Type           | Description
 |----------|--------------|---------------------|-------------
-| 2        | version      | uint16_t            | Transaction version number; currently version 3.  Programs creating transactions using newer consensus rules may use higher version numbers.
-| 2        | type         | uint16_t            | Transaction type number; 0 for classical transactions; Non-zero for DIP2 special transactions.
+| 2        | version      | uint16_t            | *Converted from 4 bytes to 2 bytes by DIP2 in v0.13.0*<br><br>Transaction version number; currently version 3.  Programs creating transactions using newer consensus rules may use higher version numbers.
+| 2        | type         | uint16_t            | *Added by DIP2 in v0.13.0. Uses 2 bytes that were previously part of `version`*<br><br>Transaction type number; 0 for classical transactions; Non-zero for DIP2 special transactions.
 | *Varies* | tx_in count  | compactSize uint    | Number of inputs in this transaction.
 | *Varies* | tx_in        | txIn                | Transaction inputs.  See description of txIn below.
 | *Varies* | tx_out count | compactSize uint    | Number of outputs in this transaction.
 | *Varies* | tx_out       | txOut               | Transaction outputs.  See description of txOut below.
 | 4        | lock_time    | uint32_t            | A time (Unix epoch time) or block number.  See the [locktime parsing rules][].
-| *Varies* | extra_payload size | compactSize uint | *Added by DIP2*<br><br>Variable number of bytes of extra payload for DIP2-based special transactions
-| *Varies* | extra_payload | blob               | *Added by DIP2*<br><br>Special transaction payload.
+| *Varies* | extra_payload size | compactSize uint | *Added by DIP2 in v0.13.0*<br><br>Variable number of bytes of extra payload for DIP2-based special transactions
+| *Varies* | extra_payload | blob               | *Added by DIP2 in v0.13.0*<br><br>Special transaction payload.
 
 A transaction may have multiple inputs and outputs, so the txIn and
 txOut structures may recur within a transaction. CompactSize unsigned
