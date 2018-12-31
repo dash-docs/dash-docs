@@ -246,6 +246,75 @@ txOut structures may recur within a transaction. CompactSize unsigned
 integers are a form of variable-length integers; they are described in
 the [CompactSize section][section CompactSize unsigned integer].
 
+##### JSON-RPC<!--noref--> Responses
+{% include helpers/subhead-links.md %}
+
+When retrieving transaction data via Dash Core RPCs (e.g. the `getrawtransaction` RPC),
+the transaction data is returned in the following format.
+
+Version 1 and 2 Transaction Structure (prior to DIP2 activation in Dash Core v0.13.0):
+{% highlight json %}
+{
+  "txid": <string>,
+  "size": <int>,
+  "version": 2,
+  "locktime": 0,
+  "vin": [ ],
+  "vout": [ ]
+}
+{% endhighlight %}
+
+Version 3 Transaction Structure (Dash Core v0.13.0+ and activated DIP2):
+{% highlight json %}
+{
+  "txid": <string>,
+  "size": <int>,
+  "version": 3,
+  "type": <int>,
+  "locktime": 0,
+  "vin": [ ],
+  "vout": [ ],
+  "extraPayloadSize": <variable int>,
+  "extraPayload": …
+}
+{% endhighlight %}
+
+For special transactions (those using the extraPayload fields), JSON-RPC
+responses contain a parsed JSON representation of the Transaction Payload.
+
+The sample transaction below shows the response for a quorum commitment special
+transaction:
+
+{% highlight json %}
+{
+  "txid": "592a09d08348d970b4d9ba216246a23dac866717b460d3f369a86293b9839eea",
+  "size": 342,
+  "version": 3,
+  "type": 6,
+  "locktime": 0,
+  "vin": [
+  ],
+  "vout": [
+  ],
+  "extraPayloadSize": 329,
+  "extraPayload": "0100841b0000010001211cd3e4230b2bc47530e200447e998a38e960d4ed5f5251e26892130c000000320000000000000032000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "qcTx": {
+    "version": 1,
+    "height": 7044,
+    "commitment": {
+      "version": 1,
+      "llmqType": 1,
+      "quorumHash": "0000000c139268e251525fedd460e9388a997e4400e23075c42b0b23e4d31c21",
+      "signersCount": 0,
+      "validMembersCount": 0,
+      "quorumPublicKey": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "instantlock": false
+}
+
+{% endhighlight %}
+
 {% endautocrossref %}
 
 ##### TxIn: A Transaction Input (Non-Coinbase) {#txin}
