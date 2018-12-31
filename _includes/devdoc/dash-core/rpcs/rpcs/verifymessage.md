@@ -47,7 +47,7 @@ The `verifymessage` RPC {{summary_verifyMessage}}
 
 {% itemplate ntpd1 %}
 - n: "`result`"
-  t: "bool/null"
+  t: "boolean"
   p: "Required<br>(exactly 1)"
   d: "Set to `true` if the message was signed by a key corresponding to the provided P2PKH address; set to `false` if it was not signed by that key; set to JSON `null` if an error occurred"
 
