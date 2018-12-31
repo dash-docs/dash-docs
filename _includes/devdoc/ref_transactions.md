@@ -876,10 +876,12 @@ Coinbase Transaction Payload
 
 *Added in protocol version 70213 of Dash Core as described by DIP6*
 
+**NOTE: This special transaction has no inputs and no outputs and thus also
+pays no fee.**
+
 The Quorum Commitment (QcTx) special transaction adds the best final commitment from a
 Long-Living Masternode Quorum (LLMQ) Distributed Key Generation (DKG) session to
-the chain. This special transaction has no inputs and no outputs and thus also
-pays no fee.
+the chain.
 
 Since this special transaction pays no fees, it is mandatory by consensus rules
 to ensure that miners include it. Exactly one quorum commitment transaction MUST
