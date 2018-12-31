@@ -429,6 +429,19 @@ Classical (financial) transactions have a `type` of 0 while special transactions
 have a `type` defined in the DIP describing them. A list of current special
 transaction types is maintained in the [DIP repository](https://github.com/dashpay/dips/blob/master/dip-0002-special-transactions.md).
 
+**Implemented Special Transactions**
+
+| Release | Tx Version | Tx Type | Payload Size | Payload | Payload JSON | Tx Purpose
+| - | - | - | - | - | - |
+| v0.12.3 | 2 | - | n/a | n/a | n/a |
+| v0.13.0 | 3 | 0 | n/a | n/a | n/a | Standard (Classical) Transaction
+| v0.13.0 | 3 | 1 | compactSize uint | hex | ProRegTx | Masternode Registration
+| v0.13.0 | 3 | 2 | compactSize uint | hex | ProUpServTx | Update Masternode Service
+| v0.13.0 | 3 | 3 | compactSize uint | hex | ProUpRegTx| Update Masternode Operator
+| v0.13.0 | 3 | 4 | compactSize uint | hex | ProUpRevTx| Masternode Operator Revocation
+| v0.13.0 | 3 | 5 | compactSize uint | hex | CbTx| Masternode List Merkle Proof
+| v0.13.0 | 3 | 6 | compactSize uint | hex | QcTx| Long-Living Masternode Quorum Commitment
+
 {% endautocrossref %}
 
 #### ProRegTx
