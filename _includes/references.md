@@ -397,6 +397,7 @@ http://opensource.org/licenses/MIT.
 [bitcoinj micropayment tutorial]: https://bitcoinj.github.io/working-with-micropayments
 [block170]: https://www.biteasy.com/block/00000000d1145790a8694403d4063f323d499e655c83426834d4ce2f8dd4a2ee
 [casascius address utility]: https://github.com/casascius/Bitcoin-Address-Utility
+[coinbase special tx]: /en/developer-reference#cbtx
 [core alert.cpp]: https://github.com/dashpay/dash/blob/master/src/alert.cpp
 [core base58.h]: https://github.com/dashpay/dash/blob/master/src/base58.h
 [core chainparams.cpp]: https://github.com/dashpay/dash/blob/master/src/chainparams.cpp

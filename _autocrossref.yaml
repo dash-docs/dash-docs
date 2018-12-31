@@ -22,6 +22,7 @@ bitcoinj:
 '`block` messages': block message
 '`blocktxn` message': blocktxn message
 '`blocktxn` messages': blocktxn message
+'CbTx': coinbase special tx
 certificate chain:
 '`cmpctblock` message': cmpctblock message
 '`cmpctblock` messages': cmpctblock message
