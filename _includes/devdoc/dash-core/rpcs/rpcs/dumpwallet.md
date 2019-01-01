@@ -28,13 +28,13 @@ The `dumpwallet` RPC {{summary_dumpWallet}}
 
 {% enditemplate %}
 
-*Result---`null` or error*
+*Result---information about exported wallet*
 
 {% itemplate ntpd1 %}
 - n: "`result`"
-  t: "null"
+  t: "object"
   p: "Required<br>(exactly 1)"
-  d: "Always `null` whether success or failure.  The JSON-RPC error and message fields will be set if a failure occurred"
+  d: "An object describing dumped wallet file"
 
 - n: "→<br>`dashcoreversion`"
   t: "string"
