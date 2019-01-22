@@ -79,7 +79,7 @@ There are a number of limitations on InstantSend transactions:
 
 * The lock request will timeout 15 seconds after the first vote is seen (`INSTANTSEND_LOCK_TIMEOUT_SECONDS`)
 * The lock request will fail if it has not been locked after 60 seconds (`INSTANTSEND_FAILED_TIMEOUT_SECONDS`)
-* A minimum fee (0.0001 Dash) is required for non-simple transactions since they place a higher load on the masternodes. This fee was most
+* A “per-input” fee of 0.0001 DASH per input is required for non-simple transactions (inputs >=5) since they place a higher load on the masternodes. This fee was most
 recently decreased by [DIP-0001](https://github.com/dashpay/dips/blob/master/dip-0001.md).
 * To be used in an InstantSend transaction, an input must have at least the number confirmations (block depth) indicated by the table below
 
