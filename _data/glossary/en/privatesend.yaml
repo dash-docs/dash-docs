@@ -24,6 +24,6 @@ optional:
     links_html_or_markdown_style_capitalize_first_letter:
         - "[PrivateSend](/en/developer-guide#privatesend) --- Developer Guide"
         - "[PrivateSend messages](/en/developer-reference#privatesend-messages) --- Developer Reference"
-        - "[PrivateSend](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/1146924/PrivateSend) --- Official Wiki"
+        - "[PrivateSend](https://docs.dash.org/en/stable/introduction/features.html#privatesend) --- Dash Documentation"
 
 ---

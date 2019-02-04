@@ -21,7 +21,7 @@ optional:
     not_to_be_confused_with_capitalize_first_letter:
 
     links_html_or_markdown_style_capitalize_first_letter:
-        - "[Evolution](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/39583757/Evolution) --- Dash Wiki"
+        - "[Evolution](https://docs.dash.org/en/stable/introduction/features.html#evolution) --- Dash Documentation"
 
 
 ---

@@ -130,7 +130,7 @@ The ideal value is 3600 (one hour).
 This method of calculating difficulty (Dark Gravity Wave) was authored by Dash
 creator Evan Duffield to fix exploits possible with the previously used
 Kimoto Gravity Well difficulty readjustment algorithm. For additional detail,
-reference this [Official Documentation Dark Gravity Wave page](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/1146926/Dark+Gravity+Wave).
+reference this [Official Documentation Dark Gravity Wave page](https://docs.dash.org/en/latest/introduction/features.html#dark-gravity-wave).
 
 Because each block header must hash to a value below the target
 threshold, and because each block is linked to the block that

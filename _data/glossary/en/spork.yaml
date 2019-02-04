@@ -28,7 +28,7 @@ optional:
 
     links_html_or_markdown_style_capitalize_first_letter:
         - "[Spork message](/en/developer-reference#spork) --- Developer Reference"
-        - "[Multi-Phased Fork (Spork)](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/19169298/Multi-Phased+Fork+Spork) --- Dash Wiki"
-        - "[Understanding Sporks](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/128319489/Understanding+Sporks) --- Dash Wiki"
+        - "[Multi-Phased Fork (Spork)](https://docs.dash.org/en/stable/introduction/features.html#sporks) --- Dash Documentation"
+        - "[Understanding Sporks](https://docs.dash.org/en/latest/developers/index.html#sporks) --- Dash Documentation"
 
 ---

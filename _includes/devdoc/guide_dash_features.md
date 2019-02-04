@@ -118,7 +118,7 @@ had already been confirmed to a block depth of 5 in the blockchain.
 
 Dash Core's PrivateSend feature provides a way to improve privacy by performing
 coin-mixing without relinquishing custodial access. For additional details,
-reference this [Official Documentation PrivateSend page](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/1146924/PrivateSend<!--noref-->).
+reference this [Official Documentation PrivateSend page](https://docs.dash.org/en/latest/introduction/features.html#privatesend<!--noref-->).
 
 The following video provides an overview with a good introduction to the details:
 
@@ -327,7 +327,7 @@ network. The payee is selected from a subset of masternodes made up of 10%
 of eligible nodes that have been waiting the longest since their last payment.
 The winner is then determined based on a number of parameters including the
 distance between the its hash and the block's proof of work. For additional
-detail, reference this [Official Documentation Payment Logic page](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/8880184/Payment+Logic).
+detail, reference this [Official Documentation Payment Logic page](https://docs.dash.org/en/latest/masternodes<!--noref-->/understanding.html#payment-logic).
 
 Nodes receiving a `mnw` message verify the validity of the message before
 relaying it to their peers. If the message is invalid, the sending node may be

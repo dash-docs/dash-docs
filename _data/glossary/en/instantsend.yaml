@@ -24,6 +24,6 @@ optional:
     links_html_or_markdown_style_capitalize_first_letter:
         - "[InstantSend](/en/developer-guide#instantsend) --- Developer Guide"
         - "[InstantSend messages](/en/developer-reference#instantsend-messages) --- Developer Reference"
-        - "[InstantSend](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/1146928/InstantSend) --- Dash Wiki"
+        - "[InstantSend](https://docs.dash.org/en/stable/introduction/features.html#instantsend) --- Dash Documentation"
 
 ---

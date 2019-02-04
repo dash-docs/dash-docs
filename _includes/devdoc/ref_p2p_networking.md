@@ -3137,7 +3137,7 @@ message header has been omitted.)
 {% autocrossref %}
 
 The following network messages enable the Governance features built in to Dash.
-For additional details on the governance system, see this [Budget System page](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/8585246/Budget+System+Funding+Voting+DGBB<!--noref-->).
+For additional details on the governance system, see this [Budget System page](https://docs.dash.org/en/latest/governance/index.html).
 
 ![Overview Of P2P Protocol Governance Request And Reply Messages](/img/dev/en-p2p-governance-messages.svg)
 

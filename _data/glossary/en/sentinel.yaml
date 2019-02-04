@@ -21,7 +21,7 @@ optional:
 
     links_html_or_markdown_style_capitalize_first_letter:
         - "[Sentinel](/en/developer-guide#sentinel) --- Developer Guide"
-        - "[Sentinel](https://dashpay.atlassian.net/wiki/spaces/DOC/pages/103922706/Sentinel) --- Dash Wiki"
+        - "[Sentinel](https://docs.dash.org/en/stable/introduction/features.html#sentinel) --- Dash Documentation"
 
 
 ---
