@@ -146,7 +146,7 @@ The `protx<!--noref--> register_fund` RPC creates and funds a ProRegTx with the 
 - n: "`collateralAddress`"
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
-  d: "The Dash address to send the collateral to (must be a P2PKH address)"
+  d: "The Dash address to send the collateral to"
 {% enditemplate %}
 
 *Parameter #2---IP Address and port*
