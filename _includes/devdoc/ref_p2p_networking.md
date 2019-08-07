@@ -1814,10 +1814,8 @@ Sporks (per [`src/spork.h`][spork.h])
 | ---------- | ---------- | ----------- | ----------- |
 | 10001 | 2 | `INSTANTSEND_ENABLED` | Turns on and off InstantSend network wide
 | 10002 | 3 | `INSTANTSEND_BLOCK_FILTERING` | Turns on and off InstantSend block filtering
-| 10004 | 5 | `INSTANTSEND_MAX_VALUE` | Controls the max value for an InstantSend transaction (currently 2000 dash)
 | 10005 | 6 | `NEW_SIGS` | Turns on and off new signature format for Dash-specific messages
 | 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
-| 10011 | 12 | `RECONSIDER_BLOCKS` | Forces reindex of a specified number of blocks to recover from unintentional network forks
 | 10014 | 15 | `DETERMINISTIC_MNS_ENABLED` | Deterministic masternode lists are enabled
 | 10015 | 16 | `INSTANTSEND_AUTOLOCKS` | Automatic InstantSend for transactions with <=4 inputs (also eliminates the special InstantSend fee requirement for these transactions)
 | 10016 | 17 | `SPORK_17_QUORUM_DKG_ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.
@@ -1825,8 +1823,10 @@ Sporks (per [`src/spork.h`][spork.h])
 | 10019 | 20 | `SPORK_20_INSTANTSEND_LLMQ_BASED` | Enable LLMQ-based InstantSend.
 | | | |
 | | | **Removed Sporks** |
+| _10004_ | _5_ | _`INSTANTSEND_MAX_VALUE`_ | _Removed in Dash Core 0.14.1.<br>Controls the max value for an InstantSend transaction (currently 2000 dash)_
 | _10007_ | _8_ | _`MASTERNODE_PAYMENT_ENFORCEMENT`_ | _Removed in Dash Core 0.14.0.<br>Requires masternodes to be paid by miners when blocks are processed_
 | _10009_ | _10_ | _`MASTERNODE_PAY_UPDATED_NODES`_ | _Removed in Dash Core 0.14.0.<br>Only current protocol version masternode's will be paid (not older nodes)_
+| _10011_ | _12_ | _`RECONSIDER_BLOCKS`_ | _Removed in Dash Core 0.14.1.<br>Forces reindex of a specified number of blocks to recover from unintentional network forks_
 | _10012_ | _13_ | _`OLD_SUPERBLOCK_FLAG`_ | _Removed in Dash Core 0.12.3.<br>No network function since block 614820_
 | _10013_ | _14_ | _`REQUIRE_SENTINEL_FLAG`_ | _Removed in Dash Core 0.14.0.<br>Only masternode's running sentinel will be paid_
 | _10017_ | _18_ | _`QUORUM_DEBUG_ENABLED`_ | _Removed in Dash Core 0.14.0.<br><br>Temporarily used on Testnet only quorum debugging._
