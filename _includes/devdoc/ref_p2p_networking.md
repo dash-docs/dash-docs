@@ -2465,7 +2465,7 @@ The `dssu` message provides a mixing pool status update.
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nMsgSessionID | int | Required | Session ID
 | 4 | nMsgState | int | Required | Current state of mixing process
-| 4 | nMsgEntriesCount | int | Required | Number of entries in the mixing pool
+| 4 | nMsgEntriesCount | int | Required | _Deprecated in Dash Core 0.14.1_<br><br>Number of entries in the mixing pool
 | 4 | nMsgStatusUpdate | int | Required | Update state and/or signal if entry was accepted or not
 | 4 | nMsgMessageID | int | Required | ID of the typical masternode reply message
 
@@ -2520,7 +2520,6 @@ message header has been omitted.)
 {% highlight text %}
 86140c00 ............................. Session ID: 791686
 02000000 ............................. State: POOL_STATE_ACCEPTING_ENTRIES (2)
-03000000 ............................. Entries: 3
 01000000 ............................. Status Update: STATUS_ACCEPTED (1)
 13000000 ............................. Message ID: MSG_NOERR (0x13)
 {% endhighlight %}
