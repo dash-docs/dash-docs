@@ -8,7 +8,7 @@ http://opensource.org/licenses/MIT.
 ##### GetMerkleBlocks
 {% include helpers/subhead-links.md %}
 
-{% assign summary_getMerkleBlocks="returns an array of hex-encoded merkleblocks for <count> blocks starting from <hash> which match <filter>." %}
+{% assign summary_getMerkleBlocks="returns an array of hex-encoded merkleblocks for <count> blocks<!--noref--> starting from <hash> which match <filter>." %}
 
 {% autocrossref %}
 

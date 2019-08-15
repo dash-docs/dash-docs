@@ -57,7 +57,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_getMemPoolEntry="returns mempool data for given transaction (must be in mempool)." %}
 {% assign summary_getMemPoolInfo="returns information about the node's current transaction memory pool." %}
 {% assign summary_getMemoryInfo="returns information about memory usage." %}
-{% assign summary_getMerkleBlocks="returns an array of hex-encoded merkleblocks for <count> blocks starting from <hash> which match <filter>." %}
+{% assign summary_getMerkleBlocks="returns an array of hex-encoded merkleblocks for <count> blocks<!--noref--> starting from <hash> which match <filter>." %}
 {% assign summary_getMiningInfo="returns various mining-related information." %}
 {% assign summary_getNetTotals="returns information about network traffic, including bytes in, bytes out, and the current time." %}
 {% assign summary_getNetworkHashPS="returns the estimated network hashes per second based on the last n blocks." %}
