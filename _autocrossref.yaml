@@ -399,6 +399,8 @@ DIP8:
 '`getmempoolentry` RPC': rpc getmempoolentry
 '`getmempoolinfo`': rpc getmempoolinfo
 '`getmempoolinfo` RPC': rpc getmempoolinfo
+'`getmerkleblocks`': rpc getmerkleblocks
+'`getmerkleblocks` RPC': rpc getmerkleblocks
 '`getmininginfo`': rpc getmininginfo
 '`getmininginfo` RPC': rpc getmininginfo
 '`getnettotals`': rpc getnettotals

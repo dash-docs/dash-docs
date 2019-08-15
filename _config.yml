@@ -221,6 +221,7 @@ devsearches:
     - 'GetMempoolDescendants': "/en/developer-reference#getmempooldescendants"
     - 'GetMempoolEntry': "/en/developer-reference#getmempoolentry"
     - 'GetMempoolInfo': "/en/developer-reference#getmempoolinfo"
+    - 'GetMerkleBlocks': "/en/developer-reference#getmerkleblocks"
     - 'GetMiningInfo': "/en/developer-reference#getmininginfo"
     - 'GetNetTotals': "/en/developer-reference#getnettotals"
     - 'GetNetworkHashPS': "/en/developer-reference#getnetworkhashps"

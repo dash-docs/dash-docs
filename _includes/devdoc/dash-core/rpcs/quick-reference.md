@@ -127,6 +127,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetMemPoolEntry][rpc  getmempoolentry]: {{summary_getMemPoolEntry}} {{DASH_NEW0_12_3}} {{NEW0_13_0}}
 * [GetMemPoolInfo][rpc getmempoolinfo]: {{summary_getMemPoolInfo}} {{UPDATED0_12_0}}
 * [GetRawMemPool][rpc getrawmempool]: {{summary_getRawMemPool}} {{DASH_UPDATED0_12_3}} {{UPDATED0_13_0}}
+* [GetMerkleBlocks][rpc getmerkleblocks]: {{summary_getMerkleBlocks}} {{DASH_NEW0_14_1}}
 * [GetSpecialTxes][rpc getspecialtxes]: {{summary_getSpecialTxes}} {{DASH_NEW0_13_1}}
 * [GetSpentInfo][rpc getspentinfo]: {{summary_getSpentInfo}} {{DASH_NEW0_12_1}}
 * [GetTxOut][rpc gettxout]: {{summary_getTxOut}}

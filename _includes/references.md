@@ -124,6 +124,7 @@ http://opensource.org/licenses/MIT.
 [rpc getmempooldescendants]: /en/developer-reference#getmempooldescendants
 [rpc getmempoolentry]: /en/developer-reference#getmempoolentry
 [rpc getmempoolinfo]: /en/developer-reference#getmempoolinfo
+[rpc getmerkleblocks]: /en/developer-reference#getmerkleblocks
 [rpc getmininginfo]: /en/developer-reference#getmininginfo
 [rpc getnettotals]: /en/developer-reference#getnettotals
 [rpc getnetworkhashps]: /en/developer-reference#getnetworkhashps
