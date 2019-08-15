@@ -570,7 +570,6 @@ Result:
     }
   }
 }
-p
 {% endhighlight %}
 
 {% endautocrossref %}
