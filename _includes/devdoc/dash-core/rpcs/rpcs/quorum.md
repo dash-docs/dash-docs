@@ -1467,7 +1467,8 @@ The `quorum<!--noref--> sign` RPC requests threshold-signing for a message.
 
 {% highlight bash %}
 dash-cli -testnet quorum sign 1 \
-  "abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234" "51c11d287dfa85aef3eebb5420834c8e443e01d15c0b0a8e397d67e2e51aa239"
+  "abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234" \
+  "51c11d287dfa85aef3eebb5420834c8e443e01d15c0b0a8e397d67e2e51aa239"
 {% endhighlight %}
 
 Result:
@@ -1554,7 +1555,8 @@ The `quorum<!--noref--> getrecsig` RPC checks gets the recovered signature for a
 
 {% highlight bash %}
 dash-cli -testnet quorum getrecsig 1 \
-  "e980ebf295b42f24b03321ffb255818753b2b211e8c46b61c0b6fde91242d12f" "907087d4720850e639b7b5cc41d7a6d020e5a50debb3bc3974f0cb3d7d378ea4"
+  "e980ebf295b42f24b03321ffb255818753b2b211e8c46b61c0b6fde91242d12f" \
+  "907087d4720850e639b7b5cc41d7a6d020e5a50debb3bc3974f0cb3d7d378ea4"
 {% endhighlight %}
 
 Result:
@@ -1621,7 +1623,8 @@ The `quorum<!--noref--> hasrecsig` RPC checks for a recovered signature for a pr
 
 {% highlight bash %}
 dash-cli -testnet quorum hasrecsig 1 \
-  "e980ebf295b42f24b03321ffb255818753b2b211e8c46b61c0b6fde91242d12f" "907087d4720850e639b7b5cc41d7a6d020e5a50debb3bc3974f0cb3d7d378ea4"
+  "e980ebf295b42f24b03321ffb255818753b2b211e8c46b61c0b6fde91242d12f" \
+  "907087d4720850e639b7b5cc41d7a6d020e5a50debb3bc3974f0cb3d7d378ea4"
 {% endhighlight %}
 
 Result:
@@ -1681,7 +1684,8 @@ The `quorum<!--noref--> isconflicting` RPC checks if there is a conflict for a t
 
 {% highlight bash %}
 dash-cli -testnet quorum isconflicting 1 \
-  "e980ebf295b42f24b03321ffb255818753b2b211e8c46b61c0b6fde91242d12f" "907087d4720850e639b7b5cc41d7a6d020e5a50debb3bc3974f0cb3d7d378ea4"
+  "e980ebf295b42f24b03321ffb255818753b2b211e8c46b61c0b6fde91242d12f" \
+  "907087d4720850e639b7b5cc41d7a6d020e5a50debb3bc3974f0cb3d7d378ea4"
 {% endhighlight %}
 
 Result:
