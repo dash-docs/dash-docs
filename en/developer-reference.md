@@ -182,6 +182,8 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/getmempoolinfo.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/getmerkleblocks.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/getmininginfo.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/getnettotals.md %}
