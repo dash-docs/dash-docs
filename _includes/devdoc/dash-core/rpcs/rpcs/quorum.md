@@ -1709,7 +1709,6 @@ The `quorum` RPC checks which quorums the given masternode is a member of.
   t: "string"
   p: "Required<br>(exactly 1)"
   d: "ProTxHash of the masternode."
-
 {% enditemplate %}
 
 *Parameter #2---scanQuorumsCount*
@@ -1719,10 +1718,9 @@ The `quorum` RPC checks which quorums the given masternode is a member of.
   t: "number"
   p: "Optional"
   d: "Number of quorums to scan for. If not specified, the active quorum count for each specific quorum type is used."
-
 {% enditemplate %}
 
-*Result---*
+*Result---list of quorums the masternode is a member of*
 
 {% itemplate ntpd1 %}
 - n: "`result`"
