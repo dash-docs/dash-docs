@@ -70,11 +70,12 @@ deprecated.
   p: "Required<br>(exactly 1)"
   d: "If the transaction was found, this will be an object describing it"
 
-- n: "{{DEPTH}} →<br>`hex`"
+{{INCLUDE_DECODE_RAW_TRANSACTION}}
+- n: "→<br>`hex`"
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
   d: "The serialized, hex-encoded data for the provided `txid`"   
-{{INCLUDE_DECODE_RAW_TRANSACTION}}
+
 - n: "→<br>`blockhash`"
   t: "string (hex)"
   p: "Optional<br>(0 or 1)"
@@ -145,11 +146,10 @@ Result:
 
 {% highlight json %}
 {
-  "hex": "02000000015d0b26079696875e9fc3cb480420aae3c8b1da628fbb14cc718066df7fe7c5fd010000006a47304402202cfa683981898ad9adb8953423a38f7185ed41e163aa195d608fbe5bc3034910022034e2376aaed1c6576c0dad79d626ee27f706baaed86dabb105979c3e6f6e1cb9012103d14eb001cf0908f3a2333d171f6236497a82318a6a6f649b4d7fd8e5c8922e08feffffff021e3f4b4c000000001976a914b02ae52066542b4aec5cf45c7cae3183d7bd322788ac00f90295000000001976a914252c9de3a0ebd5c95886187b24969d4ccdb5576e88ac943d0000",
   "txid": "f4de3be04efa18e203c9d0b7ad11bb2517f5889338918ed300a374f5bd736ed7",
-  "size": 225,
   "version": 2,
   "type": 0,
+  "size": 225,
   "locktime": 15764,
   "vin": [
     {
@@ -159,6 +159,9 @@ Result:
         "asm": "304402202cfa683981898ad9adb8953423a38f7185ed41e163aa195d608fbe5bc3034910022034e2376aaed1c6576c0dad79d626ee27f706baaed86dabb105979c3e6f6e1cb9[ALL] 03d14eb001cf0908f3a2333d171f6236497a82318a6a6f649b4d7fd8e5c8922e08",
         "hex": "47304402202cfa683981898ad9adb8953423a38f7185ed41e163aa195d608fbe5bc3034910022034e2376aaed1c6576c0dad79d626ee27f706baaed86dabb105979c3e6f6e1cb9012103d14eb001cf0908f3a2333d171f6236497a82318a6a6f649b4d7fd8e5c8922e08"
       },
+      "value": 37.80000000,
+      "valueSat": 3780000000,
+      "address": "yTsGq4wV8WF5GKLaYV2C43zrkr2sfTtysT",
       "sequence": 4294967294
     }
   ],
@@ -175,7 +178,10 @@ Result:
         "addresses": [
           "ycNwAN4DQ7Xnw5XLKg84SR4U1GE22FfLNQ"
         ]
-      }
+      },
+      "spentTxId": "85b40136f077cded9587022645fde82389e2f01b0bec697d8cd22ccab930f3d3",
+      "spentIndex": 19,
+      "spentHeight": 20631
     },
     {
       "value": 25.00000000,
@@ -189,17 +195,21 @@ Result:
         "addresses": [
           "yPi1JKw5fn8bMFsCCtnkGagogW6GXwGktZ"
         ]
-      }
+      },
+      "spentTxId": "90aa8902dbab71c07a5ac06dfe45c5e5fa1f032788b5f916951d0969c9feef39",
+      "spentIndex": 1,
+      "spentHeight": 24630
     }
   ],
+  "hex": "02000000015d0b26079696875e9fc3cb480420aae3c8b1da628fbb14cc718066df7fe7c5fd010000006a47304402202cfa683981898ad9adb8953423a38f7185ed41e163aa195d608fbe5bc3034910022034e2376aaed1c6576c0dad79d626ee27f706baaed86dabb105979c3e6f6e1cb9012103d14eb001cf0908f3a2333d171f6236497a82318a6a6f649b4d7fd8e5c8922e08feffffff021e3f4b4c000000001976a914b02ae52066542b4aec5cf45c7cae3183d7bd322788ac00f90295000000001976a914252c9de3a0ebd5c95886187b24969d4ccdb5576e88ac943d0000",
   "blockhash": "0000000005f395d62a40ef9f2a13000bd4076e2131c8671db8333a5b31e4403f",
   "height": 15765,
-  "confirmations": 1,
+  "confirmations": 153657,
   "time": 1546278750,
   "blocktime": 1546278750,
   "instantlock": true,
-  "instantlock_internal": true,
-  "chainlock": false
+  "instantlock_internal": false,
+  "chainlock": true
 }
 {% endhighlight %}
 
@@ -208,7 +218,7 @@ A special transaction (CbTx) in serialized transaction format:
 
 {% highlight bash %}
 dash-cli getrawtransaction \
-  414a3911a274053beb867c79ad9a19bf508041554f147a1a2c73f8f9bc029717
+  25632685ed0d7286901a80961c924c1ddd952e764754dbd8b40d0956413c8b56
 {% endhighlight %}
 
 Result (wrapped):
@@ -227,7 +237,7 @@ Get the same transaction in JSON:
 
 {% highlight bash %}
 dash-cli getrawtransaction \
-414a3911a274053beb867c79ad9a19bf508041554f147a1a2c73f8f9bc029717 \
+25632685ed0d7286901a80961c924c1ddd952e764754dbd8b40d0956413c8b56 \
 1
 {% endhighlight %}
 
@@ -235,11 +245,10 @@ Result:
 
 {% highlight json %}
 {
-  "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff2703ae50011a4d696e656420627920416e74506f6f6c2021000b01201da9196f0000000007000000ffffffff02809e4730000000001976a914cbd7bfcc50351180132b2c0698cb90ad74c473c788ac809e4730000000001976a91488a060bc2dfe05780ae4dcb6c98b12436c35a93988ac00000000460200ae50010078e5c08b39960887bf95185c381bdb719e60b6925fa12af78a8824fade927387c757acb6bac63da84f9245e20cfd5d830382ac634d434725ca6349ab5db920a3",
   "txid": "25632685ed0d7286901a80961c924c1ddd952e764754dbd8b40d0956413c8b56",
-  "size": 229,
   "version": 3,
   "type": 5,
+  "size": 229,
   "locktime": 0,
   "vin": [
     {
@@ -260,7 +269,10 @@ Result:
         "addresses": [
           "yeuGUfPMrbEqAS2Pw1wonYgEPbM4LAA9LK"
         ]
-      }
+      },
+      "spentTxId": "1790b286922d1a439bdc056939bc902a222f9d66ee63d8427805617eedf835bd",
+      "spentIndex": 83,
+      "spentHeight": 94680
     },
     {
       "value": 8.10000000,
@@ -285,12 +297,14 @@ Result:
     "merkleRootMNList": "877392defa24888af72aa15f92b6609e71db1b385c1895bf870896398bc0e578",
     "merkleRootQuorums": "a320b95dab4963ca2547434d63ac8203835dfd0ce245924fa83dc6bab6ac57c7"
   },
+  "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff2703ae50011a4d696e656420627920416e74506f6f6c2021000b01201da9196f0000000007000000ffffffff02809e4730000000001976a914cbd7bfcc50351180132b2c0698cb90ad74c473c788ac809e4730000000001976a91488a060bc2dfe05780ae4dcb6c98b12436c35a93988ac00000000460200ae50010078e5c08b39960887bf95185c381bdb719e60b6925fa12af78a8824fade927387c757acb6bac63da84f9245e20cfd5d830382ac634d434725ca6349ab5db920a3",
   "blockhash": "00000000007b0fb99e36713cf08012482478ee496e6dcb4007ad2e806306e62b",
   "height": 86190,
-  "confirmations": 2,
+  "confirmations": 83233,
   "time": 1556114577,
   "blocktime": 1556114577,
-  "instantlock": false,
+  "instantlock": true,
+  "instantlock_internal": false,
   "chainlock": true
 }
 {% endhighlight %}
