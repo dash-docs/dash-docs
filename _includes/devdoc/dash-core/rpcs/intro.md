@@ -37,7 +37,7 @@ languages lacking a suitable native client. The remainder of this section
 describes the Dash Core RPC protocol in detail.
 
 The Dash Core RPC service listens for HTTP `POST` requests on port 9998 in
-mainnet mode, 19998 in testnet, or 18332 in regtest mode. The port number can be changed
+mainnet mode, 19998 in testnet, or 19898 in regtest mode. The port number can be changed
 by setting `rpcport` in `dash.conf`. By default the RPC service binds to your
 server's [localhost][Localhost] loopback
 network<!--noref--> interface so it's not accessible from other servers.

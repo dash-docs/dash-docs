@@ -21,7 +21,7 @@ Once installed, you'll have access to three programs: `dashd`,
 
 * `dashd` is more useful for programming: it provides a full peer
   which you can interact with through RPCs to port 9998 (or 19998
-  for testnet / 18332 for regtest).
+  for testnet / 19898 for regtest).
 
 * `dash-cli` allows you to send RPC commands to `dashd` from the
   command line.  For example, `dash-cli help`
