@@ -318,8 +318,6 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/setban.md %}
 
-{% include devdoc/dash-core/rpcs/rpcs/setbip69enabled.md %}
-
 {% include devdoc/dash-core/rpcs/rpcs/setgenerate.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/setnetworkactive.md %}

@@ -132,7 +132,6 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_sendToAddress="spends an amount to a given address." %}
 {% assign summary_sentinelPing="was removed in Dash Core 0.14.0." %}
 {% assign summary_setAccount="puts the specified address in the given account." %}
-{% assign summary_setBIP69Enabled="enables or disables BIP69 input/output sorting (regtest network only)" %}
 {% assign summary_setBan="attempts add or remove a IP/Subnet from the banned list." %}
 {% assign summary_setGenerate="was removed in Dash Core 0.12.3." %}
 {% assign summary_setNetworkActive="disables/enables all P2P network activity." %}

@@ -536,8 +536,6 @@ DIP8:
 '`sendtoaddress` RPC': rpc sendtoaddress
 '`setaccount`': rpc setaccount
 '`setaccount` RPC': rpc setaccount
-'`setbip69enabled`': rpc setbip69enabled
-'`setbip69enabled` RPC': rpc setbip69enabled
 '`setban`': rpc setban
 '`setban` RPC': rpc setban
 '`setgenerate`': rpc setgenerate
