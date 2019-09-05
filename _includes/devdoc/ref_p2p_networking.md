@@ -38,8 +38,8 @@ The following constants and defaults are taken from Dash Core's
 |---------|--------------|-----------------------------------------------|---------------
 | Mainnet | 9999         | 0xBD6B0CBF  | 0xBF0C6BBD                      | 0x1e0ffff0
 | Testnet | 19999        | 0xFFCAE2CE  | 0xCEE2CAFF                      | 0x1e0ffff0
-| Regtest | 19994        | 0xDCB7C1FC  | 0xFCC1B7DC                      | 0x207fffff
 | Devnet  | User-defined | 0xCEFFCAE2  | 0xE2CAFFCE                      | 0x207fffff
+| Regtest | 19899        | 0xDCB7C1FC  | 0xFCC1B7DC                      | 0x207fffff
 
 Note: the testnet start string and nBits above are for testnet3.
 
