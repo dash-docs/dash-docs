@@ -81,6 +81,11 @@ deprecated.
   p: "Optional<br>(0 or 1)"
   d: "If the transaction has been included in a block on the local best block chain, this is the hash of that block encoded as hex in RPC byte order"
 
+- n: "→<br>`height`"
+  t: "number (int)"
+  p: "Optional<br>(0 or 1)"
+  d: "The block height where the transaction was mined"
+
 - n: "→<br>`confirmations`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
