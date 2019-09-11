@@ -102,11 +102,6 @@ The `gettxout` RPC {{summary_getTxOut}}
   p: "Required<br>(1 or more)"
   d: "A P2PKH or P2SH address"
 
-- n: "→<br>`version`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "The transaction version number of the transaction containing the pubkey script"
-
 - n: "→<br>`coinbase`"
   t: "bool"
   p: "Required<br>(exactly 1)"
@@ -114,7 +109,7 @@ The `gettxout` RPC {{summary_getTxOut}}
 
 {% enditemplate %}
 
-*Example from Dash Core 0.12.2*
+*Example from Dash Core 0.14.1*
 
 Get the UTXO from the following transaction from the first output index ("0"),
 searching the memory pool if necessary.
@@ -142,7 +137,6 @@ Result:
       "ycwoiAibTjpwnoCZSX7S4kiB2H8wULw9qo"
     ]
   },
-  "version": 1,
   "coinbase": false
 }
 {% endhighlight %}

@@ -135,7 +135,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetMerkleBlocks][rpc getmerkleblocks]: {{summary_getMerkleBlocks}} {{DASH_NEW0_14_1}}
 * [GetSpecialTxes][rpc getspecialtxes]: {{summary_getSpecialTxes}} {{DASH_NEW0_13_1}}
 * [GetSpentInfo][rpc getspentinfo]: {{summary_getSpentInfo}} {{DASH_NEW0_12_1}}
-* [GetTxOut][rpc gettxout]: {{summary_getTxOut}}
+* [GetTxOut][rpc gettxout]: {{summary_getTxOut}} {{DASH_UPDATED0_14_1}}
 * [GetTxOutProof][rpc gettxoutproof]: {{summary_getTxOutProof}} {{NEW0_11_0}}
 * [GetTxOutSetInfo][rpc gettxoutsetinfo]: {{summary_getTxOutSetInfo}} {{DASH_UPDATED0_14_1}}
 * [PreciousBlock][rpc preciousblock]: {{summary_preciousBlock}} {{DASH_NEW0_12_3}} {{NEW0_14_0}}
