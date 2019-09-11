@@ -62,7 +62,7 @@ Note: For backwards compatibility, passing in a `true` instead of an object will
 - n: "→ <br>`reserveChangeKey`"
   t: "bool"
   p: "Optional<br>(0 or 1)"
-  d: "*Added in Bitcoin Core 0.14.0*<br><br>Reserves the change output key from the keypool. The default is `true`. Before 0.14.0, the used keypool key was never marked as change-address key and directly returned to the keypool (leading to address reuse)."  
+  d: "*Deprecated and ignored in Dash Core 0.14.1*<br><br>Reserves the change output key from the keypool. The default is `true`. Before Bitcoin Core 0.14.0, the used keypool key was never marked as change-address key and directly returned to the keypool (leading to address reuse)."  
 
 - n: "→ <br>`feeRate`"
   t: "numeric (bitcoins)"
