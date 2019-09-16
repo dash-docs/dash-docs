@@ -228,7 +228,7 @@ mixing pool.
   _**Step 0 - Pool Selection**_
 
   * Existing mixing pool information is derived from the Queue messages seen by the client
-  * Dash Core attempts to join an existing mixing pool 2/3 of the time although this is not a requirement that alternative implementations would be required to follow ([Dash Core Reference](https://github.com/dashpay/dash/blob/e596762ca22d703a79c6880a9d3edb1c7c972fd3/src/privatesend<!--noref-->-client.cpp#L817-#L826))
+  * Dash Core attempts to join an existing mixing pool and only requests creation of a new one if that fails, although this is not a requirement that alternative implementations would be required to follow
 
   _**Step 1 - Pool Request**_
 
