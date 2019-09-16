@@ -162,10 +162,6 @@ integer value used in P2P messages, and the actual Dash value.
 
 Protocol version 70213 added a 5th denomination (0.001 DASH).
 
-The denominations are structured to allow converting between denominations
-directly without requiring additional inputs or creating change (for example,
-1 x 10.0001 = 10 x 1.00001, 1 x 0.100001 = 10 x 0.0100001, etc.).
-
 {% endautocrossref %}
 
 [Example Testnet denomination creation transaction](https://testnet-insight.dashevo.org/insight/tx/f0174fc87d68a18617c2990df4d9455c0459c601d2d6473934357a66f9b8b70a)
