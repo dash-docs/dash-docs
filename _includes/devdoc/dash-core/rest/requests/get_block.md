@@ -75,6 +75,11 @@ GET /block/<hash>.<format>
   p: "Required<br>(exactly 1)"
   d: "This block's version number.  See [block version numbers][section block versions]"
 
+- n: "→<br>`versionHex`"
+  t: "number (int)"
+  p: "Required<br>(exactly 1)"
+  d: "This block's version number formatted in hexadecimal."
+
 - n: "→<br>`merkleroot`"
   t: "string (hex)"
   p: "Required<br>(exactly 1)"
@@ -132,25 +137,6 @@ GET /block/<hash>.<format>
   d: "The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order"
 
 {% enditemplate %}
-
-<!--
-  Segwit related fields not in Dash
-- n: "→<br>`strippedsize`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "*Added in Bitcoin Core 0.13.0*<br><br>The size of this block in serialized block format excluding witness data, counted in bytes"
-
-
-- n: "→<br>`weight`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "*Added in Bitcoin Core 0.13.0*<br><br>The block weight as defined in BIP 141"
-
-- n: "→<br>`versionHex`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "*Added in Bitcoin Core 0.13.0*<br><br>This block's version number formatted in hexadecimal.  See [BIP9 assignments]"
--->
 
 *Examples from Dash Core 0.12.2*
 

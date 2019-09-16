@@ -146,26 +146,10 @@ dash even if this parameter is set to `1` or higher.{% endcapture %}
   p: "Required<br>(exactly 1)"
   d: "The transaction's TXID encoded as hex in RPC byte order"
 
-{% comment %}
-NOT IN DASH
-- n: "{{DEPTH}} →<br>`hash`"
-  t: "string (hex)"
-  p: "Required<br>(exactly 1)"
-  d: "*Added in Bitcoin Core 0.13.0*<br><br>The transaction hash.  Differs from txid for witness transactions"
-{% endcomment %}  
-
 - n: "{{DEPTH}} →<br>`size`"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "*Added in Bitcoin Core 0.12.0*<br><br>The serialized transaction size"
-
-{% comment %}
-NOT IN DASH
-- n: "{{DEPTH}} →<br>`vsize`"
-  t: "number (int)"
-  p: "Required<br>(exactly 1)"
-  d: "*Added in Bitcoin Core 0.13.0*<br><br>The virtual transaction size.  Differs from size for witness transactions"
-{% endcomment %}  
 
 - n: "{{DEPTH}} →<br>`version`"
   t: "number (int)"
@@ -246,14 +230,6 @@ NOT IN DASH
   t: "number (int)"
   p: "Required<br>(exactly 1)"
   d: "The input sequence number"
-
-{% comment %}
-NOT IN DASH
-- n: "{{DEPTH}} → → →<br>`txinwitness`"
-  t: "string : array"
-  p: "Optional<br>(0 or 1)"
-  d: "*Added in Bitcoin Core 0.13.0*<br><br>Hex-encoded witness data. Only for segregated witness transactions"  
-{% endcomment %}  
 
 - n: "{{DEPTH}} →<br>`vout`"
   t: "array"
