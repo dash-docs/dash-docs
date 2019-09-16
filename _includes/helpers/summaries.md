@@ -4,7 +4,6 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_abortRescan="Stops current wallet rescan" %}
 {% assign summary_addMultiSigAddress="adds a P2SH multisig address to the wallet." %}
 {% assign summary_addNode="attempts to add or remove a node from the addnode list, or to try a connection to a node once." %}
-{% assign summary_addWitnessAddress="adds a witness address for a script (with pubkey or redeem script known)." %}
 {% assign summary_backupWallet="safely copies `wallet.dat`<!--noref--> to the specified file, which can be a directory or a path with filename." %}
 {% assign summary_bls="provides a set of commands to execute BLS-related actions." %}
 {% assign summary_bumpFee="replaces an unconfirmed wallet transaction that signaled RBF with a new transaction that pays a higher fee." %}

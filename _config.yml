@@ -169,7 +169,6 @@ devsearches:
     - 'AbortRescan': "/en/developer-reference#abortrescan"
     - 'AddMultiSigAddress': "/en/developer-reference#addmultisigaddress"
     - 'AddNode': "/en/developer-reference#addnode"
-    - 'AddWitnessAddress': "/en/developer-reference#addwitnessaddress"
     - 'BackupWallet': "/en/developer-reference#backupwallet"
     - 'BLS': "/en/developer-reference#bls"
     - 'BumpFee': "/en/developer-reference#bumpfee"

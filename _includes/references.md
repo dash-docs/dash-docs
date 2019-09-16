@@ -72,7 +72,6 @@ http://opensource.org/licenses/MIT.
 [rpc abortrescan]: /en/developer-reference#abortrescan
 [rpc addmultisigaddress]: /en/developer-reference#addmultisigaddress
 [rpc addnode]: /en/developer-reference#addnode
-[rpc addwitnessaddress]: /en/developer-reference#addwitnessaddress
 [rpc backupwallet]: /en/developer-reference#backupwallet
 [rpc bls]: /en/developer-reference#bls
 [rpc bumpfee]: /en/developer-reference#bumpfee
