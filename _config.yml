@@ -171,7 +171,6 @@ devsearches:
     - 'AddNode': "/en/developer-reference#addnode"
     - 'BackupWallet': "/en/developer-reference#backupwallet"
     - 'BLS': "/en/developer-reference#bls"
-    - 'BumpFee': "/en/developer-reference#bumpfee"
     - 'ClearBanned': "/en/developer-reference#clearbanned"
     - 'CreateMultisig': "/en/developer-reference#createmultisig"
     - 'CreateRawTransaction': "/en/developer-reference#createrawtransaction"

@@ -6,7 +6,6 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_addNode="attempts to add or remove a node from the addnode list, or to try a connection to a node once." %}
 {% assign summary_backupWallet="safely copies `wallet.dat`<!--noref--> to the specified file, which can be a directory or a path with filename." %}
 {% assign summary_bls="provides a set of commands to execute BLS-related actions." %}
-{% assign summary_bumpFee="replaces an unconfirmed wallet transaction that signaled RBF with a new transaction that pays a higher fee." %}
 {% assign summary_clearBanned="clears list of banned nodes." %}
 {% assign summary_createMultiSig="creates a P2SH multi-signature address." %}
 {% assign summary_createRawTransaction="creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network." %}
