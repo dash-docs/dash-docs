@@ -1993,8 +1993,8 @@ operates in two ways:
 2. When sent to a masternode with a current mixing queue, it attempts to join the
   existing queue
 
-Dash Core starts a new queue ~33% of the time and attempts to join an existing
-queue the remainder of the time.
+Dash Core attempts to join an existing queue first and only requests a new one
+if no existing ones are available.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
