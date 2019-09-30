@@ -357,6 +357,8 @@ DIP8:
 '`getbalance` RPC': rpc getbalance
 '`getbestblockhash`': rpc getbestblockhash
 '`getbestblockhash` RPC': rpc getbestblockhash
+'`getbestchainlock`': rpc getbestchainlock
+'`getbestchainlock` RPC': rpc getbestchainlock
 '`getblock`': rpc getblock
 '`getblock` RPC': rpc getblock
 '`getblockchaininfo`': rpc getblockchaininfo

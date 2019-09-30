@@ -200,6 +200,7 @@ devsearches:
     - 'GetAddressUtxos': "/en/developer-reference#getaddressutxos"
     - 'GetBalance': "/en/developer-reference#getbalance"
     - 'GetBestBlockHash': "/en/developer-reference#getbestblockhash"
+    - 'GetBestChainLock': "/en/developer-reference#getbestchainlock"    
     - 'GetBlock': "/en/developer-reference#getblock"
     - 'GetBlockChainInfo': "/en/developer-reference#getblockchaininfo"
     - 'GetBlockCount': "/en/developer-reference#getblockcount"

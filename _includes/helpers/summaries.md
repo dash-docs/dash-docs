@@ -36,6 +36,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_getAddressesByAccount="returns a list of every address assigned to a particular account." %}
 {% assign summary_getBalance="gets the balance in decimal dash across all accounts or for a particular account." %}
 {% assign summary_getBestBlockHash="returns the header hash of the most recent block on the best block chain." %}
+{% assign summary_getBestChainLock="returns the block hash of the best chainlock." %}
 {% assign summary_getBlock="gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block." %}
 {% assign summary_getBlockChainInfo="provides information about the current state of the block chain." %}
 {% assign summary_getBlockCount="returns the number of blocks in the local best block chain." %}

@@ -140,6 +140,8 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/getbestblockhash.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/getbestchainlock.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/getblock.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/getblockchaininfo.md %}

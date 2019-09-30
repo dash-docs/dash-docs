@@ -103,6 +103,7 @@ http://opensource.org/licenses/MIT.
 [rpc getaddressutxos]: /en/developer-reference#getaddressutxos
 [rpc getbalance]: /en/developer-reference#getbalance
 [rpc getbestblockhash]: /en/developer-reference#getbestblockhash
+[rpc getbestchainlock]: /en/developer-reference#getbestchainlock
 [rpc getblock]: /en/developer-reference#getblock
 [rpc getblockchaininfo]: /en/developer-reference#getblockchaininfo
 [rpc getblockcount]: /en/developer-reference#getblockcount
