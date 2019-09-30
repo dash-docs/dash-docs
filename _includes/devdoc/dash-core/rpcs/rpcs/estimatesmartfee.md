@@ -4,6 +4,8 @@ http://opensource.org/licenses/MIT.
 {% endcomment %}
 {% assign filename="_includes/devdoc/dash-core/rpcs/rpcs/estimatesmartfee.md" %}
 
+<!--__-->
+
 ##### EstimateSmartFee
 {% include helpers/subhead-links.md %}
 
@@ -13,23 +15,23 @@ http://opensource.org/licenses/MIT.
 
 The `estimatesmartfee` RPC {{summary_estimateSmartFee}}
 
-*Parameter #1---how many blocks the transaction may wait before being included*
+*Parameter #1---how many confirmations the transaction may wait before being included*
 
 {% itemplate ntpd1 %}
-- n: "Blocks"
+- n: "conf_target"
   t: "number (int)"
   p: "Required<br>(exactly 1)"
-  d: "The maximum number of blocks a transaction should have to wait before it is predicted to be included in a block. Has to be between 1 and 25 blocks"
+  d: "Confirmation target in blocks (1 - 1008)"
 
 {% enditemplate %}
 
-*Parameter #2---conservative*
+*Parameter #2---estimate mode*
 
 {% itemplate ntpd1 %}
-- n: "conservative"
-  t: "bool"
-  p: "Optional<br>Default=`true`"
-  d: "Whether to return a more conservative estimate which also satisfies a longer history. A conservative estimate potentially returns a higher feerate and is more likely to be sufficient for the desired target, but is not as responsive to short term drops in the prevailing fee market"
+- n: "estimate_mode"
+  t: "string"
+  p: "Optional<br>Default=<br>`CONSERVATIVE`"
+  d: "The fee estimate mode. Whether to return a more conservative estimate which also satisfies a longer history. A conservative estimate potentially returns a higher feerate and is more likely to be sufficient for the desired target, but is not as responsive to short term drops in the prevailing fee market.  Must be one of:<br>`UNSET` (defaults to `CONSERVATIVE`)<br>`ECONOMICAL`<br>`CONSERVATIVE`"
 
 {% enditemplate %}
 
@@ -43,8 +45,13 @@ The `estimatesmartfee` RPC {{summary_estimateSmartFee}}
 
 - n: "→<br>`feerate`"
   t: "number (Dash)"
-  p: "Required<br>(exactly 1)"
-  d: "The estimated fee the transaction should pay in order to be included within the specified number of blocks.  If the node doesn't have enough information to make an estimate, the value `-1` will be returned"
+  p: "Optional<br>(0 or 1)"
+  d: "The estimated fee the transaction should pay in order to be included within the specified number of blocks.  If the node doesn't have enough information to make an estimate, this field will not be returned"
+
+- n: "→<br>`error`"
+  t: "JSON array (strings)"
+  p: "Optional<br>(0 or 1)"
+  d: "Errors encountered during processing"
 
 - n: "→<br>`blocks`"
   t: "number"
@@ -52,7 +59,7 @@ The `estimatesmartfee` RPC {{summary_estimateSmartFee}}
   d: "Block number where the estimate was found"
 {% enditemplate %}
 
-*Examples from Dash Core 0.12.2*
+*Examples from Dash Core 0.14.1*
 
 {% highlight bash %}
 dash-cli estimatesmartfee 6
@@ -70,15 +77,17 @@ Result:
 Requesting data the node can't calculate (out of range):
 
 {% highlight bash %}
-dash-cli estimatesmartfee 100
+dash-cli estimatesmartfee 2
 {% endhighlight %}
 
 Result:
 
 {% highlight json %}
 {
-  "feerate": -1,
-  "blocks": 100
+  "errors": [
+    "Insufficient data or no feerate found"
+  ],
+  "blocks": 2
 }
 {% endhighlight %}
 
