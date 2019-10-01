@@ -44,6 +44,7 @@ This file is licensed under the terms of its source texts{%endcomment%}
 {% assign summary_getBlockHashes="returns array of hashes of blocks within the timestamp range provided (requires `timestampindex` to be enabled)." %}
 {% assign summary_getBlockHeader="gets a block header with a particular header hash from the local block database either as a JSON object or as a serialized block header." %}
 {% assign summary_getBlockHeaders="returns an array of items with information about the requested number of blockheaders starting from the requested hash." %}
+{% assign summary_getBlockStats="computes per block statistics for a given window." %}
 {% assign summary_getBlockTemplate="gets a block template or proposal for use with mining software." %}
 {% assign summary_getChainTips="returns information about the highest-height block (tip) of each local block chain." %}
 {% assign summary_getChainTxStats="compute statistics about the total number and rate of transactions in the chain." %}

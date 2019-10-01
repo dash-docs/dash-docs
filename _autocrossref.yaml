@@ -372,6 +372,8 @@ DIP8:
 '`getblockheader`': rpc getblockheader
 '`getblockheader` RPC': rpc getblockheader
 '`getblockheaders`': rpc getblockheaders
+'`getblockstats`': rpc getblockstats
+'`getblockstats` RPC': rpc getblockstats
 '`getblockheaders` RPC': rpc getblockheaders
 '`getblocktemplate`': rpc getblocktemplate
 '`getblocktemplate` RPC': rpc getblocktemplate

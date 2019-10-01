@@ -156,6 +156,8 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/getblockheaders.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/getblockstats.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/getblocktemplate.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/getchaintips.md %}

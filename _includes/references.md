@@ -111,6 +111,7 @@ http://opensource.org/licenses/MIT.
 [rpc getblockhashes]: /en/developer-reference#getblockhashes
 [rpc getblockheader]: /en/developer-reference#getblockheader
 [rpc getblockheaders]: /en/developer-reference#getblockheaders
+[rpc getblockstats]: /en/developer-reference#getblockstats
 [rpc getblocktemplate]: /en/developer-reference#getblocktemplate
 [rpc getchaintips]: /en/developer-reference#getchaintips
 [rpc getchaintxstats]: /en/developer-reference#getchaintxstats

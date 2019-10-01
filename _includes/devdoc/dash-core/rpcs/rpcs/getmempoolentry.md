@@ -13,7 +13,7 @@ http://opensource.org/licenses/MIT.
 
 {% autocrossref %}
 
-*Added in Dash Core 0.12.3*
+*Added in Dash Core 0.14.0*
 
 The `getmempoolentry` RPC {{summary_getMemPoolEntry}}
 
