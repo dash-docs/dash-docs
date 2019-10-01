@@ -4,6 +4,8 @@ http://opensource.org/licenses/MIT.
 {% endcomment %}
 {% assign filename="_includes/devdoc/dash-core/rpcs/rpcs/signrawtransaction.md" %}
 
+<!--__-->
+
 ##### SignRawTransaction
 {% include helpers/subhead-links.md %}
 
@@ -56,6 +58,10 @@ The `signrawtransaction` RPC {{summary_signRawTransaction}}
   p: "Optional<br>(0 or 1)"
   d: "If the pubkey script was a script hash, this must be the corresponding redeem script"
 
+- n: "→ →<br>`amount`"
+  t: "numeric"
+  p: "Required<br>(exactly 1)"
+  d: "The amount of Dash spent"
 {% enditemplate %}
 
 *Parameter #3---private keys for signing*
