@@ -86,6 +86,8 @@ untrusted source.
 
 {% include devdoc/dash-core/rpcs/rpcs/createmultisig.md %}
 
+{% include devdoc/dash-core/rpcs/rpcs/combinerawtransaction.md %}
+
 {% include devdoc/dash-core/rpcs/rpcs/createrawtransaction.md %}
 
 {% include devdoc/dash-core/rpcs/rpcs/debug.md %}

@@ -303,6 +303,8 @@ DIP8:
 '`clearbanned` RPC': rpc clearbanned
 '`createmultisig`': rpc createmultisig
 '`createmultisig` RPC': rpc createmultisig
+'`combinerawtransaction`': rpc combinerawtransaction
+'`combinerawtransaction` RPC': rpc combinerawtransaction
 '`createrawtransaction`': rpc createrawtransaction
 '`createrawtransaction` RPC': rpc createrawtransaction
 '`debug`': rpc debug

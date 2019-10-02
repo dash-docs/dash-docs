@@ -173,6 +173,7 @@ devsearches:
     - 'BLS': "/en/developer-reference#bls"
     - 'ClearBanned': "/en/developer-reference#clearbanned"
     - 'CreateMultisig': "/en/developer-reference#createmultisig"
+    - 'CombineRawTransaction': "/en/developer-reference#combinerawtransaction"
     - 'CreateRawTransaction': "/en/developer-reference#createrawtransaction"
     - 'Debug': "/en/developer-reference#debug"
     - 'DecodeRawTransaction': "/en/developer-reference#decoderawtransaction"

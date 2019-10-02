@@ -76,6 +76,7 @@ http://opensource.org/licenses/MIT.
 [rpc bls]: /en/developer-reference#bls
 [rpc clearbanned]: /en/developer-reference#clearbanned
 [rpc createmultisig]: /en/developer-reference#createmultisig
+[rpc combinerawtransaction]: /en/developer-reference#combinerawtransaction
 [rpc createrawtransaction]: /en/developer-reference#createrawtransaction
 [rpc debug]: /en/developer-reference#debug
 [rpc decoderawtransaction]: /en/developer-reference#decoderawtransaction
