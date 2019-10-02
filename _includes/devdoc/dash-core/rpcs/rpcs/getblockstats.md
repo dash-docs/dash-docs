@@ -34,7 +34,7 @@ It won't work for some heights with pruning. It won't work without `-txindex` fo
 {% itemplate ntpd1 %}
 - n: "stats"
   t: "array"
-  p: " optional"
+  p: "optional"
   d: "Values to plot, by default all values (see result below)"
 
 {% enditemplate %}
@@ -97,22 +97,22 @@ It won't work for some heights with pruning. It won't work without `-txindex` fo
   p: "Required<br>(exactly 1)"
   d: "Truncated median fee in the block"
 
-- n: "→ →<br>`medianfeerate`"
+- n: "→<br>`medianfeerate`"
   t: "numeric"
   p: "Required<br>(exactly 1)"
   d: "Truncated median feerate (in duffs per byte)"
 
-- n: "→ →<br>`mediantime`"
+- n: "→<br>`mediantime`"
   t: "numeric"
   p: "Required<br>(exactly 1)"
   d: "The block median time past"
 
-- n: "→ →<br>`mediantxsize`"
+- n: "→<br>`mediantxsize`"
   t: "numeric"
   p: "Required<br>(exactly 1)"
   d: "Truncated median transaction size"
 
-- n: "→ →<br>`minfee`"
+- n: "→<br>`minfee`"
   t: "numeric"
   p: "Required<br>(exactly 1)"
   d: "Minimum fee in the block"
@@ -148,27 +148,27 @@ It won't work for some heights with pruning. It won't work without `-txindex` fo
 
 - n: "→<br>`total_size`"
   t: "numeric"
-  p: "Optional<br>(0 or 1)"
+  p: "Required<br>(exactly 1)"
   d: "Total size of all non-coinbase transactions"
 
 - n: "→<br>`totalfee`"
   t: "numeric"
-  p: "Optional<br>(0 or 1)"
+  p: "Required<br>(exactly 1)"
   d: "The fee total"
 
 - n: "→<br>`txs`"
   t: "numeric"
-  p: "Optional<br>(0 or 1)"
+  p: "Required<br>(exactly 1)"
   d: "The number of transactions (excluding coinbase)"
 
 - n: "→<br>`utxo_increase`"
   t: "numeric"
-  p: "Optional<br>(0 or 1)"
+  p: "Required<br>(exactly 1)"
   d: "The increase/decrease in the number of unspent outputs"
 
 - n: "→<br>`utxo_size_inc`"
   t: "numeric"
-  p: "Optional<br>(0 or 1)"
+  p: "Required<br>(exactly 1)"
   d: "The increase/decrease in size for the utxo index (not discounting op_return and similar)"
 {% enditemplate %}
 
