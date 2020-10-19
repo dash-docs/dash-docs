@@ -2,6 +2,8 @@
 # This file is licensed under the MIT License (MIT) available on
 # http://opensource.org/licenses/MIT.
 
+redirect_to: "https://dashcore.readme.io/docs/core-additional-resources-glossary#dark-gravity-wave"
+
 required:
                                            #-------------40 characters-------------#
     title_max_40_characters_no_formatting: Dark Gravity Wave, DGB
