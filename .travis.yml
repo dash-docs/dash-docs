@@ -36,6 +36,11 @@ after_success:
   - cd $TRAVIS_BUILD_DIR
   - chmod +x scripts/generateDocumentationAndDeploy.sh
   - ./scripts/generateDocumentationAndDeploy.sh
+  - pwd
+  - mkdir -p _site/en/glossary
+  - ls _site/en
+  - cp -R _data/glossary_html/* _site/en/glossary
+  - ls _site/en/glossary
 
 deploy:
   # Set these environment variables in travis-ci.org settings for the repo:
